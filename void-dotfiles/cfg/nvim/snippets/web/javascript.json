@@ -1,0 +1,452 @@
+{
+  "export": {
+    "prefix": ["exp", "e"],
+    "body": "export ${0}"
+  },
+  "let": {
+    "prefix": ["let", "l"],
+    "body": "let ${0}"
+  },
+  "const": {
+    "prefix": ["con", "c"],
+    "body": "let ${0}"
+  },
+  "return": {
+    "prefix": ["req", "r"],
+    "body": "return ${0}"
+  },
+  "import": {
+    "prefix": ["imp", "i"],
+    "body": "import ${0}"
+  },
+  "describe": {
+    "prefix": ["des", "d"],
+    "body": "describe('${1:description}', () => {\n\t${0}\n})"
+  },
+  "await": {
+    "prefix": ["awa", "a"],
+    "body": "await ${0}"
+  },
+  "Promise": {
+    "prefix": ["pro", "p"],
+    "body": "Promise"
+  },
+  "new Promise": {
+    "prefix": ["newp", "np"],
+    "body": "new Promise((resolve, reject) => {\n\t${0}\n})"
+  },
+  "Promise.then": {
+    "prefix": ["pthen", "pt"],
+    "body": "${1:promise}.then((${2:value}) => {\n\t${0}\n})"
+  },
+  "Promise.catch": {
+    "prefix": ["pcatch", "pc"],
+    "body": "${1:promise}.catch(error => {\n\t${0}\n})"
+  },
+  "Promise.all": {
+    "prefix": "pa",
+    "body": "Promise.all(${1:value})"
+  },
+  "Promise.resolve": {
+    "prefix": "prs",
+    "body": "Promise.resolve(${1:value})"
+  },
+  "Promise.reject": {
+    "prefix": "prj",
+    "body": "Promise.reject(${1:value})"
+  },
+  "await Promise.all": {
+    "prefix": "apa",
+    "body": "await Promise.all(${1:value})"
+  },
+  "await Promise.all with destructuring": {
+    "prefix": "apad",
+    "body": "const [${0}] = await Promise.all(${1:value})"
+  },
+  "await Promise.all map": {
+    "prefix": "apm",
+    "body": "await Promise.all(${1:array}.map(async (${2:value}) => {\n\t${0}\n}))"
+  },
+  "await sleep": {
+    "prefix": "ast",
+    "body": "await new Promise((r) => setTimeout(r, ${0}))"
+  },
+  "process.env": {
+    "prefix": "pe",
+    "body": "process.env"
+  },
+  "setImmediate": {
+    "prefix": "sim",
+    "body": "setImmediate(() => {\n\t${0}\n})"
+  },
+  "event handler": {
+    "prefix": "on",
+    "body": "${1:emitter}.on('${2:event}', (${3:arguments}) => {\n\t${0}\n})"
+  },
+  "addEventListener": {
+    "prefix": "ae",
+    "body": "${1:document}.addEventListener('${2:event}', ${3:ev} => {\n\t${0}\n})"
+  },
+  "removeEventListener": {
+    "prefix": "re",
+    "body": "${1:document}.removeEventListener('${2:event}', ${3:listener})"
+  },
+  "getElementById": {
+    "prefix": "gi",
+    "body": "document.getElementById('${1:id}')"
+  },
+  "getElementsByClassName": {
+    "prefix": "gc",
+    "body": "document.getElementsByClassName('${0:class}'))"
+  },
+  "getElementsByTagName": {
+    "prefix": "gt",
+    "body": "document.getElementsByTagName('${0:tag}'))"
+  },
+  "querySelector": {
+    "prefix": "gqs",
+    "body": "document.querySelector('${0:selector}')"
+  },
+  "querySelectorAll": {
+    "prefix": "gqa",
+    "body": "document.querySelectorAll('${0:selector}')"
+  },
+  "createElement": {
+    "prefix": "cel",
+    "body": "document.createElement(${0:element})"
+  },
+  "forEach loop": {
+    "prefix": "foreach",
+    "body": "${1:iterable}.forEach((${2:item}) => {\n\t${0}\n})"
+  },
+  "map": {
+    "prefix": "map",
+    "body": "${1:iterable}.map((${2:item}) => {\n\t${0}\n})"
+  },
+  "reduce": {
+    "prefix": "reduce",
+    "body": "${1:iterable}.reduce((${2:previous}, ${3:current}) => {\n\t${0}\n}${4:, initial})"
+  },
+  "filter": {
+    "prefix": "filter",
+    "body": "${1:iterable}.filter((${2:item}) => {\n\t${0}\n})"
+  },
+  "find": {
+    "prefix": "find",
+    "body": "${1:iterable}.find((${2:item}) => {\n\t${0}\n})"
+  },
+  "every": {
+    "prefix": "every",
+    "body": "${1:iterable}.every((${2:item}) => {\n\t${0}\n})"
+  },
+  "some": {
+    "prefix": "some",
+    "body": "${1:iterable}.some((${2:item}) => {\n\t${0}\n})"
+  },
+  "generator function": {
+    "prefix": "gf",
+    "body": "function* (${1:arguments}) {\n\t${0}\n}"
+  },
+  "yield": {
+    "prefix": "y",
+    "body": "yield ${0}"
+  },
+  "named generator": {
+    "prefix": "gfn",
+    "body": "function* ${1:name}(${2:arguments}) {\n\t${0}\n}"
+  },
+  "use strict": {
+    "prefix": "uss",
+    "body": "'use strict'"
+  },
+  "JSON.stringify()": {
+    "prefix": "js",
+    "body": "JSON.stringify($0)"
+  },
+  "JSON.parse()": {
+    "prefix": "jp",
+    "body": "JSON.parse($0)"
+  },
+  "getter": {
+    "prefix": "get",
+    "body": "get ${1:property} () {\n\t${0}\n}"
+  },
+  "setter": {
+    "prefix": "set",
+    "body": "set ${1:property} (${2:value}) {\n\t${0}\n}"
+  },
+  "getter + setter": {
+    "prefix": "gs",
+    "body": "get ${1:property} () {\n\t${0}\n}\nset ${1:property} (${2:value}) {\n\t\n}"
+  },
+  "prototype method": {
+    "prefix": "proto",
+    "body": "${1:Class}.prototype.${2:method} = function (${3:arguments}) {\n\t${0}\n}"
+  },
+  "Object.assign": {
+    "prefix": "oa",
+    "body": "Object.assign(${1:dest}, ${2:source})"
+  },
+  "Object.create": {
+    "prefix": "oc",
+    "body": "Object.create(${1:obj})"
+  },
+  "Object.getOwnPropertyDescriptor": {
+    "prefix": "og",
+    "body": "Object.getOwnPropertyDescriptor(${1:obj}, '${2:prop}')"
+  },
+  "ternary": {
+    "prefix": "te",
+    "body": "${1:cond} ? ${2:true} : ${3:false}"
+  },
+  "ternary assignment": {
+    "prefix": "ta",
+    "body": "const ${0} = ${1:cond} ? ${2:true} : ${3:false}"
+  },
+  "Object.defineProperty": {
+    "prefix": "od",
+    "body": "Object.defineProperty(${1:dest}, '${2:prop}', {\n\t${0}\n})"
+  },
+  "Object.keys": {
+    "prefix": "ok",
+    "body": "Object.keys(${1:obj})"
+  },
+  "Object.values": {
+    "prefix": "ov",
+    "body": "Object.values(${1:obj})"
+  },
+  "Object.entries": {
+    "prefix": "oe",
+    "body": "Object.entries(${1:obj})"
+  },
+  "For Loop": {
+    "prefix": "for",
+    "body": [
+      "for (let ${1:i} = 0; ${1:i} < ${2:arr}.length; ${1:i}++) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "For Loop"
+  },
+  "For-Each Loop": {
+    "prefix": "foreach",
+    "body": ["${1:array}.forEach(${2:element} => {", "\t$0", "});"],
+    "description": "For-Each Loop"
+  },
+  "For-In Loop": {
+    "prefix": "forin",
+    "body": [
+      "for (const ${1:key} in ${2:object}) {",
+      "\tif (${2:object}.hasOwnProperty(${1:key})) {",
+      "\t\tconst ${3:element} = ${2:object}[${1:key}];",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ],
+    "description": "For-In Loop"
+  },
+  "For-Of Loop": {
+    "prefix": "forof",
+    "body": ["for (const ${1:iterator} of ${2:object}) {", "\t$0", "}"],
+    "description": "For-Of Loop"
+  },
+  "Function Statement": {
+    "prefix": "function",
+    "body": ["function ${1:name}(${2:params}) {", "\t$0", "}"],
+    "description": "Function Statement"
+  },
+  "If Statement": {
+    "prefix": "if",
+    "body": ["if (${1:condition}) {", "\t$0", "}"],
+    "description": "If Statement"
+  },
+  "If-Else Statement": {
+    "prefix": "ifelse",
+    "body": ["if (${1:condition}) {", "\t$0", "} else {", "\t", "}"],
+    "description": "If-Else Statement"
+  },
+  "New Statement": {
+    "prefix": "new",
+    "body": ["const ${1:name} = new ${2:type}(${3:arguments});$0"],
+    "description": "New Statement"
+  },
+  "Switch Statement": {
+    "prefix": "switch",
+    "body": [
+      "switch (${1:key}) {",
+      "\tcase ${2:value}:",
+      "\t\t$0",
+      "\t\tbreak;",
+      "",
+      "\tdefault:",
+      "\t\tbreak;",
+      "}"
+    ],
+    "description": "Switch Statement"
+  },
+  "While Statement": {
+    "prefix": "while",
+    "body": ["while (${1:condition}) {", "\t$0", "}"],
+    "description": "While Statement"
+  },
+  "Do-While Statement": {
+    "prefix": "dowhile",
+    "body": ["do {", "\t$0", "} while (${1:condition});"],
+    "description": "Do-While Statement"
+  },
+  "try-catch Statement": {
+    "prefix": "trycatch",
+    "body": ["try {", "\t$0", "} catch (${1:error}) {", "\t", "}"],
+    "description": "Try-Catch Statement"
+  },
+  "Set Timeout Function": {
+    "prefix": "settimeout",
+    "body": ["setTimeout(() => {", "\t$0", "}, ${1:timeout});"],
+    "description": "Set Timeout Function"
+  },
+  "Set Interval Function": {
+    "prefix": "setinterval",
+    "body": ["setInterval(() => {", "\t$0", "}, ${1:interval});"],
+    "description": "Set Interval Function"
+  },
+  "Import external module.": {
+    "prefix": "import statement",
+    "body": ["import { $0 } from \"${1:module}\";"],
+    "description": "Import external module."
+  },
+  "Region Start": {
+    "prefix": "#region",
+    "body": ["//#region $0"],
+    "description": "Folding Region Start"
+  },
+  "Region End": {
+    "prefix": "#endregion",
+    "body": ["//#endregion"],
+    "description": "Folding Region End"
+  },
+  "importModule": {
+    "prefix": "imp",
+    "body": "import ${2:moduleName} from '${1:module}';$0",
+    "description": "Imports entire module statement in ES6 syntax"
+  },
+  "importNoModuleName": {
+    "prefix": "imn",
+    "body": "import '${1:module}';$0",
+    "description": "Imports entire module in ES6 syntax without module name"
+  },
+  "importEverything": {
+    "prefix": "ime",
+    "body": "import * as ${2:alias} from '${1:module}';$0",
+    "description": "Imports everything as alias from the module in ES6 syntax"
+  },
+  "importAs": {
+    "prefix": "ima",
+    "body": "import { ${2:originalName} as ${3:alias} } from '${1:module}';$0",
+    "description": "Imports a specific portion of the module by assigning a local alias in ES6 syntax"
+  },
+  "AnonymousFunction": {
+    "prefix": ["alfn", "anfn"],
+    "body": ["($1) => {", "\t$0", "}"],
+    "description": "Anonymous arrow function"
+  },
+  "ShortAnonymousFunction": {
+    "prefix": ["asfn", "anf"],
+    "body": ["($1) => $0"],
+    "description": "Anonymous short arrow function"
+  },
+  "ImmediatelyInvokedFunctionExpression": {
+    "prefix": ["iifn", "iife"],
+    "body": ["(() => {", "\t$1", "})()$0"],
+    "description": "Immediately Invoked Function Expression"
+  },
+  "RegularFunction": {
+    "prefix": ["fun", "fn"],
+    "body": ["function ${1:name}(${2:params}) {", "\t$0", "}"],
+    "description": "Immediately Invoked Function Expression"
+  },
+  "ExportDefaultFunction": {
+    "prefix": "edfn",
+    "body": ["export default function $1($2) {", "\t$0", "}"],
+    "description": "Export default function"
+  },
+  "Try-CatchStatement": {
+    "prefix": ["trycatch", "tc"],
+    "body": ["try {", "\t$1", "} catch (${0}) {", "\t", "}"],
+    "description": "Try-Catch Statement"
+  },
+  "consoleLog": {
+    "prefix": ["clog", "clg", "log"],
+    "body": ["console.log(${1})"],
+    "description": "Displays a message in the console"
+  },
+  "consoleLogJson": {
+    "prefix": ["cljson", "clj"],
+    "body": ["console.log('${1}', JSON.stringify(${0}, null, 2))"],
+    "description": "Logs stringified JSON property with name."
+  },
+  "consoleInfo": {
+    "prefix": ["clinfo", "cli"],
+    "body": ["console.info(${1})"],
+    "description": "Displays a message in the console but also displays a blue information icon along with the logged message"
+  },
+  "consoleWarn": {
+    "prefix": ["clwarn", "clw"],
+    "body": ["console.warn(${1})"],
+    "description": "Displays a message in the console but also displays a yellow warning icon along with the logged message"
+  },
+  "consoleError": {
+    "prefix": ["clerror", "cle"],
+    "body": ["console.error(${1})"],
+    "description": "Displays a message in the console and also includes a stack trace from where the method was called"
+  },
+  "consoleCount": {
+    "prefix": ["clcount", "clc"],
+    "body": ["console.count(${1:label})"],
+    "description": "Writes the the number of times that count() has been invoked at the same line and with the same label"
+  },
+  "consoleDir": {
+    "prefix": ["cldir", "cld"],
+    "body": ["console.dir(${1})"],
+    "description": "Prints a JavaScript representation of the specified object"
+  },
+  "consoleAssert": {
+    "prefix": ["classert", "cla"],
+    "body": ["console.assert(${1}, ${0})"],
+    "description": "If the specified expression is false, the message is written to the console along with a stack trace"
+  },
+  "consoleTrace": {
+    "prefix": ["cltrace", "clt"],
+    "body": ["console.trace(${1})"],
+    "description": "Prints a stack trace from the point where the method was called"
+  },
+  "consoleTable": {
+    "prefix": ["cltable", "clt"],
+    "body": ["console.table([${1}])"],
+    "description": "Logs table to console"
+  },
+  "consoleClear": {
+    "prefix": ["clclear", "cle"],
+    "body": ["console.clear()"],
+    "description": "Clears the console"
+  },
+  "consoleGroup": {
+    "prefix": "clgroup",
+    "body": ["console.group('${1:label}')"],
+    "description": "Groups and indents all following output by an additional level, until console.groupEnd() is called."
+  },
+  "consoleGroupEnd": {
+    "prefix": "clgroupend",
+    "body": ["console.groupEnd(${1:label})"],
+    "description": "Closes out the corresponding console.group()."
+  },
+  "consoleTime": {
+    "prefix": "cltime",
+    "body": ["console.time('${1:label}')"],
+    "description": "Console time wrapper"
+  },
+  "consoleTimeEnd": {
+    "prefix": "cltimend",
+    "body": ["console.timeEnd('${1:label}')"],
+    "description": "Console time end wrapper"
+  }
+}
