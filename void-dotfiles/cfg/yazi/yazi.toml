@@ -36,7 +36,7 @@ play = [
 	{ run = 'mpv "$@"', orphan = true, for = "unix" },
 ]
 show = [
-	{ run = 'oculante.exe %*', orphan = true, for = "windows" },
+	{ run = 'qview.exe %*', orphan = true, for = "windows" },
 	{ run = 'imv "$@"', orphan = true, for = "unix" },
 ]
 showPDF = [
@@ -58,7 +58,7 @@ reveal = [
 	{ run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 open = [
-	{ run = 'start qutebrowser "%*"', desc = "Open" },
+	{ run = 'start msedge "%*"', desc = "Open" },
 	{ run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
 
 ]
