@@ -5,7 +5,7 @@
 THEME='Material-Black-Blueberry'
 ICONS='Papirus-Dark'
 FONT='JetBrainsMono NF 11'
-CURSOR='Breeze_Hacked'
+CURSOR='BreezeX-Black'
 SCHEMA='gsettings set org.gnome.desktop.interface'
 PERF='gsettings set org.gnome.desktop.wm.preferences'
 
