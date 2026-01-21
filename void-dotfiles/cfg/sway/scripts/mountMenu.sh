@@ -7,7 +7,7 @@
 notify-send -h int:value:100 "Getting List Of Available USB..."
 DEV_LABEL="/dev/disk/by-label/"
 
-label="$(find $DEV_LABEL* | cut -d'/' -f5 | wmenu -il 3 -f "JetBrainsMono NF 11" -N 141b1e -n dadada -M 8ccf7e -m 141b1e  -S 8ccf7e -s 141b1e  -p "MOUNT MENU: ")"
+label="$(find $DEV_LABEL* | cut -d'/' -f5 | wmenu_run)"
 path="$DEV_LABEL$label"
 [[ -z $label ]] && echo "Cancelled." && exit
 

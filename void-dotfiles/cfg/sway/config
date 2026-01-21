@@ -27,7 +27,7 @@ set {
     $file_primary           yazi
     $file_secondry          nemo
     $yt                     freetube
-    $menu                   wmenu-run -N 0d0c0c -n dadada -S 87a987 -s 0d0c0c -M 87a987 -m 181616  -il '10' -p 'LAUNCH MENU:'
+    $menu                   wmenu-run -il 8 -f "JetBrainsMono NF 11" -N 0d0c0c -n c5c9c5 -M 7a8382 -m 181616 -S 7a8382 -s 0d0c0c -p 'RUN: '
     $notification_dismiss   makoctl dismiss --all
 }
 

@@ -1,0 +1,2 @@
+#!/bin/sh
+wmenu -il 8 -f "JetBrainsMono NF 11" -N 0d0c0c -n c5c9c5 -M 252535 -m 181616 -S 7a8382 -s 0d0c0c
