@@ -276,8 +276,8 @@ fn p {|@a| e:pnpm $@a }
 fn px {|@a| e:pnpm dlx $@a }
 # Others Usfeual Alias:                                                           #
 # =============================================================================== #
-fn yt-concats {|@a| e:yt-dlp --ignore-config --config-locations ~/home/lli/.config/yt-dlp/playlist $@a }
-fn yt-music {|@a| e:yt-dlp --ignore-config --config-locations ~/home/lli/.config/yt-dlp/music $@a }
+fn yt-concats {|@a| e:yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/playlist $@a }
+fn yt-music {|@a| e:yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/music $@a }
 fn dev {|@a| browser-sync start --no-notify --server --files "**/*.html, **/*.css", "**/*.js" $@a }
 fn msg { |@a| echo (styled "👉🏼 "$@a bold italic yellow) }
 fn rm {|@a| e:trash $@a }

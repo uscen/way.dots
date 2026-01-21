@@ -1,4 +1,21 @@
 # =============================================================================== #
+# Wayland:                                                                        #
+# =============================================================================== #
+export GDK_BACKEND=wayland
+export XDG_SESSION_TYPE=wayland
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
+export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QUTE_QT_WRAPPER=PyQt6
+export QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_SCALE_FACTOR=1
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export WLR_NO_HARDWARE_CURSORS=1
+export MOZ_ENABLE_WAYLAND=1
+export XCURSOR_THEME=Breez_Hacked
+
+# =============================================================================== #
 # Exports:                                                                        #
 # =============================================================================== #
 export CC="gcc"
@@ -16,6 +33,46 @@ export MYVIMRC="$HOME/.config/nvim/init.lua"
 export BUN_INSTALL_CACHE_DIR="$HOME/.cache/bun/install/cache"
 
 # =============================================================================== #
+# Clean ~:                                                                        #
+# =============================================================================== #
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
+export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export INPUTRC="$XDG_CONFIG_HOME/shell/inputrc"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
+export KODI_DATA="$XDG_DATA_HOME/kodi"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GOPATH="$XDG_DATA_HOME/go"
+export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
+export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/ansible.cfg"
+export UNISON="$XDG_DATA_HOME/unison"
+export HISTFILE="$XDG_CACHE_HOME/history"
+export MBSYNCRC="$XDG_CONFIG_HOME/mbsync/config"
+export ELECTRUMDIR="$XDG_DATA_HOME/electrum"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
+export SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history"
+export IPYTHONDIR="$HOME/.cache/ipython_config"
+export JUPYTER_CONFIG_DIR="$HOME/.cache/jupyter_config"
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/rc"
+export XDEB_PKGROOT=${HOME}/.config/xdeb
+export KOMOREBI_CONFIG_HOME="$HOME/.config/komorebi"
+export BUN_INSTALL_CACHE_DIR="$HOME/.cache/bun/install/cache"
+export NI_CONFIG_FILE="$HOME/.config/ni/nirc"
+export NI_DEFAULT_AGENT="npm"
+export NI_GLOBAL_AGENT="npm"
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+
+# =============================================================================== #
 # Shell Options:                                                                  #
 # =============================================================================== #
 set -o vi
@@ -28,12 +85,14 @@ shopt -s extglob
 shopt -s no_empty_cmd_completion
 shopt -s nocaseglob
 shopt -s histappend
-
+# =============================================================================== #
+# Autocomplete:                                                                   #
+# =============================================================================== #
+source <(carapace _carapace)
 # =============================================================================== #
 # Zoxide:                                                                         #
 # =============================================================================== #
 eval "$(zoxide init bash)"
-
 # =============================================================================== #
 # Aliases:                                                                        #
 # =============================================================================== #
@@ -73,25 +132,24 @@ alias gp="g push -uf origin main"
 alias lg="lazygit"
 # Scoop Pkg Manager:                                                              #
 # =============================================================================== #
-alias pu="scoop update --all"
-alias pi="scoop install"
-alias pr="scoop uninstall"
-alias pq="scoop search"
-alias pl="scoop list"
-alias pc="scoop cleanup --cache --all"
+alias pu="doas xbps-install -Syu xbps && doas xbps-install -Su"
+alias pi="doas xbps-install -S"
+alias pr="doas xbps-remove -R"
+alias pq="xbps-query -Rs"
+alias pl="xbps-query -l"
+alias pc="doas xbps-remove -Oo"
+alias pclean="doas rm -rf /var/cache/xbps/*"
 # For Configs Files:                                                              #
 # =============================================================================== #
-alias recompile="powershell  ~/win-void/win-configs/win-configs.ps1"
-alias dots="cd ~/win-void/"
-alias ahk="cd ~/win-void/win-dotfiles/cfg/ahk/"
-alias bashc="nvim ~/win-void/win-dotfiles/home/.bashrc"
-alias wmc="nvim ~/win-void/win-dotfiles/cfg/komorebi/komorebi.json"
-alias barc="nvim ~/win-void/win-dotfiles/cfg/yasb/config.yaml"
-alias elvc="nvim ~/win-void/win-dotfiles/app/roming/elvish/rc.elv"
+alias dots="cd ~/.local/way.dots/"
+alias swayc="nvim ~/.config/sway/config"
+alias wmc="nvim ~/.config/sway/config"
+alias elvc="nvim ~/.config/elvish/ec.elv"
+alias bashc="nvim ~/.bashrc"
 # Others Usfeual Alias:                                                           #
 # =============================================================================== #
-alias yt-concats='yt-dlp --ignore-config --config-locations ~/AppData/Roaming/yt-dlp/music'
-alias yt-music='yt-dlp --ignore-config --config-locations ~/AppData/Roaming/yt-dlp/music'
+alias yt-concats='yt-dlp --ignore-config --config-locations ~/config/yt-dlp/music'
+alias yt-music='yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/music'
 alias man="tldr"
 alias cat="bat"
 alias cls="clear"
