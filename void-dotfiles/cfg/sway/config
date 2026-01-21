@@ -20,8 +20,8 @@ set {
     # ============================================================================#
     $terminal_primary       alacritty
     $termbidi_secondary     foot
-    $browser_primary        firefox
-    $browser_secondary      qutebrowser
+    $browser_primary        qutebrowser
+    $browser_secondary      firefox
     $editor_primary         neovide
     $editor_secondary       zed
     $file_primary           yazi
