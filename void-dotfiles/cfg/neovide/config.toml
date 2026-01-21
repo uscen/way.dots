@@ -14,12 +14,12 @@ frame = "none"
 theme = "auto"
 mouse-cursor-icon = "i-beam"
 [font]
-size = 10
+size = 11
 hinting = "full"
 edging = "antialias"
 [[font.normal]]
 family = "JetBrainsMono Nerd Font"
-style = "W700"
+style = "W400"
 [box-drawing]
 mode = "font-glyph"
 [box-drawing.sizes]

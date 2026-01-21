@@ -55,7 +55,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     if client:supports_method('textDocument/signatureHelp') then
-      vim.keymap.set('n', 'gh', vim.lsp.buf.signature_help, { buffer = true })
+      vim.keymap.set('n', 'go', vim.lsp.buf.signature_help, { buffer = true })
     end
 
     if client:supports_method('textDocument/documentSymbol') then
@@ -127,6 +127,7 @@ end, {
     return client_names
   end,
 })
+
 -- Restart all the language client(s) attached to the current buffer: ============================
 vim.api.nvim_create_user_command('LspRestart', function()
   local detach_clients = {}
@@ -160,8 +161,30 @@ vim.api.nvim_create_user_command('LspRestart', function()
     end)
   )
 end, {})
+
+-- lspCapabilities: ==============================================================================
+vim.api.nvim_create_user_command('LspCapabilities', function()
+  local clients = vim.lsp.get_clients { bufnr = 0 }
+  if #clients == 0 then
+    vim.notify('No LSPs attached.', vim.log.levels.WARN, { icon = '󱈄' })
+    return
+  end
+  vim.ui.select(clients, { prompt = '󱈄 Select LSP:', format_item = function(client) return client.name end },
+    function(client)
+      if not client then return end
+      local info = {
+        capabilities = client.capabilities,
+        server_capabilities = client.server_capabilities,
+        config = client.config,
+      }
+      local opts = { icon = '󱈄', title = client.name .. ' capabilities', ft = 'lua' }
+      local header = '-- For a full view, open in notification history.\n'
+      vim.notify(header .. vim.inspect(info), vim.log.levels.INFO, opts)
+    end)
+end, {})
+
 -- Refresh all attached client: ==================================================================
-vim.lsp.set_log_level('ERROR')
+vim.lsp.log.set_level('ERROR')
 local function refresh()
   vim.lsp.stop_client(vim.lsp.get_clients(), true)
   vim.defer_fn(

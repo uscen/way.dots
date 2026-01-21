@@ -18,7 +18,7 @@ sudo xbps-install -Sy \
     yazi fastfetch yt-dlp chafa rsync eza bat glow wl-clipboard tealdeer  \
     neovim lazygit fzf fd ripgrep zoxide pastel delta curl jq brightnessctl \
     # GUI
-    mpv imv zathura zathura-pdf-mupdf \
+    mpv qView zathura zathura-pdf-mupdf \
     firefox qutebrowser nemo gimp shotcut \
     # DISKS:
     udiskie simple-mtpfs WoeUSB-cli \

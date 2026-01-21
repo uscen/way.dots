@@ -56,7 +56,7 @@ set E:GOPATH = $E:HOME"/.local/share/go"
 set E:GOMODCACHE = $E:HOME"/.cache/go/mod"
 set E:PYTHONSTARTUP = $E:HOME"/.config/python/pythonrc"
 set E:SQLITE_HISTORY = $E:HOME"/.local/share/sqlite_history"
-set E:MYVIMRC = $E:HOME"/way.dots/win-dotfiles/app/local/nvim/init.lua"
+set E:MYVIMRC = $E:HOME"/.config/nvim/init.lua"
 set E:RIPGREP_CONFIG_PATH  = $E:HOME"/.config/ripgrep/rc"
 # =============================================================================== #
 # Elvish General :                                                                #
@@ -223,10 +223,9 @@ fn cdc { cd C:/ }
 # For Configs Files:                                                              #
 # =============================================================================== #
 fn dots { cd $E:HOME/.local/way.dots }
-fn ahk { cd $E:HOME/way.dots/win-dotfiles/cfg/ahk/ }
-fn bashc { nvim $E:HOME/win.dots/win-dotfiles/home/.bash/bashrc }
-fn wmc { nvim $E:HOME/way.dots/win-dotfiles/home/.glzr/glazewm/config.yaml }
-fn elvc { nvim $E:HOME/way.dots/win-dotfiles/app/roming/elvish/rc.elv }
+fn bashc { nvim $E:HOME/.local/way.dots/void-dotfiles/home/.bash/bashrc }
+fn wmc { nvim $E:HOME/.local/way.dots/void-dotfiles/cfg/sway/config }
+fn elvc { nvim $E:HOME/.local/way.dots/void-dotfiles/cfg/elvish/rc.elv }
 # Changing "ls" to "eza":                                                         #
 # =============================================================================== #
 fn ls {|@a| e:eza --long --group --icons=auto --git --sort=name --group-directories-first $@a }
@@ -256,13 +255,13 @@ fn sx {|@a| e:qview $@a }
 fn imv {|@a| e:qview $@a }
 # Scoop Package Manager:                                                          #
 # =============================================================================== #
-fn pu {|@a| e:scoop update --all $@a }
-fn pi {|@a| e:scoop install $@a }
-fn pr {|@a| e:scoop uninstall $@a }
-fn pq {|@a| e:scoop search $@a }
-fn pl {|@a| e:scoop list $@a }
-fn pus {|@a| e:scoop status $@a }
-fn pclean {|@a| e:scoop cleanup --cache --all $@a }
+fn pu {|@a| e:doas xbps-install -Syu xbps; doas xbps-install -Su $@a }
+fn pi {|@a| e:doas xbps-install -S $@a }
+fn pr {|@a| e:doas xbps-remove -R $@a }
+fn pq {|@a| e:xbps-query -Rs $@a }
+fn pl {|@a| e:xbps-query -l $@a }
+fn pc {|@a| e:doas xbps-remove -Oo $@a }
+fn pclean {|@a| e:doas rm -rf /var/cache/xbps/* $@a }
 # BuN Package Manager:                                                            #
 # =============================================================================== #
 fn buna {|@a| e:bun add $@a }
@@ -277,9 +276,9 @@ fn p {|@a| e:pnpm $@a }
 fn px {|@a| e:pnpm dlx $@a }
 # Others Usfeual Alias:                                                           #
 # =============================================================================== #
-fn yt-concats {|@a| e:yt-dlp --ignore-config --config-locations ~/AppData/Roaming/yt-dlp/playlist $@a }
-fn yt-music {|@a| e:yt-dlp --ignore-config --config-locations ~/AppData/Roaming/yt-dlp/music $@a }
-fn dev {|@a| browser-sync start --server --files "**/*.html, **/*.css" $@a }
+fn yt-concats {|@a| e:yt-dlp --ignore-config --config-locations ~/home/lli/.config/yt-dlp/playlist $@a }
+fn yt-music {|@a| e:yt-dlp --ignore-config --config-locations ~/home/lli/.config/yt-dlp/music $@a }
+fn dev {|@a| browser-sync start --no-notify --server --files "**/*.html, **/*.css", "**/*.js" $@a }
 fn msg { |@a| echo (styled "👉🏼 "$@a bold italic yellow) }
 fn rm {|@a| e:trash $@a }
 fn htop {|@a| e:ntop -u lli -s CPU% $@a }

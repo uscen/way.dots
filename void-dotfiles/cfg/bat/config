@@ -8,7 +8,9 @@
 --pager=never
 --color=always
 --decorations=always
-# List of supported syntax: bat --list-languages: =============================== #
+# =============================================================================== #
+# List of supported syntax: bat --list-languages:                                 #
+# =============================================================================== #
 --map-syntax '.*ignore:Git Ignore'
 --map-syntax '.gitconfig.local:Git Config'
 --map-syntax '**/completions/_*:Bourne Again Shell (bash)'

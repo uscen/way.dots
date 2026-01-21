@@ -48,7 +48,7 @@ end)
 --              │                         Mini.Diff                       │
 --              ╰─────────────────────────────────────────────────────────╯
 later(function()
-  require('mini.diff').setup({ view = { style = 'sign', signs = { add = '▎', change = '▎', delete = '' } } })
+  require('mini.diff').setup({ view = { style = 'sign', signs = { add = '▎', change = '▎', delete = '▎' } } })
 end)
 --              ╭─────────────────────────────────────────────────────────╮
 --              │                         Mini.Notify                     │
@@ -141,8 +141,8 @@ later(function()
   end
   MiniCompletion.setup({
     fallback_action = '<C-n>',
-    delay = { completion = 200, info = 200, signature = 100 },
-    window = { info = { border = 'bold' }, signature = { border = 'bold' } },
+    delay = { completion = 100, info = 100, signature = 100 },
+    window = { info = { border = 'single' }, signature = { border = 'single' } },
     mappings = { force_twostep = '<C-n>', force_fallback = '<C-S-n>', scroll_down = '<C-f>', scroll_up = '<C-b>' },
     lsp_completion = { source_func = 'omnifunc', auto_setup = false, process_items = process_items },
   })
@@ -529,8 +529,7 @@ now_if_args(function()
       -- Customize window-local settings =========================================================
       vim.wo[win_id].winblend = 15
       local config = vim.api.nvim_win_get_config(win_id)
-      ---@diagnostic disable-next-line
-      config.border, config.title_pos = 'bold', 'left'
+      config.border, config.title_pos = 'single', 'left'
       vim.api.nvim_win_set_config(win_id, config)
     end,
   })
@@ -887,11 +886,11 @@ now(function()
   vim.o.visualbell               = false
   vim.o.emoji                    = false
   vim.o.ruler                    = false
-  vim.o.numberwidth              = 3
+  vim.o.numberwidth              = 4
   vim.o.linespace                = 3
   vim.o.laststatus               = 0
   vim.o.cmdheight                = 0
-  vim.o.helpheight               = 12
+  vim.o.helpheight               = 0
   vim.o.previewheight            = 12
   vim.o.winwidth                 = 20
   vim.o.winminwidth              = 10
@@ -902,8 +901,8 @@ now(function()
   vim.o.showtabline              = 0
   vim.o.pumblend                 = 0
   vim.o.pumwidth                 = 30
-  vim.o.pumheight                = 8
-  vim.o.cmdwinheight             = 8
+  vim.o.pumheight                = 10
+  vim.o.cmdwinheight             = 10
   vim.o.titlelen                 = 127
   vim.o.tabpagemax               = 10000
   vim.o.scrollback               = 100000
@@ -921,7 +920,7 @@ now(function()
   vim.o.mouse                    = 'a'
   vim.o.mousemodel               = 'extend'
   vim.o.mousescroll              = 'ver:3,hor:6'
-  vim.o.winborder                = 'bold'
+  vim.o.winborder                = 'single'
   vim.o.backspace                = 'indent,eol,start'
   vim.o.cursorlineopt            = 'screenline,number'
   vim.o.tabclose                 = 'uselast'
@@ -1037,6 +1036,9 @@ now(function()
   vim.g.loaded_syntax_completion = 1
   vim.g.loaded_syntax            = 1
   vim.g.loaded_synmenu           = 1
+  vim.g.loaded_man               = 1
+  vim.g.loaded_shada_plugin      = 1
+  vim.g.loaded_remote_plugins    = 1
   vim.g.loaded_optwin            = 1
   vim.g.loaded_compiler          = 1
   vim.g.loaded_bugreport         = 1
@@ -1061,7 +1063,7 @@ local diagnostic_opts = {
     prefix = '󱓇  ',
     source = 'if_many',
     style = 'minimal',
-    border = 'bold',
+    border = 'single',
     header = '',
     title = 'Diagnostics:',
     title_pos = 'left',
@@ -1079,7 +1081,9 @@ local diagnostic_opts = {
     current_line = true,
     severity = { min = 'ERROR', max = 'ERROR' },
     format = function(diagnostic)
-      return '→ ' .. diagnostic.message .. ' '
+      local icon = '→ '
+      local message = vim.split(diagnostic.message, '\n')[1]
+      return ('%s %s '):format(icon, message)
     end,
   },
   signs = {
@@ -1110,7 +1114,7 @@ later(function() vim.diagnostic.config(diagnostic_opts) end)
 --              ╭─────────────────────────────────────────────────────────╮
 --              │                     Neovim Automads                     │
 --              ╰─────────────────────────────────────────────────────────╯
-now_if_args(function()
+now(function()
   -- Auto Save: ==================================================================================
   vim.api.nvim_create_autocmd({ 'FocusLost', 'VimLeavePre' }, {
     group = vim.api.nvim_create_augroup('save_buffers', {}),
@@ -1164,6 +1168,22 @@ now_if_args(function()
       if event.file == '' and vim.bo[event.buf].buftype == '' and not vim.bo[event.buf].modified then
         vim.schedule(function() pcall(vim.api.nvim_buf_delete, event.buf, {}) end)
       end
+    end,
+  })
+  -- auto detects filetype if the filetype is empty: ===============================================
+  vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = '*',
+    group = vim.api.nvim_create_augroup('FileDetect', { clear = true }),
+    callback = function()
+      if vim.bo.filetype == '' then vim.cmd('filetype detect') end
+    end,
+  })
+  -- jump to last accessed window on closing the current one: =====================================
+  vim.api.nvim_create_autocmd('WinClosed', {
+    nested = true,
+    group = vim.api.nvim_create_augroup('jump_to_last_window', { clear = true }),
+    callback = function()
+      if vim.fn.expand('<amatch>') == vim.fn.win_getid() then vim.cmd('wincmd p') end
     end,
   })
   -- Disable diagnostics in node_modules =========================================================
@@ -1236,6 +1256,7 @@ now_if_args(function()
   })
   -- Fix broken macro recording notification for cmdheight 0 : ===================================
   local show_recordering = vim.api.nvim_create_augroup('show_recordering', { clear = true })
+
   vim.api.nvim_create_autocmd('RecordingEnter', {
     pattern = '*',
     group = show_recordering,
@@ -1272,9 +1293,7 @@ now_if_args(function()
   vim.api.nvim_create_autocmd({ 'InsertEnter', 'CmdlineEnter' }, {
     group = clear_hl,
     callback = vim.schedule_wrap(function()
-      vim.schedule(function()
-        vim.cmd.nohlsearch()
-      end)
+      vim.cmd.nohlsearch()
     end),
   })
   vim.api.nvim_create_autocmd('CursorMoved', {
@@ -1318,7 +1337,7 @@ now_if_args(function()
   })
   -- No share or backup files: ===================================================================
   vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-    pattern = { '/mnt/*', '/boot/*' },
+    pattern = vim.g.is_windows and { 'C:/users/lli/scoop/*', 'C:/users/lli/win.dots/*' } or { '/mnt/*', '/boot/*' },
     callback = function()
       vim.opt_local.undofile = true
       vim.opt_local.shada = 'NONE'
@@ -1350,11 +1369,12 @@ now_if_args(function()
       vim.opt_local.scrollback = 10000
       vim.opt_local.scrolloff = 0
       vim.opt_local.buflisted = false
+      vim.opt_local.cursorline = false
       vim.opt_local.number = false
-      vim.opt_local.bufhidden = 'hide'
       vim.opt_local.signcolumn = 'no'
       vim.opt_local.filetype = 'terminal'
       vim.bo.filetype = 'terminal'
+      vim.bo.bufhidden = 'wipe'
       vim.cmd.startinsert()
     end,
   })
@@ -1378,9 +1398,7 @@ now_if_args(function()
   vim.api.nvim_create_autocmd('BufWritePre', {
     group = vim.api.nvim_create_augroup('auto_create_dir', {}),
     callback = function(event)
-      if event.match:match('^%w%w+:[\\/][\\/]') then
-        return
-      end
+      if event.match:match('^%w%w+:[\\/][\\/]') then return end
       local file = vim.uv.fs_realpath(event.match) or event.match
       vim.fn.mkdir(vim.fn.fnamemodify(file, ':p:h'), 'p')
     end,
@@ -1600,7 +1618,7 @@ later(function()
   end, { nargs = '?', complete = 'dir' })
   -- Open a scratch buffer: ======================================================================
   vim.api.nvim_create_user_command('Scratch', function()
-    vim.cmd 'bel 8new'
+    vim.cmd 'bel 10new'
     local buf = vim.api.nvim_get_current_buf()
     for name, value in pairs { filetype = 'scratch', buftype = 'nofile', bufhidden = 'wipe', swapfile = false, modifiable = true } do
       vim.api.nvim_set_option_value(name, value, { buf = buf })
@@ -1629,6 +1647,23 @@ later(function()
     local buf_path = vim.api.nvim_buf_get_name(0)
     local path = vim.loop.fs_stat(buf_path) ~= nil and buf_path or vim.fn.getcwd()
     MiniFiles.open(path)
+  end, {})
+  -- Pick file using zoxide: =========================================================================
+  vim.api.nvim_create_user_command('PickZoxide', function()
+    local minipick = require('mini.pick')
+    local zoxide_output = vim.fn.system('zoxide query -l')
+    local zoxide_dirs = vim.split(zoxide_output, '\n', { trimempty = true })
+    minipick.start({
+      source = {
+        items = zoxide_dirs,
+        choose = function(dir)
+          vim.schedule(function()
+            vim.fn.chdir(dir)
+            return minipick.builtin.files()
+          end)
+        end,
+      },
+    })
   end, {})
   -- Pick file using fd: =========================================================================
   vim.api.nvim_create_user_command('PickFiles', function()
@@ -1876,6 +1911,13 @@ later(function()
     vim.fn.setreg('+', root)
     vim.notify(root .. ' copied', vim.log.levels.INFO)
   end, {})
+  -- Toggle Qucikfix and location list: ==========================================================
+  vim.api.nvim_create_user_command('ExploreQuickfix', function()
+    vim.cmd(vim.fn.getqflist({ winid = true }).winid ~= 0 and 'cclose' or 'copen')
+  end, {})
+  vim.api.nvim_create_user_command('ExploreLocations', function()
+    vim.cmd(vim.fn.getloclist(0, { winid = true }).winid ~= 0 and 'lclose' or 'lopen')
+  end, {})
   -- TrimSpaces and LastLine: ====================================================================
   vim.api.nvim_create_user_command('TrimSpaces', function()
     local curpos = vim.api.nvim_win_get_cursor(0)
@@ -1909,7 +1951,7 @@ end)
 --              │                Neovim Misspelled_Commands               │
 --              ╰─────────────────────────────────────────────────────────╯
 later(function()
-  local misspelled_commands = { 'W', 'Wq', 'WQ', 'Q', 'Qa', 'QA', 'Qall', 'QAll', 'Wqa', 'WQa', 'WQA' }
+  local misspelled_commands = { 'W', 'Wq', 'WQ', 'Q', 'Qa', 'QA', 'Qall', 'QAll', 'Wqa', 'WQa', 'WQA', 'Bd' }
   for _, command in pairs(misspelled_commands) do
     vim.api.nvim_create_user_command(command, function()
       vim.cmd(string.lower(command))
@@ -1927,6 +1969,12 @@ later(function()
   vim.keymap.set('i', '<C-L>', '<Nop>')
   vim.keymap.set('i', '<C-J>', '<Nop>')
   vim.keymap.set('i', '<C-K>', '<Nop>')
+  -- Rsi mappings: ===============================================================================
+  vim.keymap.set('c', '<C-a>', '<Home>')
+  vim.keymap.set('c', '<C-e>', '<End>')
+  vim.keymap.set('c', '<C-b>', '<End>')
+  vim.keymap.set('c', '<C-j>', '<down>')
+  vim.keymap.set('c', '<C-k>', '<up>')
   -- General: ====================================================================================
   vim.keymap.set('n', '<leader>qq', '<cmd>qa<cr>')
   vim.keymap.set('n', '<leader>rc', '<cmd>EditConfig<cr>')
@@ -1947,10 +1995,6 @@ later(function()
   vim.keymap.set('i', '<c-y>', '<Esc>viwUea')
   vim.keymap.set('n', '<c-y>', '<c-y><c-y><c-y>')
   vim.keymap.set('n', '<c-e>', '<c-e><c-e><c-e>')
-  vim.keymap.set('n', '<C-c>', 'cit')
-  vim.keymap.set('i', '<C-c>', '<Esc>cit')
-  vim.keymap.set('n', '<C-q>', 'ci"')
-  vim.keymap.set('i', '<C-q>', '<Esc>ci"')
   vim.keymap.set('n', '<C-i>', 'gg=G``')
   vim.keymap.set('n', '<C-m>', '%')
   vim.keymap.set('v', '<TAB>', '>gv')
@@ -1970,6 +2014,12 @@ later(function()
   vim.keymap.set('v', 'gl', '$')
   vim.keymap.set('n', 'gy', '`[v`]')
   vim.keymap.set('n', 'g/', '*')
+  vim.keymap.set('n', 'g*', 'g*N')
+  vim.keymap.set('n', 'g#', 'g#N')
+  vim.keymap.set('n', '*', '*N')
+  vim.keymap.set('n', '#', '#N')
+  vim.keymap.set('x', '*', [["yy/\V<C-R>=escape(getreg('y'), '\/[]')<CR><CR>N]])
+  vim.keymap.set('x', '#', [["yy?\V<C-R>=escape(getreg('y'), '\/[]')<CR><CR>N]])
   vim.keymap.set('x', '/', '<Esc>/\\%V')
   vim.keymap.set('n', '~', 'v~')
   vim.keymap.set('n', ';', ':')
@@ -1993,16 +2043,22 @@ later(function()
   vim.keymap.set('x', 'J', ":move '>+1<CR>gv-gv")
   vim.keymap.set('x', 'K', ":move '<-2<CR>gv-gv")
   vim.keymap.set('c', '%%', "<C-R>=expand('%:h').'/'<cr>")
-  vim.keymap.set('n', 'yco', 'o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>')
-  vim.keymap.set('n', 'ycO', 'O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>')
   vim.keymap.set('n', '}', '<cmd>execute "keepjumps norm! " . v:count1 . "}"<cr>')
   vim.keymap.set('n', '{', '<cmd>execute "keepjumps norm! " . v:count1 . "{"<cr>')
-  vim.keymap.set('n', '<C-n>', '*N', { remap = true })
+  vim.keymap.set('n', 'yco', 'o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>')
+  vim.keymap.set('n', 'ycO', 'O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>')
   vim.keymap.set('n', 'ycc', 'yygccp', { remap = true })
+  vim.keymap.set('n', 'gV', '"`[" . strpart(getregtype(), 0, 1) . "`]"', { expr = true })
+  vim.keymap.set('n', '<C-c>', 'cit', { remap = true })
+  vim.keymap.set('i', '<C-c>', '<Esc>cit', { remap = true })
+  vim.keymap.set('n', '<C-q>', 'ciq', { remap = true })
+  vim.keymap.set('i', '<C-q>', '<Esc>ciq', { remap = true })
+  vim.keymap.set('n', '<C-w>', 'ciw', { remap = true })
+  vim.keymap.set('i', '<C-w>', '<Esc>ciw', { remap = true })
+  vim.keymap.set('n', '<C-n>', '*n', { remap = true })
   vim.keymap.set('n', '<leader>o', "printf('m`%so<ESC>``', v:count1)", { expr = true })
   vim.keymap.set('n', '<leader>O', "printf('m`%sO<ESC>``', v:count1)", { expr = true })
   vim.keymap.set('n', '<leader>v', "printf('`[%s`]', getregtype()[0])", { expr = true })
-  vim.keymap.set('n', 'gV', '"`[" . strpart(getregtype(), 0, 1) . "`]"', { expr = true, replace_keycodes = false })
   -- Completion: =================================================================================
   vim.keymap.set('i', '<C-j>', [[pumvisible() ? "\<C-n>" : "\<C-j>"]], { expr = true })
   vim.keymap.set('i', '<C-k>', [[pumvisible() ? "\<C-p>" : "\<C-k>"]], { expr = true })
@@ -2066,11 +2122,18 @@ later(function()
   vim.keymap.set('n', '<leader>bb', '<cmd>DeleteOtherBuffers<cr>')
   vim.keymap.set('n', '<leader>bi', '<cmd>DeleteInactiveBuffers<cr>')
   vim.keymap.set('n', '<leader>bf', '<cmd>Format<cr>')
+  -- Quickfix: ===================================================================================
+  vim.keymap.set('n', '<leader>ct', '<cmd>ExploreQuickfix<CR>')
+  vim.keymap.set('n', '<leader>co', '<cmd>copen<CR>')
+  vim.keymap.set('n', '<leader>cq', '<cmd>cclose<CR>')
+  vim.keymap.set('n', '<leader>cn', '<cmd>cnext<CR>')
+  vim.keymap.set('n', '<leader>cp', '<cmd>cprev<CR>')
   -- Location: ===================================================================================
-  vim.keymap.set('n', '<leader>lo', ':lopen<CR>')
-  vim.keymap.set('n', '<leader>lq', ':lclose<CR>')
-  vim.keymap.set('n', '<leader>ln', ':lnext<CR>')
-  vim.keymap.set('n', '<leader>lp', ':lprev<CR>')
+  vim.keymap.set('n', '<leader>lt', '<cmd>ExploreLocations<CR>')
+  vim.keymap.set('n', '<leader>lo', '<cmd>lopen<CR>')
+  vim.keymap.set('n', '<leader>lq', '<cmd>lclose<CR>')
+  vim.keymap.set('n', '<leader>ln', '<cmd>lnext<CR>')
+  vim.keymap.set('n', '<leader>lp', '<cmd>lprev<CR>')
   -- Spell: ======================================================================================
   vim.keymap.set('n', '<leader>st', '<cmd>set spell!<cr>')
   vim.keymap.set('n', '<leader>sr', '<cmd>spellr<cr>')
@@ -2111,14 +2174,13 @@ later(function()
   vim.keymap.set('n', '<leader>wm', '<cmd>MoveWindowToTab<cr>')
   -- Misc: =======================================================================================
   vim.keymap.set('n', 's', '<cmd>EasyMotion<cr>')
+  vim.keymap.set('n', 'gX', '<cmd>OpenUrlInBuffer<cr>')
+  vim.keymap.set('n', 'gF', '<cmd>OpenOrCreateFile<cr>')
   vim.keymap.set('n', 'gcb', '<cmd>BoxComment<cr>')
-  vim.keymap.set('n', 'gx', '<cmd>OpenUrlInBuffer<cr>')
-  vim.keymap.set('n', 'gf', '<cmd>OpenOrCreateFile<cr>')
-  vim.keymap.set('n', '<C-g>', '<cmd>BetterCtrlG<cr>')
   vim.keymap.set('i', '<C-l>', '<cmd>Leap<CR>')
-  vim.keymap.set('n', '<leader>j', '<cmd>SmartDuplicate<cr>')
+  vim.keymap.set('n', '<leader>ts', '<cmd>Scratch<cr>')
   vim.keymap.set('n', '<leader>s', '<cmd>ToggleWorld<cr>')
-  vim.keymap.set('n', '<leader>lc', '<cmd>LspCapabilities<cr>')
+  vim.keymap.set('n', '<leader>j', '<cmd>SmartDuplicate<cr>')
   vim.keymap.set('n', '<leader>`', '<cmd>ToggleTitleCase<cr>')
   -- Git: ========================================================================================
   vim.keymap.set('n', '<leader>gg', '<cmd>Lazygit<cr>')
@@ -2138,6 +2200,7 @@ later(function()
   vim.keymap.set('n', '<leader>gq', [[<cmd>MiniDiffInQuickFixList<cr>]])
   -- Picker ======================================================================================
   vim.keymap.set('n', '<leader>sf', '<cmd>PickFiles<cr>')
+  vim.keymap.set('n', '<leader>fd', '<cmd>PickZoxide<cr>')
   vim.keymap.set('n', '<leader>ff', '<cmd>Pick files<cr>')
   vim.keymap.set('n', '<leader>fr', '<cmd>Pick oldfiles<cr>')
   vim.keymap.set('n', '<leader>ft', '<cmd>Pick grep_live<cr>')
@@ -2169,10 +2232,16 @@ later(function()
   vim.keymap.set('n', ']Q', '<cmd>clast<cr>')
   vim.keymap.set('n', '[l', '<cmd>lprevious<cr>')
   vim.keymap.set('n', ']l', '<cmd>lnext<cr>')
+  vim.keymap.set('n', '[t', '<cmd>tprevious<cr>')
+  vim.keymap.set('n', ']t', '<cmd>tnext<cr>')
+  vim.keymap.set('n', '[T', '<cmd>tfirst<cr>')
+  vim.keymap.set('n', ']T', '<cmd>tlast<cr>')
   vim.keymap.set('n', '[f', '<cmd>RelativeFilePrev<cr>')
   vim.keymap.set('n', ']f', '<cmd>RelativeFileNext<cr>')
-  vim.keymap.set('n', '[<space>', ":<c-u>put! =repeat(nr2char(10), v:count1)<cr>'[")
-  vim.keymap.set('n', ']<space>', ":<c-u>put =repeat(nr2char(10), v:count1)<cr>']")
+  vim.keymap.set('n', '[p', '<Cmd>exe "put! " . v:register<CR>')
+  vim.keymap.set('n', ']P', '<Cmd>exe "put "  . v:register<CR>')
+  vim.keymap.set('n', '[<space>', "<cmd><c-u>put! =repeat(nr2char(10), v:count1)<cr>'[")
+  vim.keymap.set('n', ']<space>', "<cmd><c-u>put =repeat(nr2char(10), v:count1)<cr>']")
   vim.keymap.set('n', '[h', function() require('mini.diff').goto_hunk('prev') end)
   vim.keymap.set('n', ']h', function() require('mini.diff').goto_hunk('next') end)
   vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end)
