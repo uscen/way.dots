@@ -67,6 +67,7 @@ input "type:keyboard" {
 seat seat0 {
     hide_cursor             when-typing enable
     hide_cursor             5000
+    xcursor_theme            BreezeX-Black 30
 }
 
 # =============================================================================== #

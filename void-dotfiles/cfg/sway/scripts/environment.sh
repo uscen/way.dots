@@ -2,8 +2,6 @@
 # =============================================================================== #
 # ENV Variables:                                                                  #
 # =============================================================================== #
-export XCURSOR_THEME=Breeze_Hacked
-export XCURSOR_SIZE=18
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway
 export XDG_SESSION_TYPE=wayland
@@ -23,3 +21,5 @@ export GDK_SCALE=1
 export GDK_BACKEND="wayland,x11,*"
 export GTK_USE_PORTAL=1
 export WLR_NO_HARDWARE_CURSORS=1
+export XCURSOR_THEME=BreezeX-Black
+export XCURSOR_SIZE=30
