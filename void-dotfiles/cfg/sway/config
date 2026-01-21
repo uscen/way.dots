@@ -108,6 +108,7 @@ floating_modifier           $mod normal
 set $light                  #c5c9c5
 set $dark                   #0d0c0c
 set $focused                #252535
+set $focusedBg              #7a8382
 set $inactive               #181616
 set $unfocused              #181616
 set $urgent                 #c4746e
@@ -326,7 +327,7 @@ bar {
     colors {
         statusline          $light
         background          $dark
-        focused_workspace   $focused $focused $dark
+        focused_workspace   $focusedBg $focusedBg $dark
         inactive_workspace  $inactive $inactive $light
     }
 }
