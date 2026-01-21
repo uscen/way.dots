@@ -37,7 +37,7 @@ play = [
 ]
 show = [
 	{ run = 'qview.exe %*', orphan = true, for = "windows" },
-	{ run = 'imv "$@"', orphan = true, for = "unix" },
+	{ run = 'qview "$@"', orphan = true, for = "unix" },
 ]
 showPDF = [
 	{ run = 'sumatrapdf.exe %*', orphan = true, for = "windows" },

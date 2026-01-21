@@ -9,7 +9,7 @@ hide-keyboard-layout
 indicator-caps-lock
 # Image:                                                                          #
 # =============================================================================== #
-image=~/Pictures/pix/wallpapers/EYESLOCK.png
+image=~/.config/swaylock/pngs/EYESLOCK.png
 # Fonts:                                                                          #
 # =============================================================================== #
 font=JetBrains Mono Nerd Font
