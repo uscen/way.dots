@@ -250,7 +250,7 @@ animations {
     }
     // Window open: Match QS elementMoveEnter (~400ms, emphasized decel): ========================
     window-open {
-        spring damping-ratio=0.82 stiffness=500 epsilon=0.0001
+        spring damping-ratio=0.90 stiffness=500 epsilon=0.0001
     }
     // Window close: Match QS elementMoveExit (~200ms, quick accel out): =========================
     window-close {
@@ -333,28 +333,8 @@ gestures {
 // ============================================================================== #
 // All Window: ===================================================================================
 window-rule {
-    open-maximized false
-}
-window-rule {
     geometry-corner-radius 0
     clip-to-geometry true
-}
-window-rule {
-    match is-window-cast-target=true
-    focus-ring {
-        active-color "#f38ba8"
-        inactive-color "#7d0d2d"
-    }
-    border {
-        inactive-color "#7d0d2d"
-    }
-    shadow {
-        color "#7d0d2d70"
-    }
-    tab-indicator {
-        active-color "#f38ba8"
-        inactive-color "#7d0d2d"
-    }
 }
 
 // Application-specific rules: ===================================================================
@@ -433,10 +413,11 @@ window-rule {
     open-floating true
 }
 
-// Steam dialogs: ================================================================================
+// Media: ========================================================================================
 window-rule {
-    match app-id=r#"steam"# title=r#".*(Friends|Settings|Properties).*"#
-    open-floating true
+  match title="^(imv)$"
+  match title="^(mpv)$"
+  open-floating true
 }
 
 // Others: =======================================================================================
@@ -465,41 +446,21 @@ window-rule {
   match title="^(.*)-Google$"
   match title="^(.*)System Update$"
   match title="^Picture-in-Picture$"
-  match app-id="^imv$"
   match app-id="^xdm-app$"
   match app-id="^org.qbittorrent.qBittorrent$"
   match app-id="^org.pulseaudio.pavucontrol$"
   open-floating true
 }
 
-// Assign Window To Workspace: ===================================================================
+// Open-maximized: ================================================================================
 window-rule {
-  match app-id="zen$"
-  open-on-workspace "1"
-}
-window-rule {
-  match app-id="Postman$"
-  open-on-workspace "3"
-}
-window-rule {
-  match app-id="^thunar$"
-  open-on-workspace "6"
-}
-window-rule{
-    match app-id="^obsidian$"
-    open-on-workspace "7"
-}
-window-rule {
-  match app-id="com.github.th_ch.youtube_music$"
-  open-on-workspace "8"
-}
-window-rule {
-  match app-id=r#"^vesktop$"#
-  open-on-workspace "9"
-}
-window-rule {
-  match app-id=r#"^org.telegram.desktop$"#
-  open-on-workspace "0"
+    match app-id=r#"brave-browser$"#
+    match app-id=r#"qutebrowser$"#
+    match app-id=r#"discord$"#
+    match app-id=r#"gimp$"#
+    match app-id=r#"kdenlive$"#
+    match app-id=r#"Shotcut$"#
+    open-maximized true
 }
 
 // ============================================================================== #
