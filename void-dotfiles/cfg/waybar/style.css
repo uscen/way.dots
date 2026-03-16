@@ -1,0 +1,215 @@
+/* =============================================================================== # */
+/* Waybar Css:                                                                     # */
+/* =============================================================================== # */
+@define-color cursor #7a8382;
+@define-color background #101010;
+@define-color foreground #7a8382;
+@define-color color0  #45475A;
+@define-color color1  #c4746e;
+@define-color color2  #8a9a7b;
+@define-color color3  #F9E2AF;
+@define-color color4  #8ba4b0;
+@define-color color5  #F5C2E7;
+@define-color color6  #94E2D5;
+@define-color color7  #BAC2DE;
+@define-color color8  #585B70;
+@define-color color9  #c4746e;
+@define-color color10 #8a9a7b;
+@define-color color11 #F9E2AF;
+@define-color color12 #8ba4b0;
+@define-color color13 #F5C2E7;
+@define-color color14 #94E2D5;
+@define-color color15 #A6ADC8;
+
+/* =============================================================================== # */
+/* General:                                                                        # */
+/* =============================================================================== # */
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+window#waybar {
+  background: @background;
+  border-right: 2px solid #252535;
+}
+
+/* =============================================================================== # */
+/* Groups:                                                                         # */
+/* =============================================================================== # */
+#custom-void:hover,
+#cpu:hover,
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover,
+#pulseaudio.microphone:hover,
+#pulseaudio.sink-muted:hover,
+#custom-launcher:hover {
+  opacity: 0.5;
+}
+
+#custom-void,
+#cpu,
+#clock,
+#mpris,
+#custom-menu,
+#tray,
+#privacy,
+#network,
+#bluetooth,
+#pulseaudio,
+#pulseaudio.microphone,
+#backlight,
+#battery,
+#custom-launcher {
+  color: @foreground;
+  padding: 6px 10px;
+}
+
+/* =============================================================================== # */
+/* Workspaces:                                                                     # */
+/* =============================================================================== # */
+#workspaces button {
+  color: @foreground;
+  padding: 0;
+}
+#workspaces button.active {
+  color: @color4;
+}
+
+/* =============================================================================== # */
+/* CPU:                                                                            # */
+/* =============================================================================== # */
+#cpu {
+  color: @color0;
+}
+
+/* =============================================================================== # */
+/* Privacy:                                                                        # */
+/* =============================================================================== # */
+#privacy {
+  margin: 4px;
+  color: @color3;
+}
+
+/* =============================================================================== # */
+/* Privacy:                                                                        # */
+/* =============================================================================== # */
+#tray {
+  margin-left: 5px;
+}
+
+/* =============================================================================== # */
+/* Clock:                                                                          # */
+/* =============================================================================== # */
+#clock {
+  color: @color4;
+}
+
+/* =============================================================================== # */
+/* Mpris:                                                                          # */
+/* =============================================================================== # */
+#mpris {
+  color: @color3;
+}
+
+/* =============================================================================== # */
+/* Networks:                                                                       # */
+/* =============================================================================== # */
+#network.disabled {
+  color: @color0;
+}
+#network.wifi {
+  color: @foreground;
+}
+#network.ethernet {
+  color: @color3;
+}
+
+/* =============================================================================== # */
+/* Bluetooth:                                                                      # */
+/* =============================================================================== # */
+#bluetooth.disabled {
+  color: @color0;
+}
+#bluetooth.connected {
+  color: @color4;
+}
+#backlight {
+  margin-left: -5px;
+}
+/* =============================================================================== # */
+/* Pulseaudio:                                                                     # */
+/* =============================================================================== # */
+#pulseaudio.sink-muted:not(.microphone) {
+  color: @color0;
+}
+#pulseaudio.microphone.source-muted {
+  color: @color0;
+}
+
+/* =============================================================================== # */
+/* Battery:                                                                        # */
+/* =============================================================================== # */
+#battery.critical {
+  color: @color1;
+}
+
+/* =============================================================================== # */
+/* Tooltip:                                                                        # */
+/* =============================================================================== # */
+tooltip {
+  background: @background;
+  border: 1px solid @foreground;
+}
+tooltip * {
+  color: @foreground;
+  margin: 2px;
+  background: @background;
+}
+
+/* =============================================================================== # */
+/* Slider:                                                                         # */
+/* =============================================================================== # */
+#pulseaudio-slider,
+#backlight-slider {
+  min-height: 80px;
+}
+
+#pulseaudio-slider slider,
+#backlight-slider slider {
+  background: transparent;
+}
+
+#pulseaudio-slider trough,
+#backlight-slider trough {
+  min-width: 8px;
+}
+#pulseaudio-slider highlight {
+  background: @color4;
+}
+#backlight-slider highlight {
+  background: @color3;
+}
+
+/* =============================================================================== # */
+/* Custom:                                                                         # */
+/* =============================================================================== # */
+#custom-void,
+#custom-launcher {
+  font-size: 18px;
+  margin-left: -5px;
+}
+#custom-menu {
+  margin-left: 4px;
+  margin-bottom: -5px;
+}
+#custom-void {
+  color: @color2;
+}
+#custom-launcher {
+  color: @color4;
+}

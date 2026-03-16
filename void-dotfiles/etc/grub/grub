@@ -1,0 +1,25 @@
+# =============================================================================== #
+# Grub boot loader configuration:                                                 #
+# =============================================================================== #
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=0
+GRUB_DISTRIBUTOR="Void"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0 console=tty3 udev.log_level=0 \
+  vt.global_cursor_default=0 mitigations=off nowatchdog \
+  msr.allow_writes=on pcie_aspm=force pcie_aspm.policy=performance module.sig_unenforce \
+  intel_idle.max_cstate=2 cryptomgr.notests initcall_debug \
+  intel_iommu=igfx_off no_timer_check noreplace-smp \
+  page_alloc.shuffle=1 rcupdate.rcu_expedited=1 tsc=reliable \
+  cpufreq.default_governor=performance pci=pcie_bus_perf pcie_ports=native pcie_port_pm=off \
+  nvme_core.default_ps_max_latency_us=1000 nvme.max_host_mem_size_mb=3072 nvme.use_cmb_sqes=1 \
+  acpi_osi='!Windows 2015' acpi_backlight=video \
+  "
+GRUB_PRELOAD_MODULES="part_gpt part_msdos"
+GRUB_TIMEOUT_STYLE=menu
+GRUB_TERMINAL_INPUT=console
+GRUB_GFXMODE=auto
+GRUB_GFXPAYLOAD_LINUX=keep
+GRUB_DISABLE_RECOVERY='true'
+GRUB_BACKGROUND='/usr/share/void-artwork/splash.png'
+GRUB_DISABLE_SUBMENU='false'
+GRUB_EARLY_INITRD_LINUX_STOCK=''

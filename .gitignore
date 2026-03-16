@@ -1,0 +1,20 @@
+# EXAMPLE ========================================================================================
+# # a comment - this is ignored
+# *.a       # no .a files
+# !lib.a    # but do track lib.a, even though you're ignoring .a files above
+# /TODO     # only ignore the root TODO file, not subdir/TODO
+# build/    # ignore all files in the build/ directory
+# doc/*.txt # ignore doc/notes.txt, but not doc/server/arch.txt
+# END ============================================================================================
+# Auto Generate:                                                                                 #
+# ================================================================================================
+void-dotfiles/cfg/mpv/watch_later/
+void-dotfiles/cfg/mpv/volume
+void-dotfiles/cfg/lazygit/state.yml
+void-dotfiles/cfg/bin/neovide
+# Byte-compiled / optimized / DLL files:                                                         #
+# ================================================================================================
+lazy-lock.json
+__pycache__/
+*.pyc
+*.py[cod]

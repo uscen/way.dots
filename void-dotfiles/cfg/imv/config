@@ -1,0 +1,83 @@
+# =============================================================================== #
+# General:                                                                        #
+# =============================================================================== #
+[options]
+background = 101010
+fullscreen = false
+width = 1280
+height = 720
+initial_pan = 50 50
+list_files_at_exit = false
+loop_input = true
+overlay = false
+overlay_font = JetBrains Mono Nerd Font:11
+overlay_text = $(ls)
+overlay_text_color = c5c9c5
+overlay_text_alpha = ff
+overlay_background_color = 101010
+overlay_background_alpha = c3
+overlay_position_bottom = true
+recursively = true
+scaling_mode = full
+slideshow_duration = 0
+suppress_default_binds = false
+title_text = imv
+upscaling_method = linear
+
+# =============================================================================== #
+# Aliases:                                                                        #
+# =============================================================================== #
+[aliases]
+x = close
+
+# =============================================================================== #
+# Keybidngs:                                                                      #
+# =============================================================================== #
+[binds]
+q = quit
+y = exec echo working!
+
+# Image navigation: ==============================================================================
+<Left> = prev
+<Right> = next
+<Shift+N> = prev
+<Shift+G> = goto -1
+p = prev
+n = next
+gg = goto 1
+
+# Panning: =======================================================================================
+j = pan 0 -50
+k = pan 0 50
+h = pan 50 0
+l = pan -50 0
+
+# Zooming: =======================================================================================
+<Up> = zoom 1
+<Shift+plus> = zoom 1
+i = zoom 1
+<Down> = zoom -1
+<minus> = zoom -1
+o = zoom -1
+
+# Rotate Clockwise by 90 degrees: ================================================================
+<Ctrl+r> = rotate by 90
+
+# Other commands: ================================================================================
+x = close
+f = fullscreen
+d = overlay
+e = exec echo $imv_current_file
+c = center
+s = scaling next
+<Shift+S> = upscaling next
+a = zoom actual
+r = reset
+
+# Gif playback: ==================================================================================
+<period> = next_frame
+<space> = toggle_playing
+
+# Slideshow control: =============================================================================
+t = slideshow +1
+<Shift+T> = slideshow -1
