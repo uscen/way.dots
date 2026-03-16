@@ -13,7 +13,7 @@ sudo xbps-install -Sy void-repo-nonfree && sudo xbps-install -S \
     udiskie gvfs gvfs-mtp gvfs-smb gvfs-afc gvfs-gphoto2 \
     NetworkManager network-manager-applet wireless-regdb impala \
     qt5-wayland qt6-wayland kvantum \
-    pipewire wireplumber alsa-pipewire alsa-utils sof-firmware pavucontrol \
+    pipewire wireplumber alsa-pipewire alsa-utils sof-firmware alsa-firmware pavucontrol \
     bluez bluez-alsa libspa-bluetooth bluetui blueman \
     nodejs yarn pnpm \
     noto-fonts-ttf noto-fonts-ttf-extra noto-fonts-emoji noto-fonts-cjk font-awesome dejavu-fonts-ttf \
