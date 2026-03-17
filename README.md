@@ -49,9 +49,8 @@ _Dynamic theming • Borderless layouts • Minimal_
 For Void Linux distributions:
 
 ```bash
-cd way.dots/void-config && ./1_void-pkg.sh && ./2_void-cfg.sh && ./3_void-extra
+cd way.dots/void-config && ./1_void-pkg.sh && ./2_void-extra.sh && ./3_void-cfg.sh
 ```
-
 
 **Important Requirements:**
 
@@ -150,59 +149,64 @@ Thanks to [vinceliuice](https://github.com/vinceliuice) and [Fausto-Korpsvart](h
 > **Note:** The `MOD` key is set to **Super/Windows** by default.
 
 ### 🚀 Applications & System
-| Keybind | Action |
-| :--- | :--- |
-| `MOD + Return` | Open Terminal (**Alacritty**) |
-| `MOD + Shift + Return` | Open Terminal (**Foot**) |
-| `MOD + W` | Open Browser (**Firefox**) |
-| `MOD + D` | Application Launcher (**Fuzzel**) |
-| `MOD + Shift + N` | File Manager (**Nautilus**) |
-| `MOD + N` | TUI File Manager (**Yazi**) |
-| `MOD + B` | Bluetooth Manager (**Bluetui**) |
-| `MOD + I` | Wi-Fi Manager (**Impala**) |
-| `MOD + Super + L` | Lock Screen (**Swaylock**) |
-| `MOD + Shift + Escape` | Toggle Hotkey Overlay |
-| `MOD + Shift + Q` | Quit Niri (Immediate) |
+
+| Keybind                | Action                            |
+| :--------------------- | :-------------------------------- |
+| `MOD + Return`         | Open Terminal (**Alacritty**)     |
+| `MOD + Shift + Return` | Open Terminal (**Foot**)          |
+| `MOD + W`              | Open Browser (**Firefox**)        |
+| `MOD + D`              | Application Launcher (**Fuzzel**) |
+| `MOD + Shift + N`      | File Manager (**Nautilus**)       |
+| `MOD + N`              | TUI File Manager (**Yazi**)       |
+| `MOD + B`              | Bluetooth Manager (**Bluetui**)   |
+| `MOD + I`              | Wi-Fi Manager (**Impala**)        |
+| `MOD + Super + L`      | Lock Screen (**Swaylock**)        |
+| `MOD + Shift + Escape` | Toggle Hotkey Overlay             |
+| `MOD + Shift + Q`      | Quit Niri (Immediate)             |
 
 ### 📋 Scripts & Utilities
-| Keybind | Action |
-| :--- | :--- |
-| `MOD + Shift + P` | Power Menu |
+
+| Keybind           | Action                           |
+| :---------------- | :------------------------------- |
+| `MOD + Shift + P` | Power Menu                       |
 | `MOD + Shift + C` | Clipboard History (**Cliphist**) |
-| `MOD + Shift + W` | Niri Modules Menu |
-| `MOD + P` | Color Picker (Hex to Clipboard) |
-| `MOD + Super + W` | Restart **Waybar** |
-| `Print` | Take Screenshot |
-| `MOD + Print` | Screenshot Entire Screen |
+| `MOD + Shift + W` | Niri Modules Menu                |
+| `MOD + P`         | Color Picker (Hex to Clipboard)  |
+| `MOD + Super + W` | Restart **Waybar**               |
+| `Print`           | Take Screenshot                  |
+| `MOD + Print`     | Screenshot Entire Screen         |
 
 ### 🪟 Window Management
-| Keybind | Action |
-| :--- | :--- |
-| `MOD + Q` | Close Active Window |
-| `MOD + H / L` | Focus Column Left / Right |
-| `MOD + J / K` | Focus Workspace Down / Up |
-| `MOD + Shift + H / L` | Move Column Left / Right |
+
+| Keybind               | Action                             |
+| :-------------------- | :--------------------------------- |
+| `MOD + Q`             | Close Active Window                |
+| `MOD + H / L`         | Focus Column Left / Right          |
+| `MOD + J / K`         | Focus Workspace Down / Up          |
+| `MOD + Shift + H / L` | Move Column Left / Right           |
 | `MOD + Shift + J / K` | Move Column to Workspace Down / Up |
-| `MOD + Home / End` | Focus First / Last Column |
-| `MOD + Shift + Space` | Toggle Floating Mode |
-| `MOD + F` | Maximize Window |
-| `MOD + Shift + F` | Fullscreen Window |
+| `MOD + Home / End`    | Focus First / Last Column          |
+| `MOD + Shift + Space` | Toggle Floating Mode               |
+| `MOD + F`             | Maximize Window                    |
+| `MOD + Shift + F`     | Fullscreen Window                  |
 
 ### 📏 Layout Controls
-| Keybind | Action |
-| :--- | :--- |
-| `MOD + R` | Cycle Preset Column Widths |
-| `MOD + [ / ]` | Fine-tune Column Width (-/+ 10%) |
-| `MOD + Shift + [ / ]`| Fine-tune Window Height (-/+ 10%) |
-| `MOD + Ctrl + C` | Center Visible Columns |
-| `MOD + T` | Toggle Tabbed Column View |
+
+| Keybind               | Action                            |
+| :-------------------- | :-------------------------------- |
+| `MOD + R`             | Cycle Preset Column Widths        |
+| `MOD + [ / ]`         | Fine-tune Column Width (-/+ 10%)  |
+| `MOD + Shift + [ / ]` | Fine-tune Window Height (-/+ 10%) |
+| `MOD + Ctrl + C`      | Center Visible Columns            |
+| `MOD + T`             | Toggle Tabbed Column View         |
 
 ### 🖱️ Mouse Bindings
-| Keybind | Action |
-| :--- | :--- |
-| `MOD + Scroll Up/Dn` | Switch Workspace |
+
+| Keybind                      | Action                   |
+| :--------------------------- | :----------------------- |
+| `MOD + Scroll Up/Dn`         | Switch Workspace         |
 | `MOD + Shift + Scroll Up/Dn` | Move Column to Workspace |
-| `MOD + Ctrl + Scroll Up/Dn` | Adjust Window Height |
-| `MOD + Scroll Left/Right` | Switch Column |
+| `MOD + Ctrl + Scroll Up/Dn`  | Adjust Window Height     |
+| `MOD + Scroll Left/Right`    | Switch Column            |
 
 ---
