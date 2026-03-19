@@ -81,8 +81,8 @@ environment {
 // Overview:                                                                      #
 // ============================================================================== #
 overview {
-    zoom 0.5
-    backdrop-color "#333333"
+    zoom 0.4
+    backdrop-color "#777777"
     workspace-shadow {
         on
         softness 30
@@ -543,15 +543,12 @@ binds {
     XF86AudioLowerVolume                allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
     XF86AudioMute                       allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute                    allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-
     XF86AudioPlay                       allow-when-locked=true { spawn "playerctl" "play-pause"; }
     XF86AudioStop                       allow-when-locked=true { spawn "playerctl" "stop"; }
     XF86AudioPrev                       allow-when-locked=true { spawn "playerctl" "previous"; }
     XF86AudioNext                       allow-when-locked=true { spawn "playerctl" "next"; }
-
     XF86MonBrightnessUp                 allow-when-locked=true { spawn "brightnessctl" "--device=acpi_video0" "--class=backlight" "set" "+5%"; }
     XF86MonBrightnessDown               allow-when-locked=true { spawn "brightnessctl" "--device=acpi_video0" "--class=backlight" "set" "5%-"; }
-
     XF86Calculator                      repeat=false { spawn "walker" "--provider" "calc"; }
 
     // Window Management: ========================================================================
@@ -560,7 +557,6 @@ binds {
     MOD+J                               { focus-workspace-down; }
     MOD+K                               { focus-workspace-up; }
     MOD+L                               { focus-column-right; }
-
     MOD+LEFT                            { focus-column-left; }
     MOD+DOWN                            { focus-window-down; }
     MOD+UP                              { focus-window-up; }
@@ -572,7 +568,6 @@ binds {
     MOD+SHIFT+DOWN                      { move-window-down; }
     MOD+SHIFT+UP                        { move-window-up; }
     MOD+SHIFT+RIGHT                     { move-column-right; }
-
     MOD+SHIFT+H                         { move-column-left; }
     MOD+SHIFT+J                         { move-column-to-workspace-down; }
     MOD+SHIFT+K                         { move-column-to-workspace-up; }
@@ -590,7 +585,6 @@ binds {
     MOD+CTRL+RIGHT                      { focus-monitor-right; }
     MOD+CTRL+UP                         { focus-monitor-up; }
     MOD+CTRL+DOWN                       { focus-monitor-down; }
-
     MOD+CTRL+H                          { focus-monitor-left; }
     MOD+CTRL+L                          { focus-monitor-right; }
     MOD+CTRL+K                          { focus-monitor-up; }
@@ -609,8 +603,6 @@ binds {
 
     // Workspace Management: =====================================================================
     MOD+O                               repeat=false { toggle-overview; }
-    // MOD+ESCAPE                          repeat=false { toggle-overview; }
-
     MOD+WHEELSCROLLDOWN                 cooldown-ms=100 { focus-workspace-down; }
     MOD+WHEELSCROLLUP                   cooldown-ms=100 { focus-workspace-up; }
 
@@ -654,6 +646,7 @@ binds {
     MOD+CTRL+C                          { center-visible-columns; }
     Mod+MINUS                           { set-column-width "-10%"; }
     Mod+EQUAL                           { set-column-width "+10%"; }
+    Mod+0                               { set-column-width "936"; }
     Mod+SHIFT+MINUS                     { set-window-height "-10%"; }
     Mod+Shift+EQUAL                     { set-window-height "+10%"; }
     MOD+BRACKETLEFT                     { set-column-width "-10%"; }
