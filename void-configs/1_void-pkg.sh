@@ -18,3 +18,17 @@ sudo xbps-install -Sy void-repo-nonfree && sudo xbps-install -S \
     nodejs yarn pnpm \
     noto-fonts-ttf noto-fonts-ttf-extra noto-fonts-emoji noto-fonts-cjk font-awesome dejavu-fonts-ttf \
     gtk-engine-murrine papirus-icon-theme
+
+# =============================================================================== #
+# Reboot:                                                                         #
+# =============================================================================== #
+if [ $? -eq 0 ]; then
+    echo -e "\n\033[0;32m[+] Installation successful!\033[0m"
+    echo "Synchronizing data and rebooting in 5 seconds... (Press Ctrl+C to cancel)"
+    sync
+    sleep 5
+    sudo reboot
+else
+    echo -e "\n\033[0;31m[!] Installation failed. Please check the errors above.\033[0m"
+    exit 1
+fi
