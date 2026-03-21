@@ -2,7 +2,7 @@
 # Grub boot loader configuration:                                                 #
 # =============================================================================== #
 GRUB_DEFAULT=0
-GRUB_TIMEOUT=5
+GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR="Void"
 GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0 console=tty3 udev.log_level=0"
 GRUB_DISABLE_OS_PROBER=true
