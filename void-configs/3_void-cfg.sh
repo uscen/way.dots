@@ -31,6 +31,7 @@ LC_ALL=C.UTF-8 xdg-user-dirs-update --force 2> /dev/null
 mkdir -p ~/{Projects,Pictures,Desktop,Documents,Downloads,Music,Public,Videos}
 
 # /etc: ==========================================================================================
+sudo ln -sf ~/.local/way.dots/void-dotfiles/etc/rc/rc.local /etc/rc.local
 sudo ln -sf ~/.local/way.dots/void-dotfiles/etc/grub/grub /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 

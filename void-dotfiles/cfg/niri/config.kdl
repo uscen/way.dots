@@ -548,8 +548,8 @@ binds {
     XF86AudioStop                       allow-when-locked=true { spawn "playerctl" "stop"; }
     XF86AudioPrev                       allow-when-locked=true { spawn "playerctl" "previous"; }
     XF86AudioNext                       allow-when-locked=true { spawn "playerctl" "next"; }
-    XF86MonBrightnessUp                 allow-when-locked=true { spawn "brightnessctl" "--device=acpi_video0" "--class=backlight" "set" "+5%"; }
-    XF86MonBrightnessDown               allow-when-locked=true { spawn "brightnessctl" "--device=acpi_video0" "--class=backlight" "set" "5%-"; }
+    XF86MonBrightnessUp                 allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
+    XF86MonBrightnessDown               allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
     XF86Calculator                      repeat=false { spawn "walker" "--provider" "calc"; }
 
     // Window Management: ========================================================================
