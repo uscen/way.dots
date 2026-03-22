@@ -4,7 +4,14 @@
 GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR="Void"
-GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0 console=tty3 udev.log_level=0"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=0 console=tty2 udev.log_level=0 \
+  vt.global_cursor_default=0 mitigations=off nowatchdog \
+  msr.allow_writes=on pci=pcie_bus_perf pcie_aspm=force pcie_aspm.policy=performance cpufreq.default_governor=performance module.sig_unenforce \
+  nvme_load=YES nvme_core.default_ps_max_latency_us=1000 nvme.max_host_mem_size_mb=3072 nvme.use_cmb_sqes=1 \
+  intel_idle.max_cstate=2 processor.ignore_ppc=1 thermal.off=1 cryptomgr.notests initcall_debug \
+  intel_iommu=igfx_off no_timer_check noreplace-smp \
+  page_alloc.shuffle=1 rcupdate.rcu_expedited=1 tsc=reliable \
+  "
 GRUB_DISABLE_OS_PROBER=true
 GRUB_DISABLE_RECOVERY=true
 GRUB_DISABLE_SUBMENU=true
