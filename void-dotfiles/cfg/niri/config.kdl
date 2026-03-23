@@ -3,7 +3,7 @@
 // ============================================================================== #
 spawn-sh-at-startup "~/.config/niri/scripts/autostart.sh"
 spawn-sh-at-startup "~/.config/niri/scripts/theme.sh"
-spawn-sh-at-startup "~/.config/niri/scripts/idle.sh"
+// spawn-sh-at-startup "~/.config/niri/scripts/idle.sh"
 spawn-sh-at-startup "~/.config/niri/scripts/tile.py"
 
 // ============================================================================== #
