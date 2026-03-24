@@ -81,7 +81,7 @@ environment {
 // Overview:                                                                      #
 // ============================================================================== #
 overview {
-    zoom 0.4
+    zoom 0.6
     backdrop-color "#777777"
     workspace-shadow {
         on
@@ -451,8 +451,16 @@ window-rule {
     match app-id=r#"nm-connection-editor"#
     match app-id=r#"blueman-manager"#
     match app-id=r#"pavucontrol"#
-    default-column-width { proportion 0.49; }
-    default-window-height { proportion 0.40; }
+    default-column-width { proportion 0.50; }
+    default-window-height { proportion 0.50; }
+    default-floating-position x=5 y=5 relative-to="bottom-left"
+    open-floating true
+}
+window-rule {
+    match app-id=r#"impala"#
+    match app-id=r#"bluetui"#
+    default-column-width { proportion 0.50; }
+    default-window-height { proportion 0.50; }
     default-floating-position x=5 y=5 relative-to="bottom-left"
     open-floating true
 }
@@ -525,8 +533,8 @@ binds {
     MOD+SHIFT+RETURN                    hotkey-overlay-title="Open Terminal: Foot" { spawn "foot"; }
     MOD+SHIFT+N                         hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
     MOD+N                               hotkey-overlay-title="File Manager: Yazi" { spawn "foot" "yazi"; }
-    MOD+B                               hotkey-overlay-title="Open Tui: Bluetui" { spawn "foot" "bluetui"; }
-    MOD+I                               hotkey-overlay-title="Open Tui: Impala" { spawn "foot" "impala"; }
+    MOD+B                               hotkey-overlay-title="Open Tui: Bluetui" { spawn "foot" "--app-id='bluetui'" "bluetui"; }
+    MOD+I                               hotkey-overlay-title="Open Tui: Impala" { spawn "foot" "--app-id='impala'" "impala"; }
     MOD+W                               hotkey-overlay-title="Open Browser: Firefox" { spawn "firefox"; }
 	  MOD+D				                        hotkey-overlay-title="Open App Launcher: Fuzzel" { spawn "sh" "-c" "fuzzel --prompt='Apps Menu: ' --placeholder=\"  $(date '+%a %d-%m  󰥔 %R')\""; }
     SUPER+L                             hotkey-overlay-title="Lock Screen: Swaylock" { spawn "sh" "-c" "niri msg action do-screen-transition --delay-ms 350 && swaylock"; }
