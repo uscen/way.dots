@@ -3,7 +3,7 @@
 // ============================================================================== #
 spawn-sh-at-startup "~/.config/niri/scripts/autostart.sh"
 spawn-sh-at-startup "~/.config/niri/scripts/theme.sh"
-// spawn-sh-at-startup "~/.config/niri/scripts/idle.sh"
+spawn-sh-at-startup "~/.config/niri/scripts/idle.sh"
 spawn-sh-at-startup "~/.config/niri/scripts/tile.py"
 
 // ============================================================================== #
@@ -114,7 +114,7 @@ input {
         dwtp
         drag true
         natural-scroll
-        accel-speed 0.3
+        accel-speed 0.2
         accel-profile "adaptive"
         scroll-method "two-finger"
         middle-emulation
@@ -170,7 +170,7 @@ open-on-output "eDP-1"
 // ============================================================================== #
 layout {
     // Gaps: =====================================================================================
-    gaps 4
+    gaps 2
     struts {
         left 2
         right 2
@@ -662,9 +662,9 @@ binds {
     // Window Modes: =============================================================================
     MOD+SHIFT+SPACE                     { toggle-window-floating; }
     MOD+SPACE                           { switch-focus-between-floating-and-tiling; }
-    MOD+CONTROL+F                       { maximize-window-to-edges; }
+    MOD+CONTROL+F                       { fullscreen-window ; }
     MOD+SHIFT+F                         { toggle-windowed-fullscreen; }
-    MOD+F                               { fullscreen-window ; }
+    MOD+F                               { maximize-window-to-edges ; }
     MOD+M                               { maximize-column; }
     MOD+T                               { toggle-column-tabbed-display; }
 
