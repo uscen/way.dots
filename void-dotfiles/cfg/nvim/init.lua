@@ -389,6 +389,7 @@ later(function()
       toggle_preview     = '<C-p>',
       choose_in_split    = '<C-v>',
       choose_in_vsplit   = '<C-s>',
+      paste              = '<C-e>',
       another_choose     = {
         char = '<CR>',
         func = function()

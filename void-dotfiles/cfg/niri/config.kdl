@@ -29,7 +29,7 @@ clipboard {
     disable-primary
 }
 xwayland-satellite {
-    on
+    off
     path "xwayland-satellite"
 }
 debug {
@@ -42,6 +42,7 @@ debug {
 // ============================================================================== #
 environment {
     // Wayland Compositor Settings: ==============================================================
+    DISPLAY ":0"
     DESKTOP_SESSION "niri"
     XDG_CURRENT_DESKTOP "niri"
     XDG_SESSION_DESKTOP "Niri"
@@ -118,6 +119,7 @@ input {
         accel-profile "adaptive"
         scroll-method "two-finger"
         middle-emulation
+        disabled-on-external-mouse
     }
     // Mouse: ====================================================================================
     mouse {
@@ -156,12 +158,6 @@ workspace "1" {
 open-on-output "eDP-1"
 }
 workspace "2" {
-open-on-output "eDP-1"
-}
-workspace "3" {
-open-on-output "eDP-1"
-}
-workspace "4" {
 open-on-output "eDP-1"
 }
 
@@ -290,7 +286,6 @@ animations {
         spring damping-ratio=1.0 stiffness=800 epsilon=0.001
     }
 }
-
 
 // ============================================================================== #
 // Recent Windows:                                                                #

@@ -31,7 +31,6 @@
   border-radius: 0;
   box-shadow: none;
 }
-
 window#waybar {
   background: @background;
   border-right: 1px solid #252535;
@@ -50,7 +49,6 @@ window#waybar {
 #custom-launcher:hover {
   opacity: 0.5;
 }
-
 #custom-void,
 #cpu,
 #clock,
@@ -66,7 +64,7 @@ window#waybar {
 #battery,
 #custom-launcher {
   color: @foreground;
-  padding: 6px 8px;
+  padding: 8px 10px;
 }
 
 /* =============================================================================== # */
@@ -115,6 +113,12 @@ window#waybar {
 #mpris {
   color: @color3;
 }
+#mpris.playing {
+  color: @color2;
+}
+#mpris.paused {
+  color: @color0;
+}
 
 /* =============================================================================== # */
 /* Networks:                                                                       # */
@@ -141,6 +145,7 @@ window#waybar {
 #backlight {
   margin-left: -5px;
 }
+
 /* =============================================================================== # */
 /* Pulseaudio:                                                                     # */
 /* =============================================================================== # */
@@ -178,12 +183,10 @@ tooltip * {
 #backlight-slider {
   min-height: 80px;
 }
-
 #pulseaudio-slider slider,
 #backlight-slider slider {
   background: transparent;
 }
-
 #pulseaudio-slider trough,
 #backlight-slider trough {
   min-width: 8px;
