@@ -2,10 +2,11 @@
 # Bat:                                                                            #
 # =============================================================================== #
 --theme=base16
---style=changes
+--style=numbers,changes
 --italic-text=always
---paging=never
---pager=never
+--wrap=never
+--paging=auto
+--pager=less
 --color=always
 --decorations=always
 # List of supported syntax: bat --list-languages: ================================================

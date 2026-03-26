@@ -101,7 +101,7 @@ input {
     keyboard {
         xkb {
             layout "us,ara"
-            options "grp:win_space_toggle,caps:escape"
+            options "caps:swapescape,altwin:menu_win,grp:win_space_toggle"
         }
         track-layout "window"
         repeat-delay 180
@@ -120,11 +120,13 @@ input {
         scroll-method "two-finger"
         middle-emulation
         disabled-on-external-mouse
+        scroll-factor 2.0
     }
     // Mouse: ====================================================================================
     mouse {
+        scroll-factor 2.0
         accel-speed 0.2
-        accel-profile "flat"
+        accel-profile "adaptive"
         middle-emulation
     }
     // trackpoint: ===============================================================================
@@ -155,10 +157,10 @@ output "eDP-1" {
 // Workspaces:                                                                    #
 // ============================================================================== #
 workspace "1" {
-open-on-output "eDP-1"
+    open-on-output "eDP-1"
 }
 workspace "2" {
-open-on-output "eDP-1"
+    open-on-output "eDP-1"
 }
 
 // ============================================================================== #
@@ -175,23 +177,24 @@ layout {
     }
     // Ring: =====================================================================================
     focus-ring {
-        on
+        off
         width 2
         active-color "#252535"
         inactive-color "#252535"
         urgent-color "#9b0000"
 
     }
+    // Hint: =====================================================================================
     insert-hint {
         off
         color "#ffc87f80"
     }
     // Border: ===================================================================================
     border {
-        off
-        width 1
+        on
+        width 2
         active-color "#252535"
-        inactive-color "#0d0c0c"
+        inactive-color "#101010"
         urgent-color "#9b0000"
     }
     // Shadow: ===================================================================================
@@ -236,7 +239,6 @@ layout {
     }
     // Others: ===================================================================================
     center-focused-column "never"
-    // always-center-single-column
     background-color "transparent"
     default-column-display "normal"
 }
@@ -532,8 +534,6 @@ binds {
     MOD+I                               hotkey-overlay-title="Open Tui: Impala" { spawn "foot" "--app-id='impala'" "impala"; }
     MOD+W                               hotkey-overlay-title="Open Browser: Firefox" { spawn "firefox"; }
 	  MOD+D				                        hotkey-overlay-title="Open App Launcher: Fuzzel" { spawn "sh" "-c" "fuzzel --prompt='Apps Menu: ' --placeholder=\"  $(date '+%a %d-%m  󰥔 %R')\""; }
-    SUPER+L                             hotkey-overlay-title="Lock Screen: Swaylock" { spawn "sh" "-c" "niri msg action do-screen-transition --delay-ms 350 && swaylock"; }
-
     // Scripts: ==================================================================================
     MOD+SHIFT+P                         { spawn "/home/lli/.config/fuzzel/modules/powermenu"; }
     MOD+SHIFT+U                         { spawn "/home/lli/.config/fuzzel/modules/umount"; }
@@ -580,7 +580,6 @@ binds {
     // Move to workspace edges: ==================================================================
     MOD+SHIFT+HOME                      { move-column-to-first; }
     MOD+SHIFT+END                       { move-column-to-last; }
-
     MOD+HOME                            { focus-column-first; }
     MOD+END                             { focus-column-last; }
 
@@ -599,7 +598,6 @@ binds {
     MOD+SHIFT+CTRL+RIGHT                { move-column-to-monitor-right; }
     MOD+SHIFT+CTRL+UP                   { move-column-to-monitor-up; }
     MOD+SHIFT+CTRL+DOWN                 { move-column-to-monitor-down; }
-
     MOD+SHIFT+CTRL+H                    { move-column-to-monitor-left; }
     MOD+SHIFT+CTRL+L                    { move-column-to-monitor-right; }
     MOD+SHIFT+CTRL+K                    { move-column-to-monitor-up; }
@@ -650,7 +648,7 @@ binds {
     MOD+CTRL+C                          { center-visible-columns; }
     Mod+MINUS                           { set-column-width "-10%"; }
     Mod+EQUAL                           { set-column-width "+10%"; }
-    Mod+0                               { set-column-width "936"; }
+    Mod+0                               { set-column-width "938"; }
     Mod+SHIFT+MINUS                     { set-window-height "-10%"; }
     Mod+Shift+EQUAL                     { set-window-height "+10%"; }
     MOD+BRACKETLEFT                     { set-column-width "-10%"; }

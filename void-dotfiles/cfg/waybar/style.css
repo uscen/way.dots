@@ -1,5 +1,5 @@
 /* =============================================================================== # */
-/* Waybar Css:                                                                     # */
+/* Waybar:                                                                         # */
 /* =============================================================================== # */
 @define-color cursor #7a8382;
 @define-color background #101010;
@@ -20,6 +20,7 @@
 @define-color color13 #F5C2E7;
 @define-color color14 #94E2D5;
 @define-color color15 #A6ADC8;
+@define-color color16 #252535;
 
 /* =============================================================================== # */
 /* General:                                                                        # */
@@ -33,7 +34,7 @@
 }
 window#waybar {
   background: @background;
-  border-right: 1px solid #252535;
+  border-right: 1px solid @color16;
 }
 
 /* =============================================================================== # */
@@ -44,6 +45,8 @@ window#waybar {
 #network:hover,
 #bluetooth:hover,
 #pulseaudio:hover,
+#backlight:hover,
+#battery:hover,
 #pulseaudio.microphone:hover,
 #pulseaudio.sink-muted:hover,
 #custom-launcher:hover {
@@ -64,7 +67,7 @@ window#waybar {
 #battery,
 #custom-launcher {
   color: @foreground;
-  padding: 8px 10px;
+  padding: 6px 10px;
 }
 
 /* =============================================================================== # */
@@ -203,7 +206,7 @@ tooltip * {
 /* =============================================================================== # */
 #custom-void,
 #custom-launcher {
-  font-size: 16px;
+  font-size: 15px;
   margin-left: -5px;
 }
 #custom-menu {

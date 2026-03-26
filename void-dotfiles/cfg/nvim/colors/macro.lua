@@ -204,7 +204,6 @@ local hlgroups = {
   CursorColumn                             = { link = 'CursorLine' },
   CursorIM                                 = { link = 'Cursor' },
   CursorLine                               = { bg = c_macroBg2 },
-  CursorLineNr                             = { fg = c_macroGray2, bold = true },
   DebugPC                                  = { bg = c_winterRed },
   DiffAdd                                  = { bg = c_winterGreen },
   DiffAdded                                = { fg = c_autumnGreen },
