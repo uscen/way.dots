@@ -28,6 +28,9 @@ switch-events {
 clipboard {
     disable-primary
 }
+config-notification {
+    disable-failed
+}
 xwayland-satellite {
     off
     path "xwayland-satellite"
@@ -82,13 +85,13 @@ environment {
 // Overview:                                                                      #
 // ============================================================================== #
 overview {
-    zoom 0.6
+    zoom 0.4
     backdrop-color "#777777"
     workspace-shadow {
         on
-        softness 30
-        spread -5
-        offset x=0 y=12
+        softness 10
+        spread 5
+        offset x=5 y=10
         color "#00000040"
     }
 }
@@ -186,8 +189,8 @@ layout {
     }
     // Hint: =====================================================================================
     insert-hint {
-        off
-        color "#ffc87f80"
+        on
+        color "#25253580"
     }
     // Border: ===================================================================================
     border {
@@ -224,18 +227,18 @@ layout {
     }
    // Tabs: ======================================================================================
     tab-indicator {
-        // off
+        on
         hide-when-single-tab
         place-within-column
-        gap 2
-        width 2
+        gap 0
+        width 8
         length total-proportion=1.0
         position "top"
         gaps-between-tabs 2
         corner-radius 0
-        active-color "gray"
-        inactive-color "black"
-        urgent-color "red"
+        active-color "#252535"
+        inactive-color "#101010"
+        urgent-color "#9b0000"
     }
     // Others: ===================================================================================
     center-focused-column "never"
@@ -304,7 +307,7 @@ recent-windows {
     }
     previews {
         max-height 600
-        max-scale 0.6
+        max-scale 0.4
     }
     binds {
         Alt+Tab         { next-window; }
@@ -567,7 +570,7 @@ binds {
     MOD+RIGHT                           { focus-column-right; }
 
     // Move windows within workspace: ============================================================
-    MOD+S                               { move-column-left; }
+    MOD+S                               { swap-window-left; }
     MOD+SHIFT+LEFT                      { move-column-left; }
     MOD+SHIFT+DOWN                      { move-window-down; }
     MOD+SHIFT+UP                        { move-window-up; }
@@ -584,24 +587,24 @@ binds {
     MOD+END                             { focus-column-last; }
 
     // Monitor Management - Move between monitors: ===============================================
-    MOD+CTRL+LEFT                       { focus-monitor-left; }
-    MOD+CTRL+RIGHT                      { focus-monitor-right; }
-    MOD+CTRL+UP                         { focus-monitor-up; }
-    MOD+CTRL+DOWN                       { focus-monitor-down; }
-    MOD+CTRL+H                          { focus-monitor-left; }
-    MOD+CTRL+L                          { focus-monitor-right; }
-    MOD+CTRL+K                          { focus-monitor-up; }
-    MOD+CTRL+J                          { focus-monitor-down; }
+    MOD+CONTROL+LEFT                    { focus-monitor-left; }
+    MOD+CONTROL+RIGHT                   { focus-monitor-right; }
+    MOD+CONTROL+UP                      { focus-monitor-up; }
+    MOD+CONTROL+DOWN                    { focus-monitor-down; }
+    MOD+CONTROL+H                       { focus-monitor-left; }
+    MOD+CONTROL+L                       { focus-monitor-right; }
+    MOD+CONTROL+K                       { focus-monitor-up; }
+    MOD+CONTROL+J                       { focus-monitor-down; }
 
     // Move windows to different monitors: =======================================================
-    MOD+SHIFT+CTRL+LEFT                 { move-column-to-monitor-left; }
-    MOD+SHIFT+CTRL+RIGHT                { move-column-to-monitor-right; }
-    MOD+SHIFT+CTRL+UP                   { move-column-to-monitor-up; }
-    MOD+SHIFT+CTRL+DOWN                 { move-column-to-monitor-down; }
-    MOD+SHIFT+CTRL+H                    { move-column-to-monitor-left; }
-    MOD+SHIFT+CTRL+L                    { move-column-to-monitor-right; }
-    MOD+SHIFT+CTRL+K                    { move-column-to-monitor-up; }
-    MOD+SHIFT+CTRL+J                    { move-column-to-monitor-down; }
+    MOD+SHIFT+CONTROL+LEFT              { move-column-to-monitor-left; }
+    MOD+SHIFT+CONTROL+RIGHT             { move-column-to-monitor-right; }
+    MOD+SHIFT+CONTROL+UP                { move-column-to-monitor-up; }
+    MOD+SHIFT+CONTROL+DOWN              { move-column-to-monitor-down; }
+    MOD+SHIFT+CONTROL+H                 { move-column-to-monitor-left; }
+    MOD+SHIFT+CONTROL+L                 { move-column-to-monitor-right; }
+    MOD+SHIFT+CONTROL+K                 { move-column-to-monitor-up; }
+    MOD+SHIFT+CONTROL+J                 { move-column-to-monitor-down; }
 
     // Workspace Management: =====================================================================
     MOD+O                               repeat=false { toggle-overview; }
@@ -615,8 +618,8 @@ binds {
     // Column navigation with mouse: =============================================================
     MOD+WHEELSCROLLRIGHT                { focus-column-right; }
     MOD+WHEELSCROLLLEFT                 { focus-column-left; }
-    MOD+CTRL+WHEELSCROLLRIGHT           { move-column-right; }
-    MOD+CTRL+WHEELSCROLLLEFT            { move-column-left; }
+    MOD+CONTROL+WHEELSCROLLRIGHT        { move-column-right; }
+    MOD+CONTROL+WHEELSCROLLLEFT         { move-column-left; }
 
     // Numbered Workspaces: ======================================================================
     MOD+1                               { focus-workspace 1; }
@@ -645,7 +648,7 @@ binds {
     Mod+R                               { switch-preset-column-width; }
     Mod+SHIFT+R                         { switch-preset-window-height; }
     Mod+CONTROL+R                       { reset-window-height; }
-    MOD+CTRL+C                          { center-visible-columns; }
+    MOD+CONTROL+C                       { center-visible-columns; }
     Mod+MINUS                           { set-column-width "-10%"; }
     Mod+EQUAL                           { set-column-width "+10%"; }
     Mod+0                               { set-column-width "938"; }
@@ -657,8 +660,8 @@ binds {
     MOD+SHIFT+BRACKETRIGHT              { set-window-height "+10%"; }
 
     // Window resizing with mouse: ===============================================================
-    MOD+CTRL+WHEELSCROLLDOWN            { set-window-height "-5%"; }
-    MOD+CTRL+WHEELSCROLLUP              { set-window-height "+5%"; }
+    MOD+CONTROL+WHEELSCROLLDOWN         { set-window-height "-5%"; }
+    MOD+CONTROL+WHEELSCROLLUP           { set-window-height "+5%"; }
 
     // Window Modes: =============================================================================
     MOD+SHIFT+SPACE                     { toggle-window-floating; }

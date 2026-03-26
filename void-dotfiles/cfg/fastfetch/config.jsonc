@@ -54,11 +54,6 @@
       "keyColor": "yellow",
     },
     {
-      "type": "BIOS",
-      "key": "   Shell",
-      "keyColor": "cyan",
-    },
-    {
       "type": "custom",
       "format": "└──────────────────────────────────────────┘",
     },
