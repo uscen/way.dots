@@ -568,9 +568,11 @@ binds {
     MOD+DOWN                            { focus-window-down; }
     MOD+UP                              { focus-window-up; }
     MOD+RIGHT                           { focus-column-right; }
+    MOD+COMMA                           { consume-or-expel-window-left; }
+    MOD+PERIOD                          { consume-or-expel-window-right; }
 
     // Move windows within workspace: ============================================================
-    MOD+S                               { swap-window-left; }
+    MOD+S                               { move-column-left; }
     MOD+SHIFT+LEFT                      { move-column-left; }
     MOD+SHIFT+DOWN                      { move-window-down; }
     MOD+SHIFT+UP                        { move-window-up; }
