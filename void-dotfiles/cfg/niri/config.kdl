@@ -231,10 +231,10 @@ layout {
         hide-when-single-tab
         place-within-column
         gap 0
-        width 12
+        width 10
         length total-proportion=1.0
         position "top"
-        gaps-between-tabs 2
+        gaps-between-tabs 4
         corner-radius 0
         active-color "#252535"
         inactive-color "#101010"
@@ -338,6 +338,7 @@ gestures {
     }
     hot-corners {
         top-left
+        bottom-right
     }
 }
 
@@ -527,14 +528,14 @@ layer-rule {
 // ============================================================================== #
 binds {
     // Application Shortcuts: ====================================================================
-    MOD+RETURN                          hotkey-overlay-title="Open Terminal: Alacritty" { spawn "alacritty"; }
-    MOD+SHIFT+RETURN                    hotkey-overlay-title="Open Terminal: Foot" { spawn "foot"; }
-    MOD+SHIFT+N                         hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
-    MOD+N                               hotkey-overlay-title="File Manager: Yazi" { spawn "foot" "yazi"; }
-    MOD+B                               hotkey-overlay-title="Open Tui: Bluetui" { spawn "foot" "--app-id='bluetui'" "bluetui"; }
-    MOD+I                               hotkey-overlay-title="Open Tui: Impala" { spawn "foot" "--app-id='impala'" "impala"; }
-    MOD+W                               hotkey-overlay-title="Open Browser: Firefox" { spawn "firefox"; }
-	  MOD+D				                        hotkey-overlay-title="Open App Launcher: Fuzzel" { spawn "sh" "-c" "fuzzel --prompt='Apps Menu: ' --placeholder=\"  $(date '+%a %d-%m  󰥔 %R')\""; }
+    MOD+RETURN                          { spawn "alacritty"; }
+    MOD+SHIFT+RETURN                    { spawn "foot"; }
+    MOD+SHIFT+N                         { spawn "nautilus"; }
+    MOD+N                               { spawn "foot" "yazi"; }
+    MOD+B                               { spawn "foot" "--app-id='bluetui'" "bluetui"; }
+    MOD+I                               { spawn "foot" "--app-id='impala'" "impala"; }
+    MOD+W                               { spawn "firefox"; }
+	  MOD+D				                        { spawn "sh" "-c" "fuzzel --prompt='Apps Menu: ' --placeholder=\"  $(date '+%a %d-%m  󰥔 %R')\""; }
 
     // Scripts: ==================================================================================
     MOD+SHIFT+P                         { spawn "/home/lli/.config/fuzzel/modules/powermenu"; }
@@ -559,10 +560,10 @@ binds {
 
     // Window Management: ========================================================================
     MOD+Q                               { close-window; }
-    MOD+H                               { focus-column-left; }
-    MOD+L                               { focus-column-right; }
     MOD+J                               { focus-window-or-workspace-down; }
     MOD+K                               { focus-window-or-workspace-up; }
+    MOD+H                               { focus-column-left; }
+    MOD+L                               { focus-column-right; }
     MOD+LEFT                            { focus-column-left; }
     MOD+RIGHT                           { focus-column-right; }
     MOD+DOWN                            { focus-window-down; }
@@ -573,14 +574,14 @@ binds {
 
     // Move windows within workspace: ============================================================
     MOD+S                               { move-column-left; }
+    MOD+SHIFT+J                         { move-window-down-or-to-workspace-down; }
+    MOD+SHIFT+K                         { move-window-up-or-to-workspace-up; }
+    MOD+SHIFT+H                         { move-column-left; }
+    MOD+SHIFT+L                         { move-column-right; }
     MOD+SHIFT+LEFT                      { move-column-left; }
     MOD+SHIFT+DOWN                      { move-window-down; }
     MOD+SHIFT+UP                        { move-window-up; }
     MOD+SHIFT+RIGHT                     { move-column-right; }
-    MOD+SHIFT+H                         { move-column-left; }
-    MOD+SHIFT+J                         { move-window-down-or-to-workspace-down; }
-    MOD+SHIFT+K                         { move-window-up-or-to-workspace-up; }
-    MOD+SHIFT+L                         { move-column-right; }
 
     // Move to workspace edges: ==================================================================
     MOD+SHIFT+HOME                      { move-column-to-first; }
@@ -679,6 +680,7 @@ binds {
     MOD+PRINT                           { screenshot-screen write-to-disk=true; }
     MOD+CONTROL+PRINT                   { screenshot-window write-to-disk=true; }
     MOD+P                               { spawn-sh "niri msg pick-color| grep 'Hex:'| cut -d' ' -f2| wl-copy"; }
+    Mod+E                               { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json focused-window | jq .id)"; }
 
     // Shortcuts Panel: ==========================================================================
     MOD+SHIFT+ESCAPE                    { show-hotkey-overlay; }
