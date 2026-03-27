@@ -147,7 +147,7 @@ input {
 // ============================================================================== #
 output "eDP-1" {
     // Run `niri msg outputs` to list all outputs and their modes: ===============================
-    mode "1920x1200@60.026"
+    mode "1920x1200@60.000"
     // You can use integer or fractional scale, for example use 1.5 for 150% scale: ==============
     scale 1
     // Rotate the output counter-clockwise: ======================================================
@@ -190,7 +190,7 @@ layout {
     // Hint: =====================================================================================
     insert-hint {
         on
-        color "#25253580"
+        color "#25253590"
     }
     // Border: ===================================================================================
     border {
@@ -231,7 +231,7 @@ layout {
         hide-when-single-tab
         place-within-column
         gap 0
-        width 8
+        width 12
         length total-proportion=1.0
         position "top"
         gaps-between-tabs 2
@@ -346,6 +346,9 @@ gestures {
 // ============================================================================== #
 // All Window: ===================================================================================
 window-rule {
+    open-maximized false
+}
+window-rule {
     geometry-corner-radius 0
     clip-to-geometry true
 }
@@ -357,19 +360,16 @@ window-rule {
 }
 window-rule {
     match is-window-cast-target=true
-    focus-ring {
+    border {
         active-color "#f38ba8"
         inactive-color "#7d0d2d"
-    }
-    border {
-        inactive-color "#7d0d2d"
-    }
-    shadow {
-        color "#7d0d2d70"
     }
     tab-indicator {
         active-color "#f38ba8"
         inactive-color "#7d0d2d"
+    }
+    shadow {
+        color "#7d0d2d70"
     }
 }
 
@@ -382,11 +382,9 @@ window-rule {
 }
 window-rule {
     match app-id="^Alacritty$"
-    match app-id="^scratch-term$"
     clip-to-geometry true
     tiled-state true
     draw-border-with-background false
-    shadow { on; }
 }
 
 // File dialogs - Open/Save/Select: ==============================================================
@@ -505,7 +503,7 @@ window-rule {
   open-floating true
 }
 
-// Open-maximized: ===============================================================================
+// Maximized: ====================================================================================
 window-rule {
     match app-id=r#"brave-browser$"#
     match app-id=r#"qutebrowser$"#
@@ -537,6 +535,7 @@ binds {
     MOD+I                               hotkey-overlay-title="Open Tui: Impala" { spawn "foot" "--app-id='impala'" "impala"; }
     MOD+W                               hotkey-overlay-title="Open Browser: Firefox" { spawn "firefox"; }
 	  MOD+D				                        hotkey-overlay-title="Open App Launcher: Fuzzel" { spawn "sh" "-c" "fuzzel --prompt='Apps Menu: ' --placeholder=\"  $(date '+%a %d-%m  󰥔 %R')\""; }
+
     // Scripts: ==================================================================================
     MOD+SHIFT+P                         { spawn "/home/lli/.config/fuzzel/modules/powermenu"; }
     MOD+SHIFT+U                         { spawn "/home/lli/.config/fuzzel/modules/umount"; }
@@ -561,15 +560,16 @@ binds {
     // Window Management: ========================================================================
     MOD+Q                               { close-window; }
     MOD+H                               { focus-column-left; }
-    MOD+J                               { focus-workspace-down; }
-    MOD+K                               { focus-workspace-up; }
     MOD+L                               { focus-column-right; }
+    MOD+J                               { focus-window-or-workspace-down; }
+    MOD+K                               { focus-window-or-workspace-up; }
     MOD+LEFT                            { focus-column-left; }
+    MOD+RIGHT                           { focus-column-right; }
     MOD+DOWN                            { focus-window-down; }
     MOD+UP                              { focus-window-up; }
-    MOD+RIGHT                           { focus-column-right; }
     MOD+COMMA                           { consume-or-expel-window-left; }
     MOD+PERIOD                          { consume-or-expel-window-right; }
+    MOD+SHIFT+T                         { consume-window-into-column; }
 
     // Move windows within workspace: ============================================================
     MOD+S                               { move-column-left; }
@@ -578,8 +578,8 @@ binds {
     MOD+SHIFT+UP                        { move-window-up; }
     MOD+SHIFT+RIGHT                     { move-column-right; }
     MOD+SHIFT+H                         { move-column-left; }
-    MOD+SHIFT+J                         { move-column-to-workspace-down; }
-    MOD+SHIFT+K                         { move-column-to-workspace-up; }
+    MOD+SHIFT+J                         { move-window-down-or-to-workspace-down; }
+    MOD+SHIFT+K                         { move-window-up-or-to-workspace-up; }
     MOD+SHIFT+L                         { move-column-right; }
 
     // Move to workspace edges: ==================================================================
