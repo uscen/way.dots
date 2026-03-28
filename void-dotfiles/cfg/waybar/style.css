@@ -41,30 +41,29 @@ window#waybar {
 /* Groups:                                                                         # */
 /* =============================================================================== # */
 #custom-void:hover,
-#cpu:hover,
 #network:hover,
 #bluetooth:hover,
 #pulseaudio:hover,
 #backlight:hover,
 #battery:hover,
+#idle_inhibitor:hover,
 #pulseaudio.microphone:hover,
 #pulseaudio.sink-muted:hover,
 #custom-launcher:hover {
   opacity: 0.5;
 }
 #custom-void,
-#cpu,
 #clock,
 #mpris,
 #custom-menu,
 #tray,
-#privacy,
 #network,
 #bluetooth,
 #pulseaudio,
 #pulseaudio.microphone,
 #backlight,
 #battery,
+#idle_inhibitor,
 #custom-launcher {
   color: @foreground;
   padding: 6px 8px;
@@ -82,22 +81,17 @@ window#waybar {
 }
 
 /* =============================================================================== # */
-/* CPU:                                                                            # */
+/* idle:                                                                           # */
 /* =============================================================================== # */
-#cpu {
+#idle_inhibitor {
+  margin-left: -5px;
+}
+#idle_inhibitor.activated {
   color: @color0;
 }
 
 /* =============================================================================== # */
-/* Privacy:                                                                        # */
-/* =============================================================================== # */
-#privacy {
-  margin: 4px;
-  color: @color3;
-}
-
-/* =============================================================================== # */
-/* Privacy:                                                                        # */
+/* Tray:                                                                           # */
 /* =============================================================================== # */
 #tray {
   margin-left: 5px;

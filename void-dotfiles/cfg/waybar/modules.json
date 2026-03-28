@@ -54,20 +54,14 @@
       "urgent": "󱓻"
     }
   },
-  "cpu": {
+  "idle_inhibitor": {
     "format": "{icon}",
-    "format-icons": [
-      "<span size='14pt'>⠁</span>",
-      "<span size='14pt'>⠉</span>",
-      "<span size='14pt'>⠙</span>",
-      "<span size='14pt'>⠛</span>",
-      "<span size='14pt'>⠟</span>",
-      "<span size='14pt'>⠿</span>"
-    ],
-    "interval": 1,
-    "tooltip": true,
-    "tooltip-format": "CPU Frequency: {avg_frequency} GHz",
-    "on-click": "alacritty -e btm"
+    "format-icons": {
+      "activated": "󰒳",
+      "deactivated": "󰒲"
+    },
+    "tooltip-format-activated": "Idle inhibit: {status}",
+    "tooltip-format-deactivated": "Idle inhibit: {status}"
   },
   "clock": {
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
@@ -102,22 +96,6 @@
     "reverse-direction": true,
     "icon-size": 16,
     "show-passive-items": false
-  },
-  "privacy": {
-    "icon-size": 14,
-    "transition-duration": 250,
-    "modules": [
-      {
-        "type": "screenshare",
-        "tooltip": false
-      }
-    ],
-    "ignore": [
-      {
-        "type": "screenshare",
-        "name": "obs"
-      }
-    ]
   },
   "network": {
     "format-icons": {

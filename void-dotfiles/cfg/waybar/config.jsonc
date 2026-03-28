@@ -12,8 +12,8 @@
   "margin-right": 0,
   "spacing": 0,
   "include": ["~/.config/waybar/modules.json"],
-  "modules-left": ["custom/void", "clock", "cpu"],
-  "modules-center": ["mpris", "niri/workspaces", "privacy"],
+  "modules-left": ["custom/void", "clock", "idle_inhibitor"],
+  "modules-center": ["mpris", "niri/workspaces"],
   "modules-right": [
     "group/extras",
     "network",
