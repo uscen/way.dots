@@ -543,6 +543,7 @@ binds {
     MOD+SHIFT+M                         { spawn "/home/lli/.config/fuzzel/modules/media"; }
     MOD+SHIFT+W                         { spawn "/home/lli/.config/fuzzel/modules/niri"; }
     MOD+SHIFT+C                         { spawn "/home/lli/.config/fuzzel/modules/cliphist"; }
+    MOD+SHIFT+B                         { spawn "/home/lli/.config/fuzzel/modules/calc"; }
     MOD+SHIFT+backslash                 { spawn "/home/lli/.config/niri/scripts/scratchpad.sh"; }
 
     // Media keys: ===============================================================================
