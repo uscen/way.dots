@@ -2,7 +2,7 @@
 /* Waybar:                                                                         # */
 /* =============================================================================== # */
 @define-color cursor #7a8382;
-@define-color background #101010;
+@define-color background #0d0c0c;
 @define-color foreground #7a8382;
 @define-color color0  #45475A;
 @define-color color1  #c4746e;
@@ -20,7 +20,7 @@
 @define-color color13 #F5C2E7;
 @define-color color14 #94E2D5;
 @define-color color15 #A6ADC8;
-@define-color color16 #252535;
+@define-color color16 #201d1d;
 
 /* =============================================================================== # */
 /* General:                                                                        # */
@@ -34,7 +34,7 @@
 }
 window#waybar {
   background: @background;
-  border-right: 2px solid @color16;
+  border-right: 1px solid @color16;
 }
 
 /* =============================================================================== # */
@@ -67,7 +67,7 @@ window#waybar {
 #battery,
 #custom-launcher {
   color: @foreground;
-  padding: 6px 10px;
+  padding: 6px 8px;
 }
 
 /* =============================================================================== # */
