@@ -80,7 +80,7 @@ environment {
 // ============================================================================== #
 overview {
     zoom 0.4
-    backdrop-color "#777777"
+    backdrop-color "#181616"
     workspace-shadow {
         on
         softness 10
