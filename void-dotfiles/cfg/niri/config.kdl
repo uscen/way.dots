@@ -25,12 +25,6 @@ switch-events {
     lid-close { spawn "notify-send" "The laptop lid is closed!"; }
     lid-open { spawn "notify-send" "The laptop lid is open!"; }
 }
-clipboard {
-    disable-primary
-}
-config-notification {
-    disable-failed
-}
 xwayland-satellite {
     off
     path "xwayland-satellite"
@@ -118,19 +112,19 @@ input {
         dwtp
         drag true
         natural-scroll
-        accel-speed 0.2
+        accel-speed 0.3
         accel-profile "adaptive"
         scroll-method "two-finger"
         middle-emulation
         disabled-on-external-mouse
-        scroll-factor 2.0
+        scroll-factor 1.5
     }
     // Mouse: ====================================================================================
     mouse {
-        scroll-factor 2.0
-        accel-speed 0.2
+        accel-speed 0.3
         accel-profile "adaptive"
         middle-emulation
+        scroll-factor 1.5
     }
     // trackpoint: ===============================================================================
     trackpoint {}
@@ -173,10 +167,10 @@ layout {
     // Gaps: =====================================================================================
     gaps 2
     struts {
-        left 0
-        right 0
-        top 0
-        bottom 0
+        left 1
+        right 1
+        top 1
+        bottom 1
     }
     // Ring: =====================================================================================
     focus-ring {
