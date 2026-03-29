@@ -525,10 +525,11 @@ binds {
     MOD+RETURN                          { spawn "alacritty"; }
     MOD+SHIFT+RETURN                    { spawn "foot"; }
     MOD+SHIFT+N                         { spawn "nautilus"; }
+    MOD+W                               { spawn "firefox"; }
+    MOD+V                               { spawn "neovide"; }
     MOD+N                               { spawn "foot" "yazi"; }
     MOD+B                               { spawn "foot" "--app-id='bluetui'" "bluetui"; }
     MOD+I                               { spawn "foot" "--app-id='impala'" "impala"; }
-    MOD+W                               { spawn "firefox"; }
 	  MOD+D				                        { spawn "sh" "-c" "fuzzel --prompt='Apps Menu: ' --placeholder=\"  $(date '+%a %d-%m  󰥔 %R')\""; }
 
     // Scripts: ==================================================================================
