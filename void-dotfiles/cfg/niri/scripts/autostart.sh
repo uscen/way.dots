@@ -3,7 +3,7 @@
 # Wallpaper:                                                                      #
 # =============================================================================== #
 pgrep -x "swww-daemon" > /dev/null || swww-daemon &
-swww img "$HOME/.local/share/wall.dots/wallpapers/EMPTY.jpg" &
+swww img "$HOME/.local/share/wall.dots/wallpapers/SMALL.jpg" &
 
 # =============================================================================== #
 # Cliphist:                                                                       #
