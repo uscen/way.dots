@@ -241,6 +241,7 @@ local hlgroups = {
   PmenuSbar                                = { bg = c_macroBg2 },
   PmenuSel                                 = { bg = c_macroBg2, fg = 'NONE' },
   PmenuThumb                               = { bg = c_macroBg3 },
+  PmenuBorder                              = { fg = c_winterBlue },
   Question                                 = { link = 'MoreMsg' },
   QuickFixLine                             = { bg = c_winterGreen },
   Search                                   = { bg = c_macroBg4 },

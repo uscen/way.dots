@@ -838,6 +838,10 @@ now(function()
   vim.o.bomb                     = false
   vim.o.undolevels               = 1024
   vim.o.undoreload               = 65538
+  vim.o.completetimeout          = 100
+  vim.o.completeopt              = 'menuone,noselect,fuzzy,nosort'
+  vim.o.completeitemalign        = 'kind,abbr,menu'
+  vim.o.complete                 = '.,w,b,kspell'
   vim.o.clipboard                = 'unnamedplus'
   vim.o.wildmode                 = 'noselect:lastused,full'
   vim.o.wildoptions              = 'fuzzy,pum'
@@ -845,9 +849,6 @@ now(function()
   vim.o.backupskip               = '/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim'
   vim.o.breakat                  = [[\ \	;:,!?@*-+/]]
   vim.o.omnifunc                 = 'v:lua.vim.lsp.omnifunc'
-  vim.o.completeopt              = 'menuone,noselect,fuzzy,nosort'
-  vim.o.completeitemalign        = 'kind,abbr,menu'
-  vim.o.complete                 = '.,w,b,kspell'
   vim.o.switchbuf                = 'usetab,uselast'
   vim.o.includeexpr              = "substitute(v:fname,'\\.','/','g')"
   vim.o.viminfo                  = "'20,<1000,s1000"
@@ -899,6 +900,7 @@ now(function()
   vim.o.sidescroll               = 0
   vim.o.showtabline              = 0
   vim.o.pumblend                 = 0
+  vim.o.pummaxwidth              = 100
   vim.o.pumwidth                 = 30
   vim.o.pumheight                = 10
   vim.o.cmdwinheight             = 10
@@ -909,6 +911,7 @@ now(function()
   vim.o.colorcolumn              = ''
   vim.o.guicursor                = ''
   vim.o.guifont                  = ''
+  vim.o.pumborder                = 'single'
   vim.o.background               = 'dark'
   vim.o.display                  = 'lastline,truncate,msgsep'
   vim.o.statusline               = "%{repeat('─',winwidth('.'))}"
@@ -923,7 +926,7 @@ now(function()
   vim.o.backspace                = 'indent,eol,start'
   vim.o.cursorlineopt            = 'screenline,number'
   vim.o.tabclose                 = 'uselast'
-  vim.o.shortmess                = 'FOSWICasco'
+  vim.o.shortmess                = 'CFOSWasco'
   vim.wo.signcolumn              = 'yes'
   vim.o.statuscolumn             = ''
   vim.o.showbreak                = '󰘍' .. string.rep(' ', 1)
@@ -1093,6 +1096,21 @@ later(function() vim.diagnostic.config(diagnostic_opts) end)
 --              │                     Neovim Automads                     │
 --              ╰─────────────────────────────────────────────────────────╯
 now(function()
+  -- Enable Cmd Autocomplete: ====================================================================
+  vim.api.nvim_create_autocmd("CmdlineChanged", {
+  pattern = { ":", "/", "?" },
+    callback = function ()
+      vim.fn.wildtrigger()
+    end
+  })
+  -- Enable UI 2: ================================================================================
+  vim.api.nvim_create_autocmd("UIEnter", {
+      group = vim.api.nvim_create_augroup("start-ui2", {}),
+      once = true,
+      callback = function()
+          require("vim._core.ui2").enable({ enable = true })
+      end,
+  })
   -- Auto Save: ==================================================================================
   vim.api.nvim_create_autocmd({ 'FocusLost', 'VimLeavePre' }, {
     group = vim.api.nvim_create_augroup('save_buffers', {}),
