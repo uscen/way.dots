@@ -1,0 +1,10 @@
+#!/bin/bash
+# =============================================================================== #
+# Wallpapers:                                                                     #
+# =============================================================================== #
+FOLDER_PATH="$HOME/.local/share/wall.dots/wallpapers/"
+LINE_NUMS="$(ls "$FOLDER_PATH" | wc -l)"
+PIC=$(ls "$FOLDER_PATH" | fuzzel -d -p "Wallpapers Menu: " -l "$LINE_NUMS")
+if [ -e "$FOLDER_PATH$PIC" ]; then
+    swww img "$FOLDER_PATH$PIC" &
+fi

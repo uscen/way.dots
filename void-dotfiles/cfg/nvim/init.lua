@@ -957,7 +957,7 @@ now(function()
   vim.o.autoread                 = true
   vim.o.modifiable               = true
   vim.o.autowrite                = true
-  vim.o.autowriteall             = false
+  vim.o.autowriteall             = true
   vim.o.mousemoveevent           = false
   vim.o.autochdir                = false
   vim.o.tildeop                  = false

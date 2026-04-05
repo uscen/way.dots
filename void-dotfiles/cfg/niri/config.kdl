@@ -98,7 +98,7 @@ input {
     keyboard {
         xkb {
             layout "us,ara"
-            options "caps:swapescape,altwin:menu_win,grp:win_space_toggle"
+            options "caps:escape,altwin:menu_win,grp:win_space_toggle"
         }
         track-layout "window"
         repeat-delay 180
@@ -165,7 +165,7 @@ workspace "2" {
 // ============================================================================== #
 layout {
     // Gaps: =====================================================================================
-    gaps 2
+    gaps 1
     struts {
         left 1
         right 1
@@ -537,6 +537,7 @@ binds {
     MOD+SHIFT+U                         { spawn "/home/lli/.config/fuzzel/modules/umount"; }
     MOD+SHIFT+M                         { spawn "/home/lli/.config/fuzzel/modules/media"; }
     MOD+SHIFT+W                         { spawn "/home/lli/.config/fuzzel/modules/niri"; }
+    MOD+SHIFT+I                         { spawn "/home/lli/.config/fuzzel/modules/wall"; }
     MOD+SHIFT+C                         { spawn "/home/lli/.config/fuzzel/modules/cliphist"; }
     MOD+SHIFT+B                         { spawn "/home/lli/.config/fuzzel/modules/calc"; }
     MOD+SHIFT+backslash                 { spawn "/home/lli/.config/niri/scripts/scratchpad.sh"; }
