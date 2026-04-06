@@ -7,6 +7,7 @@ export HISTCONTROL=ignoreboth:erasedups
 export LC_ALL="C.UTF-8"
 export LANG="C"
 export CC="gcc"
+export LIBVA_DRIVER_NAME='i965'
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 export PAGER="less"

@@ -164,12 +164,12 @@ workspace "2" {
 // ============================================================================== #
 layout {
     // Gaps: =====================================================================================
-    gaps 1
+    gaps 0
     struts {
-        left 1
-        right 1
-        top 1
-        bottom 1
+        left 0
+        right 0
+        top 0
+        bottom 0
     }
     // Ring: =====================================================================================
     focus-ring {
@@ -227,7 +227,7 @@ layout {
         width 10
         length total-proportion=1.0
         position "top"
-        gaps-between-tabs 4
+        gaps-between-tabs 2
         corner-radius 0
         active-color "#252535"
         inactive-color "#101010"
