@@ -41,6 +41,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 # Enabled: =======================================================================================
 sudo ln -s /etc/sv/dbus /var/service/
 sudo ln -s /etc/sv/elogind /var/service/
+sudo ln -s /etc/sv/preload /var/service/
 sudo ln -s /etc/sv/bluetoothd /var/service/
 sudo ln -s /etc/sv/NetworkManager /var/service/
 sudo ln -s /etc/sv/iwd /var/service/
