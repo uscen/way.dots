@@ -8,12 +8,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if not client then
       return
     end
-    --- Disable color, semantic tokens: ==========================================================
-    if client and client.server_capabilities then
-      client.server_capabilities.colorProvider = nil
-      client.server_capabilities.semanticTokensProvider = nil
-    end
-    -- Mini.Completion support: ==================================================================
+
+    -- Completion support: =======================================================================
     if client.server_capabilities.completionProvider then
       vim.bo[bufnr].omnifunc = 'v:lua.MiniCompletion.completefunc_lsp'
     end

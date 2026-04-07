@@ -302,79 +302,6 @@ later(function()
   })
 end)
 --              ╭─────────────────────────────────────────────────────────╮
---              │                       Mini.Hipatterns                   │
---              ╰─────────────────────────────────────────────────────────╯
-later(function()
-  local MiniHiPatterns = require('mini.hipatterns')
-  local censor_extmark_opts = function(_, match, _)
-    local mask = string.rep('x', vim.fn.strchars(match))
-    return { virt_text = { { mask, 'Comment' } }, virt_text_pos = 'overlay', priority = 2000, right_gravity = false }
-  end
-  MiniHiPatterns.setup({
-    highlighters = {
-      censor = { pattern = 'password: ()%S+()', group = '', extmark_opts = censor_extmark_opts },
-      fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
-      hack = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
-      todo = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
-      note = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
-      done = { pattern = '%f[%w]()DONE()%f[%W]', group = 'MiniHipatternsNote' },
-      high = { pattern = '%f[%w]()HIGH()%f[%W]', group = 'MiniHipatternsFixme' },
-      mid = { pattern = '%f[%w]()MID()%f[%W]', group = 'MiniHipatternsHack' },
-      low = { pattern = '%f[%w]()LOW()%f[%W]', group = 'MiniHipatternsNote' },
-      ids = { pattern = '%f[%w]()[DTPSNCX]%d+()%f[%W]', group = 'DiagnosticInfo' },
-      url = { pattern = '%f[%w]()https*://[^%s]+/*()', group = 'DiagnosticInfo' },
-      tailwind = vim.g.tailwind_get_highlighter(),
-      hex_color = MiniHiPatterns.gen_highlighter.hex_color(),
-      hex_shorthand = {
-        pattern = '()#%x%x%x()%f[^%x%w]',
-        group = function(_, _, data)
-          local match = data.full_match
-          local r, g, b = match:sub(2, 2), match:sub(3, 3), match:sub(4, 4)
-          local hex_color = '#' .. r .. r .. g .. g .. b .. b
-          return MiniHiPatterns.compute_hex_color_group(hex_color, 'bg')
-        end,
-      },
-      rgb_color = {
-        pattern = 'rgb%(%d+, ?%d+, ?%d+%)',
-        group = function(_, match)
-          local red, green, blue = match:match('rgb%((%d+), ?(%d+), ?(%d+)%)')
-          red, green, blue = tonumber(red), tonumber(green), tonumber(blue)
-          local hex = string.format('#%02x%02x%02x', red, green, blue)
-          return MiniHiPatterns.compute_hex_color_group(hex, 'bg')
-        end,
-      },
-      rgba_color = {
-        pattern = 'rgba%(%d+, ?%d+, ?%d+, ?[%d.]+%)',
-        group = function(_, match)
-          local red, green, blue = match:match('rgba%((%d+), ?(%d+), ?(%d+), ?[%d.]+%)')
-          red, green, blue = tonumber(red), tonumber(green), tonumber(blue)
-          local hex = string.format('#%02x%02x%02x', red, green, blue)
-          return MiniHiPatterns.compute_hex_color_group(hex, 'bg')
-        end,
-      },
-      hsl_color = {
-        pattern = 'hsl%(%d+, ?%d+%%, ?%d+%%%)',
-        group = function(_, match)
-          local hue, saturation, lightness = match:match('hsl%((%d+), ?(%d+)%%, ?(%d+)%%%)')
-          local function hsl_to_rgb(h, s, l)
-            h, s, l = h % 360, s / 100, l / 100
-            if h < 0 then h = h + 360 end
-            local function f(n)
-              local k = (n + h / 30) % 12
-              local a = s * math.min(l, 1 - l)
-              return l - a * math.max(-1, math.min(k - 3, 9 - k, 1))
-            end
-            return f(0) * 255, f(8) * 255, f(4) * 255
-          end
-          local red, green, blue = hsl_to_rgb(hue, saturation, lightness)
-          local hex = string.format('#%02x%02x%02x', red, green, blue)
-          return MiniHiPatterns.compute_hex_color_group(hex, 'bg')
-        end,
-      },
-    },
-  })
-end)
---              ╭─────────────────────────────────────────────────────────╮
 --              │                         Mini.Pick                       │
 --              ╰─────────────────────────────────────────────────────────╯
 later(function()
@@ -2183,7 +2110,6 @@ later(function()
   vim.keymap.set('n', '<leader>ft', '<cmd>Pick grep_live<cr>')
   vim.keymap.set('n', '<leader>fb', '<cmd>Pick buffers<cr>')
   vim.keymap.set('n', '<leader>fe', '<cmd>Pick explorer<cr>')
-  vim.keymap.set('n', '<leader>fn', '<cmd>Pick hipatterns<cr>')
   vim.keymap.set('n', '<leader>fo', '<cmd>Pick options<cr>')
   vim.keymap.set('n', '<leader>fp', '<cmd>Pick projects<cr>')
   vim.keymap.set('n', '<leader>fa', '<cmd>Pick home<cr>')
