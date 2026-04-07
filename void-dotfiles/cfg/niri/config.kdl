@@ -443,14 +443,8 @@ window-rule {
     match app-id=r#"nm-connection-editor"#
     match app-id=r#"blueman-manager"#
     match app-id=r#"pavucontrol"#
-    default-column-width { proportion 0.50; }
-    default-window-height { proportion 0.50; }
-    default-floating-position x=5 y=5 relative-to="bottom-left"
-    open-floating true
-}
-window-rule {
-    match app-id=r#"impala"#
     match app-id=r#"bluetui"#
+    match app-id=r#"impala"#
     default-column-width { proportion 0.50; }
     default-window-height { proportion 0.50; }
     default-floating-position x=5 y=5 relative-to="bottom-left"
@@ -477,9 +471,6 @@ window-rule {
   match title="^(nwg-look)$"
   match title="^(confirmreset)$"
   match title="^(Delete profile)$"
-  match title="^File Operation Progress$"
-  match title="^Confirm to replace files$"
-  match title="^KDE Connect URL handler$"
   match title="^(Open File)(.*)$"
   match title="^(Select a File)(.*)$"
   match title="^(Choose wallpaper)(.*)$"
@@ -490,22 +481,11 @@ window-rule {
   match title="^(hyprland-share-picker)$"
   match title="^(.*)-Google$"
   match title="^(.*)System Update$"
+  match title="^File Operation Progress$"
+  match title="^Confirm to replace files$"
+  match title="^KDE Connect URL handler$"
   match title="^Picture-in-Picture$"
-  match app-id="^xdm-app$"
-  match app-id="^org.qbittorrent.qBittorrent$"
-  match app-id="^org.pulseaudio.pavucontrol$"
   open-floating true
-}
-
-// Maximized: ====================================================================================
-window-rule {
-    match app-id=r#"brave-browser$"#
-    match app-id=r#"qutebrowser$"#
-    match app-id=r#"discord$"#
-    match app-id=r#"gimp$"#
-    match app-id=r#"kdenlive$"#
-    match app-id=r#"Shotcut$"#
-    open-maximized true
 }
 
 // ============================================================================== #

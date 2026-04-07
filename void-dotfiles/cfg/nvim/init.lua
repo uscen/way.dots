@@ -766,7 +766,7 @@ now(function()
   vim.o.undolevels               = 1024
   vim.o.undoreload               = 65538
   vim.o.completetimeout          = 100
-  vim.o.completeopt              = 'menuone,noselect,fuzzy,nosort'
+  vim.o.completeopt              = 'menuone,noselect,fuzzy,nosort,nearest'
   vim.o.completeitemalign        = 'kind,abbr,menu'
   vim.o.complete                 = '.,w,b,kspell'
   vim.o.clipboard                = 'unnamedplus'
@@ -827,7 +827,7 @@ now(function()
   vim.o.sidescroll               = 0
   vim.o.showtabline              = 0
   vim.o.pumblend                 = 0
-  vim.o.pummaxwidth              = 100
+  vim.o.pummaxwidth              = 40
   vim.o.pumwidth                 = 30
   vim.o.pumheight                = 10
   vim.o.cmdwinheight             = 10
@@ -860,8 +860,9 @@ now(function()
   vim.o.fillchars                = 'eob: ,fold:╌,diff:-,foldclose:▶,foldopen:▼,lastline:⋯,msgsep:─'
   vim.o.listchars                = 'tab:» ,eol:↲,trail:•,nbsp:␣,extends:→,precedes:←'
   -- Editing:  ===================================================================================
-  vim.o.cindent                  = true
+  vim.o.autocomplete             = true
   vim.o.autoindent               = true
+  vim.o.cindent                  = true
   vim.o.expandtab                = true
   vim.o.hlsearch                 = true
   vim.o.incsearch                = true
