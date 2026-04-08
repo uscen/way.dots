@@ -53,6 +53,7 @@ environment {
     QT_SCALE_FACTOR "1"
 
     // GTK Settings: =============================================================================
+    GTK_IM_MODULE "simple"
     GTK_USE_PORTAL "1"
     GDK_SCALE "1"
     GDK_BACKEND "wayland,x11,*"
