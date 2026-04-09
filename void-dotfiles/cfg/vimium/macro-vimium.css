@@ -3,7 +3,7 @@
 /* # =============================================================================== # */
 :root {
   --font-family: "JetBrainsMono Nerd Font";
-  /* Base & surfaces (Sumi Ink) */
+
   --vimium-base: #101010;
   --vimium-secondry: #201d1d;
   --vimium-crust: #1f1f28;
@@ -11,12 +11,10 @@
   --vimium-surface1: #363646;
   --vimium-surface2: #54546d;
 
-  /* Text */
   --vimium-text: #c8c093;
   --vimium-subtext0: #54546d;
   --vimium-subtext1: #767676;
 
-  /* Accent colors (Macro) */
   --vimium-green: #8a9a7b;
   --vimium-blue: #7fb4ca;
   --vimium-rosewater: #c4746e;
@@ -26,9 +24,9 @@
   --vimium-gray: #7a8382;
 }
 
-/* -----------------------------------------------------------
-   🌐 Link Hints
-*/
+/* # =============================================================================== # */
+/* # Hints:                                                                          # */
+/* # =============================================================================== # */
 #vimium-hint-marker-container div.vimiumHintMarker {
   font-family: var(--font-family);
   background: var(--vimium-yellow);
@@ -56,9 +54,9 @@
   color: var(--vimium-subtext0);
 }
 
-/* -----------------------------------------------------------
-   🔍 Vomnibar
-*/
+/* # =============================================================================== # */
+/* # Vomnibar:                                                                       # */
+/* # =============================================================================== # */
 #vomnibar {
   font-family: var(--font-family);
   background: var(--vimium-base);
@@ -127,9 +125,9 @@
   background: var(--vimium-surface2) !important;
 }
 
-/* -----------------------------------------------------------
-   🔎 Search/Find HUD
-*/
+/* # =============================================================================== # */
+/* # Search:                                                                         # */
+/* # =============================================================================== # */
 div#hud-container {
   background: var(--vimium-base);
   border: 1px solid var(--vimium-text);
@@ -141,9 +139,9 @@ div#hud-container div#hud {
   background: var(--vimium-crust);
 }
 
-/* -----------------------------------------------------------
-   Vimium Options & Help UI
-*/
+/* # =============================================================================== # */
+/* # Options:                                                                        # */
+/* # =============================================================================== # */
 body.vimium-body,
 body.vimium-body header,
 body.vimium-body label {
@@ -173,7 +171,9 @@ body.vimium-body #wrapper .example {
   color: var(--vimium-subtext1);
 }
 
-/* Help dialog */
+/* # =============================================================================== # */
+/* # Dialog:                                                                         # */
+/* # =============================================================================== # */
 #dialog {
   background: var(--vimium-crust);
   color: var(--vimium-text);

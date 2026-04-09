@@ -1,5 +1,5 @@
 # =============================================================================== #
-# Bat:                                                                            #
+# General:                                                                        #
 # =============================================================================== #
 --theme=base16
 --style=numbers,changes
@@ -9,7 +9,10 @@
 --pager=less
 --color=always
 --decorations=always
-# List of supported syntax: bat --list-languages: ================================================
+
+# =============================================================================== #
+# Syntax:                                                                         #
+# =============================================================================== #
 --map-syntax '.*ignore:Git Ignore'
 --map-syntax '.gitconfig.local:Git Config'
 --map-syntax '**/completions/_*:Bourne Again Shell (bash)'
