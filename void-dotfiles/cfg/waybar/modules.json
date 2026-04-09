@@ -173,7 +173,15 @@
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon}",
-    "format-icons": ["󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟", "󰃠"],
+    "format-icons": [
+      "<span size='11pt'>󰃚</span>",
+      "<span size='11pt'>󰃛</span>",
+      "<span size='11pt'>󰃜</span>",
+      "<span size='11pt'>󰃝</span>",
+      "<span size='11pt'>󰃞</span>",
+      "<span size='11pt'>󰃟</span>",
+      "<span size='11pt'>󰃠</span>"
+    ],
     "reverse-scrolling": true,
     "smooth-scrolling-threshold": 0.2,
     "tooltip": false

@@ -28,7 +28,7 @@
 * {
   font-family: "JetBrainsMono Nerd Font";
   font-weight: 700;
-  font-size: 12pt;
+  font-size: 12px;
   border-radius: 0;
   box-shadow: none;
 }
@@ -178,7 +178,7 @@ tooltip * {
 /* # ============================================================================= # */
 #pulseaudio-slider,
 #backlight-slider {
-  min-height: 80px;
+  min-height: 70px;
 }
 #pulseaudio-slider slider,
 #backlight-slider slider {
@@ -200,7 +200,7 @@ tooltip * {
 /* # ============================================================================= # */
 #custom-void,
 #custom-launcher {
-  font-size: 15px;
+  font-size: 16px;
   margin-left: -5px;
 }
 #custom-menu {
