@@ -841,7 +841,6 @@ now(function()
   vim.o.pumborder                = 'single'
   vim.o.background               = 'dark'
   vim.o.display                  = 'lastline,truncate,msgsep'
-  vim.o.statusline               = "%{repeat('─',winwidth('.'))}"
   vim.o.showcmdloc               = 'statusline'
   vim.o.belloff                  = 'all'
   vim.o.titlestring              = '%{getcwd()} : %{expand(\"%:r\")} [%M] ― Neovim'
@@ -857,6 +856,7 @@ now(function()
   vim.wo.signcolumn              = 'yes'
   vim.o.statuscolumn             = ''
   vim.o.showbreak                = '󰘍' .. string.rep(' ', 1)
+  vim.o.statusline               = string.rep('⎯', vim.o.columns)
   vim.o.fillchars                = 'eob: ,fold:╌,diff:-,foldclose:▶,foldopen:▼,lastline:⋯,msgsep:─'
   vim.o.listchars                = 'tab:» ,eol:↲,trail:•,nbsp:␣,extends:→,precedes:←'
   -- Editing:  ===================================================================================
@@ -1880,13 +1880,12 @@ later(function()
   -- Rsi mappings: ===============================================================================
   vim.keymap.set('c', '<C-a>', '<Home>')
   vim.keymap.set('c', '<C-e>', '<End>')
-  vim.keymap.set('c', '<C-b>', '<End>')
   vim.keymap.set('c', '<C-j>', '<down>')
   vim.keymap.set('c', '<C-k>', '<up>')
   -- General: ====================================================================================
   vim.keymap.set('n', '<leader>qq', '<cmd>qa<cr>')
   vim.keymap.set('n', '<leader>rc', '<cmd>EditConfig<cr>')
-  vim.keymap.set('n', '<Leader>rr', '<Cmd>write | restart<Enter>')
+  vim.keymap.set('n', '<Leader>re', '<cmd>write | restart<cr>')
   vim.keymap.set('n', '<leader>y', '<cmd>%yank<cr>')
   vim.keymap.set('n', '<leader>p', 'm`o<ESC>p``')
   vim.keymap.set('n', '<leader>P', 'm`O<ESC>p``')
