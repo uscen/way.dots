@@ -33,6 +33,12 @@ set show-v-scrollbar true
 # =============================================================================== #
 # Keybinds:                                                                       #
 # =============================================================================== #
+map w adjust_window width
+map f adjust_window best-fit
+map i zoom in
+map o zoom out
+map q quit
+map r reload
 map <C-Tab> toggle_statusbar
 map <C-t> set recolor "false"
 map <C-i> recolor

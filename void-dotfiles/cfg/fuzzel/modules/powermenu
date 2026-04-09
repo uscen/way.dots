@@ -13,7 +13,7 @@ case $SELECTION in
 	*"Soft reboot")
 		doas reboot;;
 	*"Hard reboot")
-		pkexec "echo b > /proc/sysrq-trigger";;
+		doas pkexec "echo b > /proc/sysrq-trigger";;
 	*"Shutdown")
 		doas poweroff;;
 esac
