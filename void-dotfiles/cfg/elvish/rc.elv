@@ -1,17 +1,11 @@
 # =============================================================================== #
-# Elvish Config Shell:                                                            #
-# =============================================================================== #
-# =============================================================================== #
 # Elvish Modules:                                                                 #
-# =============================================================================== #
-# Builtin:                                                                        #
 # =============================================================================== #
 use platform
 use readline-binding
+
 # =============================================================================== #
-# Evlish Env:                                                                     #
-# =============================================================================== #
-# General:                                                                        #
+# General Env:                                                                    #
 # =============================================================================== #
 set E:CC = "gcc"
 set E:LANG = "en_US.UTF-8"
@@ -36,7 +30,9 @@ set E:FZF_DEFAULT_OPTS = "
     --bind 'tab:accept'
 "
 set E:_ZO_FZF_OPTS = $E:FZF_DEFAULT_OPTS
-# Plathform:                                                                      #
+
+# =============================================================================== #
+# Plathform Env:                                                                  #
 # =============================================================================== #
 if (eq $platform:os windows) {
   set-env HOME $E:USERPROFILE
@@ -44,6 +40,7 @@ if (eq $platform:os windows) {
 } else {
   set-env TMPDIR '/tmp'
 }
+
 # =============================================================================== #
 # Elvish clean ~:									                                                #
 # =============================================================================== #
@@ -58,8 +55,7 @@ set E:PYTHONSTARTUP = $E:HOME"/.config/python/pythonrc"
 set E:SQLITE_HISTORY = $E:HOME"/.local/share/sqlite_history"
 set E:MYVIMRC = $E:HOME"/.config/nvim/init.lua"
 set E:RIPGREP_CONFIG_PATH  = $E:HOME"/.config/ripgrep/rc"
-# =============================================================================== #
-# Elvish General :                                                                #
+
 # =============================================================================== #
 # Helpers:                                                                        #
 # =============================================================================== #
@@ -112,6 +108,8 @@ fn fzf_cd {
     return
   }
 }
+
+# =============================================================================== #
 # Insert:                                                                         #
 # =============================================================================== #
 set edit:insert:binding[Ctrl-b] = { edit:move-dot-left-word }
@@ -124,16 +122,22 @@ set edit:insert:binding[Ctrl-t] = { edit:history:start }
 set edit:insert:binding[Ctrl-v] = { edit:command:start }
 set edit:insert:binding[Ctrl-Enter] = { edit:insert-at-dot "\n" }
 set edit:insert:binding[Ctrl-Delete] = { edit:move-dot-right-word; edit:kill-word-left }
+
+# =============================================================================== #
 # Fzf:                                                                            #
 # =============================================================================== #
 set edit:insert:binding[Alt-c] = { fzf_cd }
 set edit:insert:binding[Ctrl-r] = { fzf_history }
+
+# =============================================================================== #
 # Completion:                                                                     #
 # =============================================================================== #
 set edit:completion:binding[Ctrl-u] = { edit:close-mode }
 set edit:completion:binding[Ctrl-y] = { edit:completion:accept }
 set edit:completion:binding[Ctrl-v] = { edit:close-mode; edit:command:start }
 set edit:completion:binding[Enter] = { edit:completion:accept; edit:return-line }
+
+# =============================================================================== #
 # Command:                                                                        #
 # =============================================================================== #
 set edit:command:binding[Ctrl-u] = { edit:close-mode; edit:kill-line-left; edit:command:start }
@@ -144,19 +148,27 @@ set edit:command:binding[u] = { edit:close-mode; edit:kill-line-left }
 set edit:command:binding[e] = { edit:move-dot-right-small-word }
 set edit:command:binding[k] = { edit:history:start; edit:history:up }
 set edit:command:binding[j] = { edit:history:start; edit:history:down }
+
+# =============================================================================== #
 # history:                                                                        #
 # =============================================================================== #
 set edit:history:binding[Ctrl-y] = { edit:history:accept }
 set edit:history:binding[k] = { edit:history:up }
 set edit:history:binding[j] = { edit:history:down }
+
+# =============================================================================== #
 # Location:                                                                       #
 # =============================================================================== #
 set edit:location:binding[Ctrl-u] = { edit:close-mode }
+
+# =============================================================================== #
 # Others:                                                                         #
 # =============================================================================== #
 set edit:max-height = 25
 set notify-bg-job-success = $false
 set edit:completion:matcher[''] = $match~
+
+# =============================================================================== #
 # Paths:                                                                          #
 # =============================================================================== #
 if (eq $platform:os windows) {
@@ -182,14 +194,19 @@ if (eq $platform:os windows) {
     $@paths
   ]
 }
+
+# =============================================================================== #
 # Extrnal:                                                                        #
 # =============================================================================== #
 eval (zoxide init elvish | slurp)
 eval (carapace _carapace | slurp)
+
+# =============================================================================== #
 # Prompt:                                                                         #
 # =============================================================================== #
 set edit:prompt = { styled (tilde-abbr $pwd) bright-blue bold; styled ' λ ' bright-cyan dim }
 set edit:rprompt = { nop }
+
 # =============================================================================== #
 # Abbreviations:                                                                  #
 # =============================================================================== #
@@ -200,38 +217,48 @@ set edit:command-abbr['cd'] = 'z'
 set edit:command-abbr['lz'] = 'lazygit'
 set edit:command-abbr['curld'] = 'curl --retry 5 -L -C -'
 set edit:command-abbr['edit'] = 'nvim'
+
 # =============================================================================== #
 # Elvish Aliases:                                                                 #
 # =============================================================================== #
-# Reset Terminal:                                                                 #
+# =============================================================================== #
+# Reset:                                                                          #
 # =============================================================================== #
 fn cls { edit:clear }
 fn clear { print "\e[H\e[2J\e[3J" }
 fn reset { print "\033c" }
-# Fetch (System Info):                                                            #
+
+# =============================================================================== #
+# Fetch:                                                                          #
 # =============================================================================== #
 fn fetch { fastfetch }
 fn neofetch { fastfetch }
-# Changing Directory:                                                             #
+
 # =============================================================================== #
-fn ... { cd ~ }
-fn .. { cd .. }
-fn ../ { cd .. }
-fn ../../ { cd ../.. }
-fn cdd { cd D:/ }
-fn cdc { cd C:/ }
-# For Configs Files:                                                              #
+# Zoxide:                                                                         #
+# =============================================================================== #
+fn ... { z ~ }
+fn .. { z .. }
+fn ../ { z .. }
+fn ../../ { z ../.. }
+
+# =============================================================================== #
+# Configs:                                                                        #
 # =============================================================================== #
 fn dots { cd $E:HOME/.local/way.dots }
 fn bashc { nvim $E:HOME/.local/way.dots/void-dotfiles/home/.bash/bashrc }
 fn wmc { nvim $E:HOME/.local/way.dots/void-dotfiles/cfg/niri/config.kdl }
 fn elvc { nvim $E:HOME/.local/way.dots/void-dotfiles/cfg/elvish/rc.elv }
-# Changing "ls" to "eza":                                                         #
+
+# =============================================================================== #
+# Eza:                                                                            #
 # =============================================================================== #
 fn ls {|@a| e:eza --long --group --icons=auto --git --sort=name --group-directories-first $@a }
 fn ll {|@a| e:eza --long --group --icons=auto --git --sort=name --group-directories-first $@a }
 fn lt {|@a| e:eza --long --group --icons=auto --git --only-dirs --tree --level=3 --sort=modified $@a }
-# Bat Like Cat:                                                                   #
+
+# =============================================================================== #
+# Bat:                                                                            #
 # =============================================================================== #
 fn b {|@a| e:bat $@a }
 fn bn {|@a| e:bat --number $@a }
@@ -239,7 +266,9 @@ fn bnl {|@a| e:bat --number --line-range $@a }
 fn bp {|@a| e:bat --plain $@a }
 fn bpl {|@a| e:bat --plain --line-range $@a }
 fn bl {|@a| e:bat --line-range $@a }
-# NeoVim To Vim:                                                                  #
+
+# =============================================================================== #
+# Editor:                                                                         #
 # =============================================================================== #
 fn v {|@a| e:nvim $@a }
 fn vi {|@a| e:nvim $@a }
@@ -249,12 +278,16 @@ fn vm {|@a| e:nvim $@a }
 fn vim {|@a| e:nvim $@a }
 fn vd {|@a| e:neovide & }
 fn nd {|@a| e:neovide & }
-# Void Service Manager:                                                           #
+
+# =============================================================================== #
+# Services:                                                                       #
 # =============================================================================== #
 fn svenable {|@a| e:doas ln -sfv /etc/sv/$a[0] /var/service/ }
 fn svdisable {|@a| e:doas unlink /var/service/$a[0] }
 fn svstatus {|@a| e:doas sv status /var/service/* }
-# Scoop Package Manager:                                                          #
+
+# =============================================================================== #
+# Packages:                                                                       #
 # =============================================================================== #
 fn pu {|@a| e:doas xbps-install -Syu xbps; doas xbps-install -Su $@a }
 fn pi {|@a| e:doas xbps-install -S $@a }
@@ -263,7 +296,9 @@ fn pq {|@a| e:xbps-query -Rs $@a }
 fn pl {|@a| e:xbps-query -l $@a }
 fn pc {|@a| e:doas xbps-remove -Oo $@a }
 fn pclean {|@a| e:doas rm -rf /var/cache/xbps/* $@a }
-# BuN Package Manager:                                                            #
+
+# =============================================================================== #
+# Bun:                                                                            #
 # =============================================================================== #
 fn buna {|@a| e:bun add $@a }
 fn bunr {|@a| e:bun remove $@a }
@@ -271,19 +306,14 @@ fn bunu {|@a| e:bun update $@a }
 fn buni {|@a| e:bun install $@a }
 fn bun-run {|@a| e:bun run $@a }
 fn bun-dev {|@a| e:bun --bun run dev $@a }
-# Node PKG Manager:                                                               #
+
+# =============================================================================== #
+# Pnpm:                                                                           #
 # =============================================================================== #
 fn p {|@a| e:pnpm $@a }
 fn px {|@a| e:pnpm dlx $@a }
-# Others Usfeual Alias:                                                           #
+
 # =============================================================================== #
-fn yt-concats {|@a| e:yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/playlist $@a }
-fn yt-music {|@a| e:yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/music $@a }
-fn dev {|@a| browser-sync start --no-notify --server --files "**/*.html, **/*.css", "**/*.js" $@a }
-fn msg { |@a| echo (styled "👉🏼 "$@a bold italic yellow) }
-fn rm {|@a| e:trash-put $@a }
-fn man {|@a| e:tldr $@a }
-fn cat {|@a| e:bat $@a }
 # Git:                                                                            #
 # =============================================================================== #
 fn g {|@a| e:git $@a }
@@ -300,3 +330,14 @@ fn gf {|@a| e:git fetch $@a }
 fn gg {|@a| e:git pull $@a }
 fn gr {|@a| e:git switch $@a }
 fn lg {|@a| e:lazygit $@a }
+
+# =============================================================================== #
+# Others:                                                                         #
+# =============================================================================== #
+fn yt-concats {|@a| e:yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/playlist $@a }
+fn yt-music {|@a| e:yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/music $@a }
+fn dev {|@a| browser-sync start --no-notify --server --files "**/*.html, **/*.css", "**/*.js" $@a }
+fn msg { |@a| echo (styled "👉🏼 "$@a bold italic yellow) }
+fn rm {|@a| e:trash-put $@a }
+fn man {|@a| e:tldr $@a }
+fn cat {|@a| e:bat $@a }

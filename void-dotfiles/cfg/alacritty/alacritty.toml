@@ -36,12 +36,12 @@ lines = 48
 # =============================================================================== #
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "SemiBold" }
-bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+bold = { family = "JetBrainsMono Nerd Font", style = "ExtraBold" }
 italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
 bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
 offset = { x = 0, y = 1 }
 glyph_offset = { x = 0, y = 0 }
-size = 11
+size = 12
 builtin_box_drawing = true
 
 # =============================================================================== #

@@ -4,7 +4,7 @@
 # =============================================================================== #
 THEME='Kripton'
 ICONS='Papirus-Dark'
-FONT='JetBrainsMono Nerd Font 11'
+FONT='JetBrainsMono Nerd Font 12'
 CURSOR='BreezeX-Black'
 CURSORSIZE=30
 SCHEMA='gsettings set org.gnome.desktop.interface'
