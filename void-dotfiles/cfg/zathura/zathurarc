@@ -6,7 +6,7 @@
 set font "Jetbrains Mono Nerd Font"
 
 # =============================================================================== #
-# Configs:                                                                        #
+# General:                                                                        #
 # =============================================================================== #
 set selection-clipboard clipboard
 set page-padding 10
