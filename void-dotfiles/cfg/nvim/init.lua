@@ -860,7 +860,6 @@ now(function()
   vim.o.fillchars                = 'eob: ,fold:╌,diff:-,foldclose:▶,foldopen:▼,lastline:⋯,msgsep:─'
   vim.o.listchars                = 'tab:» ,eol:↲,trail:•,nbsp:␣,extends:→,precedes:←'
   -- Editing:  ===================================================================================
-  vim.o.autocomplete             = true
   vim.o.autoindent               = true
   vim.o.cindent                  = true
   vim.o.expandtab                = true
@@ -885,7 +884,8 @@ now(function()
   vim.o.autoread                 = true
   vim.o.modifiable               = true
   vim.o.autowrite                = true
-  vim.o.autowriteall             = true
+  vim.o.autowriteall             = false
+  vim.o.autocomplete             = false
   vim.o.mousemoveevent           = false
   vim.o.autochdir                = false
   vim.o.tildeop                  = false
