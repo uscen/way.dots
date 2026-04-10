@@ -80,3 +80,5 @@ end
 
 vim.ui.input = M.ui_input
 au('VimResized', '*', { group = augroup, callback = M.resize })
+
+return M

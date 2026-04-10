@@ -79,3 +79,4 @@ function M.setup(config)
 end
 
 M.setup()
+return M

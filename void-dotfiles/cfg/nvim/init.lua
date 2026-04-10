@@ -45,24 +45,6 @@ later(function()
   require('mini.diff').setup({ view = { style = 'sign', signs = { add = '▎', change = '▎', delete = '▎' } } })
 end)
 --              ╭─────────────────────────────────────────────────────────╮
---              │                         Mini.Notify                     │
---              ╰─────────────────────────────────────────────────────────╯
-later(function()
-  local MiniNotify = require('mini.notify')
-  MiniNotify.setup({
-    lsp_progress = { enable = false, duration_last = 500 },
-    window = {
-      config = function()
-        local has_statusline = vim.o.laststatus > 0
-        local pad = vim.o.cmdheight + (has_statusline and 1 or 0)
-        return { anchor = 'SE', col = vim.o.columns, row = vim.o.lines - pad }
-      end,
-      max_width_share = 0.75,
-    },
-  })
-  vim.notify = MiniNotify.make_notify()
-end)
---              ╭─────────────────────────────────────────────────────────╮
 --              │                        Mini.Surround                    │
 --              ╰─────────────────────────────────────────────────────────╯
 later(function()
@@ -135,7 +117,7 @@ later(function()
   end
   MiniCompletion.setup({
     fallback_action = '<C-n>',
-    delay = { completion = 100, info = 100, signature = 100 },
+    delay = { completion = 200, info = 200, signature = 100 },
     window = { info = { border = 'single' }, signature = { border = 'single' } },
     mappings = { force_twostep = '<C-n>', force_fallback = '<C-S-n>', scroll_down = '<C-f>', scroll_up = '<C-b>' },
     lsp_completion = { source_func = 'omnifunc', auto_setup = false, process_items = process_items },
@@ -366,7 +348,7 @@ later(function()
     pattern = 'MiniPickStart',
     callback = function()
       local win_id = vim.api.nvim_get_current_win()
-      vim.wo[win_id].winblend = 15
+      vim.wo[win_id].winblend = 5
     end,
   })
   -- Pick Directory Form Nvim: ===================================================================
@@ -449,7 +431,7 @@ now_if_args(function()
     callback = function(args)
       local win_id = args.data.win_id
       -- Customize window-local settings =========================================================
-      vim.wo[win_id].winblend = 15
+      vim.wo[win_id].winblend = 5
       local config = vim.api.nvim_win_get_config(win_id)
       config.border, config.title_pos = 'single', 'left'
       vim.api.nvim_win_set_config(win_id, config)
@@ -884,7 +866,7 @@ now(function()
   vim.o.autoread                 = true
   vim.o.modifiable               = true
   vim.o.autowrite                = true
-  vim.o.autowriteall             = false
+  vim.o.autowriteall             = true
   vim.o.autocomplete             = false
   vim.o.mousemoveevent           = false
   vim.o.autochdir                = false
