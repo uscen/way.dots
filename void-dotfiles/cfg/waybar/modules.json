@@ -49,9 +49,8 @@
       "*": " "
     },
     "format-icons": {
-      "default": "",
-      "active": "󱓻",
-      "urgent": "󱓻"
+      "active": "<span size='14pt'></span>",
+      "default": "<span size='14pt'></span>"
     }
   },
   "idle_inhibitor": {
