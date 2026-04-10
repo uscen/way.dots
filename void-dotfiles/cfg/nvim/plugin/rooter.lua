@@ -56,27 +56,21 @@ local function find_root(markers)
   return nil
 end
 
-function M.setup(config)
-  M.config = vim.tbl_deep_extend('force', M.config, config or {})
-  local group = vim.api.nvim_create_augroup('myplugins-rooter', { clear = true })
-  -- Disable conflicting option: =================================================================
-  vim.o.autochdir = false
-  vim.api.nvim_create_autocmd({ 'VimEnter', 'BufEnter' }, {
-    group = group,
-    desc = 'myplugins: Set current directory to project root',
-    pattern = '*',
-    nested = true,
-    callback = function(args)
-      local root_dir = find_root(M.config.dirs)
-      if root_dir then
-        vim.api.nvim_set_current_dir(root_dir)
-        if args.buf then
-          vim.b.workspace_folder = root_dir
-        end
+M.config = vim.tbl_deep_extend('force', M.config, config or {})
+local group = vim.api.nvim_create_augroup('myplugins-rooter', { clear = true })
+-- Disable conflicting option: =================================================================
+vim.api.nvim_create_autocmd({ 'VimEnter', 'BufEnter' }, {
+  group = group,
+  desc = 'myplugins: Set current directory to project root',
+  pattern = '*',
+  nested = true,
+  callback = function(args)
+    local root_dir = find_root(M.config.dirs)
+    if root_dir then
+      vim.api.nvim_set_current_dir(root_dir)
+      if args.buf then
+        vim.b.workspace_folder = root_dir
       end
-    end,
-  })
-end
-
-M.setup()
-return M
+    end
+  end,
+})

@@ -40,6 +40,5 @@ vim.api.nvim_create_autocmd('TabEnter', {
     end
   end,
 })
-vim.api.nvim_create_user_command('ZoomBuffer', M.toggle, {})
 
-return M
+vim.api.nvim_create_user_command('ZoomBuffer', M.toggle, {})

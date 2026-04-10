@@ -77,8 +77,6 @@ M.ui_input = function(opts, callback)
     vim.api.nvim_win_hide(M.state.data.win_id)
   end
 end
-
 vim.ui.input = M.ui_input
-au('VimResized', '*', { group = augroup, callback = M.resize })
 
-return M
+au('VimResized', '*', { group = augroup, callback = M.resize })

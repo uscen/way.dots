@@ -323,8 +323,4 @@ vim.api.nvim_create_autocmd('VimEnter', {
   end,
 })
 
-vim.api.nvim_create_user_command('Dashboard', function()
-  M.show()
-end, {})
-
-return M
+vim.api.nvim_create_user_command('Dashboard', function() M.show() end, {})

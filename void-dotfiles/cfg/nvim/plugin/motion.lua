@@ -66,5 +66,3 @@ function M.easy_motion()
 end
 
 vim.api.nvim_create_user_command('EasyMotion', M.easy_motion, {})
-
-return M
