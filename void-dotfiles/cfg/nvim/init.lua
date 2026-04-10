@@ -2160,7 +2160,7 @@ end)
 later(function()
   if vim.g.neovide then
     -- General: ==================================================================================
-    vim.o.guifont = "JetBrainsMono Nerd Font:h10"
+    vim.o.guifont = "JetBrainsMono Nerd Font:h12"
     vim.g.neovide_scale_factor = 1
     vim.g.neovide_refresh_rate = 120
     -- Appearance: ===============================================================================
