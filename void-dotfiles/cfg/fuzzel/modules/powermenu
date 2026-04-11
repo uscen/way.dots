@@ -2,18 +2,42 @@
 # =============================================================================== #
 # PowerMenu:                                                                      #
 # =============================================================================== #
-SELECTION="$(printf "1 - Lock\n2 - Suspend\n3 - Log out\n4 - Soft reboot\n5 - Hard reboot\n6 - Shutdown" | fuzzel --dmenu -l 6 -p "Power Menu: ")"
+# Define icons: ==================================================================================
+declare -A icons
+icons[lockscreen]="\Uf033e"
+icons[switchuser]="\Uf0019"
+icons[logout]="\Uf0343"
+icons[suspend]="\Uf04b2"
+icons[hibernate]="\Uf02ca"
+icons[reboot]="\Uf0709"
+icons[shutdown]="\Uf0425"
+icons[cancel]="\Uf0156"
+
+# Build menu string: =============================================================================
+MENU_ENTRIES="${icons[lockscreen]} Lock
+${icons[suspend]} Suspend
+${icons[logout]} Log out
+${icons[reboot]} Soft reboot
+${icons[reboot]} Hard reboot
+${icons[shutdown]} Shutdown
+${icons[cancel]} Cancel"
+
+# Display menu: ==================================================================================
+SELECTION="$(echo -e "$MENU_ENTRIES" | fuzzel --dmenu -l 7 -p "Power Menu: ")"
+
 case $SELECTION in
-	*"Lock")
-		swaylock;;
-	*"Suspend")
-		doas zzz;;
-	*"Log out")
-		niri msg action quit;;
-	*"Soft reboot")
-		doas reboot;;
-	*"Hard reboot")
-		doas pkexec "echo b > /proc/sysrq-trigger";;
-	*"Shutdown")
-		doas poweroff;;
+    *"Lock")
+        swaylock;;
+    *"Suspend")
+        doas zzz;;
+    *"Log out")
+        niri msg action quit;;
+    *"Soft reboot")
+        doas reboot;;
+    *"Hard reboot")
+        doas pkexec "echo b > /proc/sysrq-trigger";;
+    *"Shutdown")
+        doas poweroff;;
+    *"Cancel")
+        exit 0;;
 esac

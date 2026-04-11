@@ -30,20 +30,21 @@ usage() {
     exit
 }
 
+# Calculator using gnu qalc: =====================================================================
 # process_query() { # query
 #     local query="$1"
 #
 #     qalc +u8 -color=never -terse <<< "$query" \
 #     | awk '!/^>/ && !/^$/ {gsub(/^[ \t]+|[ \t]+$/, "", $0); print}'
 # }
+
+# Calculator using gnu bc: =======================================================================
 process_query() {
     local query="$1"
-    # -l loads the math library (for sqrt, sine, etc.)
-    # we use 'scale=2' to ensure you get decimals back
     echo "scale=2; $query" | bc -l 2>/dev/null | sed 's/^\./0./' | sed 's/\.00$//'
 }
 
-# Process CLI parameters
+# Process CLI parameters: ========================================================================
 for arg in "$@"
 do
     case "$arg" in
@@ -55,7 +56,7 @@ do
     esac
 done
 
-# Path to menu application
+# Path to menu application: ======================================================================
 if [ -z "${menu+1}" ]; then
     for dmenu_exec in wofi fuzzel dmenu; do
         if [[ -n $(command -v "$dmenu_exec") ]]; then
@@ -71,7 +72,7 @@ if [ -z "${menu+1}" ]; then
     menu_cmd=("$(command -v "$menu")")
 fi
 
-# If using wofi or fuzzel, add the necessary parameters
+# If using wofi or fuzzel, add the necessary parameters: =========================================
 if [[ $menu == "wofi" || $menu == "fuzzel" ]]; then
     menu_cmd+=(--dmenu --lines 3 --placeholder '')
 elif [[ $menu == "dmenu" ]] && [ -n "${DMENU_OPTIONS+1}" ]; then
@@ -82,10 +83,10 @@ elif [[ $menu == "dmenu" ]] && [ -n "${DMENU_OPTIONS+1}" ]; then
     unset options
 fi
 
-# User query
+# User query: ====================================================================================
 query="$1"
 
-# Determine args to pass to dmenu/wofi
+# Determine args to pass to dmenu/wofi/fuzzel: ===================================================
 while [[ $# -gt 0 && $1 != "--" ]]; do
     shift
 done

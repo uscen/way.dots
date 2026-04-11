@@ -2,14 +2,17 @@
 # =============================================================================== #
 # Nautilus:                                                                       #
 # =============================================================================== #
+# Define Variables: ==============================================================================
 directory="/run/media/${USER}/"
 removable="$(ls "$directory")"
 lines="$(ls "$directory" | wc -l)"
 
+# Check if drives is mounted: ====================================================================
 [ "$lines" = "0" ] && notify-send "No removable drives mounted." && exit 1
 
+# Display menu: ==================================================================================
 selection="$(echo "$removable" | fuzzel -p "Media Menu: " --dmenu -l "$lines")"
-
 [ -z "$selection" ] && exit 1
 
+# Open Nautilus: =================================================================================
 nautilus -w "${directory}${selection}"
