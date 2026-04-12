@@ -531,6 +531,7 @@ binds {
     MOD+SHIFT+I                         { spawn "/home/lli/.config/fuzzel/modules/wall"; }
     MOD+SHIFT+C                         { spawn "/home/lli/.config/fuzzel/modules/cliphist"; }
     MOD+SHIFT+B                         { spawn "/home/lli/.config/fuzzel/modules/calc"; }
+    MOD+SHIFT+E                         { spawn "/home/lli/.config/fuzzel/modules/emoji"; }
     MOD+SHIFT+backslash                 { spawn "/home/lli/.config/niri/scripts/scratchpad.sh"; }
 
     // Media keys: ===============================================================================
@@ -672,7 +673,6 @@ binds {
 
     // Shortcuts Panel: ==========================================================================
     MOD+SHIFT+ESCAPE                    { show-hotkey-overlay; }
-    Mod+SHIFT+E                         { quit skip-confirmation=false; }
     Mod+SHIFT+Q                         { quit skip-confirmation=true; }
     Mod+CONTROL+Q                       { power-off-monitors; }
     Mod+Escape                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
