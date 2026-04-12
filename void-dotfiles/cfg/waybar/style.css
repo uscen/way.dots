@@ -66,7 +66,7 @@ window#waybar {
 #idle_inhibitor,
 #custom-launcher {
   color: @foreground;
-  padding: 6px 8px;
+  padding: 6px 10px;
 }
 
 /* # ============================================================================= # */
