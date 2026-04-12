@@ -42,7 +42,7 @@ debug {
 // ============================================================================== #
 environment {
     // Wayland Compositor Settings: ==============================================================
-    DISPLAY ":0"
+    DISPLAY null
     DESKTOP_SESSION "niri"
     XDG_CURRENT_DESKTOP "niri"
     XDG_SESSION_DESKTOP "Niri"
@@ -60,7 +60,7 @@ environment {
     GTK_IM_MODULE "simple"
     GTK_USE_PORTAL "1"
     GDK_SCALE "1"
-    GDK_BACKEND "wayland,x11,*"
+    GDK_BACKEND "wayland,x11"
 
     // Firefox Wayland: ==========================================================================
     MOZ_ENABLE_WAYLAND "1"
@@ -77,6 +77,10 @@ environment {
 
     // ELECTRON Applications: ====================================================================
     ELECTRON_OZONE_PLATFORM_HINT "auto"
+
+    // Performance: ==============================================================================
+    VDPAU_DRIVER "va_gl"
+    LIBVA_DRIVER_NAME "iHD"
 }
 
 // ============================================================================== #
