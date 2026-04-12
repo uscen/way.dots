@@ -13,28 +13,31 @@ screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
 config-notification {
     disable-failed
 }
+clipboard {
+    disable-primary
+}
 hotkey-overlay {
     skip-at-startup
     hide-not-bound
+}
+xwayland-satellite {
+    on
+    path "xwayland-satellite"
+}
+switch-events {
+    lid-close { spawn "notify-send" "The laptop lid is closed!"; }
+    lid-open { spawn "notify-send" "The laptop lid is open!"; }
+}
+debug {
+    keep-max-bpc-unchanged
+    wait-for-frame-completion-before-queueing
+    honor-xdg-activation-with-invalid-serial
 }
 cursor {
     xcursor-theme "BreezeX-Black"
     xcursor-size 30
     hide-when-typing
     hide-after-inactive-ms 5000
-}
-switch-events {
-    lid-close { spawn "notify-send" "The laptop lid is closed!"; }
-    lid-open { spawn "notify-send" "The laptop lid is open!"; }
-}
-xwayland-satellite {
-    on
-    path "xwayland-satellite"
-}
-debug {
-    keep-max-bpc-unchanged
-    wait-for-frame-completion-before-queueing
-    honor-xdg-activation-with-invalid-serial
 }
 
 // ============================================================================== #
@@ -253,7 +256,7 @@ layout {
         urgent-color "#9b0000"
     }
     // Others: ===================================================================================
-    center-focused-column "never"
+    center-focused-column "on-overflow"
     background-color "transparent"
     default-column-display "normal"
 }
@@ -349,6 +352,9 @@ gestures {
 // Window Rules:                                                                  #
 // ============================================================================== #
 // All Window: ===================================================================================
+window-rule {
+    draw-border-with-background false
+}
 window-rule {
     open-maximized true
 }
@@ -479,6 +485,14 @@ window-rule {
   match title="^Confirm to replace files$"
   match title="^KDE Connect URL handler$"
   match title="^Picture-in-Picture$"
+  open-floating true
+}
+window-rule {
+  match app-id="firefox$" title="^Picture-in-Picture$"
+  match app-id="brave-browser$" title="^Picture-in-Picture$"
+  match app-id="Vivaldi-stable$" title="^Picture-in-Picture$"
+  match app-id="org.gnome.Nautilus$" title="^Open File$"
+  match app-id="org.gnome.Nautilus$" title="^Select Export Location$"
   open-floating true
 }
 
