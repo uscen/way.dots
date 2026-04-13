@@ -256,6 +256,7 @@ layout {
         urgent-color "#9b0000"
     }
     // Others: ===================================================================================
+    always-center-single-column
     center-focused-column "on-overflow"
     background-color "transparent"
     default-column-display "normal"
@@ -354,9 +355,6 @@ gestures {
 // All Window: ===================================================================================
 window-rule {
     draw-border-with-background false
-}
-window-rule {
-    open-maximized true
 }
 window-rule {
     geometry-corner-radius 0
