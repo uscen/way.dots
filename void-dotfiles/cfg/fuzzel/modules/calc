@@ -95,7 +95,7 @@ done
 answer=
 
 while true; do
-    action=$(echo -e "Copy\nClear\nClose" | "${menu_cmd[@]}" "$@" -p "= $answer")
+    action=$(echo -e "Copy\nClear\nClose" | "${menu_cmd[@]}" "$@" -p "Calc Menu: $answer")
 
     case "$action" in
         "Clear")
