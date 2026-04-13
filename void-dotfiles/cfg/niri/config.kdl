@@ -357,12 +357,15 @@ window-rule {
     draw-border-with-background false
 }
 window-rule {
-    geometry-corner-radius 0
-    clip-to-geometry true
+  open-maximized true
 }
 window-rule  {
     match is-urgent=true
     open-focused true
+}
+window-rule {
+    geometry-corner-radius 0
+    clip-to-geometry true
 }
 
 // Application-specific rules: ===================================================================
