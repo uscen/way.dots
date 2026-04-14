@@ -112,7 +112,7 @@ input {
             options "caps:escape,altwin:menu_win,grp:win_space_toggle"
         }
         track-layout "window"
-        repeat-delay 180
+        repeat-delay 200
         repeat-rate 60
         numlock
     }
@@ -153,7 +153,7 @@ input {
 // ============================================================================== #
 output "eDP-1" {
     // Run `niri msg outputs` to list all outputs and their modes: ===============================
-    mode "1920x1200@60.000"
+    mode "1920x1200@60.026"
     // You can use integer or fractional scale, for example use 1.5 for 150% scale: ==============
     scale 1
     // Rotate the output counter-clockwise: ======================================================
@@ -533,7 +533,6 @@ binds {
     MOD+SHIFT+C                         { spawn "/home/lli/.config/fuzzel/modules/cliphist"; }
     MOD+SHIFT+B                         { spawn "/home/lli/.config/fuzzel/modules/calc"; }
     MOD+SHIFT+E                         { spawn "/home/lli/.config/fuzzel/modules/emoji"; }
-    MOD+SHIFT+backslash                 { spawn "/home/lli/.config/niri/scripts/scratchpad.sh"; }
 
     // Media keys: ===============================================================================
     XF86AudioRaiseVolume                allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
