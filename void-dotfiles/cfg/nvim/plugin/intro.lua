@@ -1,6 +1,6 @@
---          ╔═════════════════════════════════════════════════════════╗
---          ║                            Intro                        ║
---          ╚═════════════════════════════════════════════════════════╝
+-- ============================================================================== #
+-- Intro:                                                                         #
+-- ============================================================================== #
 local group = vim.api.nvim_create_augroup('Dashboard', { clear = true })
 
 local M = {}
@@ -305,13 +305,9 @@ function M.show()
     end,
   })
 
-  vim.api.nvim_create_autocmd('BufLeave', {
-    buffer = buf,
-    group = group,
-    callback = function()
-      restore_opt()
-    end,
-  })
+  vim.api.nvim_create_autocmd('BufLeave', { buffer = buf, group = group, callback = function()
+    restore_opt()
+  end, })
 end
 
 vim.api.nvim_create_autocmd('VimEnter', {

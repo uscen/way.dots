@@ -1,9 +1,10 @@
---              ╔═════════════════════════════════════════════════════════╗
---              ║                         Markdown                        ║
---              ╚═════════════════════════════════════════════════════════╝
+-- ============================================================================== #
+-- Markdown:                                                                      #
+-- ============================================================================== #
 -- Options: ======================================================================================
 vim.opt_local.spell = true
 vim.opt_local.wrap = true
+
 -- Keymaps: ======================================================================================
 -- search markdown links
 vim.keymap.set('n', '<C-l>', "<Cmd>call search('\\[[^]]*\\]([^)]\\+)')<CR>",
@@ -32,6 +33,7 @@ vim.keymap.set('n', 'k', 'gk', { buffer = 0 })
 -- Disable "show table of contents" built-in mapping (on Neovim>=0.11) in favor
 -- of `gO` from 'mini.basics'
 pcall(vim.keymap.del, 'n', 'gO', { buffer = 0 })
+
 -- Mini: =========================================================================================
 local has_mini_ai, mini_ai = pcall(require, 'mini.ai')
 local has_mini_surround, mini_surround = pcall(require, 'mini.surround')
@@ -59,5 +61,6 @@ if has_mini_surround then
     },
   }
 end
+
 -- Diagnostic: ===================================================================================
 vim.diagnostic.enable(false, { bufnr = 0 })

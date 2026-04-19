@@ -1,6 +1,6 @@
---          ╔═════════════════════════════════════════════════════════╗
---          ║                       Easymotion                        ║
---          ╚═════════════════════════════════════════════════════════╝
+-- ============================================================================== #
+-- EasyMotion:                                                                    #
+-- ============================================================================== #
 local M = {}
 local EASYMOTION_NS = vim.api.nvim_create_namespace('EASYMOTION_NS')
 local EM_CHARS = vim.split('fjdkslgha;rueiwotyqpvbcnxmzFJDKSLGHARUEIWOTYQPVBCNXMZ', '')

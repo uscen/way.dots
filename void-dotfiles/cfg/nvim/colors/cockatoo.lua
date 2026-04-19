@@ -1,6 +1,6 @@
---          ╔═════════════════════════════════════════════════════════╗
---          ║                        Cockatoo                         ║
---          ╚═════════════════════════════════════════════════════════╝
+-- ============================================================================== #
+-- Cockatoo:                                                                      #
+-- ============================================================================== #
 -- Clear hlgroups and set colors_name {{{
 vim.cmd.hi('clear')
 vim.g.colors_name = 'cockatoo'
@@ -431,7 +431,7 @@ local hlgroups = {
   DiagnosticSignWarn                       = { link = 'DiagnosticWarn' },
   DiagnosticSignInfo                       = { link = 'DiagnosticInfo' },
   DiagnosticSignHint                       = { link = 'DiagnosticHint' },
-  DiagnosticUnnecessary                    = { fg = c_steel, sp = c_pigeon, undercurl = true, },
+  DiagnosticUnnecessary                    = { fg = c_steel, sp = c_pigeon, undercurl = true },
   -- }}}2
 
   -- Filetype {{{2

@@ -1,6 +1,6 @@
---              ╔═════════════════════════════════════════════════════════╗
---              ║                          Bigfile                        ║
---              ╚═════════════════════════════════════════════════════════╝
+-- ============================================================================== #
+-- Bigfile:                                                                       #
+-- ============================================================================== #
 -- Options: ======================================================================================
 vim.opt_local.undofile = false
 vim.opt_local.shiftround = false
@@ -15,9 +15,11 @@ vim.opt_local.breakindentopt = ''
 vim.opt_local.virtualedit = ''
 vim.opt_local.indentexpr = ''
 vim.opt_local.softtabstop = 0
+
 -- Disable Plugins: ==============================================================================
 vim.b.minihipatterns_disable = true
 vim.b.minidiff_disable = true
+
 -- Disable builtin: ==============================================================================
 if vim.fn.exists ':NoMatchParen' ~= 0 then vim.cmd 'NoMatchParen' end
 vim.bo.syntax = 'off'

@@ -1,6 +1,6 @@
---              ╔═════════════════════════════════════════════════════════╗
---              ║                    Javascript React                     ║
---              ╚═════════════════════════════════════════════════════════╝
+-- ============================================================================== #
+-- React:                                                                         #
+-- ============================================================================== #
 -- Autocmds: =====================================================================================
 vim.api.nvim_create_augroup('js_template_string', { clear = true })
 vim.api.nvim_create_autocmd('InsertCharPre', {
@@ -25,6 +25,7 @@ vim.api.nvim_create_autocmd('InsertCharPre', {
     vim.api.nvim_input('<Esc>cs\"`' .. '<Esc>f{a')
   end,
 })
+
 -- Others: =======================================================================================
 local user_input = require('mini.surround').user_input
 local surround_ts = require('mini.surround').gen_spec.input.treesitter

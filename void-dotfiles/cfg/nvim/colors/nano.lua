@@ -1,6 +1,6 @@
---          ╔═════════════════════════════════════════════════════════╗
---          ║                        Nano                             ║
---          ╚═════════════════════════════════════════════════════════╝
+-- ============================================================================== #
+-- Nano:                                                                          #
+-- ============================================================================== #
 -- Clear hlgroups and set colors_name {{{
 vim.cmd.hi('clear')
 vim.g.colors_name = 'nano'
@@ -368,11 +368,7 @@ local hlgroups = {
   DiagnosticSignWarn                       = { link = 'DiagnosticWarn' },
   DiagnosticSignInfo                       = { link = 'DiagnosticInfo' },
   DiagnosticSignHint                       = { link = 'DiagnosticHint' },
-  DiagnosticUnnecessary                    = {
-    fg = c_faint,
-    sp = c_foreground,
-    undercurl = true,
-  },
+  DiagnosticUnnecessary                    = { fg = c_faint, sp = c_foreground, undercurl = true },
   -- }}}2
 
   -- Filetype {{{2
