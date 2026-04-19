@@ -603,7 +603,7 @@ Config.now(function()
       ['typeParameter'] = { glyph = '󰬛' },
     },
   })
-  Config.later(MiniIcons.tweak_lsp_kind)
+  MiniIcons.tweak_lsp_kind('replace')
 end)
 
 -- ============================================================================== #
