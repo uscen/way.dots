@@ -23,7 +23,7 @@ local config = {
     { key = 'o', desc = 'Recent Files', action = '<cmd>Pick oldfiles<CR>' },
     { key = 'd', desc = 'Dotfiles', action = '<cmd>Pick files cwd=$HOME/.config<CR>' },
     { key = 'e', desc = 'New File', action = '<cmd>enew<CR>' },
-    { key = 'u', desc = 'Update Plugins', action = '<cmd>DepsUpdate<CR>' },
+    { key = 'u', desc = 'Update Plugins', action = '<cmd>lua vim.pack.update()<CR>' },
     { key = 'q', desc = 'Quit', action = '<cmd>qa<CR>' },
   },
 
@@ -307,7 +307,7 @@ function M.show()
 
   vim.api.nvim_create_autocmd('BufLeave', { buffer = buf, group = group, callback = function()
     restore_opt()
-  end, })
+  end })
 end
 
 vim.api.nvim_create_autocmd('VimEnter', {
