@@ -1,7 +1,6 @@
 -- ============================================================================== #
 -- Deps:                                                                          #
 -- ============================================================================== #
---              ┌─────────────────────────────────────────────────────────┐
 -- git             - https://git-scm.com/
 -- fd              - https://github.com/sharkdp/fd
 -- ripgrep         - https://github.com/BurntSushi/ripgrep
@@ -9,7 +8,7 @@
 -- treesitter-cli  - https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md
 -- Nerd Font icons - https://www.nerdfonts.com/
 -- c compiler      - os(linux): gcc or tcc or zig / os(windows): mingw
---              └─────────────────────────────────────────────────────────┘
+
 -- ============================================================================== #
 -- Global:                                                                        #
 -- ============================================================================== #
