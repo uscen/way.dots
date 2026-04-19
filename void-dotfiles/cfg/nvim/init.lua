@@ -662,10 +662,6 @@ Config.now_if_args(function()
   vim.list_extend(filetypes, { 'markdown', 'quarto' })
   local ts_start = function(ev) vim.treesitter.start(ev.buf) end
   vim.api.nvim_create_autocmd('FileType', { pattern = filetypes, callback = ts_start })
-  -- Disable injections in 'lua' language: =======================================================
-  local ts_query = require('vim.treesitter.query')
-  local ts_query_set = vim.fn.has('nvim-0.9') == 1 and ts_query.set or ts_query.set_query
-  ts_query_set('lua', 'injections', '')
 end)
 
 -- ============================================================================== #
