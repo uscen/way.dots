@@ -13,8 +13,7 @@
 -- Global:                                                                        #
 -- ============================================================================== #
 _G.Config = {}
-local add = vim.pack.add
-add({
+vim.pack.add({
   'https://github.com/nvim-mini/mini.nvim',
   'https://github.com/stevearc/conform.nvim',
   'https://github.com/nvim-treesitter/nvim-treesitter',
