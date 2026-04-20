@@ -776,7 +776,7 @@ Config.now(function()
   vim.o.ruler                    = false
   vim.o.numberwidth              = 4
   vim.o.linespace                = 3
-  vim.o.laststatus               = 0
+  vim.o.laststatus               = 3
   vim.o.cmdheight                = 0
   vim.o.helpheight               = 0
   vim.o.previewheight            = 12
@@ -813,7 +813,7 @@ Config.now(function()
   vim.o.backspace                = 'indent,eol,start'
   vim.o.cursorlineopt            = 'screenline,number'
   vim.o.tabclose                 = 'uselast'
-  vim.o.shortmess                = 'CFOSWasco'
+  vim.o.shortmess                = 'CFOSWascoq'
   vim.wo.signcolumn              = 'yes'
   vim.o.statuscolumn             = ''
   vim.o.showbreak                = '󰘍' .. string.rep(' ', 1)
@@ -994,6 +994,12 @@ Config.now(function()
       vim.fn.wildtrigger()
     end,
   })
+  -- Keep parsers up to date when plugin updates: ================================================
+  vim.api.nvim_create_autocmd('PackChanged', {
+    callback = function()
+      require('nvim-treesitter').update()
+    end,
+  })
   -- Auto Save: ==================================================================================
   vim.api.nvim_create_autocmd({ 'FocusLost', 'VimLeavePre' }, {
     group = vim.api.nvim_create_augroup('save_buffers', {}),
@@ -1150,7 +1156,8 @@ Config.now(function()
     pattern = '*',
     group = show_recordering,
     callback = function()
-      vim.opt_local.cmdheight = 1
+      -- Note: Change this to 1 when disable statusline: =========================================
+      vim.opt_local.cmdheight = 0
     end,
   })
   vim.api.nvim_create_autocmd('RecordingLeave', {
