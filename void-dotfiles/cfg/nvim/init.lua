@@ -178,7 +178,7 @@ Config.later(function()
         (vim.fn.complete_info().selected == -1 and vim.keycode('<c-n><c-y>') or vim.keycode('<c-y>')) or '<Tab>'
   end
   vim.keymap.set('i', '<Tab>', expand_or_complete, { expr = true, replace_keycodes = true })
-  -- exit snippet sessions on entering normal mode: ==============================================
+  -- Exit snippet sessions on entering normal mode: ==============================================
   vim.api.nvim_create_autocmd('User', {
     pattern = 'MiniSnippetsSessionStart',
     callback = function()
@@ -193,7 +193,7 @@ Config.later(function()
       })
     end,
   })
-  -- exit snippets upon reaching final tabstop: ==================================================
+  -- Exit snippets upon reaching final tabstop: ==================================================
   vim.api.nvim_create_autocmd('User', {
     pattern = 'MiniSnippetsSessionJump',
     callback = function(args)
@@ -807,7 +807,7 @@ Config.now(function()
   vim.o.titlestring              = '%{getcwd()} : %{expand(\"%:r\")} [%M] ― Neovim'
   vim.o.splitkeep                = 'screen'
   vim.o.mouse                    = 'a'
-  vim.o.mousemodel               = 'extend'
+  vim.o.mousemodel               = 'popup_setpos'
   vim.o.mousescroll              = 'ver:3,hor:6'
   vim.o.winborder                = 'single'
   vim.o.backspace                = 'indent,eol,start'
@@ -992,23 +992,6 @@ Config.now(function()
     pattern = { ':', '/', '?' },
     callback = function()
       vim.fn.wildtrigger()
-    end,
-  })
-  -- Enable UI 2: ================================================================================
-  vim.api.nvim_create_autocmd('UIEnter', {
-    group = vim.api.nvim_create_augroup('start-ui2', {}),
-    once = true,
-    callback = function()
-      require('vim._core.ui2').enable({
-          enable = true,
-          msg = {
-              target = "cmd",
-              pager = { height = 0.5 },
-              dialog = { height = 0.5 },
-              cmd    = { height = 0.5 },
-              msg   = { height = 0.5, timeout = 4500 },
-          },
-      })
     end,
   })
   -- Auto Save: ==================================================================================
@@ -2251,6 +2234,8 @@ Config.now(function()
       ['%.env%.[%w_.-]+'] = 'sh',
       ['.*%.variables.*'] = 'sh',
       ['.*/%.vscode/.*%.json'] = 'jsonc',
+			['.*%.code%-workspace'] = 'jsonc',
+			['.*%.json%.lock'] = 'json',
       ['.*/*.conf*'] = 'conf',
       ['*.MD'] = 'markdown',
       ['Dockerfile*'] = 'dockerfile',
