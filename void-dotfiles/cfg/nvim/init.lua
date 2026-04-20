@@ -603,7 +603,8 @@ Config.now(function()
       ['typeParameter'] = { glyph = '󰬛' },
     },
   })
-  MiniIcons.tweak_lsp_kind('replace')
+  Config.later(MiniIcons.mock_nvim_web_devicons)
+  Config.later(MiniIcons.tweak_lsp_kind)
 end)
 
 -- ============================================================================== #
@@ -727,7 +728,7 @@ Config.now(function()
   vim.o.undoreload               = 65538
   vim.o.completetimeout          = 100
   vim.o.completeopt              = 'menuone,noselect,fuzzy,nosort,nearest'
-  vim.o.completeitemalign        = 'kind,abbr,menu'
+  vim.o.completeitemalign        = 'abbr,kind,menu'
   vim.o.complete                 = '.,w,b,kspell'
   vim.o.clipboard                = 'unnamedplus'
   vim.o.wildmode                 = 'noselect:lastused,full'
@@ -787,8 +788,8 @@ Config.now(function()
   vim.o.sidescroll               = 0
   vim.o.showtabline              = 0
   vim.o.pumblend                 = 0
-  vim.o.pummaxwidth              = 40
-  vim.o.pumwidth                 = 30
+  vim.o.pummaxwidth              = 50
+  vim.o.pumwidth                 = 40
   vim.o.pumheight                = 10
   vim.o.cmdwinheight             = 10
   vim.o.titlelen                 = 127
@@ -998,7 +999,16 @@ Config.now(function()
     group = vim.api.nvim_create_augroup('start-ui2', {}),
     once = true,
     callback = function()
-      require('vim._core.ui2').enable({ enable = true })
+      require('vim._core.ui2').enable({
+          enable = true,
+          msg = {
+              target = "cmd",
+              pager = { height = 0.5 },
+              dialog = { height = 0.5 },
+              cmd    = { height = 0.5 },
+              msg   = { height = 0.5, timeout = 4500 },
+          },
+      })
     end,
   })
   -- Auto Save: ==================================================================================
@@ -1718,6 +1728,19 @@ Config.later(function()
     terminal_win = vim.api.nvim_get_current_win()
     vim.api.nvim_set_option_value('winfixheight', true, { win = terminal_win })
   end, {})
+  -- remove plugins from disk that are no longer in vim.pack.add() specs: ========================
+  vim.api.nvim_create_user_command("PackClean", function()
+    local inactive = vim.iter(vim.pack.get())
+      :filter(function(x) return not x.active end)
+      :map(function(x) return x.spec.name end)
+      :totable()
+    if #inactive == 0 then
+      vim.notify("No inactive plugins to remove", vim.log.levels.INFO)
+      return
+    end
+    vim.pack.del(inactive)
+    vim.notify("Removed: " .. table.concat(inactive, ", "), vim.log.levels.INFO)
+  end, {})
   -- Edit file full path: =========================================================================
   vim.api.nvim_create_user_command('EditConfig', function()
     local config_dir = vim.fn.stdpath('config')
@@ -1917,6 +1940,9 @@ Config.later(function()
   vim.keymap.set('n', 'ycO', 'O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>')
   vim.keymap.set('n', 'ycc', 'yygccp', { remap = true })
   vim.keymap.set('n', 'gV', '"`[" . strpart(getregtype(), 0, 1) . "`]"', { expr = true })
+  vim.keymap.set("n", "u", ":silent undo<cr>", { silent = true })
+  vim.keymap.set("n", "U", ":silent redo<cr>", { silent = true })
+  vim.keymap.set("n", "<C-r>", ":silent redo<cr>", { silent = true })
   vim.keymap.set('n', '<C-c>', 'cit', { remap = true })
   vim.keymap.set('i', '<C-c>', '<Esc>cit', { remap = true })
   vim.keymap.set('n', '<C-q>', 'ciq', { remap = true })
