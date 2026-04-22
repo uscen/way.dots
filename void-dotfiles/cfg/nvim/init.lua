@@ -2009,6 +2009,7 @@ later(function()
   vim.keymap.set('n', '<leader>bi', '<cmd>DeleteInactiveBuffers<cr>')
   vim.keymap.set('n', '<leader>bf', '<cmd>Format<cr>')
   -- Quickfix: ===================================================================================
+  vim.keymap.set('n', '<leader>cc', '<cmd>ExploreQuickfix<CR>')
   vim.keymap.set('n', '<leader>ct', '<cmd>ExploreQuickfix<CR>')
   vim.keymap.set('n', '<leader>co', '<cmd>copen<CR>')
   vim.keymap.set('n', '<leader>cq', '<cmd>cclose<CR>')
