@@ -23,25 +23,26 @@ local misc = require('mini.misc')
 Config.now = function(f) misc.safely('now', f) end
 Config.later = function(f) misc.safely('later', f) end
 Config.now_if_args = vim.fn.argc(-1) > 0 and Config.now or Config.later
+local now, now_if_args, later = Config.now, Config.now_if_args, Config.later
 
 -- ============================================================================== #
 -- Git:                                                                           #
 -- ============================================================================== #
-Config.later(function()
+later(function()
   require('mini.git').setup({ command = { split = 'tab' } })
 end)
 
 -- ============================================================================== #
 -- Diff:                                                                          #
 -- ============================================================================== #
-Config.later(function()
+later(function()
   require('mini.diff').setup({ view = { style = 'sign', signs = { add = '▎', change = '▎', delete = '▎' } } })
 end)
 
 -- ============================================================================== #
 -- Surround:                                                                      #
 -- ============================================================================== #
-Config.later(function()
+later(function()
   local MiniSurround = require('mini.surround')
   MiniSurround.setup({
     n_lines = 500,
@@ -68,7 +69,7 @@ end)
 -- ============================================================================== #
 -- Pairs:                                                                         #
 -- ============================================================================== #
-Config.later(function()
+later(function()
   local MiniPairs = require('mini.pairs')
   MiniPairs.setup({
     skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
@@ -104,7 +105,7 @@ end)
 -- ============================================================================== #
 -- Completion:                                                                    #
 -- ============================================================================== #
-Config.later(function()
+later(function()
   -- enable Mini.Completion: =====================================================================
   local MiniCompletion = require('mini.completion')
   local process_items_opts = { kind_priority = { Text = -1, Snippet = 99 } }
@@ -128,7 +129,7 @@ end)
 -- ============================================================================== #
 -- Snippets:                                                                      #
 -- ============================================================================== #
-Config.later(function()
+later(function()
   local MiniSnippets    = require('mini.snippets')
   -- Languge Patterns: ===========================================================================
   local config_path     = vim.fn.stdpath('config')
@@ -205,7 +206,7 @@ end)
 -- ============================================================================== #
 -- Ai:                                                                            #
 -- ============================================================================== #
-Config.later(function()
+later(function()
   local MiniAi = require('mini.ai')
   local MiniExtra = require('mini.extra')
   local gen_ai_spec = MiniExtra.gen_ai_spec
@@ -285,7 +286,7 @@ end)
 -- ============================================================================== #
 -- Picker:                                                                        #
 -- ============================================================================== #
-Config.later(function()
+later(function()
   local MiniPick = require('mini.pick')
   local MiniExtra = require('mini.extra')
   local MiniBufremove = require('mini.bufremove')
@@ -402,7 +403,7 @@ end)
 -- ============================================================================== #
 -- Files:                                                                         #
 -- ============================================================================== #
-Config.now_if_args(function()
+now_if_args(function()
   local MiniFiles = require('mini.files')
   MiniFiles.setup({
     mappings = {
@@ -503,7 +504,7 @@ end)
 -- ============================================================================== #
 -- Icons:                                                                         #
 -- ============================================================================== #
-Config.now(function()
+now(function()
   local MiniIcons = require('mini.icons')
   MiniIcons.setup({
     use_file_extension = function(ext, _)
@@ -603,14 +604,14 @@ Config.now(function()
       ['typeParameter'] = { glyph = '󰬛' },
     },
   })
-  Config.later(MiniIcons.mock_nvim_web_devicons)
-  Config.later(MiniIcons.tweak_lsp_kind)
+  later(MiniIcons.mock_nvim_web_devicons)
+  later(MiniIcons.tweak_lsp_kind)
 end)
 
 -- ============================================================================== #
 -- Treesitter:                                                                    #
 -- ============================================================================== #
-Config.now_if_args(function()
+now_if_args(function()
   -- Ensure installed: ===========================================================================
   --stylua: ignore
   local ensure_installed = {
@@ -654,7 +655,7 @@ end)
 -- ============================================================================== #
 -- Conform:                                                                       #
 -- ============================================================================== #
-Config.later(function()
+later(function()
   local conform = require('conform')
   conform.setup({
     default_format_opts = {
@@ -693,12 +694,12 @@ end)
 -- ============================================================================== #
 -- Colorscheme:                                                                   #
 -- ============================================================================== #
-Config.now(function() vim.cmd.colorscheme('macro') end)
+now(function() vim.cmd.colorscheme('macro') end)
 
 -- ============================================================================== #
 -- Options:                                                                       #
 -- ============================================================================== #
-Config.now(function()
+now(function()
   -- Enable all filetype plugins and syntax (if not enabled, for better startup): ================
   vim.cmd('filetype plugin indent on')
   if vim.fn.exists('syntax_on') ~= 1 then vim.cmd('syntax enable') end
@@ -776,7 +777,7 @@ Config.now(function()
   vim.o.ruler                    = false
   vim.o.numberwidth              = 4
   vim.o.linespace                = 3
-  vim.o.laststatus               = 3
+  vim.o.laststatus               = 0
   vim.o.cmdheight                = 0
   vim.o.helpheight               = 0
   vim.o.previewheight            = 12
@@ -981,12 +982,12 @@ local diagnostic_opts = {
   },
 }
 -- Use `later()` to avoid sourcing `vim.diagnostic` on startup: ==================================
-Config.later(function() vim.diagnostic.config(diagnostic_opts) end)
+later(function() vim.diagnostic.config(diagnostic_opts) end)
 
 -- ============================================================================== #
 -- Automads:                                                                      #
 -- ============================================================================== #
-Config.now(function()
+now(function()
   -- Enable Cmd Autocomplete: ====================================================================
   vim.api.nvim_create_autocmd('CmdlineChanged', {
     pattern = { ':', '/', '?' },
@@ -1434,7 +1435,7 @@ end)
 -- ============================================================================== #
 -- Commands:                                                                      #
 -- ============================================================================== #
-Config.later(function()
+later(function()
   -- Windows: "E138: main.shada.tmp.X files exist, cannot write ShaDa" on close: =================
   vim.api.nvim_create_user_command('RemoveShadaTemp', function()
     for _, f in ipairs(vim.fn.globpath(vim.fn.stdpath('data') .. '/shada', '*tmp*', false, true)) do
@@ -1835,7 +1836,7 @@ end)
 -- ============================================================================== #
 -- Misspelled:                                                                    #
 -- ============================================================================== #
-Config.later(function()
+later(function()
   local misspelled_commands = { 'W', 'Wq', 'WQ', 'Q', 'Qa', 'QA', 'Qall', 'QAll', 'Wqa', 'WQa', 'WQA', 'Set', 'SEt', 'SET', 'Bd' }
   for _, command in pairs(misspelled_commands) do
     vim.api.nvim_create_user_command(command, function()
@@ -1847,7 +1848,7 @@ end)
 -- ============================================================================== #
 -- Keymaps:                                                                       #
 -- ============================================================================== #
-Config.later(function()
+later(function()
   -- Disable: ====================================================================================
   vim.keymap.set('n', 'Q', '<nop>')
   vim.keymap.set('n', '<Space>', '<Nop>')
@@ -2139,7 +2140,7 @@ end)
 -- ============================================================================== #
 -- Neovide:                                                                       #
 -- ============================================================================== #
-Config.later(function()
+later(function()
   if vim.g.neovide then
     -- General: ==================================================================================
     vim.o.guifont = 'JetBrainsMono Nerd Font:h12'
@@ -2186,7 +2187,7 @@ end)
 -- ============================================================================== #
 -- Filetype:                                                                      #
 -- ============================================================================== #
-Config.now(function()
+now(function()
   vim.filetype.add({
     extension = {
       ['smd'] = 'markdown',

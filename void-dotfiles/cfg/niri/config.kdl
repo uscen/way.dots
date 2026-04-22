@@ -517,6 +517,7 @@ binds {
     MOD+RETURN                          { spawn "alacritty"; }
     MOD+SHIFT+RETURN                    { spawn "foot"; }
     MOD+SHIFT+N                         { spawn "nautilus"; }
+    MOD+E                               { spawn "thunderbird"; }
     MOD+W                               { spawn "firefox"; }
     MOD+V                               { spawn "neovide"; }
     MOD+N                               { spawn "foot" "yazi"; }
@@ -669,7 +670,7 @@ binds {
     MOD+PRINT                           { screenshot-screen write-to-disk=true; }
     MOD+CONTROL+PRINT                   { screenshot-window write-to-disk=true; }
     MOD+P                               { spawn-sh "niri msg pick-color| grep 'Hex:'| cut -d' ' -f2| wl-copy"; }
-    Mod+E                               { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json focused-window | jq .id)"; }
+    Mod+X                               { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json focused-window | jq .id)"; }
 
     // Shortcuts Panel: ==========================================================================
     MOD+SHIFT+ESCAPE                    { show-hotkey-overlay; }
