@@ -356,9 +356,6 @@ gestures {
 window-rule {
     draw-border-with-background false
 }
-window-rule {
-  open-maximized true
-}
 window-rule  {
     match is-urgent=true
     open-focused true

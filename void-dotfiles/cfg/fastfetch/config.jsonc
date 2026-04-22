@@ -4,94 +4,84 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-    "color": {
-      "1": "red",
-      "2": "red",
+    "type": "none",
+    "padding": {
+      "top": 1,
     },
   },
   "display": {
     "separator": " ",
-    "color": "red",
   },
   "modules": [
     {
+      "key": "╭───────────╮",
       "type": "custom",
-      "key": "{#7} HARDWARE INFORMATION {#}{#31}\uE0B0",
-      "keyColor": "red",
     },
     {
-      "type": "board",
-      "key": "├─ MTB ",
-      "keyColor": "red",
+      "key": "│ {#31} user    {#keys}│",
+      "type": "title",
+      "format": "{user-name}",
     },
     {
-      "type": "cpu",
-      "key": "├─ CPU ",
-      "keyColor": "red",
+      "key": "│ {#32}󰇅 hname   {#keys}│",
+      "type": "title",
+      "format": "{host-name}",
     },
     {
-      "type": "gpu",
-      "format": "{2}",
-      "key": "├─ GPU ",
-      "keyColor": "red",
-    },
-    {
-      "type": "memory",
-      "key": "├─ RAM ",
-      "keyColor": "red",
-    },
-    {
-      "type": "display",
-      "key": "└─ RES ",
-      "keyColor": "red",
-      "compactType": "original",
-    },
-    "break",
-    {
-      "type": "custom",
-      "key": "{#7} SOFTWARE INFORMATION {#}{#36}\uE0B0",
-      "keyColor": "cyan",
-    },
-    {
-      "type": "os",
-      "key": "├─ OS  ",
-      "keyColor": "cyan",
-    },
-    {
-      "type": "kernel",
-      "key": "├─ KER ",
-      "keyColor": "cyan",
-    },
-    {
-      "type": "wm",
-      "key": "├─ WM  ",
-      "keyColor": "cyan",
-    },
-    {
-      "type": "shell",
-      "key": "├─ SH  ",
-      "keyColor": "cyan",
-    },
-    {
-      "type": "terminal",
-      "key": "├─ TER ",
-      "keyColor": "cyan",
-    },
-    {
-      "type": "packages",
-      "key": "├─ PKG ",
-      "keyColor": "cyan",
-    },
-    {
+      "key": "│ {#33}󰅐 uptime  {#keys}│",
       "type": "uptime",
-      "key": "└─ UPT ",
-      "keyColor": "cyan",
     },
-    "break",
     {
+      "key": "│ {#34}{icon} distro  {#keys}│",
+      "type": "os",
+    },
+    {
+      "key": "│ {#35} kernel  {#keys}│",
+      "type": "kernel",
+    },
+    {
+      "key": "│ {#36}󰇄 desktop {#keys}│",
+      "type": "de",
+    },
+    {
+      "key": "│ {#31} term    {#keys}│",
+      "type": "terminal",
+    },
+    {
+      "key": "│ {#32} shell   {#keys}│",
+      "type": "shell",
+    },
+    {
+      "key": "│ {#33}󰍛 cpu     {#keys}│",
+      "type": "cpu",
+      "showPeCoreCount": true,
+    },
+    {
+      "key": "│ {#34}󰉉 disk    {#keys}│",
+      "type": "disk",
+      "folders": "/",
+    },
+    {
+      "key": "│ {#34}󰉉 disk    {#keys}│",
+      "type": "disk",
+      "folders": "/home",
+    },
+    {
+      "key": "│ {#35} memory  {#keys}│",
+      "type": "memory",
+    },
+    {
+      "key": "├───────────┤",
+      "type": "custom",
+    },
+    {
+      "key": "│ {#39} colors  {#keys}│",
       "type": "colors",
-      "symbol": "squares",
-      "paddingLeft": 8,
+      "symbol": "circle",
+    },
+    {
+      "key": "╰───────────╯",
+      "type": "custom",
     },
   ],
 }
