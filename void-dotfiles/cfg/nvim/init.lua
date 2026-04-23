@@ -136,18 +136,18 @@ later(function()
   local latex_patterns  = { 'latex/**/*.json', '**/latex.json' }
   local markdown        = { 'markdown.json' }
   local webHtmlPatterns = { 'html.json', 'ejs.json' }
-  local webJsTsPatterns = { 'web/javascript.json' }
-  local webPatterns     = { 'web/*.json' }
+  local webJsPatterns   = { 'web/javascript.json' }
+  local webTsPatterns   = { 'web/typescript.json' }
+  local webAllPatterns  = { 'web/*.json' }
   local lang_patterns   = {
     tex = latex_patterns,
     markdown_inline = markdown,
     html = webHtmlPatterns,
     ejs = webHtmlPatterns,
-    tsx = webPatterns,
+    javascript = webAllPatterns,
+    typescript = webAllPatterns,
     javascriptreact = webPatterns,
     typescriptreact = webPatterns,
-    javascript = webJsTsPatterns,
-    typescript = webJsTsPatterns,
   }
   -- Expand Patterns: ============================================================================
   local match_strict    = function(snips)

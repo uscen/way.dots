@@ -275,7 +275,7 @@ local hlgroups = {
   Boolean                                  = { fg = c_macroOrange0, bold = true },
   LineNr                                   = { fg = c_macroBg4, bold = true },
   Character                                = { link = 'String' },
-  Comment                                  = { fg = c_macroAsh, bold = true, italic = true },
+  Comment                                  = { fg = c_macroAsh, italic = true },
   Constant                                 = { fg = c_macroOrange0 },
   Delimiter                                = { fg = c_macroGray1 },
   Error                                    = { fg = c_lotusRed1 },

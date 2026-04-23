@@ -53,16 +53,6 @@
       "default": "<span size='14pt'></span>"
     }
   },
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "󰒳",
-      "deactivated": "󰒲"
-    },
-    "tooltip-format-activated": "Idle inhibit: {status}",
-    "tooltip-format-deactivated": "Idle inhibit: {status}",
-    "start-activated": true
-  },
   "clock": {
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "format-alt": "{:%d\n%m\n%y}",

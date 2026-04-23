@@ -3,7 +3,6 @@
 // ============================================================================== #
 spawn-sh-at-startup "~/.config/niri/scripts/autostart.sh"
 spawn-sh-at-startup "~/.config/niri/scripts/theme.sh"
-spawn-sh-at-startup "~/.config/niri/scripts/idle.sh"
 
 // ============================================================================== #
 // General:                                                                       #
@@ -577,14 +576,14 @@ binds {
     MOD+END                             { focus-column-last; }
 
     // Monitor Management - Move between monitors: ===============================================
+    MOD+CONTROL+J                       { focus-monitor-down; }
+    MOD+CONTROL+K                       { focus-monitor-up; }
+    MOD+CONTROL+H                       { focus-monitor-left; }
+    MOD+CONTROL+L                       { focus-monitor-right; }
     MOD+CONTROL+LEFT                    { focus-monitor-left; }
     MOD+CONTROL+RIGHT                   { focus-monitor-right; }
     MOD+CONTROL+UP                      { focus-monitor-up; }
     MOD+CONTROL+DOWN                    { focus-monitor-down; }
-    MOD+CONTROL+H                       { focus-monitor-left; }
-    MOD+CONTROL+L                       { focus-monitor-right; }
-    MOD+CONTROL+K                       { focus-monitor-up; }
-    MOD+CONTROL+J                       { focus-monitor-down; }
 
     // Move windows to different monitors: =======================================================
     MOD+SHIFT+CONTROL+LEFT              { move-column-to-monitor-left; }

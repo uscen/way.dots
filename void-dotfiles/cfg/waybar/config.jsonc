@@ -12,7 +12,7 @@
   "margin-right": 0,
   "spacing": 0,
   "include": ["~/.config/waybar/modules.json"],
-  "modules-left": ["custom/void", "clock", "idle_inhibitor"],
+  "modules-left": ["custom/void", "clock"],
   "modules-center": ["mpris", "niri/workspaces"],
   "modules-right": [
     "group/extras",

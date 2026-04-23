@@ -2,8 +2,7 @@
 # =============================================================================== #
 # Wallpaper:                                                                      #
 # =============================================================================== #
-pgrep -x "awww-daemon" > /dev/null || awww-daemon &
-awww img "$HOME/.local/share/wall.dots/wallpapers/WALL.png" &
+wbg "$HOME/.local/share/wall.dots/wallpapers/GUTS.png" &
 
 # =============================================================================== #
 # Cliphist:                                                                       #

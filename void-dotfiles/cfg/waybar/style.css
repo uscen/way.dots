@@ -46,7 +46,6 @@ window#waybar {
 #pulseaudio:hover,
 #backlight:hover,
 #battery:hover,
-#idle_inhibitor:hover,
 #pulseaudio.microphone:hover,
 #pulseaudio.sink-muted:hover,
 #custom-launcher:hover {
@@ -63,7 +62,6 @@ window#waybar {
 #pulseaudio.microphone,
 #backlight,
 #battery,
-#idle_inhibitor,
 #custom-launcher {
   color: @foreground;
   padding: 6px 10px;
@@ -78,16 +76,6 @@ window#waybar {
 }
 #workspaces button.active {
   color: @color4;
-}
-
-/* # ============================================================================= # */
-/* # idle:                                                                         # */
-/* # ============================================================================= # */
-#idle_inhibitor {
-  margin-left: -5px;
-}
-#idle_inhibitor.activated {
-  color: @color0;
 }
 
 /* # ============================================================================= # */
