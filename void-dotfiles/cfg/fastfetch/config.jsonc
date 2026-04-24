@@ -71,6 +71,10 @@
       "type": "memory",
     },
     {
+      "key": "│ {#32}󰏗 pkg     {#keys}│",
+      "type": "packages",
+    },
+    {
       "key": "├───────────┤",
       "type": "custom",
     },
