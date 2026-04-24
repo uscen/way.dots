@@ -996,11 +996,9 @@ now(function()
     end,
   })
   -- Keep parsers up to date when plugin updates: ================================================
-  vim.api.nvim_create_autocmd('PackChanged', {
-    callback = function()
-      require('nvim-treesitter').update()
-    end,
-  })
+  vim.api.nvim_create_autocmd('PackChanged', { callback = function()
+    require('nvim-treesitter').update()
+  end })
   -- Auto Save: ==================================================================================
   vim.api.nvim_create_autocmd({ 'FocusLost', 'VimLeavePre' }, {
     group = vim.api.nvim_create_augroup('save_buffers', {}),
@@ -1720,17 +1718,17 @@ later(function()
     vim.api.nvim_set_option_value('winfixheight', true, { win = terminal_win })
   end, {})
   -- remove plugins from disk that are no longer in vim.pack.add() specs: ========================
-  vim.api.nvim_create_user_command("PackClean", function()
+  vim.api.nvim_create_user_command('PackClean', function()
     local inactive = vim.iter(vim.pack.get())
-      :filter(function(x) return not x.active end)
-      :map(function(x) return x.spec.name end)
-      :totable()
+        :filter(function(x) return not x.active end)
+        :map(function(x) return x.spec.name end)
+        :totable()
     if #inactive == 0 then
-      vim.notify("No inactive plugins to remove", vim.log.levels.INFO)
+      vim.notify('No inactive plugins to remove', vim.log.levels.INFO)
       return
     end
     vim.pack.del(inactive)
-    vim.notify("Removed: " .. table.concat(inactive, ", "), vim.log.levels.INFO)
+    vim.notify('Removed: ' .. table.concat(inactive, ', '), vim.log.levels.INFO)
   end, {})
   -- Edit file full path: =========================================================================
   vim.api.nvim_create_user_command('EditConfig', function()
@@ -1931,9 +1929,9 @@ later(function()
   vim.keymap.set('n', 'ycO', 'O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>')
   vim.keymap.set('n', 'ycc', 'yygccp', { remap = true })
   vim.keymap.set('n', 'gV', '"`[" . strpart(getregtype(), 0, 1) . "`]"', { expr = true })
-  vim.keymap.set("n", "u", ":silent undo<cr>", { silent = true })
-  vim.keymap.set("n", "U", ":silent redo<cr>", { silent = true })
-  vim.keymap.set("n", "<C-r>", ":silent redo<cr>", { silent = true })
+  vim.keymap.set('n', 'u', ':silent undo<cr>', { silent = true })
+  vim.keymap.set('n', 'U', ':silent redo<cr>', { silent = true })
+  vim.keymap.set('n', '<C-r>', ':silent redo<cr>', { silent = true })
   vim.keymap.set('n', '<C-c>', 'cit', { remap = true })
   vim.keymap.set('i', '<C-c>', '<Esc>cit', { remap = true })
   vim.keymap.set('n', '<C-q>', 'ciq', { remap = true })
@@ -2243,8 +2241,8 @@ now(function()
       ['%.env%.[%w_.-]+'] = 'sh',
       ['.*%.variables.*'] = 'sh',
       ['.*/%.vscode/.*%.json'] = 'jsonc',
-			['.*%.code%-workspace'] = 'jsonc',
-			['.*%.json%.lock'] = 'json',
+      ['.*%.code%-workspace'] = 'jsonc',
+      ['.*%.json%.lock'] = 'json',
       ['.*/*.conf*'] = 'conf',
       ['*.MD'] = 'markdown',
       ['Dockerfile*'] = 'dockerfile',
