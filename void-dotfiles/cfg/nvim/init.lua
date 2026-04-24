@@ -121,9 +121,8 @@ later(function()
   })
   -- enable configured language servers 0.11: ====================================================
   local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities = vim.tbl_deep_extend('force', capabilities, MiniCompletion.get_lsp_capabilities())
   vim.lsp.config('*', { capabilities = capabilities })
-  vim.lsp.enable({ 'html', 'cssls', 'jsonls', 'emmet_ls', 'ts_go', 'lua_ls' })
+  vim.lsp.enable({ 'html', 'cssls', 'jsonls', 'emmet_ls', 'vtsls', 'lua_ls' })
 end)
 
 -- ============================================================================== #
