@@ -27,7 +27,7 @@ SELECTION="$(echo -e "$MENU_ENTRIES" | fuzzel --dmenu -l 7 -p "Power Menu: ")"
 
 case $SELECTION in
     *"Lock")
-        swaylock;;
+        gtklock --daemonize;;
     *"Suspend")
         doas zzz;;
     *"Log out")
