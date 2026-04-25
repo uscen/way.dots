@@ -20,8 +20,6 @@ window {
   background-repeat: no-repeat;
   background-position: center;
 }
-#window-box {
-}
 #clock-label {
   min-width: 320px;
   background-color: alpha(@color2, 0.1);
