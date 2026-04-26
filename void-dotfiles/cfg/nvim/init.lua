@@ -84,22 +84,13 @@ later(function()
       [')'] = { action = 'close', pair = '()', neigh_pattern = '[^\\].' },
       [']'] = { action = 'close', pair = '[]', neigh_pattern = '[^\\].' },
       ['}'] = { action = 'close', pair = '{}', neigh_pattern = '[^\\].' },
-      ['<'] = { action = 'open', pair = '<>', neigh_pattern = '[\r%S].', register = { cr = false } },
-      ['>'] = { action = 'close', pair = '<>', register = { cr = false } },
+      ['>'] = { action = 'open', pair = '><', neigh_pattern = '...%', register = { cr = true } },
+      ['<'] = { action = 'close', pair = '><', register = { cr = true } },
       ['"'] = { action = 'closeopen', pair = '""', neigh_pattern = '[^%w][^%w]', register = { cr = false } },
       ["'"] = { action = 'closeopen', pair = "''", neigh_pattern = '[^%w][^%w]', register = { cr = false } },
       ['`'] = { action = 'closeopen', pair = '``', neigh_pattern = '[^%w][^%w]', register = { cr = false } },
     },
   })
-  local cr_action = function()
-    if vim.fn.pumvisible() ~= 0 then
-      local item_selected = vim.fn.complete_info()['selected'] ~= -1
-      return item_selected and '\25' or MiniPairs.cr()
-    else
-      return MiniPairs.cr()
-    end
-  end
-  vim.keymap.set('i', '<cr>', cr_action, { expr = true })
 end)
 
 -- ============================================================================== #
@@ -646,7 +637,6 @@ now_if_args(function()
   if #to_install > 0 then require('nvim-treesitter').install(to_install) end
   -- Ensure enabled: =============================================================================
   local filetypes = vim.iter(ensure_installed):map(vim.treesitter.language.get_filetypes):flatten():totable()
-  vim.list_extend(filetypes, { 'markdown', 'quarto' })
   local ts_start = function(ev) vim.treesitter.start(ev.buf) end
   vim.api.nvim_create_autocmd('FileType', { pattern = filetypes, callback = ts_start })
 end)
@@ -995,9 +985,17 @@ now(function()
     end,
   })
   -- Keep parsers up to date when plugin updates: ================================================
-  vim.api.nvim_create_autocmd('PackChanged', { callback = function()
-    require('nvim-treesitter').update()
-  end })
+  vim.api.nvim_create_autocmd('PackChanged', {
+    callback = function(ev)
+      local name, kind = ev.data.spec.name, ev.data.kind
+      if name == 'nvim-treesitter' and kind == 'update' then
+        if not ev.data.active then
+          vim.cmd.packadd('nvim-treesitter')
+        end
+        vim.cmd('TSUpdate')
+      end
+    end,
+  })
   -- Auto Save: ==================================================================================
   vim.api.nvim_create_autocmd({ 'FocusLost', 'VimLeavePre' }, {
     group = vim.api.nvim_create_augroup('save_buffers', {}),
@@ -1969,7 +1967,7 @@ later(function()
   vim.keymap.set('n', '<leader>H', '<C-w>H')
   vim.keymap.set('n', '<leader>K', '<C-w>K')
   vim.keymap.set('n', '<leader>J', '<C-w>J')
-  -- Resize:  ====================================================================================
+  -- Resize: =====================================================================================
   vim.keymap.set('n', '<C-Up>', '<cmd>resize +2<cr>')
   vim.keymap.set('n', '<C-Down>', '<cmd>resize -2<cr>')
   vim.keymap.set('n', '<C-Left>', '<cmd>vertical resize -2<cr>')
