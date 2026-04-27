@@ -1335,7 +1335,7 @@ now(function()
       vim.defer_fn(function()
         vim.o.cursorline = true
         vim.cmd('redraw')
-      end, 600)
+      end, 300)
     end,
   })
   -- Show cursor line only in active window: =====================================================
