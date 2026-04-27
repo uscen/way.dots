@@ -93,10 +93,10 @@ overview {
     backdrop-color "#181616"
     workspace-shadow {
         on
-        softness 10
-        spread 5
-        offset x=5 y=10
-        color "#00000040"
+        softness 5
+        spread 4
+        offset x=0 y=2
+        color "#0004"
     }
 }
 
@@ -217,10 +217,10 @@ layout {
     // Shadow: ===================================================================================
     shadow {
         on
-        softness 20
-        spread 2
+        softness 5
+        spread 4
         offset x=0 y=2
-        color "#0007"
+        color "#0004"
     }
     // Width: ====================================================================================
     default-column-width { proportion 0.5; }
@@ -497,7 +497,7 @@ window-rule {
 // Layer Rules:                                                                   #
 // ============================================================================== #
 layer-rule {
-    match namespace="wallpaper"
+    match namespace="^wallpaper$"
     place-within-backdrop true
 }
 layer-rule {
