@@ -141,7 +141,6 @@ input {
     // Others: ===================================================================================
     warp-mouse-to-focus
     disable-power-key-handling
-    workspace-auto-back-and-forth
     focus-follows-mouse max-scroll-amount="0%"
     mod-key "Alt"
     mod-key-nested "Super"
