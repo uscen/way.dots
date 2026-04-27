@@ -355,9 +355,6 @@ gestures {
 window-rule {
     draw-border-with-background false
 }
-window-rule {
-    open-maximized true
-}
 window-rule  {
     match is-urgent=true
     open-focused true
@@ -500,12 +497,12 @@ window-rule {
 // Layer Rules:                                                                   #
 // ============================================================================== #
 layer-rule {
-    match namespace="^[as]www-daemon$"
+    match namespace="wallpaper"
     place-within-backdrop true
 }
 layer-rule {
-    match namespace="waybar"
-    opacity 0.99
+    match namespace="^[as]www-daemon$"
+    place-within-backdrop true
 }
 
 // ============================================================================== #

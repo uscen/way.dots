@@ -649,7 +649,10 @@ now_if_args(function()
   if #to_install > 0 then require('nvim-treesitter').install(to_install) end
   -- Ensure enabled: =============================================================================
   local filetypes = vim.iter(ensure_installed):map(vim.treesitter.language.get_filetypes):flatten():totable()
-  local ts_start = function(ev) vim.treesitter.start(ev.buf) end
+  local ts_start = function(ev)
+    vim.treesitter.start(ev.buf)
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end
   vim.api.nvim_create_autocmd('FileType', { pattern = filetypes, callback = ts_start })
 end)
 
