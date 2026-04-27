@@ -476,7 +476,7 @@ now_if_args(function()
     pattern = 'MiniFilesBufferCreate',
     callback = function(args) vim.keymap.set('n', '.', toggle_dotfiles, { buffer = args.data.buf_id }) end,
   })
-  -- Open In Splits : ============================================================================
+  -- Splits : ====================================================================================
   local map_split = function(buf_id, lhs, direction)
     local function rhs()
       -- Make new window and set it as target
