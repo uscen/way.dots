@@ -502,12 +502,6 @@ local hlgroups = {
   MiniFilesTitle                           = { link = 'MiniFilesBorder' },
   MiniFilesTitleFocused                    = { link = 'MiniFilesBorder' },
 
-  -- mini.notify
-  MiniNotifyBorder                         = { bg = c_macroBg0, fg = c_winterBlue },
-  MiniNotifyNormal                         = { bg = c_macroBg0, fg = c_macroGray2 },
-  MiniNotifyLspProgress                    = { link = 'MiniNotifyNormal' },
-  MiniNotifyTitle                          = { link = 'MiniNotifyBorder' },
-
   -- mini.snippets
   MiniSnippetsCurrent                      = { fg = c_macroBlue1 },
   MiniSnippetsCurrentReplace               = { link = 'MiniSnippetsCurrent' },
