@@ -1,8 +1,9 @@
 -- ============================================================================== #
 -- Abbreviations:                                                                 #
 -- ============================================================================== #
--- Shorthands: ===================================================================================
-vim.cmd([[
+Config.later(function()
+  -- Shorthands: ===================================================================================
+  vim.cmd([[
   iabbrev lorem8 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   iabbrev lorem16 Lorem ipsum dolor sit amet consectetur, adipiscing elit sociosqu inceptos felis nam, consequat vulputate nullam erat.
   iabbrev lorem24 Lorem ipsum dolor sit amet consectetur adipiscing elit egestas, dapibus malesuada morbi gravida ad pulvinar nascetur inceptos, nisi imperdiet cras donec aenean fringilla interdum.
@@ -11,8 +12,8 @@ vim.cmd([[
   iabbrev lorem48 Lorem ipsum dolor sit amet consectetur adipiscing elit felis pharetra, quam sollicitudin scelerisque semper nascetur ornare magnis himenaeos, elementum imperdiet condimentum litora convallis ultricies fringilla a. Pulvinar mus venenatis egestas congue viverra hac interdum, ac varius enim augue potenti at accumsan sem, vulputate vehicula velit quis malesuada praesent.
 ]])
 
--- Syntax: =======================================================================================
-vim.cmd([[
+  -- Syntax: =======================================================================================
+  vim.cmd([[
   iabbrev asycn     async
   iabbrev cosnt     const
   iabbrev ehco      echo
@@ -30,8 +31,8 @@ vim.cmd([[
   iabbrev undefiend undefined
 ]])
 
--- English words: ================================================================================
-vim.cmd([[
+  -- English words: ================================================================================
+  vim.cmd([[
   iabbrev Adn         And
   iabbrev Componenets Components
   iabbrev Execture    Execute
@@ -94,15 +95,15 @@ vim.cmd([[
   iabbrev widnows     windows
 ]])
 
--- Swedish words: ================================================================================
-vim.cmd([[
+  -- Swedish words: ================================================================================
+  vim.cmd([[
   iabbrev ahr har
   iabbrev itne inte
   iabbrev Itne Inte
 ]])
 
--- Command Line: =================================================================================
-vim.cmd([[
+  -- Command Line: =================================================================================
+  vim.cmd([[
   cnoreabbrev G Git
   cnoreabbrev Gc Git commit
   cnoreabbrev Gcm Git commit --message
@@ -112,3 +113,4 @@ vim.cmd([[
   cnoreabbrev Gchb Git checkout -b
   cnoreabbrev Gblame Git blame
 ]])
+end)

@@ -352,6 +352,9 @@ gestures {
 // ============================================================================== #
 // All Window: ===================================================================================
 window-rule {
+    open-maximized true
+}
+window-rule {
     draw-border-with-background false
 }
 window-rule  {
@@ -369,12 +372,6 @@ window-rule {
   default-column-width { proportion 0.80; }
   default-window-height { proportion 0.90; }
 	open-floating true
-}
-window-rule {
-    match app-id="^Alacritty$"
-    clip-to-geometry true
-    tiled-state true
-    draw-border-with-background false
 }
 
 // File dialogs - Open/Save/Select: ==============================================================

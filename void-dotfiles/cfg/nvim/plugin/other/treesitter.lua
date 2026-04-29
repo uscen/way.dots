@@ -2,8 +2,7 @@
 -- Treesitter:                                                                    #
 -- ============================================================================== #
 Config.now_if_args(function()
-  local ts_update = function() vim.cmd('TSUpdate') end
-  Config.on_packchanged('tree-sitter', { 'update' }, ts_udpate, 'Update tree-sitter parsers')
+  Config.on_packchanged('tree-sitter', { 'update' }, function() vim.cmd('TSUpdate') end, 'Update tree-sitter parsers')
   vim.pack.add({
     { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main', load = true },
     { src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects', version = 'main' },

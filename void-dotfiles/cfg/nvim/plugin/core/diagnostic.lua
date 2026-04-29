@@ -35,4 +35,4 @@ local diagnostic_opts = {
     end,
   },
 }
-vim.diagnostic.config(diagnostic_opts)
+Config.later(function() vim.diagnostic.config(diagnostic_opts) end)
