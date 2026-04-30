@@ -245,3 +245,89 @@ Config.now(function()
   vim.g.loaded_python_provider   = 0
   vim.g.loaded_python3_provider  = 0
 end)
+
+-- ============================================================================== #
+-- Neovide:                                                                       #
+-- ============================================================================== #
+Config.later(function()
+  if vim.g.neovide then
+    -- General: ==================================================================================
+    vim.o.guifont = 'JetBrainsMono Nerd Font:h12'
+    vim.g.neovide_scale_factor = 1
+    vim.g.neovide_refresh_rate = 120
+    -- Appearance: ===============================================================================
+    vim.g.neovide_opacity = 1
+    vim.g.neovide_underline_stroke_scale = 2.5
+    vim.g.neovide_show_border = false
+    -- Padding: ==================================================================================
+    vim.g.neovide_padding_top = 0
+    vim.g.neovide_padding_bottom = 0
+    vim.g.neovide_padding_right = 0
+    vim.g.neovide_padding_left = 0
+    -- Floating: =================================================================================
+    vim.g.neovide_floating_shadow = false
+    vim.g.neovide_floating_blur_amount_x = 2.0
+    vim.g.neovide_floating_blur_amount_y = 2.0
+    -- Behavior: =================================================================================
+    vim.g.neovide_remember_window_size = false
+    vim.g.neovide_hide_mouse_when_typing = false
+    vim.g.neovide_no_idle = false
+    vim.g.neovide_cursor_smooth_blink = false
+    vim.g.neovide_cursor_antialiasing = false
+    vim.g.neovide_cursor_animate_in_insert_mode = false
+    vim.g.neovide_cursor_animate_command_line = false
+    -- Cursor: ===================================================================================
+    vim.g.neovide_position_animation_length = 0
+    vim.g.neovide_cursor_animation_length = 0.00
+    vim.g.neovide_cursor_trail_size = 0
+    vim.g.neovide_scroll_animation_far_lines = 0
+    vim.g.neovide_scroll_animation_length = 0.00
+    -- Options: ==================================================================================
+    vim.o.mousescroll = 'ver:10,hor:6'
+    vim.o.linespace = 0
+    -- Keymap: ===================================================================================
+    vim.keymap.set({ 'n', 'v' }, '<F11>', ':<C-u>let g:neovide_fullscreen = !g:neovide_fullscreen<CR>')
+    vim.keymap.set({ 'n', 'v' }, '<C-=>', ':lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<cr>')
+    vim.keymap.set({ 'n', 'v' }, '<C-->', ':lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<cr>')
+    vim.keymap.set({ 'n', 'v' }, '<C-0>', ':lua vim.g.neovide_scale_factor = 1<cr>')
+  end
+end)
+
+-- ============================================================================== #
+-- Diagnostics:                                                                   #
+-- ============================================================================== #
+local diagnostic_opts = {
+  severity_sort = true,
+  update_in_insert = false,
+  virtual_lines = false,
+  signs = false,
+  underline = { severity = { min = 'HINT', max = 'ERROR' } },
+  float = {
+    prefix = '󱓇  ',
+    source = 'if_many',
+    style = 'minimal',
+    border = 'single',
+    header = '',
+    title = 'Diagnostics:',
+    title_pos = 'left',
+    max_height = 10,
+    max_width = 130,
+    focusable = false,
+    close_events = { 'CursorMoved', 'BufLeave', 'WinLeave', 'InsertEnter' },
+  },
+  virtual_text = {
+    spacing = 2,
+    highlight = false,
+    prefix = '▎',
+    source = 'if_many',
+    virt_text_pos = 'eol_right_align',
+    current_line = true,
+    severity = { min = 'ERROR', max = 'ERROR' },
+    format = function(diagnostic)
+      local icon = '→ '
+      local message = vim.split(diagnostic.message, '\n')[1]
+      return ('%s %s '):format(icon, message)
+    end,
+  },
+}
+Config.later(function() vim.diagnostic.config(diagnostic_opts) end)
