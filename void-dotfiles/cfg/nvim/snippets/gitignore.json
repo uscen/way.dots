@@ -1,6 +1,6 @@
 {
   "snip_nodejs.gitignore": {
-    "prefix": "nodejs.gitignore",
+    "prefix": "nodejs.ignore",
     "body": [
       "# Environment variable files",
       ".env",
@@ -139,7 +139,7 @@
     "description": "snip_nodejs.gitignore"
   },
   "snip_vite_react.gitignore": {
-    "prefix": "react.gitignore",
+    "prefix": "react.ignore",
     "body": [
       "# Logs",
       "logs",
@@ -169,7 +169,7 @@
     "description": "snip_vite_react.gitignore"
   },
   "snip_nextjs.gitignore": {
-    "prefix": "nextjs.gitignore",
+    "prefix": "nextjs.ignore",
     "body": [
       "### NextJS ###",
       "# dependencies",
