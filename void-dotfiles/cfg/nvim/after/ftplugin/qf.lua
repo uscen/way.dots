@@ -11,7 +11,7 @@ vim.cmd.packadd 'cfilter'
 -- Keymaps: ======================================================================================
 vim.keymap.set('n', '<S-j>', '<cmd>cn<CR>zz<cmd>wincmd p<CR>', { buffer = 0, silent = true })
 vim.keymap.set('n', '<S-k>', '<cmd>cN<CR>zz<cmd>wincmd p<CR>', { buffer = 0, silent = true })
-vim.keymap.set('n', '<Tab>', '<CR>', { buffer = 0, silent = true })
+vim.keymap.set('n', '<Tab>', '<CR>:cclose<CR>', { buffer = 0, silent = true })
 vim.keymap.set('n', '<cr>', '<cr>:cclose<cr>', { buffer = 0, silent = true })
 
 -- -- Edit all in quickfix list: ====================================================================
