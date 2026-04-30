@@ -6,7 +6,7 @@
 -- ripgrep         - https://github.com/BurntSushi/ripgrep
 -- zoxide          - https://github.com/ajeetdsouza/zoxide
 -- treesitter-cli  - https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md
--- Nerd Font icons - https://www.nerdfonts.com/
+-- nerd font       - https://www.nerdfonts.com/
 -- c compiler      - os(linux): gcc or tcc or zig / os(windows): mingw
 
 -- ============================================================================== #
