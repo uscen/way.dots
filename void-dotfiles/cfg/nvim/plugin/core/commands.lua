@@ -2,18 +2,23 @@
 -- Commands:                                                                      #
 -- ============================================================================== #
 Config.later(function()
+  -- User command helper: =========================================================================
+  _G.Config.new_command = function(name, command, opts)
+    opts = opts or {}
+    vim.api.nvim_create_user_command(name, command, opts)
+  end
   -- Windows: "E138: main.shada.tmp.X files exist, cannot write ShaDa" on close: =================
-  vim.api.nvim_create_user_command('RemoveShadaTemp', function()
+  Config.new_command('RemoveShadaTemp', function()
     for _, f in ipairs(vim.fn.globpath(vim.fn.stdpath('data') .. '/shada', '*tmp*', false, true)) do
       vim.fn.system({ 'rm', f })
     end
   end, {})
   -- Wipes all registers: ========================================================================
-  vim.api.nvim_create_user_command('WipeReg', function()
+  Config.new_command('WipeReg', function()
     vim.cmd([[ for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor ]])
   end, { nargs = 0 })
   -- Toggle dark Mode: ===========================================================================
-  vim.api.nvim_create_user_command('ToggleBgMode', function()
+  Config.new_command('ToggleBgMode', function()
     if vim.o.background == 'light' then
       vim.o.background = 'dark'
     else
@@ -21,7 +26,7 @@ Config.later(function()
     end
   end, {})
   -- Toggle between diagnostic virtual_lines and virtual_text: ===================================
-  vim.api.nvim_create_user_command('ToggleDiagnosticStyle', function()
+  Config.new_command('ToggleDiagnosticStyle', function()
     local virtual_lines_enabled = vim.diagnostic.config().virtual_lines
     if virtual_lines_enabled then
       vim.diagnostic.config({ jump = { float = true }, virtual_lines = false, virtual_text = { current_line = true } })
@@ -30,32 +35,32 @@ Config.later(function()
     end
   end, {})
   -- Toggle inlay hints: =========================================================================
-  vim.api.nvim_create_user_command('ToggleInlayHints', function()
+  Config.new_command('ToggleInlayHints', function()
     vim.g.inlay_hints = not vim.g.inlay_hints
     vim.notify(string.format('%s inlay hints...', vim.g.inlay_hints and 'Enabling' or 'Disabling'), vim.log.levels.INFO)
     local mode = vim.api.nvim_get_mode().mode
     vim.lsp.inlay_hint.enable(vim.g.inlay_hints and (mode == 'n' or mode == 'v'))
   end, { nargs = 0 })
   -- Move current window to its own tab: =========================================================
-  vim.api.nvim_create_user_command('MoveWindowToTab', function()
+  Config.new_command('MoveWindowToTab', function()
     local win = vim.api.nvim_get_current_win()
     vim.cmd [[ tab split ]]
     vim.api.nvim_win_close(win, true)
   end, {})
   -- Tmp is a command to create a temporary file: ================================================
-  vim.api.nvim_create_user_command('Tmp', function()
+  Config.new_command('Tmp', function()
     local path = vim.fn.tempname()
     vim.cmd('e ' .. path)
     vim.notify(path)
     vim.cmd('au BufDelete <buffer> !rm -f ' .. path)
   end, { nargs = '*' })
   -- Create Directory: ===========================================================================
-  vim.api.nvim_create_user_command('Mkdir', function(o)
+  Config.new_command('Mkdir', function(o)
     local path = vim.fn.expand(o.args ~= '' and o.args or '%:p:h')
     vim.fn.mkdir(path, 'p')
   end, { nargs = '?', complete = 'dir' })
   -- Open a scratch buffer: ======================================================================
-  vim.api.nvim_create_user_command('Scratch', function()
+  Config.new_command('Scratch', function()
     vim.cmd 'bel 10new'
     local buf = vim.api.nvim_get_current_buf()
     for name, value in pairs { filetype = 'scratch', buftype = 'nofile', bufhidden = 'wipe', swapfile = false, modifiable = true } do
@@ -63,23 +68,23 @@ Config.later(function()
     end
   end, {})
   -- Insert the last message from :messages ======================================================
-  vim.api.nvim_create_user_command('InsertLastMessage', function()
+  Config.new_command('InsertLastMessage', function()
     local messages = vim.split(vim.fn.execute('messages'), '\n')
     vim.api.nvim_put({ messages[#messages] }, 'c', false, false)
   end, {})
   -- Reload plugin: ==============================================================================
-  vim.api.nvim_create_user_command('Reload', function(opts)
+  Config.new_command('Reload', function(opts)
     local name = opts.fargs[1]
     package.loaded[name] = nil
     require(name).setup()
   end, { nargs = 1 })
   -- Close all notifications: ====================================================================
-  vim.api.nvim_create_user_command('CloseNotifications', function()
+  Config.new_command('CloseNotifications', function()
     local MiniNotify = require('mini.notify')
     MiniNotify.clear()
   end, {})
   -- View current file in tree explorer: =========================================================
-  vim.api.nvim_create_user_command('Explorer', function()
+  Config.new_command('Explorer', function()
     local MiniFiles = require('mini.files')
     if MiniFiles.close() then return end
     local buf_path = vim.api.nvim_buf_get_name(0)
@@ -87,7 +92,7 @@ Config.later(function()
     MiniFiles.open(path)
   end, {})
   -- Pick file using zoxide: =========================================================================
-  vim.api.nvim_create_user_command('PickZoxide', function()
+  Config.new_command('PickZoxide', function()
     local minipick = require('mini.pick')
     local zoxide_output = vim.fn.system('zoxide query -l')
     local zoxide_dirs = vim.split(zoxide_output, '\n', { trimempty = true })
@@ -104,7 +109,7 @@ Config.later(function()
     })
   end, {})
   -- Pick file using fd: =========================================================================
-  vim.api.nvim_create_user_command('PickFiles', function()
+  Config.new_command('PickFiles', function()
     local MiniPick = require('mini.pick')
     MiniPick.builtin.cli({ command = { 'fd', '-t=f', '-H', '-I', '-E=.git', '-E=node_modules' } }, {
       source = {
@@ -116,7 +121,7 @@ Config.later(function()
     })
   end, {})
   -- Copy text to clipboard using codeblock format ```{ft}{content}```: ==========================
-  vim.api.nvim_create_user_command('CopyCodeBlock', function(opts)
+  Config.new_command('CopyCodeBlock', function(opts)
     local lines = vim.api.nvim_buf_get_lines(0, opts.line1 - 1, opts.line2, true)
     local content = table.concat(lines, '\n')
     local result = string.format('```%s\n%s\n```', vim.bo.filetype, content)
@@ -124,7 +129,7 @@ Config.later(function()
     vim.notify 'Text copied to clipboard'
   end, { range = true })
   -- fuzzy find oldfiles list with :Oldfiles: ====================================================
-  vim.api.nvim_create_user_command('Oldfiles', function(args)
+  Config.new_command('Oldfiles', function(args)
     vim.cmd('e ' .. args.args)
   end, {
     nargs = 1,
@@ -135,7 +140,7 @@ Config.later(function()
     end,
   })
   -- Delete listed unmodified buffers that are not in a window ===================================
-  vim.api.nvim_create_user_command('DeleteInactiveBuffers', function()
+  Config.new_command('DeleteInactiveBuffers', function()
     local notify = false
     local number = 0
     for _, buf in ipairs(vim.fn.getbufinfo()) do
@@ -152,14 +157,14 @@ Config.later(function()
     end
   end, {})
   -- Append char(s) to the end of each line (default: ";"): ======================================
-  vim.api.nvim_create_user_command('AppendToEnd', function(args)
+  Config.new_command('AppendToEnd', function(args)
     local prefix = args.line1 .. ',' .. args.line2
     local chars = args.fargs[1] ~= nil and args.fargs[1] or ';'
     vim.cmd(prefix .. 'g/./normal A' .. chars)
     vim.cmd('nohlsearch')
   end, { nargs = '?', range = true })
   -- Join or remove empty lines: =================================================================
-  vim.api.nvim_create_user_command('JoinEmptyLines', function(args)
+  Config.new_command('JoinEmptyLines', function(args)
     if args.fargs[1] ~= nil then
       -- Custom maximum number of empty lines to join
       vim.cmd('silent! g/^$/,/./-' .. args.fargs[1] .. 'j')
@@ -175,7 +180,7 @@ Config.later(function()
     vim.cmd('nohlsearch')
   end, { bang = true, nargs = '?' })
   -- Rotate Windows: ============================================================================
-  vim.api.nvim_create_user_command('RotateWindows', function()
+  Config.new_command('RotateWindows', function()
     local ignored_filetypes = { 'neo-tree', 'fidget', 'Outline', 'toggleterm', 'qf', 'notify' }
     local window_numbers = vim.api.nvim_tabpage_list_wins(0)
     local windows_to_rotate = {}
@@ -202,7 +207,7 @@ Config.later(function()
     end
   end, {})
   -- Enable Format: ==============================================================================
-  vim.api.nvim_create_user_command('Format', function(args)
+  Config.new_command('Format', function(args)
     local range = nil
     if args.count ~= -1 then
       local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
@@ -211,18 +216,18 @@ Config.later(function()
     require('conform').format({ async = true, lsp_format = 'fallback', range = range })
   end, { range = true })
   -- Toggle conform.nvim auto-formatting: ========================================================
-  vim.api.nvim_create_user_command('FormatToggle', function()
+  Config.new_command('FormatToggle', function()
     vim.g.autoformat = not vim.g.autoformat
     vim.notify(string.format('%s formatting...', vim.g.autoformat and 'Enabling' or 'Disabling'), vim.log.levels.INFO)
   end, { nargs = 0 })
   -- Enable Format On Save =======================================================================
-  vim.api.nvim_create_user_command('FormatEnable', function()
+  Config.new_command('FormatEnable', function()
     vim.b.disable_autoformat = false
     vim.g.disable_autoformat = false
     vim.notify('Format On Save Enable')
   end, {})
   -- Disable FormatOnSave ========================================================================
-  vim.api.nvim_create_user_command('FormatDisable', function(args)
+  Config.new_command('FormatDisable', function(args)
     if args.bang then
       vim.b.disable_autoformat = true
     else
@@ -231,7 +236,7 @@ Config.later(function()
     vim.notify('Format On Save Disable')
   end, { bang = true })
   -- Format Json: ================================================================================
-  vim.api.nvim_create_user_command('FormatJson', function(opts)
+  Config.new_command('FormatJson', function(opts)
     if opts.range > 0 then
       vim.cmd(opts.line1 .. ',' .. opts.line2 .. '!jq')
     else
@@ -240,7 +245,7 @@ Config.later(function()
     end
   end, { desc = 'Format Json', range = true })
   -- Format Sql: =================================================================================
-  vim.api.nvim_create_user_command('FormatSql', function(opts)
+  Config.new_command('FormatSql', function(opts)
     if opts.range > 0 then
       vim.cmd(opts.line1 .. ',' .. opts.line2 .. '!sleek')
     else
@@ -249,7 +254,7 @@ Config.later(function()
     end
   end, { range = true })
   -- Lazygit: ====================================================================================
-  vim.api.nvim_create_user_command('Lazygit', function()
+  Config.new_command('Lazygit', function()
     vim.cmd.tabnew()
     vim.cmd.terminal('lazygit')
     local win = vim.api.nvim_get_current_win()
@@ -265,7 +270,7 @@ Config.later(function()
   -- Terminal: ===================================================================================
   local terminal_buf = nil
   local terminal_win = nil
-  vim.api.nvim_create_user_command('TermToggle', function()
+  Config.new_command('TermToggle', function()
     -- Fast close if terminal window exists
     if terminal_win and vim.api.nvim_win_is_valid(terminal_win) then
       vim.api.nvim_win_hide(terminal_win)
@@ -286,7 +291,7 @@ Config.later(function()
     vim.api.nvim_set_option_value('winfixheight', true, { win = terminal_win })
   end, {})
   -- remove plugins from disk that are no longer in vim.pack.add() specs: ========================
-  vim.api.nvim_create_user_command('PackClean', function()
+  Config.new_command('PackClean', function()
     local inactive = vim.iter(vim.pack.get())
         :filter(function(x) return not x.active end)
         :map(function(x) return x.spec.name end)
@@ -299,32 +304,32 @@ Config.later(function()
     vim.notify('Removed: ' .. table.concat(inactive, ', '), vim.log.levels.INFO)
   end, {})
   -- Edit file full path: =========================================================================
-  vim.api.nvim_create_user_command('EditConfig', function()
+  Config.new_command('EditConfig', function()
     local config_dir = vim.fn.stdpath('config')
     assert(type(config_dir) == 'string', 'Expected string')
     vim.fn.chdir(config_dir)
     vim.api.nvim_cmd({ cmd = 'edit', args = { 'init.lua' } }, { output = false })
   end, {})
-  vim.api.nvim_create_user_command('Edit', function(args)
+  Config.new_command('Edit', function(args)
     vim.cmd.edit(vim.fs.joinpath(vim.fn.expand('%:p:h'), args.args))
   end, { nargs = 1 })
-  vim.api.nvim_create_user_command('E', function(args)
+  Config.new_command('E', function(args)
     vim.cmd.edit(vim.fs.joinpath(vim.fn.expand('%:p:h'), args.args))
   end, { nargs = 1 })
   -- Change Directory: ===========================================================================
-  vim.api.nvim_create_user_command('Cwd', function()
+  Config.new_command('Cwd', function()
     local path = vim.fn.expand('%:h')
     if path == '' then return end
     vim.cmd('silent cd ' .. path)
     vim.notify('cd → ' .. path)
   end, {})
-  vim.api.nvim_create_user_command('Swd', function()
+  Config.new_command('Swd', function()
     local path = vim.fn.expand('%:h')
     if path == '' then return end
     vim.cmd('silent cd ' .. path)
     vim.notify('cd → ' .. path)
   end, {})
-  vim.api.nvim_create_user_command('Crd', function()
+  Config.new_command('Crd', function()
     local root = vim.fn.systemlist('git -C ' .. vim.fn.expand('%:h') .. ' rev-parse --show-toplevel')[1]
     if root and root ~= '' then
       vim.cmd('silent cd ' .. root)
@@ -334,54 +339,54 @@ Config.later(function()
     end
   end, {})
   -- Copy Absolute & Relative full path: ==========================================================
-  vim.api.nvim_create_user_command('CopyAbsPath', function()
+  Config.new_command('CopyAbsPath', function()
     local path = vim.fn.expand('%:p')
     if path == '' then return end
     vim.notify(path)
     vim.fn.setreg('+', path)
   end, {})
-  vim.api.nvim_create_user_command('CopyAbsPathLine', function()
+  Config.new_command('CopyAbsPathLine', function()
     local path = vim.fn.expand('%:p:h') .. '/' .. vim.fn.expand('%:t') .. ':' .. vim.fn.line('.')
     vim.fn.setreg('+', path)
     vim.notify('Copied: ' .. path)
   end, {})
-  vim.api.nvim_create_user_command('CopyRelPath', function()
+  Config.new_command('CopyRelPath', function()
     local filename = vim.fn.expand '%:.'
     if filename == '' then return end
     vim.fn.setreg('+', filename)
     vim.notify(filename .. ' copied', vim.log.levels.INFO)
   end, {})
-  vim.api.nvim_create_user_command('CopyRelPathNoFile', function()
+  Config.new_command('CopyRelPathNoFile', function()
     local path = vim.fn.expand('%:.')
     local dir = path:match('(.*/)')
     vim.fn.setreg('+', dir)
   end, {})
-  vim.api.nvim_create_user_command('CopyRootName', function()
+  Config.new_command('CopyRootName', function()
     local root = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
     if root == '' then return end
     vim.fn.setreg('+', root)
     vim.notify(root .. ' copied', vim.log.levels.INFO)
   end, {})
   -- Toggle Qucikfix and location list: ==========================================================
-  vim.api.nvim_create_user_command('ExploreQuickfix', function()
+  Config.new_command('ExploreQuickfix', function()
     vim.cmd(vim.fn.getqflist({ winid = true }).winid ~= 0 and 'cclose' or 'copen')
   end, {})
-  vim.api.nvim_create_user_command('ExploreLocations', function()
+  Config.new_command('ExploreLocations', function()
     vim.cmd(vim.fn.getloclist(0, { winid = true }).winid ~= 0 and 'lclose' or 'lopen')
   end, {})
   -- TrimSpaces and LastLine: ====================================================================
-  vim.api.nvim_create_user_command('TrimSpaces', function()
+  Config.new_command('TrimSpaces', function()
     local curpos = vim.api.nvim_win_get_cursor(0)
     vim.cmd([[keeppatterns %s/\s\+$//e]])
     vim.api.nvim_win_set_cursor(0, curpos)
   end, {})
-  vim.api.nvim_create_user_command('TrimLastLines', function()
+  Config.new_command('TrimLastLines', function()
     local n_lines = vim.api.nvim_buf_line_count(0)
     local last_nonblank = vim.fn.prevnonblank(n_lines)
     if last_nonblank < n_lines then vim.api.nvim_buf_set_lines(0, last_nonblank, n_lines, true, {}) end
   end, {})
   -- Resizes By %: ===============================================================================
-  vim.api.nvim_create_user_command('Vr', function(opts)
+  Config.new_command('Vr', function(opts)
     local usage = 'Usage: [VerticalResize] :Vr {number (%)}'
     if not opts.args or not string.len(opts.args) == 2 then
       print(usage)
@@ -389,7 +394,7 @@ Config.later(function()
     end
     vim.cmd(':vertical resize ' .. vim.opt.columns:get() * (opts.args / 100.0))
   end, { nargs = '*' })
-  vim.api.nvim_create_user_command('Hr', function(opts)
+  Config.new_command('Hr', function(opts)
     local usage = 'Usage: [HorizontalResize] :Hr {number (%)}'
     if not opts.args or not string.len(opts.args) == 2 then
       print(usage)
