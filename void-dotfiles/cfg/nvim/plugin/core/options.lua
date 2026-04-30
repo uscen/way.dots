@@ -86,8 +86,8 @@ Config.now(function()
   vim.o.winwidth                 = 20
   vim.o.winminwidth              = 10
   vim.o.winblend                 = 0
-  vim.o.scrolloff                = 5
-  vim.o.sidescrolloff            = 5
+  vim.o.scrolloff                = 4
+  vim.o.sidescrolloff            = 4
   vim.o.sidescroll               = 0
   vim.o.showtabline              = 0
   vim.o.pumblend                 = 0
