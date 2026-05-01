@@ -12,7 +12,7 @@ Config.later(function()
     for _, f in ipairs(vim.fn.globpath(vim.fn.stdpath('data') .. '/shada', '*tmp*', false, true)) do
       vim.fn.system({ 'rm', f })
     end
-  end, {})
+  end)
   -- Wipes all registers: ========================================================================
   Config.new_command('WipeReg', function()
     vim.cmd([[ for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor ]])
@@ -24,7 +24,7 @@ Config.later(function()
     else
       vim.o.background = 'light'
     end
-  end, {})
+  end)
   -- Toggle between diagnostic virtual_lines and virtual_text: ===================================
   Config.new_command('ToggleDiagnosticStyle', function()
     local virtual_lines_enabled = vim.diagnostic.config().virtual_lines
@@ -33,7 +33,7 @@ Config.later(function()
     else
       vim.diagnostic.config({ jump = { float = true }, virtual_lines = { current_line = true }, virtual_text = false })
     end
-  end, {})
+  end)
   -- Toggle inlay hints: =========================================================================
   Config.new_command('ToggleInlayHints', function()
     vim.g.inlay_hints = not vim.g.inlay_hints
@@ -46,7 +46,7 @@ Config.later(function()
     local win = vim.api.nvim_get_current_win()
     vim.cmd [[ tab split ]]
     vim.api.nvim_win_close(win, true)
-  end, {})
+  end)
   -- Tmp is a command to create a temporary file: ================================================
   Config.new_command('Tmp', function()
     local path = vim.fn.tempname()
@@ -66,12 +66,12 @@ Config.later(function()
     for name, value in pairs { filetype = 'scratch', buftype = 'nofile', bufhidden = 'wipe', swapfile = false, modifiable = true } do
       vim.api.nvim_set_option_value(name, value, { buf = buf })
     end
-  end, {})
+  end)
   -- Insert the last message from :messages ======================================================
   Config.new_command('InsertLastMessage', function()
     local messages = vim.split(vim.fn.execute('messages'), '\n')
     vim.api.nvim_put({ messages[#messages] }, 'c', false, false)
-  end, {})
+  end)
   -- Reload plugin: ==============================================================================
   Config.new_command('Reload', function(opts)
     local name = opts.fargs[1]
@@ -82,7 +82,7 @@ Config.later(function()
   Config.new_command('CloseNotifications', function()
     local MiniNotify = require('mini.notify')
     MiniNotify.clear()
-  end, {})
+  end)
   -- View current file in tree explorer: =========================================================
   Config.new_command('Explorer', function()
     local MiniFiles = require('mini.files')
@@ -90,7 +90,7 @@ Config.later(function()
     local buf_path = vim.api.nvim_buf_get_name(0)
     local path = vim.loop.fs_stat(buf_path) ~= nil and buf_path or vim.fn.getcwd()
     MiniFiles.open(path)
-  end, {})
+  end)
   -- Pick file using zoxide: =========================================================================
   Config.new_command('PickZoxide', function()
     local minipick = require('mini.pick')
@@ -107,7 +107,7 @@ Config.later(function()
         end,
       },
     })
-  end, {})
+  end)
   -- Pick file using fd: =========================================================================
   Config.new_command('PickFiles', function()
     local MiniPick = require('mini.pick')
@@ -119,7 +119,7 @@ Config.later(function()
         end,
       },
     })
-  end, {})
+  end)
   -- Copy text to clipboard using codeblock format ```{ft}{content}```: ==========================
   Config.new_command('CopyCodeBlock', function(opts)
     local lines = vim.api.nvim_buf_get_lines(0, opts.line1 - 1, opts.line2, true)
@@ -155,7 +155,7 @@ Config.later(function()
     else
       vim.notify('No inactive buffers were deleted.', vim.log.levels.INFO)
     end
-  end, {})
+  end)
   -- Append char(s) to the end of each line (default: ";"): ======================================
   Config.new_command('AppendToEnd', function(args)
     local prefix = args.line1 .. ',' .. args.line2
@@ -205,7 +205,7 @@ Config.later(function()
     else
       vim.notify('You can only swap 2 open windows. Found ' .. num_eligible_windows .. '.')
     end
-  end, {})
+  end)
   -- Enable Format: ==============================================================================
   Config.new_command('Format', function(args)
     local range = nil
@@ -225,7 +225,7 @@ Config.later(function()
     vim.b.disable_autoformat = false
     vim.g.disable_autoformat = false
     vim.notify('Format On Save Enable')
-  end, {})
+  end)
   -- Disable FormatOnSave ========================================================================
   Config.new_command('FormatDisable', function(args)
     if args.bang then
@@ -266,7 +266,7 @@ Config.later(function()
       end,
     })
     pcall(vim.cmd.file, 'term:lazygit')
-  end, {})
+  end)
   -- Terminal: ===================================================================================
   local terminal_buf = nil
   local terminal_win = nil
@@ -289,7 +289,7 @@ Config.later(function()
     end
     terminal_win = vim.api.nvim_get_current_win()
     vim.api.nvim_set_option_value('winfixheight', true, { win = terminal_win })
-  end, {})
+  end)
   -- remove plugins from disk that are no longer in vim.pack.add() specs: ========================
   Config.new_command('PackClean', function()
     local inactive = vim.iter(vim.pack.get())
@@ -302,7 +302,7 @@ Config.later(function()
     end
     vim.pack.del(inactive)
     vim.notify('Removed: ' .. table.concat(inactive, ', '), vim.log.levels.INFO)
-  end, {})
+  end)
   -- Edit file full path: =========================================================================
   Config.new_command('EditConfig', function()
     local config_dir = vim.fn.stdpath('config')
@@ -337,54 +337,54 @@ Config.later(function()
     else
       vim.notify('No git repository found', vim.log.levels.WARN)
     end
-  end, {})
+  end)
   -- Copy Absolute & Relative full path: ==========================================================
   Config.new_command('CopyAbsPath', function()
     local path = vim.fn.expand('%:p')
     if path == '' then return end
     vim.notify(path)
     vim.fn.setreg('+', path)
-  end, {})
+  end)
   Config.new_command('CopyAbsPathLine', function()
     local path = vim.fn.expand('%:p:h') .. '/' .. vim.fn.expand('%:t') .. ':' .. vim.fn.line('.')
     vim.fn.setreg('+', path)
     vim.notify('Copied: ' .. path)
-  end, {})
+  end)
   Config.new_command('CopyRelPath', function()
     local filename = vim.fn.expand '%:.'
     if filename == '' then return end
     vim.fn.setreg('+', filename)
     vim.notify(filename .. ' copied', vim.log.levels.INFO)
-  end, {})
+  end)
   Config.new_command('CopyRelPathNoFile', function()
     local path = vim.fn.expand('%:.')
     local dir = path:match('(.*/)')
     vim.fn.setreg('+', dir)
-  end, {})
+  end)
   Config.new_command('CopyRootName', function()
     local root = vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
     if root == '' then return end
     vim.fn.setreg('+', root)
     vim.notify(root .. ' copied', vim.log.levels.INFO)
-  end, {})
+  end)
   -- Toggle Qucikfix and location list: ==========================================================
   Config.new_command('ExploreQuickfix', function()
     vim.cmd(vim.fn.getqflist({ winid = true }).winid ~= 0 and 'cclose' or 'copen')
-  end, {})
+  end)
   Config.new_command('ExploreLocations', function()
     vim.cmd(vim.fn.getloclist(0, { winid = true }).winid ~= 0 and 'lclose' or 'lopen')
-  end, {})
+  end)
   -- TrimSpaces and LastLine: ====================================================================
   Config.new_command('TrimSpaces', function()
     local curpos = vim.api.nvim_win_get_cursor(0)
     vim.cmd([[keeppatterns %s/\s\+$//e]])
     vim.api.nvim_win_set_cursor(0, curpos)
-  end, {})
+  end)
   Config.new_command('TrimLastLines', function()
     local n_lines = vim.api.nvim_buf_line_count(0)
     local last_nonblank = vim.fn.prevnonblank(n_lines)
     if last_nonblank < n_lines then vim.api.nvim_buf_set_lines(0, last_nonblank, n_lines, true, {}) end
-  end, {})
+  end)
   -- Resizes By %: ===============================================================================
   Config.new_command('Vr', function(opts)
     local usage = 'Usage: [VerticalResize] :Vr {number (%)}'
