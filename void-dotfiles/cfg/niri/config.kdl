@@ -20,7 +20,7 @@ hotkey-overlay {
     hide-not-bound
 }
 xwayland-satellite {
-    on
+    off
     path "xwayland-satellite"
 }
 switch-events {

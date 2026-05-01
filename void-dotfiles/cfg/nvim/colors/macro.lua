@@ -299,10 +299,10 @@ local hlgroups = {
   ['@attribute']                           = { link = 'Constant' },
   ['@constructor']                         = { fg = c_macroTeal },
   ['@constructor.lua']                     = { fg = c_macroViolet },
-  ['@keyword.exception']                   = { bold = true, fg = c_macroRed },
+  ['@keyword.exception']                   = { fg = c_macroRed, bold = true },
   ['@keyword.import']                      = { link = 'PreProc' },
   ['@keyword.luap']                        = { link = '@string.regexp' },
-  ['@keyword.operator']                    = { bold = true, fg = c_macroRed },
+  ['@keyword.operator']                    = { fg = c_macroRed, bold = true },
   ['@keyword.return']                      = { fg = c_macroRed },
   ['@module']                              = { fg = c_macroOrange0 },
   ['@operator']                            = { link = 'Operator' },
@@ -347,7 +347,7 @@ local hlgroups = {
   ['@markup.link.url.markdown_inline']     = { link = 'htmlString' },
   ['@comment.warning']                     = { bg = c_roninYellow, fg = c_waveBlue0, bold = true },
   ['@variable']                            = { fg = c_macroFg0 },
-  ['@variable.builtin']                    = { fg = c_macroRed },
+  ['@variable.builtin']                    = { fg = c_macroRed, italic = true },
   -- }}}
 
   -- LSP semantic {{{2
