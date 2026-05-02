@@ -111,13 +111,13 @@ x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
 x-scheme-handler/ics=google-calendar-import.desktop
 x-scheme-handler/magnet=transmission-gtk.desktop
-x-scheme-handler/mailto=userapp-Thunderbird-18XBO3.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-093QO3.desktop
 x-scheme-handler/spotify=spotify.desktop
 x-scheme-handler/terminal=alacritty.desktop
 x-scheme-handler/mpv=open-in-mpv.desktop
-message/rfc822=userapp-Thunderbird-18XBO3.desktop
-x-scheme-handler/mid=userapp-Thunderbird-18XBO3.desktop
+message/rfc822=userapp-Thunderbird-093QO3.desktop
+x-scheme-handler/mid=userapp-Thunderbird-093QO3.desktop
 
 [Added Associations]
-x-scheme-handler/mailto=userapp-Thunderbird-18XBO3.desktop;userapp-Thunderbird-39G9L3.desktop;
-x-scheme-handler/mid=userapp-Thunderbird-18XBO3.desktop;userapp-Thunderbird-39G9L3.desktop;
+x-scheme-handler/mailto=userapp-Thunderbird-093QO3.desktop;userapp-Thunderbird-18XBO3.desktop;userapp-Thunderbird-39G9L3.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-093QO3.desktop;userapp-Thunderbird-18XBO3.desktop;userapp-Thunderbird-39G9L3.desktop;

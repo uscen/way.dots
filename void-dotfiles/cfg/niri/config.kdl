@@ -400,6 +400,10 @@ window-rule {
     match title=r#".*Sign in - Google Accounts — Mozilla Firefox"#
     open-floating true
 }
+window-rule {
+    match title=r#".*Account Setup - Mozilla Thunderbird"#
+    open-floating true
+}
 
 // System dialogs: ===============================================================================
 window-rule {
