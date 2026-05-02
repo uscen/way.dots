@@ -1,13 +1,13 @@
 -- ============================================================================== #
 -- Macro:                                                                         #
 -- ============================================================================== #
--- Clear hlgroups and set colors_name {{{
+-- Clear hlgroups and set colors_name: ===========================================================
 vim.cmd.hi('clear')
 vim.g.colors_name = 'macro'
--- }}}
 
--- Palette {{{
--- stylua: ignore start
+-- ============================================================================== #
+-- Palette:                                                                       #
+-- ============================================================================== #
 local c_autumnGreen
 local c_autumnRed
 local c_autumnYellow
@@ -147,11 +147,10 @@ else
   c_winterRed    = { '#e6c2c7', 181 }
   c_winterYellow = { '#e2dcd4', 188 }
 end
--- stylua: ignore end
--- }}}
 
--- Terminal colors {{{
--- stylua: ignore start
+-- ============================================================================== #
+-- Terminal:                                                                      #
+-- ============================================================================== #
 if vim.go.bg == 'dark' then
   vim.g.terminal_color_0  = c_macroBg0[1]
   vim.g.terminal_color_1  = c_macroRed[1]
@@ -191,12 +190,12 @@ else
   vim.g.terminal_color_16 = c_macroOrange0[1]
   vim.g.terminal_color_17 = c_macroOrange1[1]
 end
--- stylua: ignore end
---- }}}
 
--- Highlight groups {{{1
+-- ============================================================================== #
+-- Highlight:                                                                     #
+-- ============================================================================== #
 local hlgroups = {
-  -- UI {{{2
+  -- Ui: =========================================================================================
   ColorColumn                              = { bg = c_macroBg2 },
   Conceal                                  = { bold = true, fg = c_macroGray2 },
   CurSearch                                = { link = 'IncSearch' },
@@ -269,9 +268,7 @@ local hlgroups = {
   WinBarNC                                 = { bg = c_macroBg0, fg = c_macroBg5 },
   WinSeparator                             = { fg = c_macroBg4 },
   lCursor                                  = { link = 'Cursor' },
-  -- }}}2
-
-  -- Syntax {{{2
+  -- Syntax: =====================================================================================
   Boolean                                  = { fg = c_macroOrange0, bold = true },
   Character                                = { link = 'String' },
   Comment                                  = { fg = c_macroAsh, italic = true },
@@ -292,9 +289,7 @@ local hlgroups = {
   String                                   = { fg = c_macroGreen1 },
   Todo                                     = { fg = c_macroBg0, bg = c_macroBlue0, bold = true },
   Type                                     = { fg = c_macroAqua },
-  -- }}}2
-
-  -- Treesitter syntax {{{2
+  -- Treesitter: =================================================================================
   ['@attribute']                           = { link = 'Constant' },
   ['@constructor']                         = { fg = c_macroTeal },
   ['@constructor.lua']                     = { fg = c_macroViolet },
@@ -347,9 +342,7 @@ local hlgroups = {
   ['@comment.warning']                     = { bg = c_roninYellow, fg = c_waveBlue0, bold = true },
   ['@variable']                            = { fg = c_macroFg0 },
   ['@variable.builtin']                    = { fg = c_macroRed },
-  -- }}}
-
-  -- LSP semantic {{{2
+  -- Semantic: ===================================================================================
   ['@lsp.mod.readonly']                    = { link = 'Constant' },
   ['@lsp.mod.typeHint']                    = { link = 'Type' },
   ['@lsp.type.builtinConstant']            = { link = '@constant.builtin' },
@@ -372,18 +365,14 @@ local hlgroups = {
   ['@lsp.typemod.variable.defaultLibrary'] = { link = '@variable.builtin' },
   ['@lsp.typemod.variable.injected']       = { link = '@variable' },
   ['@lsp.typemod.variable.static']         = { link = 'Constant' },
-  -- }}}
-
-  -- LSP {{{2
+  -- Lsp: ========================================================================================
   LspCodeLens                              = { fg = c_macroAsh },
   LspInfoBorder                            = { link = 'FloatBorder' },
   LspReferenceRead                         = { link = 'LspReferenceText' },
   LspReferenceText                         = { bg = c_winterYellow },
   LspReferenceWrite                        = { bg = c_winterYellow, underline = true },
   LspSignatureActiveParameter              = { fg = c_roninYellow },
-  -- }}}
-
-  -- Diagnostic {{{2
+  -- Diagnostic: =================================================================================
   DiagnosticError                          = { fg = c_macroRed },
   DiagnosticHint                           = { fg = c_macroAqua },
   DiagnosticInfo                           = { fg = c_macroBlue1 },
@@ -402,13 +391,13 @@ local hlgroups = {
   DiagnosticVirtualTextInfo                = { bg = c_winterBlue, fg = c_macroBlue1 },
   DiagnosticVirtualTextWarn                = { bg = c_winterYellow, fg = c_carpYellow },
   DiagnosticUnnecessary                    = { fg = c_macroAsh, sp = c_macroAqua, undercurl = true },
-  -- }}}
 
-  -- Filetype {{{2
-  -- Git
+  -- ============================================================================== #
+  -- filetypes:                                                                     #
+  -- ============================================================================== #
+  -- Git: ========================================================================================
   gitHash                                  = { fg = c_macroAsh },
-
-  -- Sh/Bash
+  -- Bash: =======================================================================================
   bashSpecialVariables                     = { link = 'Constant' },
   shAstQuote                               = { link = 'Constant' },
   shCaseEsac                               = { link = 'Operator' },
@@ -418,8 +407,7 @@ local hlgroups = {
   shNoQuote                                = { link = 'shAstQuote' },
   shQuote                                  = { link = 'String' },
   shTestOpr                                = { link = 'Operator' },
-
-  -- HTML
+  -- Html: =======================================================================================
   htmlBold                                 = { bold = true },
   htmlBoldItalic                           = { bold = true, italic = true },
   htmlH1                                   = { fg = c_macroRed, bold = true },
@@ -435,8 +423,7 @@ local hlgroups = {
   htmlString                               = { link = 'String' },
   htmlTagName                              = { link = 'Tag' },
   htmlTitle                                = { link = 'Title' },
-
-  -- Markdown
+  -- Markdown: ===================================================================================
   markdownBold                             = { bold = true },
   markdownBoldItalic                       = { bold = true, italic = true },
   markdownCode                             = { fg = c_macroGreen1 },
@@ -450,33 +437,30 @@ local hlgroups = {
   markdownH5                               = { link = 'htmlH5' },
   markdownH6                               = { link = 'htmlH6' },
   markdownListMarker                       = { fg = c_autumnYellow },
-
-  -- Checkhealth
+  -- Checkhealth: ================================================================================
   healthError                              = { fg = c_lotusRed0 },
   healthSuccess                            = { fg = c_springGreen },
   healthWarning                            = { fg = c_roninYellow },
   helpHeader                               = { link = 'Title' },
   helpSectionDelim                         = { link = 'Title' },
-
-  -- Qf
+  -- Qf: =========================================================================================
   qfFileName                               = { link = 'Directory' },
   qfLineNr                                 = { link = 'lineNr' },
-  -- }}}
 
-  -- Mini {{{2
-  -- mini.diff
+  -- ============================================================================== #
+  -- Mini:                                                                          #
+  -- ============================================================================== #
+  -- Diff: =======================================================================================
   MiniDiffSignAdd                          = { fg = c_macroGray2 },
   MiniDiffSignChange                       = { fg = c_sumiInk6 },
   MiniDiffSignDelete                       = { fg = c_lotusRed0 },
   MiniDiffSignDeletePreview                = { bg = c_winterRed },
-
-  -- mini.git
+  -- Git: ========================================================================================
   GitBlameHash                             = { link = 'gitHash' },
   GitBlameAuthor                           = { link = 'Title' },
   GitBlameDate                             = { link = 'Title' },
   GitBlameHashRoot                         = { fg = c_autumnGreen, bold = true },
-
-  -- mini.pick
+  -- pick: =======================================================================================
   MiniPickBorder                           = { bg = c_macroBg0, fg = c_winterBlue },
   MiniPickNormal                           = { bg = c_macroBg0, fg = c_macroGray2 },
   MiniPickMatchCurrent                     = { bg = c_macroBg2 },
@@ -490,8 +474,7 @@ local hlgroups = {
   MiniPickIconDirectory                    = { link = 'MiniPickBorder' },
   MiniPickIconFile                         = { link = 'MiniPickBorder' },
   MiniPickHeader                           = { link = 'MiniPickBorder' },
-
-  -- mini.files
+  -- files: ======================================================================================
   MiniFilesBorder                          = { bg = c_macroBg0, fg = c_winterBlue },
   MiniFilesNormal                          = { bg = c_macroBg0, fg = c_macroGray2 },
   MiniFilesDirectory                       = { fg = c_macroGray2 },
@@ -500,27 +483,25 @@ local hlgroups = {
   MiniFilesFile                            = { link = 'MiniFilesDirectory' },
   MiniFilesTitle                           = { link = 'MiniFilesBorder' },
   MiniFilesTitleFocused                    = { link = 'MiniFilesBorder' },
-
-  -- mini.snippets
+  -- snippets: ===================================================================================
   MiniSnippetsCurrent                      = { fg = c_macroBlue1 },
   MiniSnippetsCurrentReplace               = { link = 'MiniSnippetsCurrent' },
   MiniSnippetsUnvisited                    = { link = 'MiniSnippetsCurrent' },
   MiniSnippetsVisited                      = { link = 'MiniSnippetsCurrent' },
   MiniSnippetsFinal                        = { link = 'Comment' },
-
-  -- mini.completions
+  -- completions: ================================================================================
   MiniCompletionActiveParameter            = { fg = c_macroBlue1 },
   MiniCompletionInfoBorderOutdated         = { link = 'FloatBorder' },
-  -- }}}
 
-  -- Plugins {{{2
-  -- gitsigns
+  -- ============================================================================== #
+  -- Plugins:                                                                       #
+  -- ============================================================================== #
+  -- Gitsigns: ===================================================================================
   GitSignsAdd                              = { fg = c_autumnGreen },
   GitSignsChange                           = { fg = c_sumiInk6 },
   GitSignsDelete                           = { fg = c_lotusRed0 },
   GitSignsDeletePreview                    = { bg = c_winterRed },
-
-  -- fugitive
+  -- Fugitive: ===================================================================================
   fugitiveHash                             = { link = 'gitHash' },
   fugitiveHeader                           = { link = 'Title' },
   fugitiveHeading                          = { link = 'Title' },
@@ -530,8 +511,7 @@ local hlgroups = {
   fugitiveUnstagedModifier                 = { fg = c_autumnYellow },
   fugitiveUntrackedHeading                 = { fg = c_macroAqua, bold = true },
   fugitiveUntrackedModifier                = { fg = c_macroAqua },
-
-  -- telescope
+  -- Telescope: ==================================================================================
   TelescopeBorder                          = { bg = c_macroBg2, fg = c_sumiInk6 },
   TelescopeMatching                        = { fg = c_macroRed, bold = true },
   TelescopeNormal                          = { bg = c_macroBg2, fg = c_macroFg2 },
@@ -544,8 +524,7 @@ local hlgroups = {
   TelescopeResultsVariable                 = { link = '@variable' },
   TelescopeSelection                       = { link = 'Visual' },
   TelescopeTitle                           = { bg = c_macroTeal, fg = c_macroBg0 },
-
-  -- nvim-dap-ui
+  -- Nvim-dap-ui: ================================================================================
   DapUIBreakpointsCurrentLine              = { bold = true, fg = c_macroFg0 },
   DapUIBreakpointsDisabledLine             = { link = 'Comment' },
   DapUIBreakpointsInfo                     = { fg = c_macroBlue0 },
@@ -570,22 +549,21 @@ local hlgroups = {
   DapUIWatchesEmpty                        = { fg = c_lotusRed0 },
   DapUIWatchesError                        = { fg = c_lotusRed0 },
   DapUIWatchesValue                        = { fg = c_macroFg0 },
-
-  -- lazy.nvim
+  -- Lazy.nvim: ==================================================================================
   LazyProgressTodo                         = { fg = c_macroBg5 },
-
-  -- statusline
+  -- Statusline: =================================================================================
   StatusLineGitAdded                       = { bg = c_macroBg3, fg = c_macroGreen1 },
   StatusLineGitChanged                     = { bg = c_macroBg3, fg = c_carpYellow },
   StatusLineGitRemoved                     = { bg = c_macroBg3, fg = c_macroRed },
   StatusLineGitBranch                      = { bg = c_macroBg3, fg = c_macroAsh },
   StatusLineHeader                         = { bg = c_macroBg5, fg = c_macroFg1 },
   StatusLineHeaderModified                 = { bg = c_macroRed, fg = c_macroBg1 },
-  -- }}}
 }
--- }}}1
 
--- Highlight group overrides {{{1
+-- ============================================================================== #
+-- Light:                                                                         #
+-- ============================================================================== #
+-- Highlight group overrides: ====================================================================
 if vim.go.bg == 'light' then
   hlgroups.CursorLine = { bg = c_macroBg2 }
   hlgroups.DiagnosticSignWarn = { fg = c_autumnYellow }
@@ -612,9 +590,7 @@ if vim.go.bg == 'light' then
   hlgroups.WinBarNC = { bg = c_macroBg2, fg = c_macroBg5 }
   hlgroups['@variable.parameter'] = { link = 'Identifier' }
 end
--- }}}1
-
--- Set highlight groups {{{1
+-- Set highlight groups: =========================================================================
 for name, attr in pairs(hlgroups) do
   attr.ctermbg = attr.bg and attr.bg[2]
   attr.ctermfg = attr.fg and attr.fg[2]
@@ -623,6 +599,5 @@ for name, attr in pairs(hlgroups) do
   attr.sp = attr.sp and attr.sp[1]
   vim.api.nvim_set_hl(0, name, attr)
 end
--- }}}1
 
 -- vim:ts=2:sw=2:sts=2:fdm=marker
