@@ -66,7 +66,7 @@ if vim.go.bg == 'dark' then
   c_macroAqua    = { '#95aeac', 109 }
   c_macroAsh     = { '#626462', 241 }
   c_macroBg0     = { '#0d0c0c', 232 }
-  c_macroBg1     = { '#101010', 233 }
+  c_macroBg1     = { '#0E0E0E', 233 }
   c_macroBg2     = { '#201d1d', 234 }
   c_macroBg3     = { '#282727', 235 }
   c_macroBg4     = { '#393836', 237 }
@@ -286,7 +286,7 @@ local hlgroups = {
   Special                                  = { fg = c_macroTeal },
   SpecialKey                               = { fg = c_macroGray2 },
   Statement                                = { fg = c_macroViolet },
-  String                                   = { fg = c_macroGreen1 },
+  String                                   = { fg = c_macroGreen1, italic = true },
   Todo                                     = { fg = c_macroBg0, bg = c_macroBlue0, bold = true },
   Type                                     = { fg = c_macroAqua },
   -- Treesitter: =================================================================================
@@ -294,10 +294,10 @@ local hlgroups = {
   ['@constructor']                         = { fg = c_macroTeal },
   ['@constructor.lua']                     = { fg = c_macroViolet },
   ['@keyword.exception']                   = { fg = c_macroRed, bold = true },
-  ['@keyword.import']                      = { link = 'PreProc' },
+  ['@keyword.import']                      = { fg = c_macroRed, italic = true },
   ['@keyword.luap']                        = { link = '@string.regexp' },
   ['@keyword.operator']                    = { fg = c_macroRed, bold = true },
-  ['@keyword.return']                      = { fg = c_macroRed },
+  ['@keyword.return']                      = { fg = c_macroRed, italic = true },
   ['@module']                              = { fg = c_macroOrange0 },
   ['@operator']                            = { link = 'Operator' },
   ['@punctuation.bracket']                 = { fg = c_macroGray1 },
@@ -307,8 +307,9 @@ local hlgroups = {
   ['@string.regexp']                       = { fg = c_macroOrange0 },
   ['@string.yaml']                         = { link = 'Normal' },
   ['@markup.link.label.symbol']            = { fg = c_macroFg0 },
-  ['@tag.attribute']                       = { fg = c_macroFg0 },
-  ['@tag.delimiter']                       = { fg = c_macroGray1 },
+  ['@tag.builtin']                         = { fg = c_springViolet },
+  ['@tag.delimiter']                       = { fg = c_sumiInk6 },
+  ['@tag.attribute']                       = { fg = c_macroViolet },
   ['@comment.error']                       = { bg = c_lotusRed1, fg = c_macroFg0, bold = true },
   ['@diff.delta']                          = { link = 'DiffChanged' },
   ['@diff.minus']                          = { link = 'DiffRemoved' },

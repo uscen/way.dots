@@ -6,10 +6,10 @@ filekinds:
   normal: { foreground: "#c5c9c5" }
   directory: { foreground: "#7a8382" }
   symlink: { foreground: "#8ba4b0" }
-  pipe: { foreground: "#101010" }
+  pipe: { foreground: "#0E0E0E" }
   block_device: { foreground: "#658594" }
   char_device: { foreground: "#658594" }
-  socket: { foreground: "#101010" }
+  socket: { foreground: "#0E0E0E" }
   special: { foreground: "#a292a3" }
   executable: { foreground: "#7a8382" }
   mount_point: { foreground: "#7a8382" }

@@ -197,7 +197,7 @@ layout {
         off
         width 2
         active-color "#252535"
-        inactive-color "#101010"
+        inactive-color "#0E0E0E"
         urgent-color "#e84444"
 
     }
@@ -211,7 +211,7 @@ layout {
         on
         width 1
         active-color "#252535"
-        inactive-color "#101010"
+        inactive-color "#0E0E0E"
         urgent-color "#e84444"
     }
     // Shadow: ===================================================================================
@@ -251,7 +251,7 @@ layout {
         gaps-between-tabs 2
         corner-radius 0
         active-color "#252535"
-        inactive-color "#101010"
+        inactive-color "#0E0E0E"
         urgent-color "#9b0000"
     }
     // Others: ===================================================================================

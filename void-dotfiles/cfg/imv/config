@@ -2,7 +2,7 @@
 # General:                                                                        #
 # =============================================================================== #
 [options]
-background = 101010
+background = 0E0E0E
 fullscreen = false
 width = 1280
 height = 720
@@ -14,7 +14,7 @@ overlay_font = JetBrains Mono Nerd Font:11
 overlay_text = $(ls)
 overlay_text_color = c5c9c5
 overlay_text_alpha = ff
-overlay_background_color = 101010
+overlay_background_color = 0E0E0E
 overlay_background_alpha = c3
 overlay_position_bottom = true
 recursively = true

@@ -21,9 +21,9 @@ set E:FZF_DEFAULT_OPTS = "
     --prompt='󱓇  ' --layout=reverse
     --preview-window=right,30%
     --style=minimal --height=100% --border --preview-window right,40%
-    --color fg:#a6a69c,bg:#101010
+    --color fg:#a6a69c,bg:#0E0E0E
     --color bg+:#201d1d,fg+:#c5c9c5
-    --color hl:#7a8382,hl+:#7a8382,gutter:#101010
+    --color hl:#7a8382,hl+:#7a8382,gutter:#0E0E0E
     --color pointer:#201d1d,info:#393836
     --color prompt:#7a8382,
     --color border:#252535
