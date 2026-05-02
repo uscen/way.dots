@@ -276,7 +276,7 @@ local hlgroups = {
   Character                                = { link = 'String' },
   Comment                                  = { fg = c_macroAsh, italic = true },
   Constant                                 = { fg = c_macroOrange0 },
-  Delimiter                                = { fg = c_macroGray1 },
+  Delimiter                                = { fg = c_macroGray0 },
   Error                                    = { fg = c_lotusRed1 },
   Exception                                = { fg = c_macroRed },
   Float                                    = { link = 'Number' },
@@ -346,7 +346,7 @@ local hlgroups = {
   ['@markup.link.url.markdown_inline']     = { link = 'htmlString' },
   ['@comment.warning']                     = { bg = c_roninYellow, fg = c_waveBlue0, bold = true },
   ['@variable']                            = { fg = c_macroFg0 },
-  ['@variable.builtin']                    = { fg = c_macroRed, italic = true },
+  ['@variable.builtin']                    = { fg = c_macroRed },
   -- }}}
 
   -- LSP semantic {{{2
