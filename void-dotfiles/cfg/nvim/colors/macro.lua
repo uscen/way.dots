@@ -273,7 +273,6 @@ local hlgroups = {
 
   -- Syntax {{{2
   Boolean                                  = { fg = c_macroOrange0, bold = true },
-  LineNr                                   = { fg = c_macroBg4, bold = true },
   Character                                = { link = 'String' },
   Comment                                  = { fg = c_macroAsh, italic = true },
   Constant                                 = { fg = c_macroOrange0 },
