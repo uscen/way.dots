@@ -4,88 +4,65 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-    "type": "none",
+    "source": "/home/lli/.config//fastfetch/assets/idk.png",
+    "type": "chafa",
+    "width": 30,
+    "height": 10,
     "padding": {
       "top": 1,
+      "left": 3,
     },
-  },
-  "display": {
-    "separator": " ",
   },
   "modules": [
+    "break",
     {
-      "key": "╭───────────╮",
       "type": "custom",
+      "format": "             おかえり❣︎",
+      "outputColor": "yellow",
     },
     {
-      "key": "│ {#31} user    {#keys}│",
-      "type": "title",
-      "format": "{user-name}",
+      "type": "custom",
+      "outputColor": "default",
+      "format": "┌─────────────────────────────────┐",
+    },
+    "break",
+    {
+      "type": "users",
+      "key": "   ",
+      "format": "{name} @ uscen",
+      "keyColor": "cyan",
     },
     {
-      "key": "│ {#32}󰇅 hname   {#keys}│",
-      "type": "title",
-      "format": "{host-name}",
+      "type": "host",
+      "key": "   ",
+      "format": "{2}",
+      "keyColor": "cyan",
     },
     {
-      "key": "│ {#33}󰅐 uptime  {#keys}│",
-      "type": "uptime",
-    },
-    {
-      "key": "│ {#34}{icon} distro  {#keys}│",
       "type": "os",
+      "key": "   ",
+      "keyColor": "cyan",
     },
     {
-      "key": "│ {#35} kernel  {#keys}│",
-      "type": "kernel",
-    },
-    {
-      "key": "│ {#36}󰇄 desktop {#keys}│",
-      "type": "de",
-    },
-    {
-      "key": "│ {#31} term    {#keys}│",
-      "type": "terminal",
-    },
-    {
-      "key": "│ {#32} shell   {#keys}│",
-      "type": "shell",
-    },
-    {
-      "key": "│ {#33}󰍛 cpu     {#keys}│",
       "type": "cpu",
-      "showPeCoreCount": true,
+      "key": "   ",
+      "format": "{1}",
+      "keyColor": "cyan",
     },
     {
-      "key": "│ {#34}󰉉 disk    {#keys}│",
-      "type": "disk",
-      "folders": "/",
-    },
-    {
-      "key": "│ {#34}󰉉 disk    {#keys}│",
-      "type": "disk",
-      "folders": "/home",
-    },
-    {
-      "key": "│ {#35} memory  {#keys}│",
-      "type": "memory",
-    },
-    {
-      "key": "│ {#32}󰏗 pkg     {#keys}│",
       "type": "packages",
+      "key": "   ",
+      "keyColor": "cyan",
     },
+    "break",
     {
-      "key": "├───────────┤",
       "type": "custom",
+      "format": "└─────────────────────────────────┘",
     },
     {
-      "key": "│ {#39} colors  {#keys}│",
       "type": "colors",
-      "symbol": "circle",
-    },
-    {
-      "key": "╰───────────╯",
-      "type": "custom",
+      "symbol": "square",
+      "paddingLeft": 10,
     },
   ],
 }
