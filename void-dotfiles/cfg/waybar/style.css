@@ -189,7 +189,7 @@ tooltip * {
 /* # ============================================================================= # */
 #custom-void,
 #custom-launcher {
-  font-size: 15px;
+  font-size: 16px;
   margin-left: -5px;
 }
 #custom-menu {
@@ -200,5 +200,5 @@ tooltip * {
   color: @color2;
 }
 #custom-launcher {
-  color: @color4;
+  color: @color1;
 }

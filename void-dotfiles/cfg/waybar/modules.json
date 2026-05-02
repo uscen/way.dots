@@ -203,7 +203,7 @@
   },
   "custom/launcher": {
     "format": "",
-    "on-click": "fuzzel",
+    "on-click": "~/.config/fuzzel/modules/powermenu",
     "tooltip": false
   }
 }
