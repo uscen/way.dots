@@ -353,9 +353,6 @@ gestures {
 // ============================================================================== #
 // All Window: ===================================================================================
 window-rule {
-    open-maximized true
-}
-window-rule {
     draw-border-with-background false
 }
 window-rule  {
