@@ -307,6 +307,7 @@ local hlgroups = {
   ['@string.regexp']                       = { fg = c_macroOrange0 },
   ['@string.yaml']                         = { link = 'Normal' },
   ['@markup.link.label.symbol']            = { fg = c_macroFg0 },
+  ['@tag']                                 = { fg = c_macroBlue1 },
   ['@tag.builtin']                         = { fg = c_springViolet },
   ['@tag.delimiter']                       = { fg = c_sumiInk6 },
   ['@tag.attribute']                       = { fg = c_macroViolet },
