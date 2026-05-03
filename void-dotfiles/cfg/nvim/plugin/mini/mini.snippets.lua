@@ -21,6 +21,7 @@ Config.later(function()
     javascriptreact = webPatterns,
     typescriptreact = webPatterns,
   }
+
   -- Expand Patterns: ============================================================================
   local match_strict    = function(snips)
     -- Do not match with whitespace to cursor's left =============================================
@@ -28,6 +29,7 @@ Config.later(function()
     -- Match exact from the start to the end of the string =======================================
     return MiniSnippets.default_match(snips, { pattern_fuzzy = '^%S+$' })
   end
+
   -- Setup Snippets ==============================================================================
   MiniSnippets.setup({
     snippets = {
@@ -42,6 +44,7 @@ Config.later(function()
       end,
     },
   })
+
   -- Expand Snippets Or complete by Tab ==========================================================
   local expand_or_complete = function()
     if #MiniSnippets.expand({ insert = false }) > 0 then
@@ -51,6 +54,7 @@ Config.later(function()
         (vim.fn.complete_info().selected == -1 and vim.keycode('<c-n><c-y>') or vim.keycode('<c-y>')) or '<Tab>'
   end
   vim.keymap.set('i', '<Tab>', expand_or_complete, { expr = true, replace_keycodes = true })
+
   -- Exit snippet sessions on entering normal mode: ==============================================
   vim.api.nvim_create_autocmd('User', {
     pattern = 'MiniSnippetsSessionStart',
@@ -66,6 +70,7 @@ Config.later(function()
       })
     end,
   })
+
   -- Exit snippets upon reaching final tabstop: ==================================================
   vim.api.nvim_create_autocmd('User', {
     pattern = 'MiniSnippetsSessionJump',

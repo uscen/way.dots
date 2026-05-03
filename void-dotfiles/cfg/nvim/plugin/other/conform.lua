@@ -6,7 +6,7 @@ Config.later(function()
   local conform = require('conform')
   conform.setup({
     default_format_opts = {
-      -- Allow formatting from LSP server if no dedicated formatter is available: ================
+      -- Allow formatting from LSP server if no dedicated formatter is available
       lsp_format = 'fallback',
     },
     formatters_by_ft = {

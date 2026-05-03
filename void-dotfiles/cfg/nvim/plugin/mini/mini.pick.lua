@@ -66,10 +66,12 @@ Config.later(function()
       vim.wo[win_id].winblend = 5
     end,
   })
+
   -- Pick Directory Form Nvim: ===================================================================
   MiniPick.registry.config = function()
     return MiniPick.builtin.files(nil, { source = { name = 'Config Files', cwd = vim.fn.stdpath('config') } })
   end
+
   -- Pick Directory Form Home : ==================================================================
   MiniPick.registry.home = function()
     local cwd = vim.fn.expand('~/')
@@ -80,6 +82,7 @@ Config.later(function()
     end
     return MiniExtra.pickers.explorer({ cwd = cwd }, { source = { choose = choose } })
   end
+
   -- Pick Directory Project: =====================================================================
   MiniPick.registry.projects = function()
     local cwd = vim.fn.expand('~/Projects')
@@ -90,6 +93,7 @@ Config.later(function()
     end
     return MiniExtra.pickers.explorer({ cwd = cwd }, { source = { choose = choose } })
   end
+
   -- Delete buffer in Buffers picker: =============================================================
   MiniPick.registry.buffers = function(local_opts)
     local wipeout_cur = function()

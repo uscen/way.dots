@@ -24,12 +24,13 @@ Config.now_if_args(function()
     },
     windows = { max_number = 1, width_focus = vim.o.columns },
   })
+
   -- UI: =========================================================================================
   vim.api.nvim_create_autocmd('User', {
     pattern = 'MiniFilesWindowOpen',
     callback = function(args)
       local win_id = args.data.win_id
-      -- Customize window-local settings =========================================================
+      -- Customize window-local settings
       vim.wo[win_id].winblend = 5
       local config = vim.api.nvim_win_get_config(win_id)
       config.border, config.title_pos = 'single', 'left'
@@ -40,15 +41,16 @@ Config.now_if_args(function()
     pattern = 'MiniFilesWindowUpdate',
     callback = function(args)
       local config = vim.api.nvim_win_get_config(args.data.win_id)
-      -- Ensure fixed height =====================================================================
+      -- Ensure fixed height
       config.height = vim.o.lines
-      -- Ensure no title padding =================================================================
+      -- Ensure no title padding
       local n = #config.title
       config.title[1][1] = config.title[1][1]:gsub('^ ', '')
       config.title[n][1] = config.title[n][1]:gsub(' $', '')
       vim.api.nvim_win_set_config(args.data.win_id, config)
     end,
   })
+
   -- BookMarks: ==================================================================================
   local minifiles_augroup = vim.api.nvim_create_augroup('ec-mini-files', {})
   vim.api.nvim_create_autocmd('User', {
@@ -61,6 +63,7 @@ Config.now_if_args(function()
       MiniFiles.set_bookmark('w', vim.fn.getcwd, { desc = 'Working directory' })
     end,
   })
+
   -- Dotfiles : ==================================================================================
   local toggle = { enabled = true }
   local toggle_dotfiles = function()
@@ -84,6 +87,7 @@ Config.now_if_args(function()
     pattern = 'MiniFilesBufferCreate',
     callback = function(args) vim.keymap.set('n', '.', toggle_dotfiles, { buffer = args.data.buf_id }) end,
   })
+
   -- Splits : ====================================================================================
   local map_split = function(buf_id, lhs, direction)
     local function rhs()

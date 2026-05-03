@@ -1,6 +1,4 @@
 -- ============================================================================== #
 -- Colorscheme:                                                                   #
 -- ============================================================================== #
-Config.now(function()
-  vim.cmd.colorscheme('macro')
-end)
+Config.now(function() vim.cmd.colorscheme('macro') end)

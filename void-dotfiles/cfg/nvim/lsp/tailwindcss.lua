@@ -54,7 +54,7 @@ return {
         invalidTailwindDirective = 'error',
         recommendedVariantOrder = 'warning',
       },
-      includeLanguages = { htmlangular = 'html', },
+      includeLanguages = { htmlangular = 'html' },
       classAttributes = { 'class', 'className', 'style', 'classList' },
       classFunctions = { 'cn', 'clsx', 'tw', 'tw.color', 'tw.style' },
     },

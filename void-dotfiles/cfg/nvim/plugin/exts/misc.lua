@@ -21,6 +21,7 @@ Config.later(function()
   end
 
   vim.api.nvim_create_user_command('OpenUrlInBuffer', M.openUrlInBuffer, {})
+
   -- Toggle word: ==================================================================================
   function M.toggleWord()
     local toggles = {
@@ -56,6 +57,7 @@ Config.later(function()
   end
 
   vim.api.nvim_create_user_command('ToggleWorld', M.toggleWord, {})
+
   -- Smart duplicate line: =========================================================================
   function M.smartDuplicate()
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -90,6 +92,7 @@ Config.later(function()
   end
 
   vim.api.nvim_create_user_command('SmartDuplicate', M.smartDuplicate, {})
+
   -- Capabilities: =================================================================================
   function M.toggleTitleCase()
     local prevCursor = vim.api.nvim_win_get_cursor(0)
@@ -100,9 +103,10 @@ Config.later(function()
   end
 
   vim.api.nvim_create_user_command('ToggleTitleCase', M.toggleTitleCase, {})
+
   -- Delete buff: ==================================================================================
   M.delete_buffer = function()
-    -- Get only 'normal' windows (ignores floats/popups): ==========================================
+    -- Get only 'normal' windows (ignores floats/popups)
     local wins = vim.api.nvim_tabpage_list_wins(0)
     local normal_wins = {}
     for _, win in ipairs(wins) do
@@ -112,19 +116,20 @@ Config.later(function()
     end
     local buflist = vim.fn.getbufinfo({ buflisted = 1 })
     if #buflist <= 1 then
-      -- Last buffer: Quit Neovim entirely: ========================================================
+      -- Last buffer: Quit Neovim entirely
       vim.cmd('quit')
     elseif #normal_wins > 1 then
       local cur_buf = vim.api.nvim_get_current_buf()
       require('mini.bufremove').wipeout(cur_buf, true)
       vim.cmd('close')
     else
-      -- Only one window left, but multiple buffers: Delete buffer: ================================
+      -- Only one window left, but multiple buffers
       vim.cmd('bdelete')
     end
   end
 
   vim.api.nvim_create_user_command('DeleteBuffer', M.delete_buffer, {})
+
   -- Delete others buff: ===========================================================================
   function M.deleteOthersBuffers()
     for _, buf in ipairs(vim.api.nvim_list_bufs()) do
@@ -135,6 +140,7 @@ Config.later(function()
   end
 
   vim.api.nvim_create_user_command('DeleteOtherBuffers', M.deleteOthersBuffers, {})
+
   -- Open All hunks in quickfix: =====================================================================
   function M.diffInQuickFix()
     local hunks = require('mini.diff').export('qf')
@@ -147,6 +153,7 @@ Config.later(function()
   end
 
   vim.api.nvim_create_user_command('MiniDiffInQuickFixList', M.diffInQuickFix, {})
+
   -- Box Comment: ==================================================================================
   function M.boxComment()
     local count = vim.v.count1
@@ -181,6 +188,7 @@ Config.later(function()
   end
 
   vim.api.nvim_create_user_command('BoxComment', M.boxComment, {})
+
   -- Surround: =====================================================================================
   function M.SurroundOrReplaceQuotes()
     local word = vim.fn.expand('<cword>')
@@ -219,6 +227,7 @@ Config.later(function()
   end
 
   vim.api.nvim_create_user_command('SurroundOrReplaceQuotes', M.SurroundOrReplaceQuotes, {})
+
   -- This is a simplified version of in-and-out.nvim: ==============================================
   -- https://github.com/ysmb-wtsg/in-and-out.nvim
   local function escape_lua_pattern(s)
@@ -262,6 +271,7 @@ Config.later(function()
   end
 
   vim.api.nvim_create_user_command('Leap', M.leap, {})
+
   -- go_to_relative_file: ==========================================================================
   function M.go_to_relative_file(n, relative_to)
     return function()
@@ -292,6 +302,7 @@ Config.later(function()
 
   vim.api.nvim_create_user_command('RelativeFileNext', M.go_to_relative_file(1), {})
   vim.api.nvim_create_user_command('RelativeFilePrev', M.go_to_relative_file(-1), {})
+
   -- go_to_relative_file: ==========================================================================
   function M.open_file_or_create_new()
     local path = vim.fn.expand('<cfile>')

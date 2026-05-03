@@ -5,19 +5,24 @@ Config.now(function()
   -- Enable all filetype plugins and syntax (if not enabled, for better startup): ================
   vim.cmd('filetype plugin indent on')
   if vim.fn.exists('syntax_on') ~= 1 then vim.cmd('syntax enable') end
+
   -- Leader:  ====================================================================================
   vim.g.mapleader                = vim.keycode('<space>')
   vim.g.maplocalleader           = vim.g.mapleader
+
   -- Os:  ========================================================================================
   vim.g.is_win                   = vim.uv.os_uname().sysname:find('Windows') ~= nil
   vim.g.is_windows               = vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1
+
   -- Useful for dynamically constructing paths in plugin configs or scripts: =====================
   vim.g.path_delimiter           = vim.g.is_windows and ';' or ':'
   vim.g.path_separator           = vim.g.is_windows and '\\' or '/'
+
   -- grep: =======================================================================================
   vim.o.grepprg                  = 'rg --vimgrep --smart-case --no-heading --color=never --glob !.git'
   vim.o.grepformat               = '%f:%l:%c:%m,%f:%l:%m'
   vim.o.path                     = vim.o.path .. ',**'
+
   -- General: ====================================================================================
   vim.o.undofile                 = true
   vim.o.wildmenu                 = true
@@ -50,6 +55,7 @@ Config.now(function()
   vim.o.fileformats              = vim.g.is_windows and 'dos' or 'unix'
   vim.o.fileignorecase           = not vim.g.is_windows
   vim.o.undodir                  = vim.fn.stdpath('data') .. '/undo'
+
   -- Spelling ====================================================================================
   vim.o.spell                    = false
   vim.o.spelllang                = 'en_us'
@@ -57,6 +63,7 @@ Config.now(function()
   vim.o.spellsuggest             = 'best,8'
   vim.o.spellfile                = vim.fn.stdpath('config') .. '/misc/spell/en.utf-8.add'
   vim.o.dictionary               = vim.fn.stdpath('config') .. '/misc/dict/english.txt'
+
   -- UI: =========================================================================================
   vim.o.number                   = true
   vim.o.termguicolors            = true
@@ -123,6 +130,7 @@ Config.now(function()
   vim.o.statusline               = string.rep('⎯', vim.o.columns)
   vim.o.fillchars                = 'eob: ,fold:╌,diff:-,foldclose:▶,foldopen:▼,lastline:⋯,msgsep:─'
   vim.o.listchars                = 'tab:» ,eol:↲,trail:•,nbsp:␣,extends:→,precedes:←'
+
   -- Editing:  ===================================================================================
   vim.o.autoindent               = true
   vim.o.cindent                  = true
@@ -183,6 +191,7 @@ Config.now(function()
   vim.o.diffopt                  = 'internal,filler,closeoff,algorithm:patience,indent-heuristic,linematch:40'
   vim.o.suffixesadd              = '.html,.css,.scss,.js,.ts,.jsx,.tsx,.json,.md,.yaml,.yml,.lua'
   vim.o.keywordprg               = vim.g.is_windows and ':help' or ':Man'
+
   -- Folds:  =====================================================================================
   vim.o.foldenable               = false
   vim.o.foldlevel                = 1
@@ -194,6 +203,7 @@ Config.now(function()
   vim.o.foldmethod               = 'manual'
   vim.o.foldopen                 = 'hor,mark,tag,search,insert,quickfix,undo'
   vim.o.foldexpr                 = '0'
+
   -- Memory: =====================================================================================
   vim.o.timeout                  = true
   vim.o.lazyredraw               = true
@@ -206,6 +216,7 @@ Config.now(function()
   vim.o.timeoutlen               = 500
   vim.o.redrawtime               = 500
   vim.o.maxmempattern            = 10000
+
   -- Disable builtin plugins: ====================================================================
   vim.g.loaded_gzip              = 1
   vim.g.loaded_tar               = 1
@@ -238,6 +249,7 @@ Config.now(function()
   vim.g.loaded_bugreport         = 1
   vim.g.loaded_rplugin           = 1
   vim.g.loaded_ftplugin          = 1
+
   -- Disable health checks for these providers: ==================================================
   vim.g.loaded_perl_provider     = 0
   vim.g.loaded_ruby_provider     = 0
@@ -255,19 +267,23 @@ Config.later(function()
     vim.o.guifont = 'JetBrainsMono Nerd Font:h12'
     vim.g.neovide_scale_factor = 1
     vim.g.neovide_refresh_rate = 120
+
     -- Appearance: ===============================================================================
     vim.g.neovide_opacity = 1
     vim.g.neovide_underline_stroke_scale = 2.5
     vim.g.neovide_show_border = false
+
     -- Padding: ==================================================================================
     vim.g.neovide_padding_top = 0
     vim.g.neovide_padding_bottom = 0
     vim.g.neovide_padding_right = 0
     vim.g.neovide_padding_left = 0
+
     -- Floating: =================================================================================
     vim.g.neovide_floating_shadow = false
     vim.g.neovide_floating_blur_amount_x = 2.0
     vim.g.neovide_floating_blur_amount_y = 2.0
+
     -- Behavior: =================================================================================
     vim.g.neovide_remember_window_size = false
     vim.g.neovide_hide_mouse_when_typing = false
@@ -276,15 +292,18 @@ Config.later(function()
     vim.g.neovide_cursor_antialiasing = false
     vim.g.neovide_cursor_animate_in_insert_mode = false
     vim.g.neovide_cursor_animate_command_line = false
+
     -- Cursor: ===================================================================================
     vim.g.neovide_position_animation_length = 0
     vim.g.neovide_cursor_animation_length = 0.00
     vim.g.neovide_cursor_trail_size = 0
     vim.g.neovide_scroll_animation_far_lines = 0
     vim.g.neovide_scroll_animation_length = 0.00
+
     -- Options: ==================================================================================
     vim.o.mousescroll = 'ver:10,hor:6'
     vim.o.linespace = 0
+
     -- Keymap: ===================================================================================
     vim.keymap.set({ 'n', 'v' }, '<F11>', ':<C-u>let g:neovide_fullscreen = !g:neovide_fullscreen<CR>')
     vim.keymap.set({ 'n', 'v' }, '<C-=>', ':lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<cr>')

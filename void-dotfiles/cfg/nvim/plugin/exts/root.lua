@@ -11,29 +11,37 @@ Config.later(function()
         '.hg/',
         '.bzr/',
         '.svn/',
+
         -- exrc markers: ===========================================================================
         '.nvim.lua',
         '.nvimrc',
         '.exrc',
+
         -- generic root markers: ===================================================================
         '.editorconfig',
         'Makefile',
+
         -- javascript: =============================================================================
         'node_modules/',
         'package.json',
+
         -- python: =================================================================================
         '.venv/',
         'pyproject.toml',
         '.pylintrc',
         'requirements.txt',
         'setup.py',
+
         -- c: ======================================================================================
         'CMakeLists.txt',
         'Makefile',
+
         -- rust: ===================================================================================
         'Cargo.toml',
+
         -- go: =====================================================================================
         'go.mod',
+
         -- java: ===================================================================================
         'mvnw',
         'gradlew',
@@ -59,6 +67,7 @@ Config.later(function()
 
   M.config = vim.tbl_deep_extend('force', M.config, config or {})
   local group = vim.api.nvim_create_augroup('myplugins-rooter', { clear = true })
+
   -- Disable conflicting option: =================================================================
   vim.api.nvim_create_autocmd({ 'VimEnter', 'BufEnter' }, {
     group = group,

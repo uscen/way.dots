@@ -3,6 +3,7 @@
 -- ============================================================================== #
 Config.later(function()
   vim.filetype.add({
+    -- Extension: ================================================================================
     extension = {
       ['smd'] = 'markdown',
       ['scm'] = 'query',
@@ -28,6 +29,8 @@ Config.later(function()
       ['axaml'] = 'xml',
       ['h'] = 'c',
     },
+
+    -- Filename: =================================================================================
     filename = {
       ['README'] = 'markdown',
       ['readme'] = 'markdown',
@@ -47,6 +50,8 @@ Config.later(function()
       ['tmux.conf'] = 'bash',
       ['ignore'] = 'gitignore',
     },
+
+    -- Pattern: ==================================================================================
     pattern = {
       ['requirements.*.txt'] = 'requirements',
       ['.*config/git/config'] = 'gitconfig',

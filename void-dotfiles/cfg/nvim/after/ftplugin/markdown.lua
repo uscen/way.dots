@@ -30,8 +30,7 @@ vim.keymap.set('n', '<leader>t', function()
 end, { buffer = 0, silent = true, desc = 'Toggle checkbox' })
 vim.keymap.set('n', 'j', 'gj', { buffer = 0 })
 vim.keymap.set('n', 'k', 'gk', { buffer = 0 })
--- Disable "show table of contents" built-in mapping (on Neovim>=0.11) in favor
--- of `gO` from 'mini.basics'
+-- Disable "show table of contents" built-in mapping (on Neovim>=0.11)
 pcall(vim.keymap.del, 'n', 'gO', { buffer = 0 })
 
 -- Mini: =========================================================================================

@@ -9,6 +9,7 @@ Config.now_if_args(function()
     'https://github.com/nvim-treesitter/nvim-treesitter',
     'https://github.com/nvim-treesitter/nvim-treesitter-textobjects',
   })
+
   -- Ensure installed: ===========================================================================
   local languages = {
     'html',
@@ -31,6 +32,7 @@ Config.now_if_args(function()
   end
   local to_install = vim.tbl_filter(isnt_installed, languages)
   if #to_install > 0 then require('nvim-treesitter').install(to_install) end
+
   -- Ensure enabled: =============================================================================
   local filetypes = {}
   for _, lang in ipairs(languages) do

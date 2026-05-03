@@ -8,11 +8,14 @@ Config.now(function()
       local suf3, suf4 = ext:sub(-3), ext:sub(-4)
       return suf3 ~= 'scm' and suf3 ~= 'txt' and suf3 ~= 'yml' and suf4 ~= 'json' and suf4 ~= 'yaml'
     end,
+    -- Default: ==================================================================================
     default = {
       ['file'] = { glyph = '󰪷', hl = 'MiniIconsYellow' },
       ['filetype'] = { glyph = '󰪷', hl = 'MiniIconsYellow' },
       ['extension'] = { glyph = '󰪷', hl = 'MiniIconsYellow' },
     },
+
+    -- Files: ====================================================================================
     file = {
       ['init.lua'] = { glyph = '', hl = 'MiniIconsGreen' },
       ['README.md'] = { glyph = '', hl = 'MiniIconsGreen' },
@@ -40,6 +43,8 @@ Config.now(function()
       ['bun.lock'] = { glyph = '', hl = 'MiniIconsGrey' },
       ['devcontainer.json'] = { glyph = '', hl = 'MiniIconsAzure' },
     },
+
+    -- Filetypes: ================================================================================
     filetype = {
       ['lua'] = { glyph = '󰢱', hl = 'MiniIconsBlue' },
       ['css'] = { glyph = '', hl = 'MiniIconsCyan' },
@@ -50,6 +55,8 @@ Config.now(function()
       ['dotenv'] = { glyph = '', hl = 'MiniIconsYellow' },
       ['gotmpl'] = { glyph = '󰟓', hl = 'MiniIconsGrey' },
     },
+
+    -- Extension: ================================================================================
     extension = {
       ['d.ts'] = { glyph = '', hl = 'MiniIconsRed' },
       ['applescript'] = { glyph = '󰀵', hl = 'MiniIconsGrey' },
@@ -58,6 +65,8 @@ Config.now(function()
       ['adblock'] = { glyph = '', hl = 'MiniIconsRed' },
       ['add'] = { glyph = '', hl = 'MiniIconsGreen' },
     },
+
+    -- Directory: ================================================================================
     directory = {
       ['.vscode'] = { glyph = '', hl = 'MiniIconsBlue' },
       ['app'] = { glyph = '󰀻', hl = 'MiniIconsRed' },
@@ -72,6 +81,8 @@ Config.now(function()
       ['db'] = { glyph = '󰆼', hl = 'MiniIconsOrange' },
       ['cspell'] = { glyph = '󰓆', hl = 'MiniIconsPurple' },
     },
+
+    -- Lsp: ================================================================================
     lsp = {
       ['text'] = { glyph = '' },
       ['method'] = { glyph = '󰆦' },

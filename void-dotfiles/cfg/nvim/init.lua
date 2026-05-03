@@ -14,10 +14,13 @@
 -- ============================================================================== #
 -- Bootstrap with mini: ==========================================================================
 vim.pack.add({ 'https://github.com/nvim-mini/mini.nvim' })
+
 -- Define global config table for sharing between modules: =======================================
 _G.Config = {}
+
 -- Setup 'mini.misc' for access to `MiniMisc.safely()`: ==========================================
 local misc = require('mini.misc')
+
 -- Define package helpers: =======================================================================
 Config.now = function(f) misc.safely('now', f) end
 Config.later = function(f) misc.safely('later', f) end
