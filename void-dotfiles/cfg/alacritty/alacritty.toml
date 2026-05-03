@@ -35,7 +35,7 @@ lines = 48
 # Fonts:                                                                          #
 # =============================================================================== #
 [font]
-normal = { family = "JetBrainsMono Nerd Font", style = "SemiBold" }
+normal = { family = "JetBrainsMono Nerd Font", style = "Bold" }
 bold = { family = "JetBrainsMono Nerd Font", style = "ExtraBold" }
 italic = { family = "JetBrainsMono Nerd Font", style = "Italic" }
 bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
