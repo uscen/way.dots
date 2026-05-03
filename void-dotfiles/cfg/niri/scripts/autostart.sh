@@ -2,8 +2,7 @@
 # =============================================================================== #
 # Wallpaper:                                                                      #
 # =============================================================================== #
-awww-daemon &
-awww img "$HOME/.local/share/wall.dots/wallpapers/VAGABOND.png" &
+awww-daemon && awww img "$HOME/.local/share/wall.dots/wallpapers/VAGABOND.png" &
 
 # =============================================================================== #
 # Cliphist:                                                                       #

@@ -9,6 +9,10 @@
 @define-color color5 #a292a3;
 @define-color color6 #658594;
 @define-color color7 #c5c9c5;
+
+/* # ============================================================================= # */
+/* # General:                                                                      # */
+/* # ============================================================================= # */
 * {
   all: unset;
 }
@@ -20,6 +24,10 @@ window {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+/* # ============================================================================= # */
+/* # Clock:                                                                        # */
+/* # ============================================================================= # */
 #clock-label {
   min-width: 320px;
   background-color: alpha(@color2, 0.1);
@@ -27,16 +35,22 @@ window {
   font-weight: 900;
   font-size: 14px;
   padding: 10px 30px;
-  border-radius: 0 0 10px 10px;
   border: 1px solid alpha(@color2, 0.5);
 }
+
+/* # ============================================================================= # */
+/* # Input:                                                                        # */
+/* # ============================================================================= # */
 #input-field {
   padding: 10px 15px;
-  border-radius: 4px;
   border: 1px solid @color2;
   caret-color: @color2;
   color: @color3;
 }
+
+/* # ============================================================================= # */
+/* # Others:                                                                       # */
+/* # ============================================================================= # */
 #warning-label,
 #error-label,
 #unlock-button {
@@ -45,7 +59,6 @@ window {
   margin-bottom: 20px;
 }
 #unlock-button {
-  border-radius: 4px;
   background-color: alpha(@color2, 0.1);
   color: @color3;
   border: 1px solid alpha(@color2, 0.5);
