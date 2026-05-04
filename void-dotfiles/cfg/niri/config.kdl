@@ -115,6 +115,7 @@ input {
         repeat-rate 60
         numlock
     }
+
     // Touchpad: =================================================================================
     touchpad {
         tap
@@ -129,6 +130,7 @@ input {
         disabled-on-external-mouse
         scroll-factor 1.5
     }
+
     // Mouse: ====================================================================================
     mouse {
         accel-speed 0.4
@@ -136,8 +138,10 @@ input {
         middle-emulation
         scroll-factor 1.5
     }
+
     // trackpoint: ===============================================================================
     trackpoint {}
+
     // Others: ===================================================================================
     warp-mouse-to-focus
     disable-power-key-handling
@@ -153,10 +157,13 @@ input {
 output "eDP-1" {
     // Run `niri msg outputs` to list all outputs and their modes: ===============================
     mode "1920x1200@60.026"
+
     // You can use integer or fractional scale, for example use 1.5 for 150% scale: ==============
     scale 1
+
     // Rotate the output counter-clockwise: ======================================================
     transform "normal"
+
     // Set the position of the output in the global coordinate space: ============================
     position x=0 y=0
 }
@@ -192,6 +199,7 @@ layout {
         top 0
         bottom 0
     }
+
     // Ring: =====================================================================================
     focus-ring {
         off
@@ -201,11 +209,13 @@ layout {
         urgent-color "#e84444"
 
     }
+
     // Hint: =====================================================================================
     insert-hint {
         on
         color "#25253590"
     }
+
     // Border: ===================================================================================
     border {
         on
@@ -214,6 +224,7 @@ layout {
         inactive-color "#201d1d"
         urgent-color "#e84444"
     }
+
     // Shadow: ===================================================================================
     shadow {
         on
@@ -222,6 +233,7 @@ layout {
         offset x=0 y=2
         color "#0004"
     }
+
     // Width: ====================================================================================
     default-column-width { proportion 0.5; }
     preset-column-widths {
@@ -230,6 +242,7 @@ layout {
         proportion 0.75
         proportion 1.0
     }
+
    // Height: ====================================================================================
     preset-window-heights {
         proportion 0.2
@@ -239,6 +252,7 @@ layout {
         proportion 0.8
         proportion 1.0
     }
+
    // Tabs: ======================================================================================
     tab-indicator {
         on
@@ -254,6 +268,7 @@ layout {
         inactive-color "#0E0E0E"
         urgent-color "#9b0000"
     }
+
     // Others: ===================================================================================
     always-center-single-column
     center-focused-column "never"
