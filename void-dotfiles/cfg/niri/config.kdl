@@ -7,31 +7,42 @@ spawn-sh-at-startup "~/.config/niri/scripts/theme.sh"
 // ============================================================================== #
 // General:                                                                       #
 // ============================================================================== #
+// Window: =======================================================================================
 prefer-no-csd
+
+// Screenshots: ==================================================================================
 screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
 config-notification {
     disable-failed
 }
+// Clipboard: ====================================================================================
 clipboard {
     disable-primary
 }
+// Overlay: ======================================================================================
 hotkey-overlay {
     skip-at-startup
     hide-not-bound
 }
+// Xwayland: =====================================================================================
 xwayland-satellite {
     off
     path "xwayland-satellite"
 }
+// Lid: ==========================================================================================
 switch-events {
     lid-close { spawn "notify-send" "The laptop lid is closed!"; }
     lid-open { spawn "notify-send" "The laptop lid is open!"; }
 }
+
+// Debug: ========================================================================================
 debug {
     keep-max-bpc-unchanged
     wait-for-frame-completion-before-queueing
     honor-xdg-activation-with-invalid-serial
 }
+
+// Cursor: =======================================================================================
 cursor {
     xcursor-theme "BreezeX-Black"
     xcursor-size 30
@@ -43,14 +54,14 @@ cursor {
 // Env:                                                                           #
 // ============================================================================== #
 environment {
-    // Wayland Compositor Settings: ==============================================================
+    // Compositor: ===============================================================================
     DISPLAY ":0"
     DESKTOP_SESSION "niri"
     XDG_CURRENT_DESKTOP "niri"
     XDG_SESSION_DESKTOP "Niri"
     XDG_SESSION_TYPE "wayland"
 
-    // Wayland Platform Settings: ================================================================
+    // Platform: =================================================================================
     QT_QPA_PLATFORM "wayland"
     QT_QPA_PLATFORMTHEME "qt6ct"
     QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
@@ -58,26 +69,26 @@ environment {
     QT_AUTO_SCREEN_SCALE_FACTOR "1"
     QT_SCALE_FACTOR "1"
 
-    // GTK Settings: =============================================================================
+    // GTK: ======================================================================================
     GTK_IM_MODULE "simple"
     GTK_USE_PORTAL "1"
     GDK_SCALE "1"
     GDK_BACKEND "wayland,x11"
 
-    // Firefox Wayland: ==========================================================================
+    // Firefox: ==================================================================================
     MOZ_ENABLE_WAYLAND "1"
     MOZ_DBUS_REMOTE "1"
 
-    // Java Applications: ========================================================================
+    // Java: =====================================================================================
     _JAVA_AWT_WM_NONREPARENTING "1"
 
-    // SDL Applications: =========================================================================
+    // Sdl: ======================================================================================
     SDL_VIDEODRIVER "wayland"
 
-    // CLUTTER Applications: =====================================================================
+    // Clutter: ==================================================================================
     CLUTTER_BACKEND "wayland"
 
-    // ELECTRON Applications: ====================================================================
+    // Electron: =================================================================================
     ELECTRON_OZONE_PLATFORM_HINT "auto"
 
     // Performance: ==============================================================================
@@ -155,16 +166,16 @@ input {
 // Output:                                                                        #
 // ============================================================================== #
 output "eDP-1" {
-    // Run `niri msg outputs` to list all outputs and their modes: ===============================
+    // Modes: ====================================================================================
     mode "1920x1200@60.026"
 
-    // You can use integer or fractional scale, for example use 1.5 for 150% scale: ==============
+    // Scale: ====================================================================================
     scale 1
 
-    // Rotate the output counter-clockwise: ======================================================
+    // Rotate: ===================================================================================
     transform "normal"
 
-    // Set the position of the output in the global coordinate space: ============================
+    // Coordinate: ===============================================================================
     position x=0 y=0
 }
 
@@ -366,7 +377,7 @@ gestures {
 // ============================================================================== #
 // Window Rules:                                                                  #
 // ============================================================================== #
-// All Window: ===================================================================================
+// All: ==========================================================================================
 window-rule {
     open-maximized true
 }
@@ -392,7 +403,7 @@ window-rule {
   }
 }
 
-// Application-specific rules: ===================================================================
+// Specific: =====================================================================================
 window-rule {
   match app-id="^scratch-term$"
   default-column-width { proportion 0.80; }
@@ -400,7 +411,7 @@ window-rule {
 	open-floating true
 }
 
-// File dialogs - Open/Save/Select: ==============================================================
+// Dialogs: ======================================================================================
 window-rule {
     match title=r#".*(Open|Save|Select).*"#
     open-floating true
@@ -431,17 +442,12 @@ window-rule {
     open-floating true
 }
 
-// System dialogs: ===============================================================================
 window-rule {
     match title=r#".*(Dialog|Properties|Preferences|Settings|Rename).*"#
     open-floating true
 }
-window-rule {
-    match app-id=r#"zenity"#
-    open-floating true
-}
 
-// Authentication dialogs: =======================================================================
+// Authentication: ===============================================================================
 window-rule {
     match app-id=r#"org\.kde\.polkit-kde-authentication-agent-1"#
     open-floating true
@@ -451,7 +457,7 @@ window-rule {
     open-floating true
 }
 
-// Password managers: ============================================================================
+// Password: =====================================================================================
 window-rule {
     match app-id=r#"org\.keepassxc\.KeePassXC"# title=r#".*Auto-Type.*"#
     open-floating true
@@ -461,7 +467,7 @@ window-rule {
     open-floating true
 }
 
-// Notification and system utilities: ============================================================
+// Utilities: ====================================================================================
 window-rule {
     match app-id=r#"nm-connection-editor"#
     match app-id=r#"blueman-manager"#
@@ -510,14 +516,6 @@ window-rule {
   match title="^Picture-in-Picture$"
   open-floating true
 }
-window-rule {
-  match app-id="firefox$" title="^Picture-in-Picture$"
-  match app-id="brave-browser$" title="^Picture-in-Picture$"
-  match app-id="Vivaldi-stable$" title="^Picture-in-Picture$"
-  match app-id="org.gnome.Nautilus$" title="^Open File$"
-  match app-id="org.gnome.Nautilus$" title="^Select Export Location$"
-  open-floating true
-}
 
 // ============================================================================== #
 // Layer Rules:                                                                   #
@@ -547,7 +545,7 @@ binds {
     MOD+I                               { spawn "foot" "--app-id='impala'" "impala"; }
 	  MOD+D				                        { spawn "sh" "-c" "fuzzel --prompt='Apps Menu: ' --placeholder=\"  $(date '+%a %d-%m  󰥔 %R')\""; }
 
-    // Scripts: ==================================================================================
+    // Scripts Actions: ==========================================================================
     MOD+SHIFT+P                         { spawn "/home/lli/.config/fuzzel/modules/powermenu"; }
     MOD+SHIFT+U                         { spawn "/home/lli/.config/fuzzel/modules/umount"; }
     MOD+SHIFT+M                         { spawn "/home/lli/.config/fuzzel/modules/media"; }
