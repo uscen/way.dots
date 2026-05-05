@@ -36,7 +36,7 @@ cursor {
     xcursor-theme "BreezeX-Black"
     xcursor-size 30
     hide-when-typing
-    hide-after-inactive-ms 5000
+    hide-after-inactive-ms 2500
 }
 
 // ============================================================================== #
@@ -44,7 +44,7 @@ cursor {
 // ============================================================================== #
 environment {
     // Wayland Compositor Settings: ==============================================================
-    DISPLAY null
+    DISPLAY ":0"
     DESKTOP_SESSION "niri"
     XDG_CURRENT_DESKTOP "niri"
     XDG_SESSION_DESKTOP "Niri"
@@ -89,7 +89,7 @@ environment {
 // Overview:                                                                      #
 // ============================================================================== #
 overview {
-    zoom 0.7
+    zoom 0.6
     backdrop-color "#0E0E0E"
     workspace-shadow {
         on
@@ -380,6 +380,16 @@ window-rule  {
 window-rule {
     geometry-corner-radius 0
     clip-to-geometry true
+}
+window-rule {
+  match is-urgent=true
+  baba-is-float true
+}
+window-rule {
+  match is-floating=true
+  border {
+    off
+  }
 }
 
 // Application-specific rules: ===================================================================
