@@ -15,20 +15,24 @@ screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
 config-notification {
     disable-failed
 }
+
 // Clipboard: ====================================================================================
 clipboard {
     disable-primary
 }
+
 // Overlay: ======================================================================================
 hotkey-overlay {
     skip-at-startup
     hide-not-bound
 }
+
 // Xwayland: =====================================================================================
 xwayland-satellite {
     off
     path "xwayland-satellite"
 }
+
 // Lid: ==========================================================================================
 switch-events {
     lid-close { spawn "notify-send" "The laptop lid is closed!"; }
