@@ -1,26 +1,14 @@
 /* # ============================================================================ # */
 /* # Variables:                                                                   # */
 /* # ============================================================================ # */
-@define-color cursor #7a8382;
-@define-color background #0d0c0c;
-@define-color foreground #7a8382;
-@define-color color0  #45475A;
-@define-color color1  #c4746e;
-@define-color color2  #8a9a7b;
-@define-color color3  #F9E2AF;
-@define-color color4  #8ba4b0;
-@define-color color5  #F5C2E7;
-@define-color color6  #94E2D5;
-@define-color color7  #BAC2DE;
-@define-color color8  #585B70;
-@define-color color9  #c4746e;
-@define-color color10 #8a9a7b;
-@define-color color11 #F9E2AF;
-@define-color color12 #8ba4b0;
-@define-color color13 #F5C2E7;
-@define-color color14 #94E2D5;
-@define-color color15 #A6ADC8;
-@define-color color16 #201d1d;
+@define-color background #172526;
+@define-color foreground #88B497;
+@define-color bright     #568270;
+@define-color selection  #233935;
+@define-color white      #A1A790;
+@define-color green      #88B497;
+@define-color red        #D2696C;
+@define-color blue       #91C4C0;
 
 /* # ============================================================================= # */
 /* # General:                                                                      # */
@@ -34,7 +22,7 @@
 }
 window#waybar {
   background: @background;
-  border-right: 1px solid @color16;
+  border-right: 1px solid @selection;
 }
 
 /* # ============================================================================= # */
@@ -75,7 +63,7 @@ window#waybar {
   padding: 0;
 }
 #workspaces button.active {
-  color: @color4;
+  color: @green;
 }
 
 /* # ============================================================================= # */
@@ -89,7 +77,8 @@ window#waybar {
 /* # Clock:                                                                        # */
 /* # ============================================================================= # */
 #clock {
-  color: @color4;
+  color: @green;
+  font-weight: 900;
   font-size: 14px;
 }
 
@@ -97,36 +86,36 @@ window#waybar {
 /* # Mpris:                                                                        # */
 /* # ============================================================================= # */
 #mpris {
-  color: @color3;
+  color: @white;
 }
 #mpris.playing {
-  color: @color2;
+  color: @green;
 }
 #mpris.paused {
-  color: @color0;
+  color: @bright;
 }
 
 /* # ============================================================================= # */
 /* # Networks:                                                                     # */
 /* # ============================================================================= # */
 #network.disabled {
-  color: @color0;
+  color: @bright;
 }
 #network.wifi {
   color: @foreground;
 }
 #network.ethernet {
-  color: @color3;
+  color: @white;
 }
 
 /* # ============================================================================= # */
 /* # Bluetooth:                                                                    # */
 /* # ============================================================================= # */
 #bluetooth.disabled {
-  color: @color0;
+  color: @bright;
 }
 #bluetooth.connected {
-  color: @color4;
+  color: @blue;
 }
 #backlight {
   margin-left: -5px;
@@ -136,17 +125,17 @@ window#waybar {
 /* # Pulseaudio:                                                                   # */
 /* # ============================================================================= # */
 #pulseaudio.sink-muted:not(.microphone) {
-  color: @color0;
+  color: @bright;
 }
 #pulseaudio.microphone.source-muted {
-  color: @color0;
+  color: @bright;
 }
 
 /* # ============================================================================= # */
 /* # Battery:                                                                      # */
 /* # ============================================================================= # */
 #battery.critical {
-  color: @color1;
+  color: @red;
 }
 
 /* # ============================================================================= # */
@@ -178,10 +167,10 @@ tooltip * {
   min-width: 8px;
 }
 #pulseaudio-slider highlight {
-  background: @color4;
+  background: @blue;
 }
 #backlight-slider highlight {
-  background: @color3;
+  background: @white;
 }
 
 /* # ============================================================================= # */
@@ -197,8 +186,8 @@ tooltip * {
   margin-bottom: -5px;
 }
 #custom-void {
-  color: @color2;
+  color: @green;
 }
 #custom-launcher {
-  color: @color4;
+  color: @blue;
 }

@@ -18,11 +18,11 @@
     {
       "type": "custom",
       "format": "             おかえり❣︎",
-      "outputColor": "yellow",
+      "outputColor": "green",
     },
     {
       "type": "custom",
-      "outputColor": "default",
+      "outputColor": "blue",
       "format": "┌─────────────────────────────────┐",
     },
     "break",
@@ -30,33 +30,34 @@
       "type": "users",
       "key": "   ",
       "format": "{name} @ uscen",
-      "keyColor": "cyan",
+      "keyColor": "green",
     },
     {
       "type": "host",
       "key": "   ",
       "format": "{2}",
-      "keyColor": "cyan",
+      "keyColor": "green",
     },
     {
       "type": "os",
       "key": "   ",
-      "keyColor": "cyan",
+      "keyColor": "green",
     },
     {
       "type": "cpu",
       "key": "   ",
       "format": "{1}",
-      "keyColor": "cyan",
+      "keyColor": "green",
     },
     {
       "type": "packages",
       "key": "   ",
-      "keyColor": "cyan",
+      "keyColor": "green",
     },
     "break",
     {
       "type": "custom",
+      "outputColor": "blue",
       "format": "└─────────────────────────────────┘",
     },
     {

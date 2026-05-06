@@ -116,7 +116,7 @@ Config.later(function()
   vim.keymap.set('n', 'do', '<cmd>lua vim.diagnostic.open_float()<cr>')
 
   -- Subtitle: ==================================================================================
-  vim.keymap.set('n', '<Leader>rs', [[:%s/\<<C-r><C-w>\>//g<Left><Left>]])
+  vim.keymap.set('n', '<Leader>rs', [[:%s/\<<C-r><C-w>\>/]])
   vim.keymap.set('n', '<leader>rr', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
   -- Surround: ==================================================================================

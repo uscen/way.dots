@@ -21,12 +21,12 @@ set E:FZF_DEFAULT_OPTS = "
     --prompt='󱓇  ' --layout=reverse
     --preview-window=right,30%
     --style=minimal --height=100% --border --preview-window right,40%
-    --color fg:#a6a69c,bg:#0E0E0E
-    --color bg+:#201d1d,fg+:#c5c9c5
-    --color hl:#7a8382,hl+:#7a8382,gutter:#0E0E0E
-    --color pointer:#201d1d,info:#393836
-    --color prompt:#7a8382,
-    --color border:#252535
+    --color fg:#DBD2C7,bg:#172526
+    --color bg+:#233935,fg+:#DBD2C7
+    --color hl:#88B497,hl+:#88B497,gutter:#172526
+    --color pointer:#233935,info:#233935
+    --color prompt:#88B497,
+    --color border:#233935
     --bind 'tab:accept'
 "
 set E:_ZO_FZF_OPTS = $E:FZF_DEFAULT_OPTS

@@ -3,25 +3,16 @@
 /* # =============================================================================== # */
 :root {
   --font-family: "JetBrainsMono Nerd Font";
-
-  --vimium-base: #0e0e0e;
-  --vimium-secondry: #201d1d;
-  --vimium-crust: #1f1f28;
-  --vimium-surface0: #2a2a37;
-  --vimium-surface1: #363646;
-  --vimium-surface2: #54546d;
-
-  --vimium-text: #c8c093;
-  --vimium-subtext0: #54546d;
-  --vimium-subtext1: #767676;
-
-  --vimium-green: #8a9a7b;
-  --vimium-blue: #7fb4ca;
-  --vimium-rosewater: #c4746e;
-  --vimium-peach: #c38a94;
-  --vimium-lavender: #8992a7;
-  --vimium-yellow: #c0a36e;
-  --vimium-gray: #7a8382;
+  --vimium-foreground: #dbd2c7;
+  --vimium-background: #172526;
+  --vimium-border: #233935;
+  --vimium-bright: #568270;
+  --vimium-green: #88b497;
+  --vimium-blue: #91c4c0;
+  --vimium-magneta: #f9ada0;
+  --vimium-red: #d2696c;
+  --vimium-yellow: #ffd7aa;
+  --vimium-gray: #a1a790;
 }
 
 /* # =============================================================================== # */
@@ -30,10 +21,10 @@
 #vimium-hint-marker-container div.vimiumHintMarker {
   font-family: var(--font-family);
   background: var(--vimium-yellow);
-  border: 1px solid var(--vimium-crust);
+  border: 1px solid var(--vimium-border);
 }
 #vimium-hint-marker-container div.vimiumHintMarker span {
-  color: var(--vimium-base);
+  color: var(--vimium-background);
   font-weight: bold;
 }
 #vimium-hint-marker-container div.internal-vimium-hint-marker,
@@ -41,17 +32,17 @@
   padding: 3px 4px;
   background: var(--vimium-gray);
   border: 1;
-  border-color: var(--vimium-mantle);
+  border-color: var(vimium-border);
   box-shadow: none;
 }
 #vimium-hint-marker-container div span {
   font-family: var(--font-family);
   font-size: 14px;
-  color: var(--vimium-mantle);
+  color: var(vimium-border);
   text-shadow: none;
 }
 #vimium-hint-marker-container div.vimiumHintMarker span.matchingCharacter {
-  color: var(--vimium-subtext0);
+  color: var(--vimium-green);
 }
 
 /* # =============================================================================== # */
@@ -59,8 +50,8 @@
 /* # =============================================================================== # */
 #vomnibar {
   font-family: var(--font-family);
-  background: var(--vimium-base);
-  border: 1px solid var(--vimium-secondry);
+  background: var(--vimium-background);
+  border: 1px solid var(--vimium-border);
   animation: show 200ms ease-out forwards;
 }
 
@@ -78,24 +69,24 @@
 #vomnibar input,
 #vomnibar #vomnibar-search-area {
   font-family: var(--font-family);
-  background: var(--vimium-base);
+  background: var(--vimium-background);
   color: var(--vimium-gray);
   border: none;
   box-shadow: none;
 }
 
 #vomnibar ul {
-  background: var(--vimium-base);
-  border-top: 1px solid var(--vimium-surface0);
+  background: var(--vimium-background);
+  border-top: 1px solid var(vimium-foreground);
 }
 
 #vomnibar li {
-  background: var(--vimium-base);
+  background: var(--vimium-background);
   color: var(--vimium-text);
-  border-bottom: 1px solid var(--vimium-surface0);
+  border-bottom: 1px solid var(vimium-foreground);
 }
 #vomnibar li.selected {
-  background: var(--vimium-secondry);
+  background: var(--vimium-border);
 }
 
 /* Item text styles */
@@ -122,21 +113,21 @@
   background: var(--vimium-surface1) !important;
 }
 #vomnibar li.omnibar-history-item.selected {
-  background: var(--vimium-surface2) !important;
+  background: var(--viumium-gray) !important;
 }
 
 /* # =============================================================================== # */
 /* # Search:                                                                         # */
 /* # =============================================================================== # */
 div#hud-container {
-  background: var(--vimium-base);
-  border: 1px solid var(--vimium-text);
+  background: var(--vimium-background);
+  border: 1px solid var(--vimium-border);
   box-shadow: none;
 }
 div#hud-container span#hud-find-input,
 div#hud-container div#hud {
   color: var(--vimium-text);
-  background: var(--vimium-crust);
+  background: var(--vimium-bright);
 }
 
 /* # =============================================================================== # */
@@ -145,7 +136,7 @@ div#hud-container div#hud {
 body.vimium-body,
 body.vimium-body header,
 body.vimium-body label {
-  background: var(--vimium-base);
+  background: var(--vimium-background);
   color: var(--vimium-text);
 }
 
@@ -153,10 +144,10 @@ body.vimium-body button,
 body.vimium-body input,
 body.vimium-body textarea,
 body.vimium-body footer {
-  background: var(--vimium-crust);
+  background: var(--vimium-bright);
   color: var(--vimium-text);
-  border-color: var(--vimium-surface1);
-  scrollbar-color: var(--vimium-surface2) var(--vimium-surface0);
+  border-color: var(--vimium-bright);
+  scrollbar-color: var(--viumium-gray) var(vimium-foreground);
 }
 
 body.vimium-body button:focus,
@@ -168,31 +159,31 @@ body.vimium-body a {
   color: var(--vimium-blue);
 }
 body.vimium-body #wrapper .example {
-  color: var(--vimium-subtext1);
+  color: var(--vimium-foreground);
 }
 
 /* # =============================================================================== # */
 /* # Dialog:                                                                         # */
 /* # =============================================================================== # */
 #dialog {
-  background: var(--vimium-crust);
+  background: var(--vimium-bright);
   color: var(--vimium-text);
-  border: 1px solid var(--vimium-surface1);
+  border: 1px solid var(--vimium-border);
 }
 #dialog .divider {
-  background: var(--vimium-surface1);
+  background: var(--vimium-bright);
 }
 #dialog a,
 #dialog span.vim {
   color: var(--vimium-blue);
 }
 #dialog a#close:hover {
-  color: var(--vimium-rosewater);
+  color: var(--vimium-magneta);
 }
 #dialog .key,
 body.vimium-body .key {
-  background: var(--vimium-crust);
+  background: var(--vimium-bright);
   color: var(--vimium-text);
-  border: 1px solid var(--vimium-surface1);
-  box-shadow: 0 2px 0 var(--vimium-surface0);
+  border: 1px solid var(--vimium-border);
+  box-shadow: 0 2px 0 var(vimium-foreground);
 }

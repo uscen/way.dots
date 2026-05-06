@@ -6,7 +6,7 @@ sudo xbps-install -Sy void-repo-nonfree && sudo xbps-install -S \
     mesa-intel-dri intel-video-accel intel-ucode base-devel xtools elogind fwupd preload \
     alacritty foot elvish carapace \
     niri xwayland-satellite gtklock awww fuzzel fnott Waybar \
-    xdg-user-dirs xdg-utils xdg-desktop-portal-gnome polkit-gnome psmisc man-db opendoas trash-cli htop aria2 ffmpeg ImageMagick ouch \
+    xdg-user-dirs xdg-utils xdg-desktop-portal-gnome polkit-gnome psmisc man-db opendoas trash-cli btop aria2 ffmpeg ImageMagick ouch \
     yazi fastfetch yt-dlp chafa eza bat cliphist tealdeer \
     neovim lazygit fzf fd ripgrep zoxide pastel delta curl jq brightnessctl \
     neovide obs mpv imv zathura zathura-pdf-mupdf firefox thunderbird nautilus gimp shotcut \

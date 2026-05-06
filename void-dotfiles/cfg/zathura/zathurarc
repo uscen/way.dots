@@ -44,43 +44,51 @@ map <C-i> recolor
 # =============================================================================== #
 # Recolor:                                                                        #
 # =============================================================================== #
-set recolor-lightcolor "#0E0E0E"
-set recolor-darkcolor "#c5c9c5"
+set recolor-lightcolor "#172526"
+set recolor-darkcolor "#DBD2C7"
 
 # =============================================================================== #
 # Themes:                                                                         #
 # =============================================================================== #
-set completion-bg "#0E0E0E"
-set completion-fg "#424242"
-set completion-group-bg "#0E0E0E"
-set completion-group-fg "#c5c9c5"
-set completion-highlight-bg "#0E0E0E"
-set completion-highlight-fg "#c5c9c5"
+# Completion: ====================================================================================
+set completion-bg "#172526"
+set completion-fg "#233935"
+set completion-group-bg "#172526"
+set completion-group-fg "#DBD2C7"
+set completion-highlight-bg "#172526"
+set completion-highlight-fg "#DBD2C7"
 
-set default-bg "#0E0E0E"
-set default-fg "#c5c9c5"
+# Default: =======================================================================================
+set default-bg "#172526"
+set default-fg "#DBD2C7"
 
+# Highlight: =====================================================================================
 set highlight-active-color "#a292a3"
-set highlight-color "#c8ae81"
+set highlight-color "#FFD7AA"
 
-set index-active-bg "#0E0E0E"
-set index-active-fg "#c5c9c5"
-set index-bg "#0E0E0E"
-set index-fg "#c5c9c5"
+# Index: =========================================================================================
+set index-active-bg "#172526"
+set index-active-fg "#DBD2C7"
+set index-bg "#172526"
+set index-fg "#DBD2C7"
 
-set inputbar-bg "#0E0E0E"
-set inputbar-fg "#c5c9c5"
+# Input: =========================================================================================
+set inputbar-bg "#172526"
+set inputbar-fg "#DBD2C7"
 
-set notification-bg "#0E0E0E"
-set notification-error-bg "#c4746e"
-set notification-error-fg "#c5c9c5"
-set notification-fg "#c5c9c5"
-set notification-warning-bg "#c8ae81"
-set notification-warning-fg "#424242"
+# Notifaction: ===================================================================================
+set notification-bg "#172526"
+set notification-error-bg "#D2696C"
+set notification-error-fg "#DBD2C7"
+set notification-fg "#DBD2C7"
+set notification-warning-bg "#FFD7AA"
+set notification-warning-fg "#233935"
 
+# Render: ========================================================================================
 set render-loading true
-set render-loading-bg "#c5c9c5"
-set render-loading-fg "#0E0E0E"
+set render-loading-bg "#DBD2C7"
+set render-loading-fg "#172526"
 
-set statusbar-bg "#0E0E0E"
-set statusbar-fg "#c5c9c5"
+# Statusbar: =====================================================================================
+set statusbar-bg "#172526"
+set statusbar-fg "#DBD2C7"

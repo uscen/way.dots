@@ -105,13 +105,13 @@ environment {
 // ============================================================================== #
 overview {
     zoom 0.6
-    backdrop-color "#0E0E0E"
+    backdrop-color "#172526"
     workspace-shadow {
         on
         softness 5
         spread 4
         offset x=0 y=2
-        color "#0004"
+        color "#56827040"
     }
 }
 
@@ -207,7 +207,7 @@ workspace "5" {
 // ============================================================================== #
 layout {
     // Gaps: =====================================================================================
-    gaps 0
+    gaps 2
     struts {
         left 0
         right 0
@@ -219,9 +219,9 @@ layout {
     focus-ring {
         off
         width 2
-        active-color "#252535"
-        inactive-color "#201d1d"
-        urgent-color "#e84444"
+        active-color "#233935"
+        inactive-color "#172526"
+        urgent-color "#D2696C"
 
     }
 
@@ -235,18 +235,18 @@ layout {
     border {
         on
         width 1
-        active-color "#252535"
-        inactive-color "#201d1d"
-        urgent-color "#e84444"
+        active-color "#233935"
+        inactive-color "#172526"
+        urgent-color "#D2696C"
     }
 
     // Shadow: ===================================================================================
     shadow {
         on
-        softness 5
-        spread 4
+        softness 4
+        spread 2
         offset x=0 y=2
-        color "#0004"
+        color "#56827040"
     }
 
     // Width: ====================================================================================
@@ -279,8 +279,8 @@ layout {
         position "top"
         gaps-between-tabs 2
         corner-radius 0
-        active-color "#252535"
-        inactive-color "#0E0E0E"
+        active-color "#233935"
+        inactive-color "#172526"
         urgent-color "#9b0000"
     }
 
@@ -335,14 +335,14 @@ recent-windows {
     debounce-ms 750
     open-delay-ms 150
     highlight {
-        active-color "#8ba4b0ff"
-        urgent-color "#ff9999ff"
-        padding 15
-        corner-radius 2
+        active-color "#88B497ff"
+        urgent-color "#D2696Cff"
+        padding 12
+        corner-radius 0
     }
     previews {
         max-height 600
-        max-scale 0.4
+        max-scale 0.6
     }
     binds {
         Alt+Tab         { next-window; }
@@ -382,9 +382,6 @@ gestures {
 // Window Rules:                                                                  #
 // ============================================================================== #
 // All: ==========================================================================================
-window-rule {
-    open-maximized true
-}
 window-rule {
     draw-border-with-background false
 }

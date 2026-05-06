@@ -1,14 +1,11 @@
 /* ============================================================================== # */
 /* LockCss:                                                                       # */
 /* ============================================================================== # */
-@define-color color0 #0d0c0c;
-@define-color color1 #e57474;
-@define-color color2 #252535;
-@define-color color3 #537788;
-@define-color color4 #658594;
-@define-color color5 #a292a3;
-@define-color color6 #658594;
-@define-color color7 #c5c9c5;
+@define-color black #172526;
+@define-color gray  #233935;
+@define-color white #DBD2C7;
+@define-color red   #D2696C;
+@define-color green #88B497;
 
 /* # ============================================================================= # */
 /* # General:                                                                      # */
@@ -18,8 +15,8 @@
 }
 window {
   background-image:
-    linear-gradient(rgba(13, 12, 12, 0.8), rgba(13, 12, 12, 0.8)),
-    url("/home/lli/.local/share/wall.dots/wallpapers/SHIP.jpg");
+    linear-gradient(rgba(35, 57, 53, 0.8), rgba(35, 57, 53, 0.8)),
+    url("/home/lli/.local/share/wall.dots/wallpapers/GREEN.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -30,12 +27,12 @@ window {
 /* # ============================================================================= # */
 #clock-label {
   min-width: 320px;
-  background-color: alpha(@color2, 0.1);
-  color: @color3;
+  background-color: alpha(@gray, 0.3);
+  color: @green;
   font-weight: 900;
   font-size: 14px;
   padding: 10px 30px;
-  border: 1px solid alpha(@color2, 0.5);
+  border: 1px solid @gray;
 }
 
 /* # ============================================================================= # */
@@ -43,9 +40,9 @@ window {
 /* # ============================================================================= # */
 #input-field {
   padding: 10px 15px;
-  border: 1px solid @color2;
-  caret-color: @color2;
-  color: @color3;
+  border: 1px solid @gray;
+  caret-color: @gray;
+  color: @green;
 }
 
 /* # ============================================================================= # */
@@ -59,9 +56,9 @@ window {
   margin-bottom: 20px;
 }
 #unlock-button {
-  background-color: alpha(@color2, 0.1);
-  color: @color3;
-  border: 1px solid alpha(@color2, 0.5);
+  background-color: alpha(@gray, 0.3);
+  color: @green;
+  border: 1px solid @gray;
 }
 #date-label {
   font-size: 0;
@@ -73,5 +70,5 @@ window {
   font-size: 16pt;
 }
 #error-label {
-  color: @color1;
+  color: @red;
 }
