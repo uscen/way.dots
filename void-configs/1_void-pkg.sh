@@ -17,7 +17,7 @@ sudo xbps-install -Sy void-repo-nonfree && sudo xbps-install -S \
     bluez bluez-alsa libspa-bluetooth bluetui blueman \
     nodejs yarn pnpm lua-language-server \
     noto-fonts-ttf noto-fonts-ttf-extra noto-fonts-emoji noto-fonts-cjk font-awesome dejavu-fonts-ttf \
-    gtk-engine-murrine papirus-icon-theme
+    gtk-engine-murrine
 
 # =============================================================================== #
 # Reboot:                                                                         #
