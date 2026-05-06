@@ -2,7 +2,7 @@
 -- Thorn:                                                                         #
 -- ============================================================================== #
 Config.now(function()
-  vim.pack.add({ { src = 'https://github.com/jpwol/thorn.nvim', version = 'refactor/theme-change' } })
+  vim.pack.add({ 'https://github.com/jpwol/thorn.nvim' })
   require('thorn').setup({
     on_highlights = function(hl, p)
       hl.PmenuSel = { bg = p.cursorline, bold = true }

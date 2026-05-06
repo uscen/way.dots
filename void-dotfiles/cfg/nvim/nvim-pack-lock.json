@@ -21,9 +21,8 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
     },
     "thorn.nvim": {
-      "rev": "17fe342f02e19f9926138b34566601e6527dce4a",
-      "src": "https://github.com/jpwol/thorn.nvim",
-      "version": "'refactor/theme-change'"
+      "rev": "719f558623eb05d0e391401c419820ffb9042fb6",
+      "src": "https://github.com/jpwol/thorn.nvim"
     }
   }
 }

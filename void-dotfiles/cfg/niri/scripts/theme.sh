@@ -2,8 +2,8 @@
 # =============================================================================== #
 # Theme:                                                                          #
 # =============================================================================== #
-THEME='Kripton'
-ICONS='Papirus-Dark'
+THEME='Thorn'
+ICONS='Kora'
 FONT='JetBrainsMono Nerd Font 12'
 CURSOR='BreezeX-Black'
 CURSORSIZE=30
