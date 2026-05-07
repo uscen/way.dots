@@ -36,7 +36,7 @@ Config.now(function()
       footer = 'DashboardFooter',
     },
 
-    layout = { top_offset = 15, date_top_offset = 3, plugin_info_offset = 2, shortcuts_top_offset = 3 },
+    layout = { top_offset = 20, date_top_offset = 3, plugin_info_offset = 2, shortcuts_top_offset = 3 },
   }
 
   local function calculate_positions()
@@ -63,11 +63,11 @@ Config.now(function()
 
   local function setup_highlights()
     local highlights = {
-      DashboardLambda = { fg = '#7a8382', bold = true },
-      DashboardKey = { fg = '#658594', bold = true },
-      DashboardDesc = { fg = '#8992a7' },
-      DashboardDate = { fg = '#2e322d', bold = true },
-      DashboardFooter = { fg = '#6a9589', italic = true },
+      DashboardLambda = { fg = '#88B497', bold = true },
+      DashboardKey = { fg = '#9EC59B', bold = true },
+      DashboardDesc = { fg = '#9EBB9C' },
+      DashboardDate = { fg = '#88B497', bold = true },
+      DashboardFooter = { fg = '#568270', italic = true },
     }
 
     for g, opts in pairs(highlights) do
