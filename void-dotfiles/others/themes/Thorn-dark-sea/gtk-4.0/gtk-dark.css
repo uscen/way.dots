@@ -7750,6 +7750,10 @@ stacksidebar row:focus:focus-visible {
   background-color: #35cbac;
 }
 
+placessidebar {
+  background-color: #131f20;
+}
+
 placessidebar .navigation-sidebar > row button.sidebar-button {
   min-width: 22px;
   min-height: 22px;
