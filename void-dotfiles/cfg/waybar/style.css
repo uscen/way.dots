@@ -1,14 +1,14 @@
 /* # ============================================================================ # */
 /* # Variables:                                                                   # */
 /* # ============================================================================ # */
-@define-color foreground #88B497;
-@define-color background #172526;
-@define-color bright     #568270;
-@define-color base       #233935;
-@define-color white      #A1A790;
-@define-color green      #88B497;
-@define-color red        #D2696C;
-@define-color blue       #91C4C0;
+@define-color fg     #88B497;
+@define-color bg     #172526;
+@define-color bright #568270;
+@define-color base   #233935;
+@define-color white  #A1A790;
+@define-color green  #88B497;
+@define-color red    #D2696C;
+@define-color blue   #91C4C0;
 
 /* # ============================================================================= # */
 /* # General:                                                                      # */
@@ -21,7 +21,7 @@
   box-shadow: none;
 }
 window#waybar {
-  background: @background;
+  bg: @bg;
   border-right: 1px solid @base;
 }
 
@@ -51,7 +51,7 @@ window#waybar {
 #backlight,
 #battery,
 #custom-launcher {
-  color: @foreground;
+  color: @fg;
   padding: 6px 10px;
 }
 
@@ -59,7 +59,7 @@ window#waybar {
 /* # Workspaces:                                                                   # */
 /* # ============================================================================= # */
 #workspaces button {
-  color: @foreground;
+  color: @fg;
   padding: 0;
 }
 #workspaces button.active {
@@ -102,7 +102,7 @@ window#waybar {
   color: @bright;
 }
 #network.wifi {
-  color: @foreground;
+  color: @fg;
 }
 #network.ethernet {
   color: @white;
@@ -142,13 +142,13 @@ window#waybar {
 /* # Tooltip:                                                                      # */
 /* # ============================================================================= # */
 tooltip {
-  background: @background;
-  border: 1px solid @foreground;
+  bg: @bg;
+  border: 1px solid @fg;
 }
 tooltip * {
-  color: @foreground;
+  color: @fg;
   margin: 2px;
-  background: @background;
+  bg: @bg;
 }
 
 /* # ============================================================================= # */
@@ -160,17 +160,17 @@ tooltip * {
 }
 #pulseaudio-slider slider,
 #backlight-slider slider {
-  background: transparent;
+  bg: transparent;
 }
 #pulseaudio-slider trough,
 #backlight-slider trough {
   min-width: 8px;
 }
 #pulseaudio-slider highlight {
-  background: @blue;
+  bg: @blue;
 }
 #backlight-slider highlight {
-  background: @white;
+  bg: @white;
 }
 
 /* # ============================================================================= # */

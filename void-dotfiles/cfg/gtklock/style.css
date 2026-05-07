@@ -1,11 +1,14 @@
 /* ============================================================================== # */
 /* LockCss:                                                                       # */
 /* ============================================================================== # */
-@define-color black #172526;
-@define-color gray  #233935;
-@define-color white #DBD2C7;
-@define-color red   #D2696C;
-@define-color green #88B497;
+@define-color fg     #88B497;
+@define-color bg     #172526;
+@define-color bright #568270;
+@define-color base   #233935;
+@define-color white  #A1A790;
+@define-color green  #88B497;
+@define-color red    #D2696C;
+@define-color blue   #91C4C0;
 
 /* # ============================================================================= # */
 /* # General:                                                                      # */
@@ -27,12 +30,12 @@ window {
 /* # ============================================================================= # */
 #clock-label {
   min-width: 320px;
-  background-color: alpha(@gray, 0.3);
+  background-color: alpha(@base, 0.3);
   color: @green;
   font-weight: 900;
   font-size: 14px;
   padding: 10px 30px;
-  border: 1px solid @gray;
+  border: 1px solid @base;
 }
 
 /* # ============================================================================= # */
@@ -40,8 +43,8 @@ window {
 /* # ============================================================================= # */
 #input-field {
   padding: 10px 15px;
-  border: 1px solid @gray;
-  caret-color: @gray;
+  border: 1px solid @base;
+  caret-color: @base;
   color: @green;
 }
 
@@ -56,9 +59,9 @@ window {
   margin-bottom: 20px;
 }
 #unlock-button {
-  background-color: alpha(@gray, 0.3);
+  background-color: alpha(@base, 0.3);
   color: @green;
-  border: 1px solid @gray;
+  border: 1px solid @base;
 }
 #date-label {
   font-size: 0;
