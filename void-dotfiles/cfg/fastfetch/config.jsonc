@@ -79,7 +79,7 @@
     {
       "type": "packages",
       "key": "{#32}│ {#93}PKG",
-      "format": "{#32}│ {#36}{2} (xbps) \u001b[G\u001b[58C{#32}│",
+      "format": "{#32}│ {#36}{1} (xbps) \u001b[G\u001b[58C{#32}│",
       "keyColor": "95",
     },
     {
