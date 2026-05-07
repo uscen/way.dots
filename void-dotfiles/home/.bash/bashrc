@@ -13,7 +13,7 @@ export BROWSER="firefox"
 export PAGER="less"
 export EDITOR="nvim"
 export VISUAL="nvim"
-export GTK_THEME=Thorn
+export GTK_THEME=Thorn-dark-sea
 export XCURSOR_THEME=BreezeX-Black
 export XCURSOR_SIZE=30
 
