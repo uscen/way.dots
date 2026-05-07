@@ -36,7 +36,7 @@ Config.now(function()
       footer = 'DashboardFooter',
     },
 
-    layout = { top_offset = 20, date_top_offset = 3, plugin_info_offset = 2, shortcuts_top_offset = 3 },
+    layout = { top_offset = 15, date_top_offset = 3, plugin_info_offset = 2, shortcuts_top_offset = 3 },
   }
 
   local function calculate_positions()
