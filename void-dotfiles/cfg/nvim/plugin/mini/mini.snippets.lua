@@ -8,18 +8,17 @@ Config.later(function()
   local latex_patterns  = { 'latex/**/*.json', '**/latex.json' }
   local markdown        = { 'markdown.json' }
   local webHtmlPatterns = { 'html.json', 'ejs.json' }
-  local webJsPatterns   = { 'web/javascript.json' }
-  local webTsPatterns   = { 'web/typescript.json' }
-  local webAllPatterns  = { 'web/*.json' }
+  local webJsPatterns   = { 'web/javascript.json', 'web/javascriptreact.json' }
+  local webTsPatterns   = { 'web/typescript.json', 'web/typescriptreact.json' }
   local lang_patterns   = {
     tex = latex_patterns,
     markdown_inline = markdown,
     html = webHtmlPatterns,
     ejs = webHtmlPatterns,
-    javascript = webAllPatterns,
-    typescript = webAllPatterns,
-    javascriptreact = webPatterns,
-    typescriptreact = webPatterns,
+    javascript = webJsPatterns,
+    typescript = webTsPatterns,
+    javascriptreact = webJsPatterns,
+    typescriptreact = webTsPatterns,
   }
 
   -- Expand Patterns: ============================================================================
