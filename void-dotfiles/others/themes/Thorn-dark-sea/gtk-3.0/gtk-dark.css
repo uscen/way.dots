@@ -812,8 +812,8 @@ button.suggested-action:active,
 button.suggested-action:checked {
   background-clip: border-box;
   color: white;
-  background-color: #45cfb3;
-  border-color: #45cfb3;
+  background-color: #568270;
+  border-color: #568270;
 }
 
 button.suggested-action.flat:disabled {
@@ -3525,8 +3525,8 @@ headerbar button.suggested-action:active,
 headerbar button.suggested-action:checked {
   background-clip: border-box;
   color: white;
-  background-color: #45cfb3;
-  border-color: #45cfb3;
+  background-color: #568270;
+  border-color: #568270;
 }
 
 headerbar button.suggested-action.flat:disabled,
@@ -14046,8 +14046,8 @@ scale.warmth trough {
 #restart_button.button:hover {
   background-clip: border-box;
   color: green;
-  background-color: #45cfb3;
-  border-color: #45cfb3;
+  background-color: #568270;
+  border-color: #568270;
 }
 
 #restart_button.button:active,
@@ -14297,7 +14297,7 @@ filechooser placessidebar.sidebar row.sidebar-row:hover,
 .nautilus-window placessidebar.sidebar row.sidebar-row:hover {
   border-radius: 0;
   background-color: rgba(198, 205, 203, 0.15);
-  box-shadow: inset 3px 0 #45cfb3;
+  box-shadow: inset 3px 0 #568270;
 }
 
 filechooser placessidebar.sidebar row.sidebar-row:disabled,

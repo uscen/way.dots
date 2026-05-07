@@ -1358,8 +1358,8 @@ button.suggested-action:active,
 button.suggested-action:checked {
   background-clip: border-box;
   color: white;
-  background-color: #45cfb3;
-  border-color: #45cfb3;
+  background-color: #568270;
+  border-color: #568270;
 }
 
 button.suggested-action.flat:disabled {
@@ -3913,8 +3913,8 @@ headerbar button.suggested-action:active,
 headerbar button.suggested-action:checked {
   background-clip: border-box;
   color: white;
-  background-color: #45cfb3;
-  border-color: #45cfb3;
+  background-color: #568270;
+  border-color: #568270;
 }
 
 headerbar button.suggested-action.flat:disabled,
@@ -6897,7 +6897,7 @@ row.button.suggested-action:not(.expander):not(:selected).activatable:hover,
 row.button.suggested-action:not(.expander):not(
     :selected
   ).activatable.has-open-popup {
-  background-color: #45cfb3;
+  background-color: #568270;
   background-image: none;
 }
 
@@ -11367,7 +11367,7 @@ themeswitcher .check {
 }
 
 themeswitcher .check:hover {
-  background-color: #45cfb3;
+  background-color: #568270;
   color: #ffffff;
 }
 
@@ -11519,6 +11519,10 @@ floating-sheet > sheet {
   background-color: transparent;
 }
 
+.nautilus-window headerbar {
+  background-color: #131f20;
+}
+
 .nautilus-window .sidebar-pane .navigation-sidebar > row,
 .nautilus-window flap .navigation-sidebar > row {
   color: #c6cdcb;
@@ -11532,13 +11536,13 @@ floating-sheet > sheet {
 .nautilus-window .sidebar-pane .navigation-sidebar > row:hover,
 .nautilus-window flap .navigation-sidebar > row:hover {
   background-color: rgba(255, 255, 255, 0.08);
-  box-shadow: inset 3px 0 #45cfb3;
+  box-shadow: inset 3px 0 #568270;
 }
 
 .nautilus-window .sidebar-pane .navigation-sidebar > row:active,
 .nautilus-window flap .navigation-sidebar > row:active {
   background-color: rgba(255, 255, 255, 0.12);
-  box-shadow: inset 3px 0 #45cfb3;
+  box-shadow: inset 3px 0 #568270;
 }
 
 .nautilus-window .sidebar-pane .navigation-sidebar > row:selected,
