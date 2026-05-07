@@ -1,10 +1,10 @@
 /* # ============================================================================ # */
 /* # Variables:                                                                   # */
 /* # ============================================================================ # */
-@define-color background #172526;
 @define-color foreground #88B497;
+@define-color background #172526;
 @define-color bright     #568270;
-@define-color selection  #233935;
+@define-color base       #233935;
 @define-color white      #A1A790;
 @define-color green      #88B497;
 @define-color red        #D2696C;
@@ -22,7 +22,7 @@
 }
 window#waybar {
   background: @background;
-  border-right: 1px solid @selection;
+  border-right: 1px solid @base;
 }
 
 /* # ============================================================================= # */
