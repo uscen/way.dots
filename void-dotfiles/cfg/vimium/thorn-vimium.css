@@ -3,11 +3,12 @@
 /* # =============================================================================== # */
 :root {
   --vimium-font-family: -apple-system, Inter, system-ui;
-  --vimium-font-size: 16px;
-  --vimium-font-size-sm: 14px;
+  --vimium-font-size: 18px;
+  --vimium-font-size-sm: 16px;
 
   --vimium-clr-bg-primary: #131f20;
   --vimium-clr-bg-secondary: #172526;
+  --vimium-clr-bg-selection: #233935;
 
   --vimium-clr-primary: #d2696c;
   --vimium-clr-white: #dbd2c7;
@@ -21,7 +22,7 @@
 /* # Hints:                                                                          # */
 /* # =============================================================================== # */
 .vimiumHintMarker {
-  background: var(--vimium-clr-bg-primary) !important;
+  background: var(--vimium-clr-bg-secondary) !important;
   padding: 4px 5px !important;
   border: none !important;
   box-shadow: none !important;
@@ -45,9 +46,9 @@
 /* # Vomnibar:                                                                       # */
 /* # =============================================================================== # */
 #vomnibar {
-  max-width: 700px;
-  background-color: var(--vimium-clr-bg-primary);
-  border: none;
+  max-width: 900px;
+  background-color: var(--vimium-clr-bg-secondary);
+  border: 1px solid var(--vimium-clr-bg-primary);
   box-shadow: none;
 
   overflow: hidden;
@@ -74,7 +75,7 @@
   box-shadow: none !important;
 }
 #vomnibar-search-area input::selection {
-  background-color: var(--vimium-clr-primary) !important;
+  background-color: var(--vimium-clr-bg-selection) !important;
   color: var(--vimium-clr-grey) !important;
 }
 
@@ -97,7 +98,7 @@
   border-top: 1px solid var(--vimium-clr-grey);
 }
 #vomnibar li.selected {
-  background-color: var(--vimium-clr-bg-secondary);
+  background-color: var(--vimium-clr-bg-selection);
 }
 #vomnibar span {
   font-family: var(--vimium-font-family);
