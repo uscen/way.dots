@@ -3,7 +3,7 @@
 -- ============================================================================== #
 local H = {}
 local map = require('mini.map')
-Config.now_if_args(function()
+Config.later(function()
   map.setup({
     integrations = { map.gen_integration.builtin_search(), map.gen_integration.diff(), map.gen_integration.diagnostic() },
     symbols = { encode = map.gen_encode_symbols.dot('4x2') },
@@ -17,47 +17,47 @@ Config.now_if_args(function()
       key .. 'zv<Cmd>lua MiniMap.refresh({}, { lines = false, scrollbar = false })<CR>'
     )
   end
-end)
 
--- Toggle the global visibility of the map: ======================================================
-Config.minimap_toggle = function()
-  vim.g.minimap_disable = not vim.g.minimap_disable
-  if H.minimap_should_be_enabled() then map.toggle() end
-end
-
--- Toggle whether the current buffer should display a map: =======================================
-Config.minimap_buf_toggle = function()
-  if H.minimap_should_be_enabled() then
-    vim.b.minimap_disable = true
-    map.close()
-  else
-    vim.b.minimap_disable = false
-    map.open()
+  -- Toggle the global visibility of the map: ======================================================
+  Config.minimap_toggle = function()
+    vim.g.minimap_disable = not vim.g.minimap_disable
+    if H.minimap_should_be_enabled() then map.toggle() end
   end
-end
 
--- Return true if the current buffer is supposed to have a map: ==================================
--- 1. User has expilicity enabled it via M.buf_toggle
--- 2. Filetype of buffer is in the auto_enable table
-local auto_enable = { go = true, lua = true, markdown = true, python = true, rust = true }
-H.minimap_should_be_enabled = function()
-  local ft = vim.bo.filetype
-  local disabled = vim.b.minimap_disable
-  local enabled_explicitly = vim.b.minimap_disable == false
-  return enabled_explicitly or auto_enable[ft] and not disabled
-end
-
-Config.new_autocmd('BufEnter', {
-  desc = "Toggle 'mini.map' based on filetype",
-  callback = vim.schedule_wrap(function()
-    -- Do nothing if entering the minimap buffer itself (when focusing): =========================
-    if vim.bo.filetype == 'minimap' then return end
-
-    -- Otherwise we check if the minimap should be opened or not: ================================
+  -- Toggle whether the current buffer should display a map: =======================================
+  Config.minimap_buf_toggle = function()
     if H.minimap_should_be_enabled() then
-      map.open()
-    else
+      vim.b.minimap_disable = true
       map.close()
+    else
+      vim.b.minimap_disable = false
+      map.open()
     end
-  end),
-})
+  end
+
+  -- Return true if the current buffer is supposed to have a map: ==================================
+  -- 1. User has expilicity enabled it via M.buf_toggle
+  -- 2. Filetype of buffer is in the auto_enable table
+  local auto_enable = { go = true, lua = true, markdown = true, python = true, rust = true }
+  H.minimap_should_be_enabled = function()
+    local ft = vim.bo.filetype
+    local disabled = vim.b.minimap_disable
+    local enabled_explicitly = vim.b.minimap_disable == false
+    return enabled_explicitly or auto_enable[ft] and not disabled
+  end
+
+  Config.new_autocmd('BufEnter', {
+    desc = "Toggle 'mini.map' based on filetype",
+    callback = vim.schedule_wrap(function()
+      -- Do nothing if entering the minimap buffer itself (when focusing): =========================
+      if vim.bo.filetype == 'minimap' then return end
+
+      -- Otherwise we check if the minimap should be opened or not: ================================
+      if H.minimap_should_be_enabled() then
+        map.open()
+      else
+        map.close()
+      end
+    end),
+  })
+end)
