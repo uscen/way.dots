@@ -5,10 +5,7 @@ Config.later(function()
   vim.pack.add({ 'https://github.com/stevearc/conform.nvim' })
   local conform = require('conform')
   conform.setup({
-    default_format_opts = {
-      -- Allow formatting from LSP server if no dedicated formatter is available
-      lsp_format = 'fallback',
-    },
+    default_format_opts = { lsp_format = 'fallback' },
     formatters_by_ft = {
       lua = { lsp_format = 'fallback' },
       javascript = { 'prettier' },
