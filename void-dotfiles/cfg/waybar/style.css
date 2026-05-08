@@ -21,7 +21,7 @@
   box-shadow: none;
 }
 window#waybar {
-  bg: @bg;
+  background-color: @bg;
   border-right: 1px solid @base;
 }
 
@@ -142,13 +142,13 @@ window#waybar {
 /* # Tooltip:                                                                      # */
 /* # ============================================================================= # */
 tooltip {
-  bg: @bg;
+  background-color: @bg;
   border: 1px solid @fg;
 }
 tooltip * {
   color: @fg;
   margin: 2px;
-  bg: @bg;
+  background-color: @bg;
 }
 
 /* # ============================================================================= # */
@@ -160,17 +160,17 @@ tooltip * {
 }
 #pulseaudio-slider slider,
 #backlight-slider slider {
-  bg: transparent;
+  background-color: transparent;
 }
 #pulseaudio-slider trough,
 #backlight-slider trough {
   min-width: 8px;
 }
 #pulseaudio-slider highlight {
-  bg: @blue;
+  background-color: @blue;
 }
 #backlight-slider highlight {
-  bg: @white;
+  background-color: @white;
 }
 
 /* # ============================================================================= # */
