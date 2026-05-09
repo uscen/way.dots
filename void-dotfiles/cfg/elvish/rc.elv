@@ -1,11 +1,11 @@
 # =============================================================================== #
-# Elvish Modules:                                                                 #
+# Modules:                                                                        #
 # =============================================================================== #
 use platform
 use readline-binding
 
 # =============================================================================== #
-# General Env:                                                                    #
+# Env:                                                                            #
 # =============================================================================== #
 set E:CC = "gcc"
 set E:LANG = "en_US.UTF-8"
@@ -32,7 +32,7 @@ set E:FZF_DEFAULT_OPTS = "
 set E:_ZO_FZF_OPTS = $E:FZF_DEFAULT_OPTS
 
 # =============================================================================== #
-# Plathform Env:                                                                  #
+# Plathform:                                                                      #
 # =============================================================================== #
 if (eq $platform:os windows) {
   set-env HOME $E:USERPROFILE
@@ -42,7 +42,7 @@ if (eq $platform:os windows) {
 }
 
 # =============================================================================== #
-# Elvish clean ~:									                                                #
+# clean ~:									                                                      #
 # =============================================================================== #
 set E:INPUTRC = $E:HOME"/.bash/inputrc"
 set E:HISTFILE = $E:HOME"/.bash/history"
@@ -150,7 +150,7 @@ set edit:command:binding[k] = { edit:history:start; edit:history:up }
 set edit:command:binding[j] = { edit:history:start; edit:history:down }
 
 # =============================================================================== #
-# history:                                                                        #
+# History:                                                                        #
 # =============================================================================== #
 set edit:history:binding[Ctrl-y] = { edit:history:accept }
 set edit:history:binding[k] = { edit:history:up }
@@ -219,7 +219,7 @@ set edit:command-abbr['curld'] = 'curl --retry 5 -L -C -'
 set edit:command-abbr['edit'] = 'nvim'
 
 # =============================================================================== #
-# Elvish Aliases:                                                                 #
+# Aliases:                                                                 #
 # =============================================================================== #
 # =============================================================================== #
 # Reset:                                                                          #
