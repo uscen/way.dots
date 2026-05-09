@@ -175,9 +175,6 @@ Config.later(function()
   vim.keymap.set('n', '<leader>bb', '<cmd>DeleteOtherBuffers<cr>')
   vim.keymap.set('n', '<leader>bi', '<cmd>DeleteInactiveBuffers<cr>')
   vim.keymap.set('n', '<leader>bf', '<cmd>Format<cr>')
-  vim.keymap.set('n', '<leader>bp', '<cmd>lua Config.toggle_pinned()<cr>')
-  vim.keymap.set('n', '<leader>bP', '<cmd>lua Config.remove_pinned("delete")<cr>')
-  vim.keymap.set('n', '<leader>bs', '<cmd>lua Config.new_scratch_buffer()<cr>')
 
   -- Quickfix: ===================================================================================
   vim.keymap.set('n', '<leader>cc', '<cmd>ExploreQuickfix<CR>')
@@ -245,13 +242,6 @@ Config.later(function()
   vim.keymap.set('n', '<leader>s', '<cmd>ToggleWorld<cr>')
   vim.keymap.set('n', '<leader>j', '<cmd>SmartDuplicate<cr>')
   vim.keymap.set('n', '<leader>`', '<cmd>ToggleTitleCase<cr>')
-
-  -- Map: ========================================================================================
-  vim.keymap.set('n', '<leader>mf', '<cmd>lua MiniMap.toggle_focus()<cr>')
-  vim.keymap.set('n', '<leader>mr', '<cmd>lua MiniMap.refresh()<cr>')
-  vim.keymap.set('n', '<leader>ms', '<cmd>lua MiniMap.toggle_side()<cr>')
-  vim.keymap.set('n', '<leader>mt', '<cmd>lua Config.minimap_toggle()<cr>')
-  vim.keymap.set('n', '<leader>mT', '<cmd>lua Config.minimap_buf_toggle()<cr>')
 
   -- Git: ========================================================================================
   vim.keymap.set('n', '<leader>gg', '<cmd>Lazygit<cr>')

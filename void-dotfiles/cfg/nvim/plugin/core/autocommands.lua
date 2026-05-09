@@ -180,13 +180,11 @@ Config.now(function()
 
   -- Fix broken macro recording notification for cmdheight 0 : ===================================
   local show_recordering = vim.api.nvim_create_augroup('show_recordering', { clear = true })
-
   Config.new_autocmd('RecordingEnter', {
     pattern = '*',
     group = show_recordering,
     callback = function()
-      -- Note: Change this to 1 when disable statusline: =========================================
-      vim.opt_local.cmdheight = 0
+      vim.opt_local.cmdheight = 1
     end,
   })
   Config.new_autocmd('RecordingLeave', {

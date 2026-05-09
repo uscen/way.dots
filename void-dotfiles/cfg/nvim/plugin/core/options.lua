@@ -86,7 +86,7 @@ Config.now(function()
   vim.o.ruler                    = false
   vim.o.numberwidth              = 4
   vim.o.linespace                = 3
-  vim.o.laststatus               = 3
+  vim.o.laststatus               = 0
   vim.o.cmdheight                = 0
   vim.o.helpheight               = 0
   vim.o.previewheight            = 12
