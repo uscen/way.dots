@@ -11,7 +11,7 @@ _Dynamic theming • Borderless layouts • Minimal_
 
 <table>
   <tr>
-    <td><img src="./.assets/desktop.png" alt="Desktop View"/></td>
+    <td><img src="./.assets/desktop_thorn.png" alt="Desktop View"/></td>
   </tr>
 </table>
 
