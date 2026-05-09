@@ -1,6 +1,11 @@
 -- ============================================================================== #
--- React:                                                                         #
+-- TypescriptReact:                                                               #
 -- ============================================================================== #
+-- Indent: =======================================================================================
+Config.later(function()
+  vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+end)
+
 -- Autocmds: =====================================================================================
 vim.api.nvim_create_augroup('js_template_string', { clear = true })
 vim.api.nvim_create_autocmd('InsertCharPre', {
