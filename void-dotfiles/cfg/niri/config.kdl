@@ -126,7 +126,7 @@ input {
             options "caps:escape,altwin:menu_win,grp:win_space_toggle"
         }
         track-layout "window"
-        repeat-delay 140
+        repeat-delay 200
         repeat-rate 60
         numlock
     }
