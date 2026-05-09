@@ -1,7 +1,7 @@
 -- ============================================================================== #
 -- Autocommands:                                                                  #
 -- ============================================================================== #
-Config.now_if_args(function()
+Config.now(function()
   -- Auto command helper to add autocommands to my custom group: ===================================
   local custom_group = vim.api.nvim_create_augroup('kaz-custom-config', {})
   _G.Config.new_autocmd = function(event, opts)

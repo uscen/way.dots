@@ -18,13 +18,13 @@ Config.later(function()
     )
   end
 
-  -- Toggle the global visibility of the map: ======================================================
+  -- Toggle the global visibility of the map: ====================================================
   Config.minimap_toggle = function()
     vim.g.minimap_disable = not vim.g.minimap_disable
     if H.minimap_should_be_enabled() then map.toggle() end
   end
 
-  -- Toggle whether the current buffer should display a map: =======================================
+  -- Toggle whether the current buffer should display a map: =====================================
   Config.minimap_buf_toggle = function()
     if H.minimap_should_be_enabled() then
       vim.b.minimap_disable = true
@@ -35,10 +35,10 @@ Config.later(function()
     end
   end
 
-  -- Return true if the current buffer is supposed to have a map: ==================================
+  -- Return true if the current buffer is supposed to have a map: ================================
   -- 1. User has expilicity enabled it via M.buf_toggle
   -- 2. Filetype of buffer is in the auto_enable table
-  local auto_enable = { go = true, lua = true, markdown = true, python = true, rust = true }
+  local auto_enable = { go = true, lua = true, markdown = true, python = true, javascript = true, javascriptreact = true }
   H.minimap_should_be_enabled = function()
     local ft = vim.bo.filetype
     local disabled = vim.b.minimap_disable
@@ -49,10 +49,10 @@ Config.later(function()
   Config.new_autocmd('BufEnter', {
     desc = "Toggle 'mini.map' based on filetype",
     callback = vim.schedule_wrap(function()
-      -- Do nothing if entering the minimap buffer itself (when focusing): =========================
+      -- Do nothing if entering the minimap buffer itself (when focusing): =======================
       if vim.bo.filetype == 'minimap' then return end
 
-      -- Otherwise we check if the minimap should be opened or not: ================================
+      -- Otherwise we check if the minimap should be opened or not: ==============================
       if H.minimap_should_be_enabled() then
         map.open()
       else
