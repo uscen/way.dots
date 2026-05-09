@@ -23,8 +23,6 @@ Config.later(function()
 
   -- Expand Patterns: ============================================================================
   local match_strict    = function(snips)
-    -- Do not match with whitespace to cursor's left =============================================
-    -- return MiniSnippets.default_match(snips, { pattern_fuzzy = '%S+' })
     -- Match exact from the start to the end of the string =======================================
     return MiniSnippets.default_match(snips, { pattern_fuzzy = '^%S+$' })
   end

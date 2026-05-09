@@ -12,7 +12,6 @@ Config.now(function()
         return MiniStatusline.combine_groups({ { hl = 'MiniStatuslineInactive', strings = { pathname } } })
       end,
       active = function()
-        -- stylua: ignore start
         local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
         local git           = MiniStatusline.section_git({ trunc_width = 40 })
         local diff          = MiniStatusline.section_diff({ trunc_width = 80 })
@@ -28,9 +27,6 @@ Config.now(function()
           modified_hl = 'MiniStatuslineFilenameModified',
         })
 
-        -- Usage of `MiniStatusline.combine_groups()` ensures highlighting and
-        -- correct padding with spaces between groups (accounts for 'missing'
-        -- sections, etc.)
         return MiniStatusline.combine_groups({
           { hl = mode_hl, strings = { mode:upper() } },
           { hl = 'MiniStatuslineDevinfo', strings = { git, diff } },
@@ -42,7 +38,6 @@ Config.now(function()
           { hl = mode_hl, strings = { search .. location } },
           { hl = 'MiniStatuslineDirectory', strings = {} },
         })
-        -- stylua: ignore end
       end,
     },
   })

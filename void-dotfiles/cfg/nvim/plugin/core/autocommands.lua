@@ -14,19 +14,6 @@ Config.now(function()
     vim.fn.wildtrigger()
   end })
 
-  -- Keep parsers up to date when plugin updates: ================================================
-  Config.new_autocmd('PackChanged', {
-    callback = function(ev)
-      local name, kind = ev.data.spec.name, ev.data.kind
-      if name == 'nvim-treesitter' and kind == 'update' then
-        if not ev.data.active then
-          vim.cmd.packadd('nvim-treesitter')
-        end
-        vim.cmd('TSUpdate')
-      end
-    end,
-  })
-
   -- Auto Save: ==================================================================================
   Config.new_autocmd({ 'FocusLost', 'VimLeavePre' }, {
     group = vim.api.nvim_create_augroup('save_buffers', {}),
