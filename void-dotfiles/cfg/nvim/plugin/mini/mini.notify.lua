@@ -12,7 +12,7 @@ Config.later(function()
         return { anchor = 'SE', col = 0, row = vim.o.lines - pad }
       end,
       max_width_share = 0.75,
-      winblend = 15,
+      winblend = 5,
     },
   })
   vim.notify = MiniNotify.make_notify()
