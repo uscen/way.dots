@@ -1,6 +1,6 @@
-// # ============================================================================ #
-// # Modules:                                                                     #
-// # ============================================================================ #
+// ============================================================================== #
+// Group:                                                                         #
+// ============================================================================== #
 {
   "group/extras": {
     "orientation": "inherit",
@@ -29,12 +29,61 @@
     },
     "modules": ["pulseaudio", "pulseaudio/slider"]
   },
+
+  // ============================================================================== #
+  // Custom:                                                                        #
+  // ============================================================================== #
+  "custom/menu": {
+    "format": "<span size='18pt'>󰅃</span>",
+    "tooltip": false
+  },
   "custom/void": {
     "format": "",
     "tooltip": false,
     "on-click": "alacritty",
     "on-click-right": "kitty"
   },
+  "custom/launcher": {
+    "format": "",
+    "on-click": "~/.config/fuzzel/modules/powermenu",
+    "tooltip": false
+  },
+
+  // ============================================================================== #
+  // Clock:                                                                         #
+  // ============================================================================== #
+  "clock": {
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%d\n%m\n%y}",
+    "format": "{:%H\n%M}",
+    "interval": 60,
+    "calendar": {
+      "format": {
+        "months": "<span color='#8fbcbb'><b>{}</b></span>",
+        "days": "<span color='#8a909e'>{}</span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#81a1c1'><b>{}</b></span>",
+        "today": "<span color='#88c0d0'><b>{}</b></span>"
+      }
+    }
+  },
+
+  // ============================================================================== #
+  // Mparis:                                                                        #
+  // ============================================================================== #
+  "mpris": {
+    "format": "<span size='14pt'>󰐎</span>",
+    "interval": 1,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl previous",
+    "tooltip": true,
+    "tooltip-format": "{title}"
+  },
+
+  // ============================================================================== #
+  // Niri:                                                                          #
+  // ============================================================================== #
   "niri/workspaces": {
     "rotate": 270,
     "active-only": true,
@@ -53,40 +102,20 @@
       "default": "<span size='14pt'></span>"
     }
   },
-  "clock": {
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%d\n%m\n%y}",
-    "format": "{:%H\n%M}",
-    "interval": 60,
-    "calendar": {
-      "format": {
-        "months": "<span color='#8fbcbb'><b>{}</b></span>",
-        "days": "<span color='#8a909e'>{}</span>",
-        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-        "weekdays": "<span color='#81a1c1'><b>{}</b></span>",
-        "today": "<span color='#88c0d0'><b>{}</b></span>"
-      }
-    }
-  },
-  "mpris": {
-    "format": "<span size='14pt'>󰐎</span>",
-    "interval": 1,
-    "on-click": "playerctl play-pause",
-    "on-click-right": "playerctl next",
-    "on-click-middle": "playerctl previous",
-    "tooltip": true,
-    "tooltip-format": "{title}"
-  },
-  "custom/menu": {
-    "format": "<span size='18pt'>󰅃</span>",
-    "tooltip": false
-  },
+
+  // ============================================================================== #
+  // Tray:                                                                          #
+  // ============================================================================== #
   "tray": {
     "spacing": 14,
     "reverse-direction": true,
     "icon-size": 16,
     "show-passive-items": false
   },
+
+  // ============================================================================== #
+  // Networks:                                                                      #
+  // ============================================================================== #
   "network": {
     "format-icons": {
       "wifi": [
@@ -111,6 +140,10 @@
     "tooltip": true,
     "max-length": 20
   },
+
+  // ============================================================================== #
+  // Bluetooth:                                                                     #
+  // ============================================================================== #
   "bluetooth": {
     "interval": 5,
     "format-on": "<span size='14pt'>󰂯</span>",
@@ -125,6 +158,11 @@
     "on-click": "rfkill toggle bluetooth",
     "on-click-right": "blueman-manager"
   },
+
+  // ============================================================================== #
+  // Audio:                                                                         #
+  // ============================================================================== #
+  // Microphone: =================================================================================
   "pulseaudio#microphone": {
     "format": "{format_source}",
     "format-source": "<span size='14pt'>󰍬</span>",
@@ -133,6 +171,8 @@
     "on-click-right": "pavucontrol -t 4",
     "tooltip": false
   },
+
+  // Audio: ======================================================================================
   "pulseaudio/slider": {
     "min": 0,
     "max": 100,
@@ -154,6 +194,10 @@
     "tooltip-format": "Volume: {volume}%\n{desc}",
     "ignored-sinks": ["Easy Effects Sink"]
   },
+
+  // ============================================================================== #
+  // Backlight:                                                                     #
+  // ============================================================================== #
   "backlight/slider": {
     "min": 0,
     "max": 100,
@@ -176,6 +220,10 @@
     "smooth-scrolling-threshold": 0.2,
     "tooltip": false
   },
+
+  // ============================================================================== #
+  // Battery:                                                                       #
+  // ============================================================================== #
   "battery": {
     "interval": 5,
     "states": {
@@ -200,10 +248,5 @@
     "tooltip": true,
     "tooltip-format": "Charge: {capacity}%",
     "tooltip-format-charging": "Charging: {capacity}%"
-  },
-  "custom/launcher": {
-    "format": "",
-    "on-click": "~/.config/fuzzel/modules/powermenu",
-    "tooltip": false
   }
 }
