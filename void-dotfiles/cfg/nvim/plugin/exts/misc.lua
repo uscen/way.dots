@@ -25,23 +25,43 @@ Config.later(function()
   -- Toggle word: ==================================================================================
   function M.toggleWord()
     local toggles = {
-      ['useState(true)'] = 'useState(false)',
-      ['relative'] = 'absolute',
-      ['active'] = 'inactive',
+      ['True'] = 'False',
+      ['true'] = 'false',
+      ['yes'] = 'no',
+      ['on'] = 'off',
       ['enable'] = 'disable',
+      ['enabled'] = 'disabled',
+      ['active'] = 'inactive',
       ['visible'] = 'hidden',
       ['success'] = 'error',
       ['always'] = 'never',
-      ['left'] = 'right',
-      ['top'] = 'bottom',
-      ['true'] = 'false',
-      ['True'] = 'False',
       ['allow'] = 'deny',
-      ['light'] = 'dark',
       ['show'] = 'hide',
       ['let'] = 'const',
+
       ['up'] = 'down',
-      ['yes'] = 'no',
+      ['top'] = 'bottom',
+      ['light'] = 'dark',
+      ['right'] = 'left',
+      ['width'] = 'height',
+      ['relative'] = 'absolute',
+
+      ['min'] = 'max',
+      ['next'] = 'previous',
+      ['before'] = 'after',
+      ['above'] = 'below',
+      ['start'] = 'end',
+      ['backward'] = 'forward',
+      ['open'] = 'close',
+      ['inner'] = 'outer',
+      ['encode'] = 'decode',
+      ['input'] = 'output',
+
+      ['and'] = 'or',
+      ['=='] = '!=',
+      ['>'] = '<',
+      ['>='] = '<=',
+      ['||'] = '&&',
     }
     local cword = vim.fn.expand('<cword>')
     local newWord

@@ -15,7 +15,7 @@ Config.now(function()
   end })
 
   -- Auto Save: ==================================================================================
-  Config.new_autocmd({ 'FocusLost', 'VimLeavePre' }, {
+  Config.new_autocmd({ 'BufLeave', 'FocusLost', 'VimLeavePre' }, {
     group = vim.api.nvim_create_augroup('save_buffers', {}),
     callback = function(event)
       local buf = event.buf
@@ -178,7 +178,7 @@ Config.now(function()
     end,
   })
 
-  -- Fix broken macro recording notification for cmdheight 0 : ===================================
+  -- Fix broken macro recording notification for cmdheight 0: ====================================
   local show_recordering = vim.api.nvim_create_augroup('show_recordering', { clear = true })
   Config.new_autocmd('RecordingEnter', {
     pattern = '*',
@@ -200,7 +200,7 @@ Config.now(function()
     end,
   })
 
-  -- Remove hl search when move or  enter insert : ===============================================
+  -- Remove hl search when move or enter insert: =================================================
   local clear_hl = vim.api.nvim_create_augroup('hl_clear', { clear = true })
   Config.new_autocmd('ModeChanged', {
     pattern = '*',
@@ -227,6 +227,17 @@ Config.now(function()
         vim.schedule(function()
           vim.cmd.nohlsearch()
         end)
+      end
+    end,
+  })
+
+  -- Highlight trailing whitespace in normal and insert modes: ===================================
+  Config.new_autocmd({ 'BufEnter', 'InsertEnter', 'InsertLeave' }, {
+    pattern = '*',
+    callback = function()
+      if vim.bo.buftype == '' and vim.bo.modifiable then
+        vim.fn.clearmatches()
+        vim.fn.matchadd('MiniTrailspace', [[\s\+$]])
       end
     end,
   })
