@@ -237,7 +237,7 @@ Config.now(function()
     callback = function()
       if vim.bo.buftype == '' and vim.bo.modifiable then
         vim.fn.clearmatches()
-        vim.fn.matchadd('MiniTrailspace', [[\s\+$]])
+        vim.fn.matchadd('Trailspace', [[\s\+$]])
       end
     end,
   })
