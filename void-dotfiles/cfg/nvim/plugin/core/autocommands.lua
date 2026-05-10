@@ -233,6 +233,7 @@ Config.now(function()
 
   -- Highlight trailing whitespace in normal and insert modes: ===================================
   Config.new_autocmd({ 'BufEnter', 'InsertEnter', 'InsertLeave' }, {
+    group = vim.api.nvim_create_augroup('hl_whitespaces', { clear = true }),
     pattern = '*',
     callback = function()
       if vim.bo.buftype == '' and vim.bo.modifiable then
