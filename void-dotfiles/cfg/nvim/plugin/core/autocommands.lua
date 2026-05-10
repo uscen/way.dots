@@ -231,18 +231,6 @@ Config.now(function()
     end,
   })
 
-  -- Highlight trailing whitespace in normal and insert modes: ===================================
-  Config.new_autocmd({ 'BufEnter', 'InsertEnter', 'InsertLeave' }, {
-    group = vim.api.nvim_create_augroup('hl_whitespaces', { clear = true }),
-    pattern = '*',
-    callback = function()
-      if vim.bo.buftype == '' and vim.bo.modifiable then
-        vim.fn.clearmatches()
-        vim.fn.matchadd('Trailspace', [[\s\+$]])
-      end
-    end,
-  })
-
   -- Trim space and lastlines if empty : =========================================================
   local trim_spaces = vim.api.nvim_create_augroup('trim_spaces', { clear = true })
   Config.new_autocmd('BufWritePre', {
