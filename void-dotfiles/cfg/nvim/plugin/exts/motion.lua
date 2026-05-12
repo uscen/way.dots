@@ -1,18 +1,17 @@
 -- ============================================================================== #
--- EasyMotion:                                                                    #
+-- Motion:                                                                        #
 -- ============================================================================== #
 Config.later(function()
   local M = {}
-  local EASYMOTION_NS = vim.api.nvim_create_namespace('EASYMOTION_NS')
+  local MOTION_NS = vim.api.nvim_create_namespace('EASYMOTION_NS')
   local EM_CHARS = vim.split('fjdkslgha;rueiwotyqpvbcnxmzFJDKSLGHARUEIWOTYQPVBCNXMZ', '')
 
-  function M.easy_motion()
-    local char_code1, char_code2 = vim.fn.getchar(), vim.fn.getchar()
-    local char1 = type(char_code1) == 'number' and vim.fn.nr2char(char_code1) or char_code1
-    local char2 = type(char_code2) == 'number' and vim.fn.nr2char(char_code2) or char_code2
+  function M.motion()
+    local char1 = vim.fn.nr2char(vim.fn.getchar() --[[@as number]])
+    local char2 = vim.fn.nr2char(vim.fn.getchar() --[[@as number]])
     local line_idx_start, line_idx_end = vim.fn.line('w0'), vim.fn.line('w$')
     local bufnr = vim.api.nvim_get_current_buf()
-    vim.api.nvim_buf_clear_namespace(bufnr, EASYMOTION_NS, 0, -1)
+    vim.api.nvim_buf_clear_namespace(bufnr, MOTION_NS, 0, -1)
 
     local char_idx = 1
     ---@type table<string, {line: integer, col: integer, id: integer}>
@@ -23,32 +22,32 @@ Config.later(function()
     local is_case_sensitive = needle ~= string.lower(needle)
 
     for lines_i, line_text in ipairs(lines) do
-      if not is_case_sensitive then
-        line_text = string.lower(line_text)
-      end
       local line_idx = lines_i + line_idx_start - 1
-      if char_idx > #EM_CHARS then
-        break
-      end
-      -- skip folded lines
+      -- skip folded lines: ======================================================================
       if vim.fn.foldclosed(line_idx) == -1 then
+        if not is_case_sensitive then
+          line_text = string.lower(line_text)
+        end
         for i = 1, #line_text do
-          if line_text:sub(i, i + 1) == needle and char_idx <= #EM_CHARS then
+          if line_text:sub(i, i + 1) == needle then
             local overlay_char = EM_CHARS[char_idx]
             local linenr = line_idx_start + lines_i - 2
             local col = i - 1
-            local id = vim.api.nvim_buf_set_extmark(bufnr, EASYMOTION_NS, linenr, col + 2, {
+            local id = vim.api.nvim_buf_set_extmark(bufnr, MOTION_NS, linenr, col + 2, {
               virt_text = { { overlay_char, 'CurSearch' } },
               virt_text_pos = 'overlay',
               hl_mode = 'replace',
             })
             extmarks[overlay_char] = { line = linenr, col = col, id = id }
             char_idx = char_idx + 1
-          end
-          if char_idx > #EM_CHARS then
-            break
+            if char_idx > #EM_CHARS then
+              break
+            end
           end
         end
+      end
+      if char_idx > #EM_CHARS then
+        break
       end
     end
 
@@ -62,9 +61,11 @@ Config.later(function()
         vim.api.nvim_win_set_cursor(0, { pos.line + 1, pos.col })
       end
       -- clear extmarks
-      vim.api.nvim_buf_clear_namespace(0, EASYMOTION_NS, 0, -1)
+      vim.api.nvim_buf_clear_namespace(0, MOTION_NS, 0, -1)
     end)
   end
 
-  vim.api.nvim_create_user_command('EasyMotion', M.easy_motion, {})
+  vim.api.nvim_create_user_command('EasyMotion', M.motion, {})
+
+  return M
 end)
