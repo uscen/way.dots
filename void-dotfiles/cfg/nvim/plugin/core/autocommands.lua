@@ -29,6 +29,37 @@ Config.now(function()
     end,
   })
 
+  ---Auto Cleanup: ===============================================================================
+  Config.new_autocmd('FocusLost', {
+    once = true,
+    callback = function()
+      if vim.g.is_windows then return end
+      vim.system { 'find', vim.o.undodir, '-mtime', '+30d', '-delete' }
+      vim.system { 'find', vim.lsp.log.get_filename(), '-size', '+20M', '-delete' }
+    end,
+  })
+
+  -- No share or backup files: ===================================================================
+  Config.new_autocmd({ 'BufWritePre' }, {
+    pattern = vim.g.is_windows and { 'C:/users/lli/scoop/*', 'C:/users/lli/win.dots/*' } or { '/mnt/*', '/boot/*' },
+    callback = function()
+      vim.opt_local.undofile = false
+      vim.opt_local.shada = 'NONE'
+    end,
+  })
+
+  -- Disable swap/undo/backup files in temp directories or shm: ==================================
+  Config.new_autocmd('BufWritePre', {
+    group = vim.api.nvim_create_augroup('undo_disable', { clear = true }),
+    pattern = { '/tmp/*', '*.tmp', '*.bak', 'COMMIT_EDITMSG', 'MERGE_MSG' },
+    callback = function(event)
+      vim.opt_local.undofile = false
+      if event.file == 'COMMIT_EDITMSG' or event.file == 'MERGE_MSG' then
+        vim.opt_local.swapfile = false
+      end
+    end,
+  })
+
   -- Switch to Normal mode on focus/tab/window leave if in Insert mode: ==========================
   Config.new_autocmd({ 'FocusLost', 'WinLeave' }, {
     group = vim.api.nvim_create_augroup('leave_insert', {}),
@@ -249,27 +280,6 @@ Config.now(function()
       local n_lines = vim.api.nvim_buf_line_count(0)
       local last_nonblank = vim.fn.prevnonblank(n_lines)
       if last_nonblank < n_lines then vim.api.nvim_buf_set_lines(0, last_nonblank, n_lines, true, {}) end
-    end,
-  })
-
-  -- Disable swap/undo/backup files in temp directories or shm: ==================================
-  Config.new_autocmd('BufWritePre', {
-    group = vim.api.nvim_create_augroup('undo_disable', { clear = true }),
-    pattern = { '/tmp/*', '*.tmp', '*.bak', 'COMMIT_EDITMSG', 'MERGE_MSG' },
-    callback = function(event)
-      vim.opt_local.undofile = false
-      if event.file == 'COMMIT_EDITMSG' or event.file == 'MERGE_MSG' then
-        vim.opt_local.swapfile = false
-      end
-    end,
-  })
-
-  -- No share or backup files: ===================================================================
-  Config.new_autocmd({ 'BufWritePre' }, {
-    pattern = vim.g.is_windows and { 'C:/users/lli/scoop/*', 'C:/users/lli/win.dots/*' } or { '/mnt/*', '/boot/*' },
-    callback = function()
-      vim.opt_local.undofile = true
-      vim.opt_local.shada = 'NONE'
     end,
   })
 

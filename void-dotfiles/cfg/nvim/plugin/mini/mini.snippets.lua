@@ -53,7 +53,7 @@ Config.later(function()
   vim.keymap.set('i', '<Tab>', expand_or_complete, { expr = true, replace_keycodes = true })
 
   -- Exit snippet sessions on entering normal mode: ==============================================
-  vim.api.nvim_create_autocmd('User', {
+  Config.new_autocmd('User', {
     pattern = 'MiniSnippetsSessionStart',
     callback = function()
       vim.api.nvim_create_autocmd('ModeChanged', {
@@ -69,7 +69,7 @@ Config.later(function()
   })
 
   -- Exit snippets upon reaching final tabstop: ==================================================
-  vim.api.nvim_create_autocmd('User', {
+  Config.new_autocmd('User', {
     pattern = 'MiniSnippetsSessionJump',
     callback = function(args)
       if args.data.tabstop_to == '0' then MiniSnippets.session.stop() end
