@@ -82,8 +82,8 @@
 "ui.text.focus" = "fg"
 "ui.menu" = { fg = "fg", bg = "bg_float" }
 "ui.menu.selected" = { fg = "bg", bg = "bg_visual" }
-"ui.virtual.whitespace" = { fg = "bg4" }
-"ui.virtual.indent-guide" = { fg = "bg4" }
+"ui.virtual.whitespace" = { fg = "sep" }
+"ui.virtual.indent-guide" = { fg = "sep" }
 "ui.virtual.ruler" = { bg = "bg_float" }
 "ui.virtual.inlay-hint" = "grey"
 
@@ -120,8 +120,8 @@ yellow     = "#FFD7AA"
 orange     = "#F2A597"
 blue       = "#91C4C0"
 red        = "#D2696C"
+sep        = "#233935"
 cursorline = "#1D3334"
-separator  = "#0B1213"
 bg_float   = "#131F20"
 bg_visual  = "#26403E"
 bg_bright  = "#568270"
@@ -130,4 +130,3 @@ diff_change = "#1E2D39"
 diff_delete = "#33232A"
 statusline_fg  = "#9EC59B"
 statusline_bg  = "#131F20"
-statusline_sep = "#233935"

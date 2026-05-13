@@ -430,22 +430,6 @@ Config.now(function()
     end,
   })
 
-  -- When at eob, bring the current line towards center screen:===================================
-  Config.new_autocmd({ 'CursorMoved', 'CursorMovedI', 'BufEnter' }, {
-    callback = function()
-      if vim.bo.filetype == 'minifiles' then return end
-      local win_h = vim.api.nvim_win_get_height(0)
-      local off = math.min(vim.o.scrolloff, math.floor(win_h / 2))
-      local dist = vim.fn.line('$') - vim.fn.line('.')
-      local rem = vim.fn.line('w$') - vim.fn.line('w0') + 1
-      if dist < off and win_h - rem + dist < off then
-        local view = vim.fn.winsaveview()
-        view.topline = view.topline + off - (win_h - rem + dist)
-        vim.fn.winrestview(view)
-      end
-    end,
-  })
-
   -- close some filetypes with <q>: ==============================================================
   Config.new_autocmd('FileType', {
     group = vim.api.nvim_create_augroup('q_close', { clear = true }),
