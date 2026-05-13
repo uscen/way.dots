@@ -21,19 +21,17 @@ return {
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
   end,
-  filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx', },
+  filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
   settings = {
     vtsls = {
       autoUseWorkspaceTsdk = true,
-      experimental = {
-        completion = { enableServerSideFuzzyMatch = true, entriesLimit = 5000, },
-      },
+      experimental = { completion = { enableServerSideFuzzyMatch = true, entriesLimit = 20 }, },
     },
     typescript = { format = {
       enable = false,
-    }, preferences = preferences, },
+    }, preferences = preferences },
     javascript = { format = {
       enable = false,
-    }, preferences = preferences, },
+    }, preferences = preferences },
   },
 }

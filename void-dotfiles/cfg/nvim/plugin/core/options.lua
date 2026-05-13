@@ -316,7 +316,7 @@ end)
 -- Diagnostics:                                                                   #
 -- ============================================================================== #
 local diagnostic_opts = {
-  severity_sort = true,
+  severity_sort = false,
   update_in_insert = false,
   virtual_lines = false,
   signs = false,
@@ -335,12 +335,12 @@ local diagnostic_opts = {
     close_events = { 'CursorMoved', 'BufLeave', 'WinLeave', 'InsertEnter' },
   },
   virtual_text = {
+    current_line = true,
     spacing = 2,
     highlight = false,
     prefix = '▎',
     source = 'if_many',
     virt_text_pos = 'eol_right_align',
-    current_line = true,
     severity = { min = 'ERROR', max = 'ERROR' },
     format = function(diagnostic)
       local icon = '→ '
