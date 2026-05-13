@@ -243,13 +243,6 @@ Config.later(function()
   vim.keymap.set('n', '<leader>j', '<cmd>SmartDuplicate<cr>')
   vim.keymap.set('n', '<leader>`', '<cmd>ToggleTitleCase<cr>')
 
-  -- Map: ========================================================================================
-  vim.keymap.set('n', '<leader>mf', '<cmd>lua MiniMap.toggle_focus()<cr>')
-  vim.keymap.set('n', '<leader>mr', '<cmd>lua MiniMap.refresh()<cr>')
-  vim.keymap.set('n', '<leader>ms', '<cmd>lua MiniMap.toggle_side()<cr>')
-  vim.keymap.set('n', '<leader>mt', '<cmd>lua Config.minimap_toggle()<cr>')
-  vim.keymap.set('n', '<leader>mT', '<cmd>lua Config.minimap_buf_toggle()<cr>')
-
   -- Git: ========================================================================================
   vim.keymap.set('n', '<leader>gg', '<cmd>Lazygit<cr>')
   vim.keymap.set('n', '<leader>ga', '<cmd>Git add .<cr>')
