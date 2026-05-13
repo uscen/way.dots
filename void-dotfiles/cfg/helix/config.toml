@@ -7,31 +7,32 @@ theme                      = "thorn"
 # General:                                                                        #
 # =============================================================================== #
 [editor]
+true-color                 = true
+undercurl                  = true
+auto-completion            = true
+auto-info                  = true
+cursorline                 = true
+color-modes                = true
+idle-timeout               = 40
+text-width                 = 80
+rulers                     = [100]
+line-number                = "relative"
+end-of-line-diagnostics    = "hint"
+bufferline                 = "multiple"
 scrolloff                  = 99
 mouse                      = true
 default-yank-register      = "+"
 middle-click-paste         = true
 scroll-lines               = 3
 shell                      = ["elvish", "-c"]
-line-number                = "absolute"
-cursorline                 = true
 cursorcolumn               = false
 continue-comments          = false
 gutters                    = ["diff", "diagnostics", "line-numbers", "spacer"]
-auto-completion            = true
 path-completion            = true
-idle-timeout               = 150
 completion-timeout         = 150
 preview-completion-insert  = false
 completion-trigger-len     = 1
 completion-replace         = true
-auto-info                  = false
-true-color                 = true
-undercurl                  = true
-rulers                     = [100]
-bufferline                 = "never"
-color-modes                = true
-text-width                 = 80
 default-line-ending        = "lf"
 insert-final-newline       = false
 atomic-save                = true
@@ -40,10 +41,22 @@ trim-trailing-whitespace   = true
 popup-border               = "all"
 indent-heuristic           = "simple"
 jump-label-alphabet        = "jklmasdfghwobceinpqrtuvxyz"
-end-of-line-diagnostics    = "disable"
 clipboard-provider         = "wayland"
 editor-config              = true
 auto-format                = true
+
+# =============================================================================== #
+# Statusline:                                                                     #
+# =============================================================================== #
+[editor.statusline]
+left = [ "mode", "version-control", "read-only-indicator", "file-name", "file-modification-indicator", ]
+center = ["diagnostics"]
+right = [ "register", "position", "primary-selection-length", "selections", "file-encoding", "file-indent-style", "file-line-ending", "position-percentage", "file-type", "spacer" ]
+mode.normal = " "
+mode.insert = " "
+mode.select = " "
+diagnostics = ["warning", "error"]
+workspace-diagnostics = ["warning", "error"]
 
 # =============================================================================== #
 # Cursor:                                                                         #
@@ -58,32 +71,8 @@ select                     = "underline"
 # =============================================================================== #
 [editor.indent-guides]
 render = true
-
-# =============================================================================== #
-# Statusline:                                                                     #
-# =============================================================================== #
-[editor.statusline]
-left  = [ "mode", "file-name", "file-modification-indicator" ]
-right = [ "file-type", "position", "version-control", "spacer", "diagnostics", "spinner" ]
-mode.normal = " N"
-mode.insert = " I"
-mode.select = " S"
-
-# =============================================================================== #
-# Lsp:                                                                            #
-# =============================================================================== #
-[editor.lsp]
-enable                    = true
-display-messages          = true
-display-progress-messages = true
-
-# =============================================================================== #
-# Picker:                                                                         #
-# =============================================================================== #
-[editor.file-picker]
-hidden          = false
-git-ignore      = true
-follow-symlinks = true
+character = "╎"
+skip-levels = 0
 
 # =============================================================================== #
 # Autopairs:                                                                      #
@@ -97,12 +86,28 @@ follow-symlinks = true
 '<' = '>'
 
 # =============================================================================== #
+# Picker:                                                                         #
+# =============================================================================== #
+[editor.file-picker]
+hidden          = true
+git-ignore      = true
+follow-symlinks = true
+
+# =============================================================================== #
 # Autosave:                                                                       #
 # =============================================================================== #
 [editor.auto-save]
 focus-lost          = true
 after-delay.enable  = true
 after-delay.timeout = 30000
+
+# =============================================================================== #
+# Lsp:                                                                            #
+# =============================================================================== #
+[editor.lsp]
+enable                    = true
+display-messages          = true
+display-progress-messages = true
 
 # =============================================================================== #
 # Diagnostics:                                                                    #
@@ -134,6 +139,9 @@ up    = "no_op"
 down  = "no_op"
 left  = "no_op"
 right = "no_op"
+
+tab = ":buffer-next"
+S-tab = ":buffer-previous"
 
 "C-h" = "jump_view_right"
 "C-k" = "jump_view_up"
