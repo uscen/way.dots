@@ -198,17 +198,6 @@ Config.now(function()
     end,
   })
 
-  -- Automatically adjust scrolloff based on window size: ======================================
-  Config.new_autocmd('WinResized', {
-    group = vim.api.nvim_create_augroup('smart_scrolloff', { clear = true }),
-    callback = function()
-      local percentage = 0.16
-      local percentage_lines = math.floor(vim.o.lines * percentage)
-      local max_lines = 5
-      vim.o.scrolloff = math.min(max_lines, percentage_lines)
-    end,
-  })
-
   -- Fix broken macro recording notification for cmdheight 0: ====================================
   local show_recordering = vim.api.nvim_create_augroup('show_recordering', { clear = true })
   Config.new_autocmd('RecordingEnter', {
