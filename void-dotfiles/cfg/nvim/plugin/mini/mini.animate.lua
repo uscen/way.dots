@@ -1,0 +1,17 @@
+-- ============================================================================== #
+-- Animate:                                                                       #
+-- ============================================================================== #
+Config.later(function()
+  local animate = require('mini.animate')
+  animate.setup({
+    scroll = { enable = false },
+    cursor = {
+      path = animate.gen_path.line({
+        predicate = function(dest)
+          local rows, cols = unpack(dest)
+          return math.abs(rows) > 1 or math.abs(cols) > 30
+        end,
+      }),
+    },
+  })
+end)

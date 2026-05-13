@@ -84,7 +84,7 @@
 "ui.menu.selected" = { fg = "bg", bg = "bg_visual" }
 "ui.virtual.whitespace" = { fg = "bg4" }
 "ui.virtual.indent-guide" = { fg = "bg4" }
-"ui.virtual.ruler" = { bg = "green_3" }
+"ui.virtual.ruler" = { bg = "bg_float" }
 "ui.virtual.inlay-hint" = "grey"
 
 # =============================================================================== #

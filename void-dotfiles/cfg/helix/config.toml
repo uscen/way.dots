@@ -1,32 +1,153 @@
 # =============================================================================== #
 # Theme:                                                                          #
 # =============================================================================== #
-theme = "thorn"
+theme                      = "thorn"
+
+# =============================================================================== #
+# General:                                                                        #
+# =============================================================================== #
+[editor]
+scrolloff                  = 99
+mouse                      = true
+default-yank-register      = "+"
+middle-click-paste         = true
+scroll-lines               = 3
+shell                      = ["elvish", "-c"]
+line-number                = "absolute"
+cursorline                 = true
+cursorcolumn               = false
+continue-comments          = false
+gutters                    = ["diff", "diagnostics", "line-numbers", "spacer"]
+auto-completion            = true
+path-completion            = true
+idle-timeout               = 150
+completion-timeout         = 150
+preview-completion-insert  = false
+completion-trigger-len     = 1
+completion-replace         = true
+auto-info                  = false
+true-color                 = true
+undercurl                  = true
+rulers                     = [100]
+bufferline                 = "never"
+color-modes                = true
+text-width                 = 80
+default-line-ending        = "lf"
+insert-final-newline       = false
+atomic-save                = true
+trim-final-newlines        = true
+trim-trailing-whitespace   = true
+popup-border               = "all"
+indent-heuristic           = "simple"
+jump-label-alphabet        = "jklmasdfghwobceinpqrtuvxyz"
+end-of-line-diagnostics    = "disable"
+clipboard-provider         = "wayland"
+editor-config              = true
+auto-format                = true
 
 # =============================================================================== #
 # Cursor:                                                                         #
 # =============================================================================== #
 [editor.cursor-shape]
-insert                             = "block"
-normal                             = "block"
-select                             = "block"
+insert                     = "bar"
+normal                     = "block"
+select                     = "underline"
+
+# =============================================================================== #
+# Indent:                                                                         #
+# =============================================================================== #
+[editor.indent-guides]
+render = true
+
+# =============================================================================== #
+# Statusline:                                                                     #
+# =============================================================================== #
+[editor.statusline]
+left  = [ "mode", "file-name", "file-modification-indicator" ]
+right = [ "file-type", "position", "version-control", "spacer", "diagnostics", "spinner" ]
+mode.normal = " N"
+mode.insert = " I"
+mode.select = " S"
+
+# =============================================================================== #
+# Lsp:                                                                            #
+# =============================================================================== #
+[editor.lsp]
+enable                    = true
+display-messages          = true
+display-progress-messages = true
 
 # =============================================================================== #
 # Picker:                                                                         #
 # =============================================================================== #
 [editor.file-picker]
-hidden                             = true
-follow-symlinks                    = true
-deduplicate-links                  = true
-parents                            = true
-ignore                             = true
-git-ignore                         = true
-git-global                         = true
-git-exclude                        = true
+hidden          = false
+git-ignore      = true
+follow-symlinks = true
 
 # =============================================================================== #
-# Gutter:                                                                         #
+# Autopairs:                                                                      #
 # =============================================================================== #
-[editor.gutters]
-layout                             = ["line-numbers","diagnostics","diff"]
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+'`' = '`'
+'<' = '>'
 
+# =============================================================================== #
+# Autosave:                                                                       #
+# =============================================================================== #
+[editor.auto-save]
+focus-lost          = true
+after-delay.enable  = true
+after-delay.timeout = 30000
+
+# =============================================================================== #
+# Diagnostics:                                                                    #
+# =============================================================================== #
+[editor.inline-diagnostics]
+cursor-line = "warning"
+other-lines = "warning"
+
+# =============================================================================== #
+# keymaps:                                                                        #
+# =============================================================================== #
+# Insert: ========================================================================================
+[keys.insert]
+up    = "no_op"
+down  = "no_op"
+left  = "no_op"
+right = "no_op"
+
+# Select: ========================================================================================
+[keys.select]
+up    = "no_op"
+down  = "no_op"
+left  = "no_op"
+right = "no_op"
+
+# Normal: ========================================================================================
+[keys.normal]
+up    = "no_op"
+down  = "no_op"
+left  = "no_op"
+right = "no_op"
+
+"C-h" = "jump_view_right"
+"C-k" = "jump_view_up"
+"C-j" = "jump_view_down"
+"C-l" = "jump_view_left"
+
+[keys.normal.t]
+"T" = "file_explorer"
+
+[keys.normal." "]
+"l" = { "g" = [ ":write-all", ":new", ":insert-output lazygit", ":buffer-close!", ":redraw", ":reload-all" ]}
+"w" = ":write"
+"q" = ":quit"
+
+[keys.normal.h]
+"K" = ":hsplit"
+"L" = ":vsplit"

@@ -215,7 +215,8 @@ Config.now(function()
     pattern = '*',
     group = show_recordering,
     callback = function()
-      vim.opt_local.cmdheight = 1
+      -- Set to 1 when remove statusline
+      vim.opt_local.cmdheight = 0
     end,
   })
   Config.new_autocmd('RecordingLeave', {
