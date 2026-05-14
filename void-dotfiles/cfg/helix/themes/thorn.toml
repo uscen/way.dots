@@ -67,7 +67,7 @@
 "ui.cursorline.secondary" = { bg = "cursorline" }
 "ui.selection" = { bg = "bg_visual" }
 "ui.linenr" = "number"
-"ui.linenr.selected" = {fg = 'yellow', bg = 'bg', modifiers = ["bold"] }
+"ui.linenr.selected" = 'yellow'
 "ui.statusline" = { fg = "statusline_fg", bg = "statusline_bg" }
 "ui.statusline.inactive" = { fg = "grey", bg = "statusline_bg" }
 "ui.statusline.normal" = { fg = "statusline_bg", bg = "grey", modifiers = ["bold"] }
