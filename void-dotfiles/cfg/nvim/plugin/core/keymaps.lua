@@ -10,12 +10,6 @@ Config.later(function()
   vim.keymap.set('i', '<C-J>', '<Nop>')
   vim.keymap.set('i', '<C-K>', '<Nop>')
 
-  -- Rsi mappings: ===============================================================================
-  vim.keymap.set('c', '<C-a>', '<Home>')
-  vim.keymap.set('c', '<C-e>', '<End>')
-  vim.keymap.set('c', '<C-j>', '<down>')
-  vim.keymap.set('c', '<C-k>', '<up>')
-
   -- General: ====================================================================================
   vim.keymap.set('n', '<leader>qq', '<cmd>qa<cr>')
   vim.keymap.set('n', '<leader>rc', '<cmd>EditConfig<cr>')
@@ -100,6 +94,12 @@ Config.later(function()
   vim.keymap.set('n', '<leader>o', "printf('m`%so<ESC>``', v:count1)", { expr = true })
   vim.keymap.set('n', '<leader>O', "printf('m`%sO<ESC>``', v:count1)", { expr = true })
   vim.keymap.set('n', '<leader>v', "printf('`[%s`]', getregtype()[0])", { expr = true })
+
+  -- Cmdline: ====================================================================================
+  vim.keymap.set('c', '<C-a>', '<Home>', { noremap = true })
+  vim.keymap.set('c', '<C-e>', '<End>', { noremap = true })
+  vim.keymap.set('c', '<C-j>', '<C-n>', { noremap = true })
+  vim.keymap.set('c', '<C-k>', '<C-p>', { noremap = true })
 
   -- Completion: =================================================================================
   vim.keymap.set('i', '<C-j>', [[pumvisible() ? "\<C-n>" : "\<C-j>"]], { expr = true })
