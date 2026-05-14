@@ -207,7 +207,7 @@ workspace "5" {
 // ============================================================================== #
 layout {
     // Gaps: =====================================================================================
-    gaps 0
+    gaps 2
     struts {
         left 0
         right 0
@@ -226,17 +226,17 @@ layout {
         off
         width 2
         active-color "#233935"
-        inactive-color "#172526"
+        inactive-color "#1D3334"
         urgent-color "#D2696C"
 
     }
 
     // Border: ===================================================================================
     border {
-        off
-        width 1
+        on
+        width 2
         active-color "#233935"
-        inactive-color "#172526"
+        inactive-color "#1D3334"
         urgent-color "#D2696C"
     }
 
@@ -270,7 +270,7 @@ layout {
 
    // Tabs: ======================================================================================
     tab-indicator {
-        on
+        off
         hide-when-single-tab
         place-within-column
         gap 0

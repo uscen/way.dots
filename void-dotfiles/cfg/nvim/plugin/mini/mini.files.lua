@@ -115,10 +115,12 @@ Config.now_if_args(function()
   })
 
   -- View current file in tree explorer: =========================================================
-  Config.new_command('Explorer', function()
-    if MiniFiles.close() then return end
-    local buf_path = vim.api.nvim_buf_get_name(0)
-    local path = vim.loop.fs_stat(buf_path) ~= nil and buf_path or vim.fn.getcwd()
-    MiniFiles.open(path)
+  Config.later(function()
+    Config.new_command('Explorer', function()
+      if MiniFiles.close() then return end
+      local buf_path = vim.api.nvim_buf_get_name(0)
+      local path = vim.loop.fs_stat(buf_path) ~= nil and buf_path or vim.fn.getcwd()
+      MiniFiles.open(path)
+    end)
   end)
 end)
