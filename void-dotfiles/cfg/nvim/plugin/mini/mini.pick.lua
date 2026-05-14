@@ -117,4 +117,33 @@ Config.later(function()
     local buffer_mappings = { wipeout = { char = '<C-d>', func = wipeout_cur } }
     MiniPick.builtin.buffers(local_opts, { mappings = buffer_mappings })
   end
+
+  -- Pick file using zoxide: =========================================================================
+  Config.new_command('PickZoxide', function()
+    local zoxide_output = vim.fn.system('zoxide query -l')
+    local zoxide_dirs = vim.split(zoxide_output, '\n', { trimempty = true })
+    MiniPick.start({
+      source = {
+        items = zoxide_dirs,
+        choose = function(dir)
+          vim.schedule(function()
+            vim.fn.chdir(dir)
+            return MiniPick.builtin.files()
+          end)
+        end,
+      },
+    })
+  end)
+
+  -- Pick file using fd: =========================================================================
+  Config.new_command('PickFiles', function()
+    MiniPick.builtin.cli({ command = { 'fd', '-t=f', '-H', '-I', '-E=.git', '-E=node_modules' } }, {
+      source = {
+        name = 'Files (fd)',
+        show = function(buf, items, query)
+          MiniPick.default_show(buf, items, query, { show_icons = true })
+        end,
+      },
+    })
+  end)
 end)

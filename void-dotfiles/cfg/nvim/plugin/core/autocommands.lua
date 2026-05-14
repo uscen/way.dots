@@ -44,7 +44,6 @@ Config.now(function()
     end,
   })
 
-
   -- auto detects filetype if the filetype is empty: =============================================
   Config.new_autocmd('BufWritePost', {
     pattern = '*',
@@ -64,7 +63,7 @@ Config.now(function()
     end,
   })
 
-  -- Enable cmdline autocomplete: ================================================================
+  -- Auto Complete: ==============================================================================
   Config.new_autocmd('CmdlineChanged', { pattern = { ':', '/', '?' }, callback = function()
     vim.fn.wildtrigger()
   end })
@@ -257,8 +256,8 @@ Config.now(function()
     group = vim.api.nvim_create_augroup('cmd_open', { clear = true }),
     callback = function()
       vim.wo.number = false
-      vim.wo.foldcolumn = '0'
       vim.wo.signcolumn = 'no'
+      vim.wo.foldcolumn = '0'
     end,
   })
 

@@ -150,7 +150,27 @@ Config.later(function()
 
   vim.api.nvim_create_user_command('DeleteBuffer', M.delete_buffer, {})
 
-  -- Delete others buff: ===========================================================================
+  -- Delete listed unmodified buffers that are not in a window: ==================================
+  function M.deleteInactiveBuffers()
+    local notify = false
+    local number = 0
+    for _, buf in ipairs(vim.fn.getbufinfo()) do
+      if vim.tbl_isempty(buf.windows) and buf.listed == 1 and buf.changed == 0 then
+        notify = true
+        number = number + 1
+        vim.cmd.bdelete({ buf.bufnr, bang = true })
+      end
+    end
+    if notify then
+      vim.notify('Deleted ' .. tostring(number) .. ' inactive buffer(s).', vim.log.levels.INFO)
+    else
+      vim.notify('No inactive buffers were deleted.', vim.log.levels.INFO)
+    end
+  end
+
+  vim.api.nvim_create_user_command('DeleteInactiveBuffers', M.deleteInactiveBuffers, {})
+
+  -- Delete others buffers: ======================================================================
   function M.deleteOthersBuffers()
     for _, buf in ipairs(vim.api.nvim_list_bufs()) do
       if buf ~= vim.fn.bufnr() and vim.fn.buflisted(buf) == 1 then
@@ -161,7 +181,7 @@ Config.later(function()
 
   vim.api.nvim_create_user_command('DeleteOtherBuffers', M.deleteOthersBuffers, {})
 
-  -- Open All hunks in quickfix: =====================================================================
+  -- Open All hunks in quickfix: =================================================================
   function M.diffInQuickFix()
     local hunks = require('mini.diff').export('qf')
     if #hunks == 0 then

@@ -90,52 +90,6 @@ Config.later(function()
     require(name).setup()
   end, { nargs = 1 })
 
-  -- Close all notifications: ====================================================================
-  Config.new_command('CloseNotifications', function()
-    local MiniNotify = require('mini.notify')
-    MiniNotify.clear()
-  end)
-
-  -- View current file in tree explorer: =========================================================
-  Config.new_command('Explorer', function()
-    local MiniFiles = require('mini.files')
-    if MiniFiles.close() then return end
-    local buf_path = vim.api.nvim_buf_get_name(0)
-    local path = vim.loop.fs_stat(buf_path) ~= nil and buf_path or vim.fn.getcwd()
-    MiniFiles.open(path)
-  end)
-
-  -- Pick file using zoxide: =========================================================================
-  Config.new_command('PickZoxide', function()
-    local minipick = require('mini.pick')
-    local zoxide_output = vim.fn.system('zoxide query -l')
-    local zoxide_dirs = vim.split(zoxide_output, '\n', { trimempty = true })
-    minipick.start({
-      source = {
-        items = zoxide_dirs,
-        choose = function(dir)
-          vim.schedule(function()
-            vim.fn.chdir(dir)
-            return minipick.builtin.files()
-          end)
-        end,
-      },
-    })
-  end)
-
-  -- Pick file using fd: =========================================================================
-  Config.new_command('PickFiles', function()
-    local MiniPick = require('mini.pick')
-    MiniPick.builtin.cli({ command = { 'fd', '-t=f', '-H', '-I', '-E=.git', '-E=node_modules' } }, {
-      source = {
-        name = 'Files (fd)',
-        show = function(buf, items, query)
-          MiniPick.default_show(buf, items, query, { show_icons = true })
-        end,
-      },
-    })
-  end)
-
   -- Copy text to clipboard using codeblock format ```{ft}{content}```: ==========================
   Config.new_command('CopyCodeBlock', function(opts)
     local lines = vim.api.nvim_buf_get_lines(0, opts.line1 - 1, opts.line2, true)
@@ -156,24 +110,6 @@ Config.later(function()
       return #list > 0 and list or files
     end,
   })
-
-  -- Delete listed unmodified buffers that are not in a window ===================================
-  Config.new_command('DeleteInactiveBuffers', function()
-    local notify = false
-    local number = 0
-    for _, buf in ipairs(vim.fn.getbufinfo()) do
-      if vim.tbl_isempty(buf.windows) and buf.listed == 1 and buf.changed == 0 then
-        notify = true
-        number = number + 1
-        vim.cmd.bdelete({ buf.bufnr, bang = true })
-      end
-    end
-    if notify then
-      vim.notify('Deleted ' .. tostring(number) .. ' inactive buffer(s).', vim.log.levels.INFO)
-    else
-      vim.notify('No inactive buffers were deleted.', vim.log.levels.INFO)
-    end
-  end)
 
   -- Append char(s) to the end of each line (default: ";"): ======================================
   Config.new_command('AppendToEnd', function(args)
@@ -294,44 +230,6 @@ Config.later(function()
       end,
     })
     pcall(vim.cmd.file, 'term:lazygit')
-  end)
-
-  -- Terminal: ===================================================================================
-  local terminal_buf = nil
-  local terminal_win = nil
-  Config.new_command('TermToggle', function()
-    -- Fast close if terminal window exists
-    if terminal_win and vim.api.nvim_win_is_valid(terminal_win) then
-      vim.api.nvim_win_hide(terminal_win)
-      terminal_win = nil
-      return
-    end
-    -- Check if terminal buffer exists
-    if terminal_buf and vim.api.nvim_buf_is_valid(terminal_buf) then
-      -- Reuse existing buffer
-      vim.cmd('botright 10split')
-      vim.api.nvim_win_set_buf(0, terminal_buf)
-    else
-      -- Create new terminal with optimized settings
-      vim.cmd('botright 10split term://elvish')
-      terminal_buf = vim.api.nvim_get_current_buf()
-    end
-    terminal_win = vim.api.nvim_get_current_win()
-    vim.api.nvim_set_option_value('winfixheight', true, { win = terminal_win })
-  end)
-
-  -- remove plugins from disk that are no longer in vim.pack.add() specs: ========================
-  Config.new_command('PackClean', function()
-    local inactive = vim.iter(vim.pack.get())
-        :filter(function(x) return not x.active end)
-        :map(function(x) return x.spec.name end)
-        :totable()
-    if #inactive == 0 then
-      vim.notify('No inactive plugins to remove', vim.log.levels.INFO)
-      return
-    end
-    vim.pack.del(inactive)
-    vim.notify('Removed: ' .. table.concat(inactive, ', '), vim.log.levels.INFO)
   end)
 
   -- Edit file full path: =========================================================================
