@@ -47,7 +47,7 @@ prepend_keymap = [
 
 	# Shell: =======================================================================================
 	{ on = "$", run = 'shell --block $SHELL' },
-	{ on = ["!"], run = 'shell elvish --block --confirm' },
+	{ on = ["!"], run = 'shell --block $SHELL' },
 
 	# BookMarks: ===================================================================================
   { on   = [ "~" ], run  = 'cd "~/"', desc = "Go To Home" },
