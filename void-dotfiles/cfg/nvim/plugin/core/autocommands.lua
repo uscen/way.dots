@@ -2,14 +2,69 @@
 -- Autocommands:                                                                  #
 -- ============================================================================== #
 Config.now(function()
-  -- Auto command helper to add autocommands to my custom group: ===================================
+  -- Auto command helper to add autocommands to my custom group: =================================
   local custom_group = vim.api.nvim_create_augroup('uscen-custom-config', {})
   _G.Config.new_autocmd = function(event, opts)
     opts.group = opts.group or custom_group
     vim.api.nvim_create_autocmd(event, opts)
   end
 
-  -- Enable Cmd Autocomplete: ====================================================================
+  -- Highlight Yank ==============================================================================
+  Config.new_autocmd('TextYankPost', {
+    group = vim.api.nvim_create_augroup('highlight_yank', {}),
+    callback = function()
+      if vim.v.operator == 'y' then
+        vim.fn.setreg('+', vim.fn.getreg('0'))
+        vim.hl.on_yank({ on_macro = true, on_visual = true, higroup = 'IncSearch', timeout = 100 })
+      end
+    end,
+  })
+
+  -- Yanking registers.: =========================================================================
+  Config.new_autocmd('TextYankPost', {
+    group = vim.api.nvim_create_augroup('danwlker/yankring', { clear = true }),
+    callback = function()
+      if vim.v.event.operator == 'y' then
+        for i = 9, 1, -1 do
+          vim.fn.setreg(tostring(i), vim.fn.getreg(tostring(i - 1)))
+        end
+      end
+    end,
+  })
+
+  -- Don't Comment New Line ======================================================================
+  Config.new_autocmd('FileType', {
+    pattern = '*',
+    group = vim.api.nvim_create_augroup('diable_new_line_comments', { clear = true }),
+    callback = function()
+      vim.opt_local.formatoptions:remove('c')
+      vim.opt_local.formatoptions:remove('r')
+      vim.opt_local.formatoptions:remove('o')
+      vim.opt_local.formatoptions:remove('t')
+    end,
+  })
+
+
+  -- auto detects filetype if the filetype is empty: =============================================
+  Config.new_autocmd('BufWritePost', {
+    pattern = '*',
+    group = vim.api.nvim_create_augroup('file_detect', { clear = true }),
+    callback = function()
+      if vim.bo.filetype == '' then vim.cmd('filetype detect') end
+    end,
+  })
+
+  -- Auto-resize splits on window resize:  =======================================================
+  Config.new_autocmd('VimResized', {
+    group = vim.api.nvim_create_augroup('resize_splits', { clear = true }),
+    callback = function()
+      local current_tab = vim.fn.tabpagenr()
+      vim.cmd('tabdo wincmd =')
+      vim.cmd('tabnext ' .. current_tab)
+    end,
+  })
+
+  -- Enable cmdline autocomplete: ================================================================
   Config.new_autocmd('CmdlineChanged', { pattern = { ':', '/', '?' }, callback = function()
     vim.fn.wildtrigger()
   end })
@@ -71,42 +126,29 @@ Config.now(function()
     end,
   })
 
-  -- Delete empty temp ShaDa files: ==============================================================
-  Config.new_autocmd({ 'VimLeavePre' }, {
-    group = vim.api.nvim_create_augroup('delete_empty_shada', { clear = true }),
-    pattern = { '*' },
+  -- Highlight cursor line briefly when neovim regains focus: ====================================
+  Config.new_autocmd({ 'FocusGained' }, {
+    group = vim.api.nvim_create_augroup('track_cursor', { clear = true }),
     callback = function()
-      local status = 0
-      for _, f in ipairs(vim.fn.globpath(vim.fn.stdpath('data') .. '/shada', '*tmp*', false, true)) do
-        if vim.tbl_isempty(vim.fn.readfile(f)) then
-          status = status + vim.fn.delete(f)
-        end
-      end
-      if status ~= 0 then
-        vim.notify('Could not delete empty temporary ShaDa files.', vim.log.levels.ERROR)
-        vim.fn.getchar()
-      end
+      vim.o.cursorline = false
+      vim.cmd('redraw')
+      vim.defer_fn(function()
+        vim.o.cursorline = true
+        vim.cmd('redraw')
+      end, 300)
     end,
   })
 
-  -- mariasolos/execute_cmd_and_stay: ============================================================
-  Config.new_autocmd('CmdwinEnter', {
-    group = vim.api.nvim_create_augroup('exe_keep_cmd_line_window', {}),
-    desc = 'Execute command and stay in the command-line window',
-    callback = function(args) vim.keymap.set({ 'n', 'i' }, '<leader><cr>', '<cr>q:', { buffer = args.buf }) end,
-  })
-
-  -- Remove background for all WinSeparator sections =============================================
-  Config.new_autocmd('ColorScheme', {
-    pattern = '*',
-    group = vim.api.nvim_create_augroup('sp_bg_removed', { clear = true }),
-    desc = 'Remove background for all WinSeparator sections',
-    callback = function()
-      vim.cmd('highlight WinSeparator guibg=None')
+  -- Show cursor line only in active window: =====================================================
+  Config.new_autocmd({ 'BufWinEnter', 'WinEnter', 'WinLeave' }, {
+    group = vim.api.nvim_create_augroup('auto_show_cursorline', { clear = true }),
+    callback = function(ctx)
+      if vim.bo[ctx.buf].buftype ~= '' then return end
+      vim.opt_local.cursorline = ctx.event ~= 'WinLeave'
     end,
   })
 
-  -- Delete [No Name] buffers: ====================================================================
+  -- Delete [No Name] buffers: ===================================================================
   Config.new_autocmd('BufHidden', {
     group = vim.api.nvim_create_augroup('delete_no_name_buffer', { clear = true }),
     callback = function(event)
@@ -116,16 +158,7 @@ Config.now(function()
     end,
   })
 
-  -- auto detects filetype if the filetype is empty: ===============================================
-  Config.new_autocmd('BufWritePost', {
-    pattern = '*',
-    group = vim.api.nvim_create_augroup('FileDetect', { clear = true }),
-    callback = function()
-      if vim.bo.filetype == '' then vim.cmd('filetype detect') end
-    end,
-  })
-
-  -- jump to last accessed window on closing the current one: =====================================
+  -- jump to last accessed window on closing the current one: ====================================
   Config.new_autocmd('WinClosed', {
     nested = true,
     group = vim.api.nvim_create_augroup('jump_to_last_window', { clear = true }),
@@ -153,59 +186,13 @@ Config.now(function()
     end,
   })
 
-  -- Don't Comment New Line ======================================================================
-  Config.new_autocmd('FileType', {
-    pattern = '*',
-    group = vim.api.nvim_create_augroup('diable_new_line_comments', { clear = true }),
-    callback = function()
-      vim.opt_local.formatoptions:remove('c')
-      vim.opt_local.formatoptions:remove('r')
-      vim.opt_local.formatoptions:remove('o')
-      vim.opt_local.formatoptions:remove('t')
-    end,
-  })
-
-  -- Highlight Yank ==============================================================================
-  Config.new_autocmd('TextYankPost', {
-    group = vim.api.nvim_create_augroup('highlight_yank', {}),
-    callback = function()
-      if vim.v.operator == 'y' then
-        vim.fn.setreg('+', vim.fn.getreg('0'))
-        vim.hl.on_yank({ on_macro = true, on_visual = true, higroup = 'IncSearch', timeout = 100 })
-      end
-    end,
-  })
-
-  -- yankring: ==================================================================================
-  Config.new_autocmd('TextYankPost', {
-    group = vim.api.nvim_create_augroup('danwlker/yankring', { clear = true }),
-    callback = function()
-      if vim.v.event.operator == 'y' then
-        for i = 9, 1, -1 do -- Shift all numbered registers.
-          vim.fn.setreg(tostring(i), vim.fn.getreg(tostring(i - 1)))
-        end
-      end
-    end,
-  })
-
-  -- Auto-resize splits on window resize:  =======================================================
-  Config.new_autocmd('VimResized', {
-    group = vim.api.nvim_create_augroup('resize_splits', { clear = true }),
-    callback = function()
-      local current_tab = vim.fn.tabpagenr()
-      vim.cmd('tabdo wincmd =')
-      vim.cmd('tabnext ' .. current_tab)
-    end,
-  })
-
   -- Fix broken macro recording notification for cmdheight 0: ====================================
   local show_recordering = vim.api.nvim_create_augroup('show_recordering', { clear = true })
   Config.new_autocmd('RecordingEnter', {
     pattern = '*',
     group = show_recordering,
     callback = function()
-      -- Set to 1 when remove statusline
-      vim.opt_local.cmdheight = 0
+      vim.opt_local.cmdheight = 1
     end,
   })
   Config.new_autocmd('RecordingLeave', {
@@ -252,24 +239,16 @@ Config.now(function()
     end,
   })
 
-  -- Trim space and lastlines if empty : =========================================================
-  local trim_spaces = vim.api.nvim_create_augroup('trim_spaces', { clear = true })
+  -- Removes trailing whitespace and trailing newlines on save : =================================
   Config.new_autocmd('BufWritePre', {
-    group = trim_spaces,
-    pattern = { '*' },
+    group = vim.api.nvim_create_augroup('remove-trailing-whitespace-on-save', { clear = true }),
     callback = function()
-      local curpos = vim.api.nvim_win_get_cursor(0)
-      vim.cmd([[keeppatterns %s/\s\+$//e]])
-      vim.api.nvim_win_set_cursor(0, curpos)
-    end,
-  })
-  Config.new_autocmd('BufWritePre', {
-    group = trim_spaces,
-    pattern = { '*' },
-    callback = function()
-      local n_lines = vim.api.nvim_buf_line_count(0)
-      local last_nonblank = vim.fn.prevnonblank(n_lines)
-      if last_nonblank < n_lines then vim.api.nvim_buf_set_lines(0, last_nonblank, n_lines, true, {}) end
+      local cur_search = vim.fn.getreg('/')
+      local cur_view = vim.fn.winsaveview()
+      vim.cmd([[%s/\s\+$//e]])
+      vim.cmd([[%s/\($\n\s*\)\+\%$//e]])
+      vim.fn.setreg('/', cur_search)
+      vim.fn.winrestview(cur_view)
     end,
   })
 
@@ -298,32 +277,28 @@ Config.now(function()
   Config.new_autocmd('TermOpen', {
     group = vim.api.nvim_create_augroup('term_open', { clear = true }),
     callback = function()
+      vim.opt_local.number = false
+      vim.opt_local.cursorline = false
+      vim.opt_local.buflisted = false
       vim.opt_local.scrollback = 10000
       vim.opt_local.scrolloff = 0
-      vim.opt_local.buflisted = false
-      vim.opt_local.cursorline = false
-      vim.opt_local.number = false
       vim.opt_local.signcolumn = 'no'
       vim.opt_local.filetype = 'terminal'
       vim.bo.filetype = 'terminal'
       vim.bo.bufhidden = 'wipe'
-      vim.cmd.startinsert()
-    end,
-  })
-
-  -- Auto-close terminal when process exits: =====================================================
-  Config.new_autocmd('TermClose', {
-    group = vim.api.nvim_create_augroup('term_close', {}),
-    callback = function()
-      if vim.v.event.status == 0 then
-        vim.api.nvim_buf_delete(0, {})
+      if vim.startswith(vim.api.nvim_buf_get_name(0), 'term://') then
+        vim.cmd('startinsert')
       end
     end,
   })
+  -- Auto-close terminal when process exits: =====================================================
   Config.new_autocmd('TermClose', {
     group = vim.api.nvim_create_augroup('term_close', {}),
     pattern = { 'term://*', 'term:lazygit' },
     callback = function()
+      if vim.v.event.status == 0 then
+        vim.api.nvim_buf_delete(0, {})
+      end
       vim.api.nvim_input('<CR>')
     end,
   })
@@ -350,28 +325,6 @@ Config.now(function()
           vim.cmd('normal! zz')
         end)
       end
-    end,
-  })
-
-  -- Highlight cursor line briefly when neovim regains focus: ====================================
-  Config.new_autocmd({ 'FocusGained' }, {
-    group = vim.api.nvim_create_augroup('track_cursor', { clear = true }),
-    callback = function()
-      vim.o.cursorline = false
-      vim.cmd('redraw')
-      vim.defer_fn(function()
-        vim.o.cursorline = true
-        vim.cmd('redraw')
-      end, 300)
-    end,
-  })
-
-  -- Show cursor line only in active window: =====================================================
-  Config.new_autocmd({ 'BufWinEnter', 'WinEnter', 'WinLeave' }, {
-    group = vim.api.nvim_create_augroup('auto_show_cursorline', { clear = true }),
-    callback = function(ctx)
-      if vim.bo[ctx.buf].buftype ~= '' then return end
-      vim.opt_local.cursorline = ctx.event ~= 'WinLeave'
     end,
   })
 
@@ -434,31 +387,4 @@ Config.now(function()
       vim.keymap.set('n', 'q', close_buffer, keymap_opts)
     end,
   })
-
-  -- Create an autocmd group for executing files: ================================================
-  local exec_by_ft = vim.api.nvim_create_augroup('exec_by_ft', { clear = true })
-  local function RunKeymap(filetype, command)
-    Config.new_autocmd('FileType', {
-      group = exec_by_ft,
-      pattern = filetype,
-      callback = function()
-        vim.api.nvim_buf_set_keymap(
-          0,
-          'n',
-          '<leader>aa',
-          ':w<cr>:split term://' .. command .. ' %<cr>:resize 10<cr>',
-          { noremap = true, silent = true }
-        )
-      end,
-    })
-  end
-
-  -- Define the commands for each filetype: ======================================================
-  RunKeymap('lua', 'lua')
-  RunKeymap('python', 'python3')
-  RunKeymap('javascript', 'node')
-  RunKeymap('rust', 'cargo run')
-  RunKeymap('go', 'go run')
-  RunKeymap('cpp', 'g++ % -o %:r && ./%:r')
-  RunKeymap('c', 'gcc % -o %:r && ./%:r')
 end)
