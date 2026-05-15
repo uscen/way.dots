@@ -166,6 +166,16 @@ Config.now(function()
     end,
   })
 
+  -- Clear the last used search pattern when opening a new buffer ================================
+  Config.new_autocmd('BufReadPre', {
+    pattern = '*',
+    group = vim.api.nvim_create_augroup('clear_search', { clear = true }),
+    callback = function()
+      vim.fn.setreg('/', '')
+      vim.cmd 'let @/ = ""'
+    end,
+  })
+
   -- Disable diagnostics in node_modules =========================================================
   Config.new_autocmd({ 'BufRead', 'BufNewFile' }, {
     group = vim.api.nvim_create_augroup('disable_diagnostics', { clear = true }),
@@ -175,14 +185,19 @@ Config.now(function()
     end,
   })
 
-  -- Clear the last used search pattern when opening a new buffer ================================
-  Config.new_autocmd('BufReadPre', {
-    pattern = '*',
-    group = vim.api.nvim_create_augroup('clear_search', { clear = true }),
-    callback = function()
-      vim.fn.setreg('/', '')
-      vim.cmd 'let @/ = ""'
-    end,
+  -- Disable diagnostics while typing: ===========================================================
+  local mode_diagnostoc = vim.api.nvim_create_augroup('diagnostic_cmds', { clear = true })
+  Config.new_autocmd('ModeChanged', {
+    group = mode_diagnostoc,
+    pattern = { 'n:i', 'v:s' },
+    desc = 'Disable diagnostics while typing',
+    callback = function(e) vim.diagnostic.enable(false, { bufnr = e.buf }) end,
+  })
+  Config.new_autocmd('ModeChanged', {
+    group = mode_diagnostoc,
+    pattern = 'i:n',
+    desc = 'Enable diagnostics when leaving insert mode',
+    callback = function(e) vim.diagnostic.enable(true, { bufnr = e.buf }) end,
   })
 
   -- Fix broken macro recording notification for cmdheight 0: ====================================

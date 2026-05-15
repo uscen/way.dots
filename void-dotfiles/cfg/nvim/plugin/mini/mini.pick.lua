@@ -4,6 +4,7 @@
 Config.later(function()
   local MiniPick = require('mini.pick')
   local MiniExtra = require('mini.extra')
+  local MiniFiles = require('mini.files')
   local MiniBufremove = require('mini.bufremove')
   MiniPick.setup({
     mappings = {
@@ -128,7 +129,7 @@ Config.later(function()
         choose = function(dir)
           vim.schedule(function()
             vim.fn.chdir(dir)
-            return MiniPick.builtin.files()
+            return MiniFiles.open(dir)
           end)
         end,
       },

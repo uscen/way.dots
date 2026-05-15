@@ -53,18 +53,15 @@ Config.later(function()
   vim.keymap.set('i', '<Tab>', expand_or_complete, { expr = true, replace_keycodes = true })
 
   -- Exit snippet sessions on entering normal mode: ==============================================
+  Config.new_command('SnippetSessionStop', function()
+    while MiniSnippets.session.get() do
+      MiniSnippets.session.stop()
+    end
+  end, {})
   Config.new_autocmd('User', {
     pattern = 'MiniSnippetsSessionStart',
     callback = function()
-      vim.api.nvim_create_autocmd('ModeChanged', {
-        pattern = '*:n',
-        once = true,
-        callback = function()
-          while MiniSnippets.session.get() do
-            MiniSnippets.session.stop()
-          end
-        end,
-      })
+      Config.new_autocmd('ModeChanged', { pattern = '*:n', once = true, command = 'SnippetSessionStop' })
     end,
   })
 

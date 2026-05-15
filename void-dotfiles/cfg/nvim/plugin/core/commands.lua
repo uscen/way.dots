@@ -83,6 +83,15 @@ Config.later(function()
     vim.api.nvim_put({ messages[#messages] }, 'c', false, false)
   end)
 
+  -- Get selected text ===========================================================================
+  Config.new_command('GetSelection', function()
+    local f = vim.fn
+    local temp = f.getreg('s')
+    vim.cmd('normal! gv"sy')
+    f.setreg('/', f.escape(f.getreg('s'), '/'):gsub('\n', '\\n'))
+    f.setreg('s', temp)
+  end)
+
   -- Reload plugin: ==============================================================================
   Config.new_command('Reload', function(opts)
     local name = opts.fargs[1]
@@ -117,6 +126,13 @@ Config.later(function()
     local chars = args.fargs[1] ~= nil and args.fargs[1] or ';'
     vim.cmd(prefix .. 'g/./normal A' .. chars)
     vim.cmd('nohlsearch')
+  end, { nargs = '?', range = true })
+
+  -- Delete extra whitespace: ====================================================================
+  Config.new_command('TrailspaceTrim', function()
+    local curpos = vim.api.nvim_win_get_cursor(0)
+    vim.cmd([[keeppatterns %s/\s\+$//e]])
+    vim.api.nvim_win_set_cursor(0, curpos)
   end, { nargs = '?', range = true })
 
   -- Join or remove empty lines: =================================================================
