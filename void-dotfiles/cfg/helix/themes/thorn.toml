@@ -74,11 +74,11 @@
 "ui.selection" = { bg = "bg_visual" }
 "ui.linenr" = "number"
 "ui.linenr.selected" = 'yellow'
-"ui.statusline" = { fg = "statusline_fg", bg = "statusline_bg" }
-"ui.statusline.inactive" = { fg = "grey", bg = "statusline_bg" }
-"ui.statusline.normal" = { fg = "statusline_bg", bg = "grey", modifiers = ["bold"] }
-"ui.statusline.insert" = { fg = "statusline_bg", bg = "yellow", modifiers = ["bold"] }
-"ui.statusline.select" = { fg = "statusline_bg", bg = "blue", modifiers = ["bold"] }
+"ui.statusline" = { fg = "statusline_fg", bg = "statusbar_bg" }
+"ui.statusline.inactive" = { fg = "fg", bg = "statusbar_bg" }
+"ui.statusline.normal" = { fg = "statusbar_bg", bg = "grey", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "statusbar_bg", bg = "yellow", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "statusbar_bg", bg = "blue", modifiers = ["bold"] }
 "ui.bufferline" = { fg = "green_5", bg = "bg_float" }
 "ui.bufferline.active" = { fg = "green_0", bg = "bg_float", modifiers = ["bold"] }
 "ui.popup" = { fg = "green_3", bg = "bg_float" }
