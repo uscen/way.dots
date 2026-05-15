@@ -2,22 +2,28 @@
 # General:                                                                        #
 # =============================================================================== #
 "type" = "green_2"
+"type.enum.variant" = "green_2"
 "constant" = "yellow"
 "constant.numeric" = "yellow"
-"constant.character.escape" = "green_1"
+"constant.character" = "yellow"
+"constant.character.escape" = "yellow"
 "string" = "green_3"
 "string.regexp" = "blue"
+"string.special" = "blue"
+"string.special.symbol" = "red"
 "comment" = "green_5"
 "variable" = "fg"
-"variable.builtin" = "yellow"
 "variable.parameter" = "fg"
+"variable.builtin" = "yellow"
 "variable.other.member" = "green_0"
 "label" = "blue"
 "punctuation" = "green_0"
+"punctuation.special" = "green_0"
 "punctuation.delimiter" = "green_0"
 "punctuation.bracket" = "gray"
 "keyword" = "orange"
 "keyword.directive" = "orange"
+"keyword.control.conditional" = { fg = "mauve", modifiers = ["italic"] }
 "operator" = "red"
 "function" = "blue"
 "function.builtin" = "blue"
@@ -81,63 +87,54 @@
 "ui.text" = "fg"
 "ui.text.focus" = "fg"
 "ui.menu" = { fg = "fg", bg = "bg_float" }
-"ui.menu.selected" = { fg = "bg", bg = "bg_visual" }
+"ui.menu.selected" = { fg = "fg", bg = "bg_visual" }
 "ui.virtual.whitespace" = { fg = "sep" }
 "ui.virtual.indent-guide" = { fg = "sep" }
 "ui.virtual.ruler" = { bg = "bg_float" }
 "ui.virtual.inlay-hint" = "grey"
 
 # =============================================================================== #
-# Diagnostics:                                                                    #
-# =============================================================================== #
-"hint" = "blue"
-"info" = "green_2"
-"warning" = "yellow"
-"error" = "red"
-"diagnostic" = { underline = { style = "curl" } }
-"diagnostic.hint" = { underline = { color = "blue", style = "dotted" } }
-"diagnostic.info" = { underline = { color = "green_2", style = "dotted" } }
-"diagnostic.warning" = { underline = { color = "yellow", style = "curl" } }
-"diagnostic.error" = { underline = { color = "red", style = "curl" } }
-"diagnostic.unnecessary" = { modifiers = ["dim"] }
-"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
-
-# =============================================================================== #
-# Tab:                                                                            #
-# =============================================================================== #
-tabstop = { modifiers = ["italic"], bg = "grey-800" }
-
-# =============================================================================== #
 # Palette:                                                                        #
 # =============================================================================== #
 [palette]
+# Primary: =======================================================================================
 bg             = "#172526"
 fg             = "#DBD2C7"
-number         = "#1C3D3C"
-white          = "#DBD2C7"
-gray           = "#9B9A8C"
-green_0        = "#B8CDB6"
-green_1        = "#9EBB9C"
-green_2        = "#88B497"
-green_3        = "#9EC59B"
-green_4        = "#6FA791"
-green_5        = "#568270"
-green_6        = "#87CBB1"
-yellow         = "#FFD7AA"
-orange         = "#F2A597"
-blue           = "#91C4C0"
-red            = "#D2696C"
-sep            = "#233935"
-cursorline     = "#1D3334"
 bg_float       = "#131F20"
 bg_visual      = "#26403E"
-bg_bright      = "#568270"
-diff_add       = "#1F3329"
-diff_change    = "#1E2D39"
-diff_delete    = "#33232A"
-statusline_fg  = "#9EC59B"
-statusline_bg  = "#131F20"
-grey-800       = "#424242"
-grey-700       = "#616161"
-grey-600       = "#757575"
-grey-500       = "#9E9E9E"
+
+# General: =======================================================================================
+number         = "#1C3D3C"
+cursorline     = "#1D3334"
+separator      = "#0B1213"
+
+# Colors: ========================================================================================
+white         = "#DBD2C7"
+gray          = "#9B9A8C"
+green_0       = "#B8CDB6"
+green_1       = "#9EBB9C"
+green_2       = "#88B497"
+green_3       = "#9EC59B"
+green_4       = "#6FA791"
+green_5       = "#568270"
+green_6       = "#87CBB1"
+yellow        = "#FFD7AA"
+orange        = "#F2A597"
+blue          = "#91C4C0"
+red           = "#D2696C"
+magenta       = "#F9ADA0"
+
+# Statusbar: =====================================================================================
+statusbar_fg  = "#9EC59B"
+statusbar_bg  = "#131F20"
+statusbar_sep = "#233935"
+
+# Diff: ==========================================================================================
+diff_add      = "#1F3329"
+diff_change   = "#1E2D39"
+diff_delete   = "#33232A"
+
+# Git: ===========================================================================================
+git_add       = "#94C68B"
+git_change    = "#6DAAE3"
+git_delete    = "#D8464B"
