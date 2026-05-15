@@ -15,6 +15,17 @@ Config.later(function()
     end
   end)
 
+  -- Permanently delete the current file from hard drive: ========================================
+  Config.new_command('Del', function(args)
+    local bufnr = vim.api.nvim_get_current_buf()
+    local fname = vim.api.nvim_buf_get_name(bufnr)
+    if vim.bo[bufnr].buftype == '' then
+      local ok, err = os.remove(fname)
+      assert(args.bang or ok, err)
+    end
+    vim.api.nvim_buf_delete(bufnr, { force = args.bang })
+  end, { bang = true })
+
   -- Wipes all registers: ========================================================================
   Config.new_command('WipeReg', function()
     vim.cmd([[ for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor ]])
