@@ -2,3 +2,17 @@
 # Theme:                                                                          #
 # =============================================================================== #
 theme                      = "thorn"
+
+# =============================================================================== #
+# Editor:                                                                         #
+# =============================================================================== #
+[editor]
+true-color = true
+auto-format = true
+auto-info = false
+cursorline = true
+scrolloff = 99
+rulers = [100]
+line-number = "absolute"
+shell = ["bash", "-c"]
+gutters = ["diagnostics", "line-numbers", "spacer", "diff"]

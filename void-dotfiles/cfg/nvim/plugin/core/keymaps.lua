@@ -243,6 +243,11 @@ Config.later(function()
   vim.keymap.set('n', '<leader>j', '<cmd>SmartDuplicate<cr>')
   vim.keymap.set('n', '<leader>`', '<cmd>ToggleTitleCase<cr>')
 
+  -- Diff: ========================================================================================
+  vim.keymap.set('n', '<leader>gq', [[<cmd>MiniDiffInQuickFixList<cr>]])
+  vim.keymap.set('n', '<leader>gh', [[<cmd>lua MiniDiff.toggle_overlay()<cr>]])
+  vim.keymap.set('n', '<leader>go', [[<cmd>lua MiniDiff.toggle_overlay()<cr>]])
+
   -- Git: ========================================================================================
   vim.keymap.set('n', '<leader>gg', '<cmd>Lazygit<cr>')
   vim.keymap.set('n', '<leader>ga', '<cmd>Git add .<cr>')
@@ -253,13 +258,11 @@ Config.later(function()
   vim.keymap.set('n', '<leader>gd', '<cmd>Git diff<cr>')
   vim.keymap.set('n', '<leader>gD', '<cmd>Git diff -- %<cr>')
   vim.keymap.set('n', '<leader>gv', '<cmd>lua MiniGit.show_range_history()<cr>')
+  vim.keymap.set('x', '<leader>gv', '<cmd>lua MiniGit.show_range_history()<cr>')
   vim.keymap.set('n', '<leader>gs', '<cmd>lua MiniGit.show_at_cursor()<cr>')
+  vim.keymap.set('n', '<leader>gx', [[<cmd>lua MiniGit.show_at_cursor()<cr>]])
   vim.keymap.set('n', '<leader>gS', [[<cmd>Git status -s<cr>]])
   vim.keymap.set('n', '<leader>gl', [[<cmd>Git log --pretty=format:\%h\ \%as\ │\ \%s --topo-order<cr>]])
-  vim.keymap.set('n', '<leader>gx', [[<cmd>lua MiniGit.show_at_cursor()<cr>]])
-  vim.keymap.set('n', '<leader>gh', [[<cmd>lua MiniDiff.toggle_overlay()<cr>]])
-  vim.keymap.set('n', '<leader>go', [[<cmd>lua MiniDiff.toggle_overlay()<cr>]])
-  vim.keymap.set('n', '<leader>gq', [[<cmd>MiniDiffInQuickFixList<cr>]])
 
   -- Picker ======================================================================================
   vim.keymap.set('n', '<leader>sf', '<cmd>PickFiles<cr>')
