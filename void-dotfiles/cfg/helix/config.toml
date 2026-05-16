@@ -6,6 +6,7 @@ theme                      = "thorn"
 # =============================================================================== #
 # Editor:                                                                         #
 # =============================================================================== #
+# General: =======================================================================================
 [editor]
 true-color = true
 auto-format = true
@@ -13,6 +14,25 @@ auto-info = false
 cursorline = true
 scrolloff = 99
 rulers = [100]
+completion-trigger-len = 1
+default-yank-register = "+"
 line-number = "absolute"
 shell = ["bash", "-c"]
 gutters = ["diagnostics", "line-numbers", "spacer", "diff"]
+
+# Lsp: ===========================================================================================
+[editor.lsp]
+display-messages = true
+auto-signature-help = false
+
+# Cursor: ========================================================================================
+[editor.cursor-shape]
+normal = "block"
+insert = "block"
+select = 'block'
+
+# =============================================================================== #
+# Keymaps:                                                                        #
+# =============================================================================== #
+[keys.normal]
+esc = ["collapse_selection", "keep_primary_selection", "normal_mode"]

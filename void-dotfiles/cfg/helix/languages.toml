@@ -1,0 +1,181 @@
+# =============================================================================== #
+# Html:                                                                           #
+# =============================================================================== #
+[[language]]
+name = "html"
+auto-format = true
+formatter = { command = 'prettier', args = ["--parser", "html"] }
+language-servers = [ "vscode-html-language-server", "tailwindcss-ls", "emmet-lsp" ]
+
+# =============================================================================== #
+# Css:                                                                            #
+# =============================================================================== #
+[[language]]
+name = "css"
+formatter = { command = 'prettier', args = ["--parser", "css"] }
+language-servers = ["vscode-css-language-server", "tailwindcss-ls"]
+
+# =============================================================================== #
+# Emmet:                                                                          #
+# =============================================================================== #
+[language-server.emmet-lsp]
+command = "emmet-language-server"
+args = ["--stdio"]
+
+# =============================================================================== #
+# Javascript:                                                                     #
+# =============================================================================== #
+[[language]]
+name = "javascript"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+language-servers = [ "typescript-language-server", "biome", ]
+
+# =============================================================================== #
+# Javascript:                                                                     #
+# =============================================================================== #
+[[language]]
+name = "typescript"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = true
+language-servers = [ "typescript-language-server", "biome" ]
+
+# =============================================================================== #
+# Jsx:                                                                            #
+# =============================================================================== #
+[[language]]
+name = "jsx"
+formatter = { command = 'prettier', args = ["--stdin-filepath", "file.jsx"] }
+auto-format = true
+language-servers = [ "typescript-language-server", "tailwindcss-ls", "emmet-lsp" ]
+block-comment-tokens = { start = "{/*", end = "*/}" }
+
+# =============================================================================== #
+# Tsx:                                                                            #
+# =============================================================================== #
+[[language]]
+name = "tsx"
+formatter = { command = 'prettier', args = ["--stdin-filepath", "file.tsx"] }
+auto-format = true
+language-servers = [ "typescript-language-server", "tailwindcss-ls", "emmet-lsp", ]
+block-comment-tokens = { start = "{/*", end = "*/}" }
+
+[language-server.typescript-language-server]
+command = "vtsls"
+args = ["--stdio"]
+config.hostInfo = "helix"
+
+[language-server.typescript-language-server.config.typescript]
+updateImportsOnFileMove = { enabled = "always" }
+suggest = { completeFunctionCalls = true }
+
+# =============================================================================== #
+# Toml:                                                                           #
+# =============================================================================== #
+[[language]]
+name = "toml"
+auto-format = true
+formatter = { command = "taplo", args = ["fmt", "-"] }
+
+# =============================================================================== #
+# Yaml:                                                                           #
+# =============================================================================== #
+[[language]]
+name = "yaml"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "yaml"] }
+
+# =============================================================================== #
+# Bash:                                                                           #
+# =============================================================================== #
+[[language]]
+name = "bash"
+auto-format = true
+file-types = [
+  # default
+  "sh",
+  "bash",
+  "ash",
+  "dash",
+  "ksh",
+  "mksh",
+  "zsh",
+  "zshenv",
+  "zlogin",
+  "zlogout",
+  "zprofile",
+  "zshrc",
+  "eclass",
+  "ebuild",
+  "bazelrc",
+  "Renviron",
+  "zsh-theme",
+  "cshrc",
+  "tcshrc",
+  "bashrc_Apple_Terminal",
+  "zshrc_Apple_Terminal",
+  { glob = "i3/config" },
+  { glob = "sway/config" },
+  { glob = "tmux.conf" },
+  { glob = ".bash_history" },
+  { glob = ".bash_login" },
+  { glob = ".bash_logout" },
+  { glob = ".bash_profile" },
+  { glob = ".bashrc" },
+  { glob = ".profile" },
+  { glob = ".zshenv" },
+  { glob = ".zlogin" },
+  { glob = ".zlogout" },
+  { glob = ".zprofile" },
+  { glob = ".zshrc" },
+  { glob = ".zimrc" },
+  { glob = "APKBUILD" },
+  { glob = ".bash_aliases" },
+  { glob = ".Renviron" },
+  { glob = ".xprofile" },
+  { glob = ".xsession" },
+  { glob = ".xsessionrc" },
+  { glob = ".yashrc" },
+  { glob = ".yash_profile" },
+  { glob = ".hushlogin" },
+
+  # my custom files for sh treesitter
+  { glob = "*.conf" },
+]
+
+# =============================================================================== #
+# Jsonc:                                                                          #
+# =============================================================================== #
+[[language]]
+name = "jsonc"
+formatter = { command = 'prettier', args = ["--parser", "json"] }
+language-servers = [ { name = "vscode-json-language-server", except-features = [ "format", ] }, ]
+file-types = [ "jsonc", { glob = "tsconfig.json" }, { glob = "tsconfig.*.json" }, { glob = "bun.lock" }, ]
+
+# =============================================================================== #
+# Json:                                                                           #
+# =============================================================================== #
+[[language]]
+name = "json"
+formatter = { command = 'prettier', args = ["--parser", "json"] }
+auto-format = true
+language-servers = [ { name = "vscode-json-language-server", except-features = [ "format", ] }, ]
+
+
+# NOTE: Schemas and the formatter do not work if I override them, so I redefine
+# the entire language server for JSON instead.schemas and formatter not working
+# if I define it by just overriding
+[language-server.vscode-json-language-server]
+command = "vscode-json-language-server"
+args = ["--stdio"]
+config = { provideFormatter = true, json = { validate = { enable = true }, schemas = [
+  # Source: https://github.com/helix-editor/helix/discussions/8823#discussioncomment-8093075
+  { fileMatch = [
+    "tsconfig.json",
+    "tsconfig.*.json",
+  ], url = "https://json.schemastore.org/tsconfig.json" },
+
+  { fileMatch = [
+    "package.json",
+  ], url = "https://json.schemastore.org/package.json" },
+] } }
