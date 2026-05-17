@@ -99,8 +99,8 @@ body {
   color: var(--thorn-foreground);
 
   padding: 4px 10px;
-  border-radius: 999px;
-  border: 2px solid var(--thron-magenta);
+  border-radius: 4px;
+  border: 2px solid var(--thron-green);
 
   font-size: 0.75rem;
 
