@@ -63,8 +63,8 @@
 # =============================================================================== #
 # Editor:                                                                         #
 # =============================================================================== #
-"ui.background" = { bg = "bg" }
-"ui.background.separator" = "bg_float"
+"ui.background" = { fg = "bg_visual", bg = "bg" }
+"ui.background.separator" = "bg_visual"
 "ui.cursor" = { fg = "bg", bg = "fg" }
 "ui.cursor.match" = { fg = "orange", bg = "bg_yellow" }
 "ui.cursor.insert" = { fg = "bg", bg = "gray" }
