@@ -86,7 +86,7 @@ Config.now(function()
   vim.o.ruler                    = false
   vim.o.scrolloff                = 99
   vim.o.sidescrolloff            = 4
-  vim.o.numberwidth              = 5
+  vim.o.numberwidth              = 4
   vim.o.linespace                = 3
   vim.o.laststatus               = 0
   vim.o.cmdheight                = 0
@@ -124,7 +124,7 @@ Config.now(function()
   vim.o.cursorlineopt            = 'screenline,number'
   vim.o.tabclose                 = 'uselast'
   vim.o.shortmess                = 'CFOSWascoq'
-  vim.wo.signcolumn              = 'no'
+  vim.o.signcolumn               = 'yes'
   vim.o.statuscolumn             = ''
   vim.o.showbreak                = '󰘍' .. string.rep(' ', 1)
   vim.o.statusline               = string.rep('⎯', vim.o.columns)
