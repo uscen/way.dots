@@ -1,0 +1,63 @@
+/* ============================================================================= */
+/* Config:                                                                       */
+/* ============================================================================= */
+:root {
+  /* Scrollbar visibility in web content
+   * none = hidden (scroll via mousewheel/keyboard/touchpad)
+   * thin = always visible, slim style
+   * auto = default OS scrollbar */
+  --uc-content-scrollbar: none;
+}
+
+/* ============================================================================= */
+/* Scrollbar:                                                                    */
+/* ============================================================================= */
+* {
+  scrollbar-width: var(--uc-content-scrollbar) !important;
+}
+
+/* ============================================================================= */
+/* New Tab / Home — Thorn:                                                       */
+/* ============================================================================= */
+@-moz-document url-prefix("about:newtab"), url-prefix("about:home") {
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --newtab-background-color: #131f20 !important;
+      --newtab-text-primary-color: #ffffff !important;
+    }
+
+    /* Remove Top Sites, Stories, and Buttons */
+    .top-sites-list,
+    .section-top-stories,
+    .personalize-button,
+    .customize-button {
+      display: none !important;
+    }
+
+    /* 2. Hide Logo and Bookmark Placeholder */
+    .logo-and-wordmark,
+    .logo,
+    .top-shelf,
+    .ds-outer-wrapper-bookmarks {
+      display: none !important;
+    }
+
+    /* Push Search Bar up since logo is gone */
+    .search-wrapper {
+      margin-top: 10vh !important;
+    }
+
+    /* Search Bar Styling */
+    .search-wrapper .search-inner-wrapper {
+      background-color: #172526 !important;
+      border: 1px solid #88b497 !important;
+      border-radius: 8px !important;
+    }
+
+    /* Focus State (The Golden/Tan Border) */
+    .search-wrapper .search-inner-wrapper:focus-within {
+      border-color: #87cbb1 !important;
+      outline: none !important;
+    }
+  }
+}
