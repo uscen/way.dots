@@ -28,10 +28,16 @@ gui:
       - "#FFD7AA"
     cherryPickedCommitFgColor:
       - "#88B497"
+    markedBaseCommitBgColor:
+      - "#26403E"
+    markedBaseCommitFgColor:
+      - "#F2A597"
     unstagedChangesColor:
       - "#D2696C"
     defaultFgColor:
       - "#DBD2C7"
+  authorColors:
+    "*": "#87CBB1"
   commitLength:
     show: true
 
