@@ -1,6 +1,20 @@
+// ============================================================================== #
+// Elements:                                                                      #
+// ============================================================================== #
 const container = document.getElementById("links");
 const searchInput = document.getElementById("search");
+const localContainer = document.getElementById("local-links");
 
+// ============================================================================== #
+// Call:                                                                          #
+// ============================================================================== #
+loadLinks();
+loadLocalLinks();
+
+// ============================================================================== #
+// Functions:                                                                     #
+// ============================================================================== #
+// Load links: ===================================================================================
 function loadLinks() {
   LINKS.forEach((link) => {
     const a = document.createElement("a");
@@ -27,10 +41,7 @@ function loadLinks() {
   });
 }
 
-loadLinks();
-
-const localContainer = document.getElementById("local-links");
-
+// Load links: ===================================================================================
 function loadLocalLinks() {
   LOCAL_PORTS.forEach((service) => {
     const a = document.createElement("a");
@@ -60,6 +71,7 @@ function loadLocalLinks() {
   });
 }
 
+// Check Ports: ==================================================================================
 function checkPort(service, card) {
   fetch(`http://localhost:${service.port}`, { mode: "no-cors" })
     .then(() => {
@@ -70,8 +82,7 @@ function checkPort(service, card) {
     });
 }
 
-loadLocalLinks();
-
+// Handle Search: ================================================================================
 function handleSearch(query) {
   const parts = query.split(" ");
 
@@ -87,6 +98,10 @@ function handleSearch(query) {
   }
 }
 
+// ============================================================================== #
+// Events:                                                                        #
+// ============================================================================== #
+// Clear search input when search submit: ========================================================
 searchInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     const query = searchInput.value.trim();
@@ -98,24 +113,22 @@ searchInput.addEventListener("keydown", (e) => {
   }
 });
 
-// autofocus search on page load
+// autofocus search on page load: ================================================================
 window.addEventListener("load", () => {
   searchInput.focus();
 });
 
 window.onload = () => search.focus();
 
-// Ctrl + K or / to focus search
+// Ctrl + K or / to focus search: ================================================================
 document.addEventListener("keydown", (e) => {
   const active = document.activeElement === searchInput;
-
   // Ctrl + K
   if (e.ctrlKey && e.key === "k") {
     e.preventDefault();
     searchInput.focus();
     searchInput.select();
   }
-
   // "/" like many web apps
   if (e.key === "/" && !active) {
     e.preventDefault();
@@ -124,8 +137,6 @@ document.addEventListener("keydown", (e) => {
 });
 
 const hintItems = document.querySelectorAll(".hint-block ul li");
-
 for (let i = 1; i < hintItems.length; i += 2) {
-  hintItems[i].style.backgroundColor = "var(--ctp-mocha-surface0)";
-  console.log(hintItems[i]);
+  hintItems[i].style.backgroundColor = "var(--thron-green)";
 }

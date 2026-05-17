@@ -1,14 +1,21 @@
+/* ============================================================================= */
+/* Variables:                                                                    */
+/* ============================================================================= */
 :root {
   --thorn-background: #172526;
   --thorn-foreground: #dbd2c7;
   --thorn-bg-float: #131f20;
   --thorn-selection: #233935;
   --thorn-bright: #568270;
-  --thron-green: #88b497;
-  --thron-gray: #a1a790;
-  --thron-red: #d2696c;
-  --thron-magenta: #f9ada0;
+  --thorn-green: #88b497;
+  --thorn-gray: #a1a790;
+  --thorn-red: #d2696c;
+  --thorn-magenta: #f9ada0;
 }
+
+/* ============================================================================= */
+/* General:                                                                      */
+/* ============================================================================= */
 * {
   margin: 0;
   padding: 0;
@@ -17,19 +24,15 @@
 body {
   margin: 0;
   height: 100vh;
-
   background: var(--thorn-bg-float);
   color: var(--thorn-foreground);
-
   font-family: "JetbrainsMono Nerd font", system-ui, sans-serif;
-
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
 }
-
 .container {
   display: flex;
   flex-direction: column;
@@ -40,23 +43,22 @@ body {
   padding: 10px;
 }
 
+/* ============================================================================= */
+/* Search:                                                                       */
+/* ============================================================================= */
 .search-box {
   width: 420px;
   display: flex;
   gap: 10px;
   align-items: center;
 }
-
 .search-box input {
   width: 100%;
   padding: 14px;
-
   border-radius: 0;
   border: none;
   outline: none;
-
   font-size: 16px;
-
   background: var(--thorn-background);
   color: var(--thorn-foreground);
 }
@@ -64,26 +66,28 @@ body {
   box-shadow: 0 0 0 2px var(--thorn-selection);
 }
 
+/* ============================================================================= */
+/* Links:                                                                        */
+/* ============================================================================= */
 .links {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
-
 .links a {
   text-decoration: none;
 }
 
+/* ============================================================================= */
+/* Card:                                                                         */
+/* ============================================================================= */
 .card {
   background: var(--thorn-background);
   color: var(--thorn-foreground);
-
   padding: 18px;
   border-radius: 4px;
-
   text-align: center;
   cursor: pointer;
-
   transition: 0.2s;
   font-size: 1.1rem;
   display: flex;
@@ -94,61 +98,52 @@ body {
 .card[data-port]:hover::before {
   content: attr(data-port);
   position: absolute;
-
   background: var(--thorn-selection);
   color: var(--thorn-foreground);
-
   padding: 4px 10px;
   border-radius: 4px;
-  border: 2px solid var(--thron-green);
-
+  border: 2px solid var(thorn-green);
   font-size: 0.75rem;
-
   transform: translateY(-140%);
 }
-
 .local-card::after {
   content: "";
   position: absolute;
-
   top: 8px;
   right: 8px;
-
   width: 8px;
   height: 8px;
   border-radius: 50%;
-
   background: var(--thorn-bright);
 }
 .local-card.active::after {
-  background: var(--thron-green);
+  background: var(thorn-green);
 }
-
 .local-card.inactive::after {
-  background: var(--thron-red);
+  background: var(--thorn-red);
 }
-
 .card:hover {
   background: var(--thorn-selection);
-  /* box-shadow: 0 0 10px rgba(203, 166, 247, 1); */
+  box-shadow: 0 0 10px var(--thorn-selection);
   transform: translateY(-2px);
 }
-
 .section-title {
   font-size: 0.9rem;
-  color: var(--thron-gray);
+  color: var(--thorn-gray);
   margin-top: 20px;
 }
-
 .card-icon {
   font-size: 20px;
 }
 
+/* ============================================================================= */
+/* Hint:                                                                         */
+/* ============================================================================= */
 .hint-block {
   width: 400px;
   padding: 30px;
-  border: 2px solid var(--thron-magenta);
-  border-radius: 12px;
+  border: 2px solid var(--thorn-selection);
+  border-radius: 4px;
   position: absolute;
   right: 24px;
   bottom: 24px;
@@ -158,12 +153,10 @@ body {
   opacity: 0;
   transform: translateY(10px);
   pointer-events: none;
-
   transition:
     opacity 0.2s ease,
     transform 0.2s ease;
 }
-
 .hint-block ul li {
   display: flex;
   gap: 30px;
@@ -172,7 +165,6 @@ body {
   padding: 6px 10px;
   border-radius: 999px;
 }
-
 .hint-container {
   position: absolute;
   bottom: 10px;
@@ -180,21 +172,19 @@ body {
   display: flex;
   flex-direction: column;
 }
-
 .hint-container:hover .hint-block {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
-
 .hint {
   cursor: pointer;
   font-size: 24px;
   align-self: flex-end;
   transition: all 0.2s;
-  color: var(--thorn-background);
+  color: var(--thorn-green);
 }
 .hint:hover {
-  color: var(--thron-magenta);
+  color: var(--thorn-magenta);
   transition: all 0.2s;
 }

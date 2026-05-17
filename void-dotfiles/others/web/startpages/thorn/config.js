@@ -1,33 +1,36 @@
+// ============================================================================== #
+// Links:                                                                         #
+// ============================================================================== #
 const LINKS = [
   {
     icon: "",
     name: "YouTube",
     url: "https://youtube.com",
-    color: "var(--thron-green)",
+    color: "var(--thorn-green)",
   },
   {
     icon: "",
     name: "Gmail",
     url: "https://mail.google.com/mail/u/2/#inbox",
-    color: "var(--thron-green)",
+    color: "var(--thorn-green)",
   },
   {
     icon: "",
     name: "Reddit",
     url: "https://reddit.com",
-    color: "var(--thron-green)",
+    color: "var(--thorn-green)",
   },
   {
     icon: "",
     name: "Claude",
     url: "https://claude.ai/new",
-    color: "var(--thron-green)",
+    color: "var(--thorn-green)",
   },
   {
     icon: "",
     name: "GitHub",
     url: "https://github.com",
-    color: "var(--thron-green)",
+    color: "var(--thorn-green)",
   },
   {
     icon: "",
@@ -37,25 +40,32 @@ const LINKS = [
   },
 ];
 
+// ============================================================================== #
+// Ports:                                                                         #
+// ============================================================================== #
 const LOCAL_PORTS = [
-  { icon: "", name: "Astro", port: 4321, color: "var(--thron-green)" },
-  { icon: "󰎙", name: "Node", port: 5000, color: "var(--thron-green)" },
-  { icon: "", name: "Vite", port: 5173, color: "var(--thron-green)" },
-  { icon: "", name: "Next.js", port: 3000, color: "var(--thron-green)" },
+  { icon: "󰎙", name: "Node", port: 5000, color: "var(--thorn-green)" },
+  { icon: "", name: "Next.js", port: 3000, color: "var(--thorn-green)" },
+  { icon: "", name: "Vite", port: 5173, color: "var(--thorn-green)" },
+  { icon: "", name: "Astro", port: 4321, color: "var(--thorn-green)" },
   {
     icon: "",
     name: "Supabase API",
     port: 54321,
-    color: "var(--thron-green)",
+    color: "var(--thorn-green)",
   },
   {
     icon: "",
     name: "Supabase Studio",
     port: 54323,
-    color: "var(--thron-green)",
+    color: "var(--thorn-green)",
   },
 ];
 
+// ============================================================================== #
+// :Engines                                                                       #
+// ============================================================================== #
+const DEFAULT_ENGINE = "d";
 const SEARCH_ENGINES = {
   g: "https://www.google.com/search?q=",
   gi: "https://www.google.com/search?tbm=isch&q=",
@@ -72,5 +82,3 @@ const SEARCH_ENGINES = {
 
   gh: "https://github.com/search?q=",
 };
-
-const DEFAULT_ENGINE = "d";
