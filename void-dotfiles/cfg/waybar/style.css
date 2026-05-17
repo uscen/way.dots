@@ -52,7 +52,7 @@ window#waybar {
 #battery,
 #custom-launcher {
   color: @fg;
-  padding: 6px 10px;
+  padding: 6px 8px;
 }
 
 /* ============================================================================= */
