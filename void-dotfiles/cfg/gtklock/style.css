@@ -18,8 +18,8 @@
 }
 window {
   background-image:
-    linear-gradient(rgba(23, 37, 38, 0.9), rgba(23, 37, 38, 0.9)),
-    url("/home/lli/.local/share/wall.dots/wallpapers/GREEN.jpg");
+    linear-gradient(rgba(23, 37, 38, 0.9), rgba(23, 37, 38, 0.8)),
+    url("/home/lli/.local/share/wall.dots/wallpapers/GREEN_TREE.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
