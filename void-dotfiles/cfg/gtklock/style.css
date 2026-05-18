@@ -33,7 +33,7 @@ window {
   background-color: alpha(@base, 0.3);
   color: @green;
   font-weight: 900;
-  font-size: 14px;
+  font-size: 200px;
   padding: 10px 30px;
   border: 1px solid @base;
 }
@@ -42,6 +42,7 @@ window {
 /* Input:                                                                        */
 /* ============================================================================= */
 #input-field {
+  min-width: 1230px;
   padding: 10px 15px;
   border: 1px solid @base;
   caret-color: @base;
