@@ -126,7 +126,7 @@
 
   /* URL bar results — Gruvbox-tinted selection highlight (full row) */
   .urlbarView-row[selected] {
-    background: rgba(250, 189, 47, 0.15) !important;
+    background: #233935 !important;
   }
   .urlbarView-row[selected] > .urlbarView-row-inner {
     color: #ffffff !important;
@@ -1017,6 +1017,17 @@ tab-split-view-wrapper {
   width: 2px !important;
   min-width: 2px !important;
   max-width: 2px !important;
+}
+
+/* ============================================================================= */
+/* Override selected tab Background:                                             */
+/* ============================================================================= */
+/* Target the internal background element and override the variables */
+.tabbrowser-tab[selected] .tab-background {
+  background-color: #233935 !important;
+  background-image: none !important;
+  --tab-line-color: transparent !important; /* Removes the top line */
+  --lwt-selected-tab-background-color: #233935 !important;
 }
 
 /* ==========================================================================

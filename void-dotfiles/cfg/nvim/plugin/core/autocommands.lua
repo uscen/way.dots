@@ -396,8 +396,8 @@ Config.now(function()
     end,
   })
 
-  -- Auto-close deleted buffers: =================================================================
-  Config.new_autocmd({ 'FocusGained', 'BufLeave' }, {
+  -- Auto close deleted buffers: =================================================================
+  Config.new_autocmd('FocusGained', {
     callback = function()
       local allBufs = vim.fn.getbufinfo { buflisted = 1 }
       local closedBuffers = vim.iter(allBufs):fold({}, function(acc, buf)
