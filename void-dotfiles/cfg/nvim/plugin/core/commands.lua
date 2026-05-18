@@ -80,7 +80,7 @@ Config.later(function()
   end, { nargs = '?', complete = 'dir' })
 
   -- Open a scratch buffer: ======================================================================
-  Config.new_command('Scratch', function()
+  Config.new_command('ScratchBuffer', function()
     vim.cmd 'bel 10new'
     local buf = vim.api.nvim_get_current_buf()
     for name, value in pairs { filetype = 'scratch', buftype = 'nofile', bufhidden = 'wipe', swapfile = false, modifiable = true } do

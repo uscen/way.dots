@@ -68,12 +68,12 @@ Config.later(function()
     end,
   })
 
-  -- Pick Directory Form Nvim: ===================================================================
+  -- Pick file from config: ======================================================================
   MiniPick.registry.config = function()
     return MiniPick.builtin.files(nil, { source = { name = 'Config Files', cwd = vim.fn.stdpath('config') } })
   end
 
-  -- Pick Directory Form Home : ==================================================================
+  -- Pick file in home : =========================================================================
   MiniPick.registry.home = function()
     local cwd = vim.fn.expand('~/')
     local choose = function(item)
@@ -84,7 +84,7 @@ Config.later(function()
     return MiniExtra.pickers.explorer({ cwd = cwd }, { source = { choose = choose } })
   end
 
-  -- Pick Directory Project: =====================================================================
+  -- Pick file in project: =======================================================================
   MiniPick.registry.projects = function()
     local cwd = vim.fn.expand('~/Projects')
     local choose = function(item)
@@ -95,7 +95,55 @@ Config.later(function()
     return MiniExtra.pickers.explorer({ cwd = cwd }, { source = { choose = choose } })
   end
 
-  -- Delete buffer in Buffers picker: =============================================================
+  -- Pick file using fd: =========================================================================
+  MiniPick.registry.fd = function(local_opts)
+    local command = { 'fd', '-t=f', '-H', '-I', '-E=.git', '-E=node_modules' }
+    local opts = {
+      source = {
+        name = 'Files (fd)',
+        show = function(buf, items, query)
+          MiniPick.default_show(buf, items, query, { show_icons = true })
+        end,
+      },
+    }
+    local final_opts = vim.tbl_deep_extend('force', opts, local_opts or {})
+    return MiniPick.builtin.cli({ command = command }, final_opts)
+  end
+
+  -- Pick directory using zoxide: ================================================================
+  MiniPick.registry.zoxide = function(local_opts)
+    local zoxide_output = vim.fn.system('zoxide query -l')
+    local zoxide_dirs = vim.split(zoxide_output, '\n', { trimempty = true })
+    return MiniPick.start({
+      source = {
+        items = zoxide_dirs,
+        name = 'Zoxide',
+        choose = function(dir)
+          vim.schedule(function()
+            vim.fn.chdir(dir)
+            MiniFiles.open(dir)
+          end)
+        end,
+      },
+      window = local_opts and local_opts.window or nil,
+    })
+  end
+
+  -- Pick plugin: ================================================================================
+  local plugin_dir = vim.fn.stdpath('data') .. '/site/pack/core/opt'
+  MiniPick.registry.plugins = function()
+    local pred = function(item) return item.text ~= '..' end
+    local choose = function(item)
+      vim.schedule(function()
+        MiniPick.builtin.files(nil, { source = { name = item.text, cwd = item.path } })
+      end)
+    end
+    local local_opts = { cwd = plugin_dir, filter = pred }
+    local opts = { source = { name = 'Plugin Picker', choose = choose } }
+    return MiniExtra.pickers.explorer(local_opts, opts)
+  end
+
+  -- Delete buffer in buffers picker: ============================================================
   MiniPick.registry.buffers = function(local_opts)
     local wipeout_cur = function()
       local exclude_map = {}
@@ -118,33 +166,4 @@ Config.later(function()
     local buffer_mappings = { wipeout = { char = '<C-d>', func = wipeout_cur } }
     MiniPick.builtin.buffers(local_opts, { mappings = buffer_mappings })
   end
-
-  -- Pick file using zoxide: =========================================================================
-  Config.new_command('PickZoxide', function()
-    local zoxide_output = vim.fn.system('zoxide query -l')
-    local zoxide_dirs = vim.split(zoxide_output, '\n', { trimempty = true })
-    MiniPick.start({
-      source = {
-        items = zoxide_dirs,
-        choose = function(dir)
-          vim.schedule(function()
-            vim.fn.chdir(dir)
-            return MiniFiles.open(dir)
-          end)
-        end,
-      },
-    })
-  end)
-
-  -- Pick file using fd: =========================================================================
-  Config.new_command('PickFiles', function()
-    MiniPick.builtin.cli({ command = { 'fd', '-t=f', '-H', '-I', '-E=.git', '-E=node_modules' } }, {
-      source = {
-        name = 'Files (fd)',
-        show = function(buf, items, query)
-          MiniPick.default_show(buf, items, query, { show_icons = true })
-        end,
-      },
-    })
-  end)
 end)

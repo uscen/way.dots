@@ -65,7 +65,7 @@ Config.later(function()
     return nil
   end
 
-  M.config = vim.tbl_deep_extend('force', M.config, config or {})
+  M.config = vim.tbl_deep_extend('force', M.config, {})
   local group = vim.api.nvim_create_augroup('myplugins-rooter', { clear = true })
 
   -- Disable conflicting option: =================================================================

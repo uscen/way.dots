@@ -4,7 +4,7 @@
 Config.later(function()
   local M = {}
   -- Open url in buffer: ===========================================================================
-  function M.openUrlInBuffer()
+  function M.openUrl()
     local text = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), '\n')
     local urls = {}
     for url in text:gmatch([[%l%l%l+://[^%s)%]}"'`>]+]]) do
@@ -20,10 +20,10 @@ Config.later(function()
     end)
   end
 
-  vim.api.nvim_create_user_command('OpenUrlInBuffer', M.openUrlInBuffer, {})
+  vim.api.nvim_create_user_command('OpenUrl', M.openUrl, {})
 
   -- Toggle word: ==================================================================================
-  function M.toggleWord()
+  function M.smartWord()
     local toggles = {
       ['True'] = 'False',
       ['true'] = 'false',
@@ -76,7 +76,7 @@ Config.later(function()
     end
   end
 
-  vim.api.nvim_create_user_command('ToggleWorld', M.toggleWord, {})
+  vim.api.nvim_create_user_command('SmartWord', M.smartWord, {})
 
   -- Smart duplicate line: =========================================================================
   function M.smartDuplicate()
@@ -113,20 +113,8 @@ Config.later(function()
 
   vim.api.nvim_create_user_command('SmartDuplicate', M.smartDuplicate, {})
 
-  -- Capabilities: =================================================================================
-  function M.toggleTitleCase()
-    local prevCursor = vim.api.nvim_win_get_cursor(0)
-    local cword = vim.fn.expand('<cword>')
-    local cmd = cword == cword:lower() and 'guiwgUl' or 'guiw'
-    vim.cmd.normal { cmd, bang = true }
-    vim.api.nvim_win_set_cursor(0, prevCursor)
-  end
-
-  vim.api.nvim_create_user_command('ToggleTitleCase', M.toggleTitleCase, {})
-
   -- Delete buff: ==================================================================================
   M.delete_buffer = function()
-    -- Get only 'normal' windows (ignores floats/popups)
     local wins = vim.api.nvim_tabpage_list_wins(0)
     local normal_wins = {}
     for _, win in ipairs(wins) do
@@ -181,53 +169,6 @@ Config.later(function()
 
   vim.api.nvim_create_user_command('DeleteOtherBuffers', M.deleteOthersBuffers, {})
 
-  -- Open All hunks in quickfix: =================================================================
-  function M.diffInQuickFix()
-    local hunks = require('mini.diff').export('qf')
-    if #hunks == 0 then
-      vim.notify('No changes to show', vim.log.levels.INFO)
-      return
-    end
-    vim.fn.setqflist(hunks)
-    vim.cmd('copen')
-  end
-
-  vim.api.nvim_create_user_command('MiniDiffInQuickFixList', M.diffInQuickFix, {})
-
-  -- Box Comment: ==================================================================================
-  function M.boxComment()
-    local count = vim.v.count1
-    local total_width = 79
-    local tl, tr, bl, br = '╭', '╮', '╰', '╯'
-    local horizontal, vertical = '─', '│'
-    local comment_string = vim.bo.commentstring:gsub('%%s', ' ')
-    local line_num = vim.fn.line('.')
-    local border_top = comment_string .. tl .. string.rep(horizontal, total_width - #comment_string - 2) .. tr
-    local border_bottom = comment_string .. bl .. string.rep(horizontal, total_width - #comment_string - 2) .. br
-    local text_lines = {}
-    for _ = 1, count do
-      local text = ' '
-      local padding = math.floor((total_width - #comment_string - 2 - #text) / 2)
-      local text_line = comment_string
-          .. vertical
-          .. string.rep(' ', padding)
-          .. text
-          .. string.rep(' ', total_width - #comment_string - 2 - #text - padding)
-          .. vertical
-      table.insert(text_lines, text_line)
-    end
-    local content = { border_top }
-    for _, line in ipairs(text_lines) do
-      table.insert(content, line)
-    end
-    table.insert(content, border_bottom)
-    vim.fn.append(line_num, content)
-    local inner_start = #comment_string + 5
-    vim.fn.cursor(line_num + 2, inner_start)
-    vim.cmd([[startreplace]])
-  end
-
-  vim.api.nvim_create_user_command('BoxComment', M.boxComment, {})
 
   -- Surround: =====================================================================================
   function M.SurroundOrReplaceQuotes()
