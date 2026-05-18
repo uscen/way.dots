@@ -380,7 +380,7 @@ Config.now(function()
     end,
   })
 
-  -- close some filetypes with <q>: ==============================================================
+  -- Close some filetypes with <q>: ==============================================================
   Config.new_autocmd('FileType', {
     group = vim.api.nvim_create_augroup('q_close', { clear = true }),
     pattern = { 'qf', 'man', 'help', 'query', 'notify', 'lspinfo', 'startuptime', 'git', 'checkhealth' },
@@ -393,6 +393,22 @@ Config.now(function()
       ---@type vim.keymap.set.Opts
       local keymap_opts = { buffer = event.buf, silent = true, desc = 'Close buffer', nowait = true }
       vim.keymap.set('n', 'q', close_buffer, keymap_opts)
+    end,
+  })
+
+  -- Close [No name] Buffer: =====================================================================
+  vim.api.nvim_create_autocmd('BufEnter', {
+    group = vim.api.nvim_create_augroup('no_name_close', { clear = true }),
+    pattern = '*',
+    callback = function()
+      local bufsize = #vim.fn.getbufinfo({ buflisted = 1 })
+      if bufsize == 2 then
+        for _, buf in pairs(vim.fn.getbufinfo({ buflisted = 1 })) do
+          if buf.name == '' then
+            vim.api.nvim_buf_delete(buf.bufnr, { force = true })
+          end
+        end
+      end
     end,
   })
 
