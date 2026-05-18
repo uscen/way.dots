@@ -12,13 +12,15 @@ Config.later(function()
   local webTsPatterns   = { 'web/typescript.json', 'web/typescriptreact.json' }
   local lang_patterns   = {
     tex = latex_patterns,
-    markdown_inline = markdown,
+    tsx = webTsPatterns,
+    jsx = webJsPatterns,
+    typescript = webTsPatterns,
+    javascript = webJsPatterns,
+    typescriptreact = webTsPatterns,
+    javascriptreact = webJsPatterns,
     html = webHtmlPatterns,
     ejs = webHtmlPatterns,
-    javascript = webJsPatterns,
-    typescript = webTsPatterns,
-    javascriptreact = webJsPatterns,
-    typescriptreact = webTsPatterns,
+    markdown_inline = markdown,
   }
 
   -- Expand Patterns: ============================================================================
