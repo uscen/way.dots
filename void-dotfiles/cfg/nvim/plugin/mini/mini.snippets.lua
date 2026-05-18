@@ -25,7 +25,6 @@ Config.later(function()
 
   -- Expand Patterns: ============================================================================
   local match_strict    = function(snips)
-    -- Match exact from the start to the end of the string =======================================
     return MiniSnippets.default_match(snips, { pattern_fuzzy = '^%S+$' })
   end
 

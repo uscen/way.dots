@@ -146,6 +146,7 @@ Config.later(function()
     local last_nonblank = vim.fn.prevnonblank(n_lines)
     if last_nonblank < n_lines then vim.api.nvim_buf_set_lines(0, last_nonblank, n_lines, true, {}) end
   end)
+
   -- Join or remove empty lines: =================================================================
   Config.new_command('JoinEmptyLines', function(args)
     if args.fargs[1] ~= nil then
@@ -257,6 +258,18 @@ Config.later(function()
       end,
     })
     pcall(vim.cmd.file, 'term:lazygit')
+  end)
+
+  -- Search And Replace: =========================================================================
+  Config.new_command('Match', function()
+    local word = vim.fn.expand('<cword>')
+    local cmd = ':%s/\\<' .. word .. '\\>/' .. word .. '/I'
+    local keys = vim.api.nvim_replace_termcodes(cmd .. '<Left><Left>', true, false, true)
+    vim.api.nvim_feedkeys(keys, 'n', false)
+  end)
+  Config.new_command('MatchWord', function()
+    local word = vim.fn.expand('<cword>')
+    vim.api.nvim_feedkeys(':%s/\\<' .. word .. '\\>/', 'n', false)
   end)
 
   -- Change Directory: ===========================================================================

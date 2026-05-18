@@ -1,4 +1,4 @@
 -- ============================================================================== #
--- UndoTree:                                                                      #
+-- Undotree:                                                                      #
 -- ============================================================================== #
-Config.later(function() vim.cmd.packadd("nvim.undotree") end)
+Config.later(function() vim.cmd.packadd('nvim.undotree') end)
