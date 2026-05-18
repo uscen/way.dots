@@ -138,6 +138,15 @@ Config.now(function()
     end,
   })
 
+  --  Restore cursor position: ===================================================================
+  Config.new_autocmd('BufReadPost', {
+    group = vim.api.nvim_create_augroup('remember_position', { clear = true }),
+    callback = function(ctx)
+      if vim.bo[ctx.buf].buftype ~= '' then return end
+      vim.cmd([[silent! normal! g`"]])
+    end,
+  })
+
   -- Show cursor line only in active window: =====================================================
   Config.new_autocmd({ 'BufWinEnter', 'WinEnter', 'WinLeave' }, {
     group = vim.api.nvim_create_augroup('auto_show_cursorline', { clear = true }),
@@ -327,21 +336,6 @@ Config.now(function()
     end,
   })
 
-  -- Go to old position when opening a buffer: ===================================================
-  Config.new_autocmd('BufReadPost', {
-    group = vim.api.nvim_create_augroup('remember_position', { clear = true }),
-    callback = function()
-      local mark = vim.api.nvim_buf_get_mark(0, '"')
-      local lcount = vim.api.nvim_buf_line_count(0)
-      if mark[1] > 0 and mark[1] <= lcount then
-        pcall(vim.api.nvim_win_set_cursor, 0, mark)
-        vim.schedule(function()
-          vim.cmd('normal! zz')
-        end)
-      end
-    end,
-  })
-
   -- Check if we need to reload the file when it changed: ========================================
   Config.new_autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
     group = vim.api.nvim_create_augroup('checktime', { clear = true }),
@@ -399,6 +393,42 @@ Config.now(function()
       ---@type vim.keymap.set.Opts
       local keymap_opts = { buffer = event.buf, silent = true, desc = 'Close buffer', nowait = true }
       vim.keymap.set('n', 'q', close_buffer, keymap_opts)
+    end,
+  })
+
+  -- Auto-close deleted buffers: =================================================================
+  Config.new_autocmd({ 'FocusGained', 'BufLeave' }, {
+    callback = function()
+      local allBufs = vim.fn.getbufinfo { buflisted = 1 }
+      local closedBuffers = vim.iter(allBufs):fold({}, function(acc, buf)
+        if not vim.api.nvim_buf_is_valid(buf.bufnr) then return acc end
+        local stillExists = vim.uv.fs_stat(buf.name) ~= nil
+        local specialBuffer = vim.bo[buf.bufnr].buftype ~= ''
+        local newBuffer = buf.name == ''
+        if stillExists or specialBuffer or newBuffer then return acc end
+        table.insert(acc, vim.fs.basename(buf.name))
+        vim.api.nvim_buf_delete(buf.bufnr, { force = false })
+        return acc
+      end)
+      if #closedBuffers == 0 then return end
+
+      if #closedBuffers == 1 then
+        vim.notify(closedBuffers[1], nil, { title = 'Buffer closed', icon = '󰅗' })
+      else
+        local text = '- ' .. table.concat(closedBuffers, '\n- ')
+        vim.notify(text, nil, { title = 'Buffers closed', icon = '󰅗' })
+      end
+
+      -- If ending up in empty buffer, re-open the first oldfile that exists: ====================
+      vim.schedule(function()
+        if vim.api.nvim_buf_get_name(0) ~= '' then return end
+        for _, file in ipairs(vim.v.oldfiles) do
+          if vim.uv.fs_stat(file) and vim.fs.basename(file) ~= 'COMMIT_EDITMSG' then
+            vim.cmd.edit(file)
+            return
+          end
+        end
+      end)
     end,
   })
 end)
