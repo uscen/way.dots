@@ -259,11 +259,27 @@ Config.later(function()
     pcall(vim.cmd.file, 'term:lazygit')
   end)
 
+  -- Change Directory: ===========================================================================
+  Config.new_command('CdHere', function()
+    local path = vim.fn.expand('%:h')
+    if path == '' then return end
+    vim.cmd('silent cd ' .. path)
+    vim.notify('cd → ' .. path)
+  end, {})
+  Config.new_command('CdRoot', function()
+    local root = vim.fn.systemlist('git -C ' .. vim.fn.expand('%:h') .. ' rev-parse --show-toplevel')[1]
+    if root and root ~= '' then
+      vim.cmd('silent cd ' .. root)
+      vim.notify('cd → ' .. root)
+    else
+      vim.notify('No git repository found', vim.log.levels.WARN)
+    end
+  end)
+
   -- Toggle Qucikfix and location list: ==========================================================
   Config.new_command('ExploreQuickfix', function()
     vim.cmd(vim.fn.getqflist({ winid = true }).winid ~= 0 and 'cclose' or 'copen')
   end)
-
   Config.new_command('ExploreLocations', function()
     vim.cmd(vim.fn.getloclist(0, { winid = true }).winid ~= 0 and 'lclose' or 'lopen')
   end)
@@ -287,41 +303,18 @@ Config.later(function()
   end, { nargs = '*' })
 
   -- Edit file full path: ========================================================================
+  Config.new_command('E', function(args)
+    vim.cmd.edit(vim.fs.joinpath(vim.fn.expand('%:p:h'), args.args))
+  end, { nargs = 1 })
+  Config.new_command('Edit', function(args)
+    vim.cmd.edit(vim.fs.joinpath(vim.fn.expand('%:p:h'), args.args))
+  end, { nargs = 1 })
   Config.new_command('EditConfig', function()
     local config_dir = vim.fn.stdpath('config')
     assert(type(config_dir) == 'string', 'Expected string')
     vim.fn.chdir(config_dir)
     vim.api.nvim_cmd({ cmd = 'edit', args = { 'init.lua' } }, { output = false })
   end, {})
-  Config.new_command('Edit', function(args)
-    vim.cmd.edit(vim.fs.joinpath(vim.fn.expand('%:p:h'), args.args))
-  end, { nargs = 1 })
-  Config.new_command('E', function(args)
-    vim.cmd.edit(vim.fs.joinpath(vim.fn.expand('%:p:h'), args.args))
-  end, { nargs = 1 })
-
-  -- Change Directory: ===========================================================================
-  Config.new_command('Cwd', function()
-    local path = vim.fn.expand('%:h')
-    if path == '' then return end
-    vim.cmd('silent cd ' .. path)
-    vim.notify('cd → ' .. path)
-  end, {})
-  Config.new_command('Swd', function()
-    local path = vim.fn.expand('%:h')
-    if path == '' then return end
-    vim.cmd('silent cd ' .. path)
-    vim.notify('cd → ' .. path)
-  end, {})
-  Config.new_command('Crd', function()
-    local root = vim.fn.systemlist('git -C ' .. vim.fn.expand('%:h') .. ' rev-parse --show-toplevel')[1]
-    if root and root ~= '' then
-      vim.cmd('silent cd ' .. root)
-      vim.notify('cd → ' .. root)
-    else
-      vim.notify('No git repository found', vim.log.levels.WARN)
-    end
-  end)
 
   -- Copy Absolute & Relative full path: =========================================================
   Config.new_command('CopyAbsPath', function()

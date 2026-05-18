@@ -16,9 +16,12 @@ Config.later(function()
   -- ============================================================================== #
   -- Basic:                                                                         #
   -- ============================================================================== #
-  map('n', L 'qq', C 'quitall', 'Quit all windows')
-  map('n', L 're', C 'restart', 'Restart editor')
+  map('n', L 'rr', C 'Match', 'Search and Replace')
+  map('n', L 'rl', C 'MatchLine', 'Match using current line')
+  map('n', L 'rs', C 'MatchWord', 'Match using word under cursor')
   map('n', L 'rc', C 'EditConfig', 'Edit configuration')
+  map('n', L 're', C 'restart', 'Restart editor')
+  map('n', L 'qq', C 'quitall', 'Quit all windows')
   map('n', L 's', C 'SmartWord', 'Switch boolean/word')
   map('n', L 'j', C 'SmartDuplicate', 'Smart duplicate line')
 
@@ -53,6 +56,7 @@ Config.later(function()
   map('n', L 'bb', C 'deleteInactiveBuffers', 'Delete inactive buffers')
   map('n', L 'bs', C 'ScratchBuffer', 'New scratch buffer')
   map('n', L 'bt', C 'TrailspaceTrim', 'Remove trailing whitespace')
+  map('n', L 'bj', C 'JoinEmptyLines', 'Remove empty lines')
 
   -- ============================================================================== #
   -- Find:                                                                          #
@@ -151,9 +155,9 @@ Config.later(function()
   map('n', L 'oa', C 'Mason', 'Mason')
   map('n', L 'ox', C 'OpenUrl', 'Open url')
   map('n', L 'os', C 'Dashboard', 'Open Dashboard')
-  map('n', L 'ou', C 'lua vim.pack.update()', 'Update plugins')
   map('n', L 'od', C 'ToggleDiagnosticStyle', 'Toggle diagnostic style')
-  map('n', L 'oj', C 'JoinEmptyLines', 'Toggle diagnostic style')
+  map('n', L 'ob', C 'ToggleBackground', 'Toggle background (dark/light)')
+  map('n', L 'ou', C 'lua vim.pack.update()', 'Update plugins')
 
   -- ============================================================================== #
   -- Noneleader:                                                                    #
