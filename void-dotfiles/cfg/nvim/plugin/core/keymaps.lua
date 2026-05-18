@@ -35,11 +35,11 @@ Config.later(function()
   -- Explore:                                                                       #
   -- ============================================================================== #
   map('n', L 'ee', C 'Explorer', 'Toggle file explorer')
-  map('n', L 'eu', C 'Undotree', 'Toggle file explorer')
-  map('n', L 'ez', C 'Pick zoxide', 'Pick directory')
-  map('n', L 'ec', C 'Pick config', 'Pick config')
-  map('n', L 'ed', C 'Pick projects', 'Pick project')
-  map('n', L 'ep', C 'Pick plugins', 'Pick plugin')
+  map('n', L 'eu', C 'Undotree', 'Toggle undotree')
+  map('n', L 'ed', C 'Pick zoxide', 'Pick directory (zoxide)')
+  map('n', L 'em', C 'Pick plugins', 'Pick plugin (module)')
+  map('n', L 'ec', C 'Pick config', 'Pick config (nvim)')
+  map('n', L 'ep', C 'Pick project', 'Pick project (/home/user/projects)')
 
   -- ============================================================================== #
   -- Buffer:                                                                        #
@@ -107,9 +107,9 @@ Config.later(function()
   -- ============================================================================== #
   -- Language:                                                                      #
   -- ============================================================================== #
+  map('nx', L 'lf', C 'Format', 'Format')
   map('nx', L 'la', C 'lua vim.lsp.buf.code_action()', 'Actions')
   map('n', L 'ld', C 'lua vim.diagnostic.open_float()', 'Diagnostic popup')
-  map('nx', L 'lf', C 'lua require("conform").format()', 'Format')
   map('n', L 'li', C 'lua vim.lsp.buf.implementation()', 'Implementation')
   map('n', L 'lI', C 'LspInfo', 'LSP info')
   map('n', L 'lh', C 'lua vim.lsp.buf.hover()', 'Hover')
@@ -153,6 +153,7 @@ Config.later(function()
   map('n', L 'os', C 'Dashboard', 'Open Dashboard')
   map('n', L 'ou', C 'lua vim.pack.update()', 'Update plugins')
   map('n', L 'od', C 'ToggleDiagnosticStyle', 'Toggle diagnostic style')
+  map('n', L 'oj', C 'JoinEmptyLines', 'Toggle diagnostic style')
 
   -- ============================================================================== #
   -- Noneleader:                                                                    #
@@ -193,9 +194,11 @@ Config.later(function()
 
   -- Misc: ======================================================================================
   map('n', '-', C 'Explorer', 'Toggle file explorer')
-  map('n', 's', C 'EasyMotion', 'Start easyMotion')
+  map('n', 's', C 'EasyMotion', 'Start easy motion')
   map('n', 'sw', C 'SurroundOrReplaceQuotes', 'Surround or replace quotes')
   map('n', 'gF', C 'OpenOrCreateFile', 'Open or create file under the cursor')
+  map('n', 'gy', C 'GetSelection', 'Yank last selection')
+  map('n', 'gv', C 'GetPasteText', 'Select last pasted text')
 
   -- Pmenu: ===================================================================================
   map('i', '<C-j>', [[pumvisible() ? "\<C-n>" : "\<C-j>"]], 'Next completion item', { expr = true })

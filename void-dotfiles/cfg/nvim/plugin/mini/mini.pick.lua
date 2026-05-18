@@ -59,6 +59,7 @@ Config.later(function()
     },
   })
   vim.ui.select = MiniPick.ui_select
+
   -- UI: =========================================================================================
   vim.api.nvim_create_autocmd('User', {
     pattern = 'MiniPickStart',
@@ -85,7 +86,7 @@ Config.later(function()
   end
 
   -- Pick file in project: =======================================================================
-  MiniPick.registry.projects = function()
+  MiniPick.registry.project = function()
     local cwd = vim.fn.expand('~/Projects')
     local choose = function(item)
       vim.schedule(function()
