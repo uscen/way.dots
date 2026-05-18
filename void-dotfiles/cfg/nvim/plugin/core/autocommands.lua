@@ -396,7 +396,7 @@ Config.now(function()
     end,
   })
 
-  -- Close [No name] Buffer: =====================================================================
+  -- Close [No nawith me] Buffer: ================================================================
   vim.api.nvim_create_autocmd('BufEnter', {
     group = vim.api.nvim_create_augroup('no_name_close', { clear = true }),
     pattern = '*',
