@@ -141,8 +141,8 @@ Config.now(function()
   --  Restore cursor position: ===================================================================
   Config.new_autocmd('BufReadPost', {
     group = vim.api.nvim_create_augroup('remember_position', { clear = true }),
-    callback = function(ctx)
-      if vim.bo[ctx.buf].buftype ~= '' then return end
+    callback = function(event)
+      if vim.bo[event.buf].buftype ~= '' then return end
       vim.cmd([[silent! normal! g`"]])
     end,
   })
@@ -150,19 +150,9 @@ Config.now(function()
   -- Show cursor line only in active window: =====================================================
   Config.new_autocmd({ 'BufWinEnter', 'WinEnter', 'WinLeave' }, {
     group = vim.api.nvim_create_augroup('auto_show_cursorline', { clear = true }),
-    callback = function(ctx)
-      if vim.bo[ctx.buf].buftype ~= '' then return end
-      vim.opt_local.cursorline = ctx.event ~= 'WinLeave'
-    end,
-  })
-
-  -- Delete [No Name] buffers: ===================================================================
-  Config.new_autocmd('BufHidden', {
-    group = vim.api.nvim_create_augroup('delete_no_name_buffer', { clear = true }),
-    callback = function(ctx)
-      if ctx.file == '' and vim.bo[ctx.buf].buftype == '' and not vim.bo[ctx.buf].modified then
-        vim.schedule(function() pcall(vim.api.nvim_buf_delete, ctx.buf, {}) end)
-      end
+    callback = function(event)
+      if vim.bo[event.buf].buftype ~= '' then return end
+      vim.opt_local.cursorline = event.event ~= 'WinLeave'
     end,
   })
 
@@ -200,13 +190,13 @@ Config.now(function()
     group = mode_diagnostoc,
     pattern = { 'n:i', 'v:s' },
     desc = 'Disable diagnostics while typing',
-    callback = function(e) vim.diagnostic.enable(false, { bufnr = e.buf }) end,
+    callback = function(event) vim.diagnostic.enable(false, { bufnr = event.buf }) end,
   })
   Config.new_autocmd('ModeChanged', {
     group = mode_diagnostoc,
     pattern = 'i:n',
     desc = 'Enable diagnostics when leaving insert mode',
-    callback = function(e) vim.diagnostic.enable(true, { bufnr = e.buf }) end,
+    callback = function(event) vim.diagnostic.enable(true, { bufnr = event.buf }) end,
   })
 
   -- Fix broken macro recording notification for cmdheight 0: ====================================
@@ -399,9 +389,9 @@ Config.now(function()
   -- Close [No Name] buffers: ===================================================================
   Config.new_autocmd('BufHidden', {
     group = vim.api.nvim_create_augroup('no_name_close', { clear = true }),
-    callback = function(ctx)
-      if ctx.file == '' and vim.bo[ctx.buf].buftype == '' then
-        vim.schedule(function() pcall(vim.api.nvim_buf_delete, ctx.buf, { force = true }) end)
+    callback = function(event)
+      if event.file == '' and vim.bo[event.buf].buftype == '' then
+        vim.schedule(function() pcall(vim.api.nvim_buf_delete, event.buf, { force = true }) end)
       end
     end,
   })
