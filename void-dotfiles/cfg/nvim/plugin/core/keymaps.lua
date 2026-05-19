@@ -17,7 +17,6 @@ Config.later(function()
   -- Basic:                                                                         #
   -- ============================================================================== #
   map('n', L 'rr', C 'Match', 'Search and Replace')
-  map('n', L 'rl', C 'MatchLine', 'Match using current line')
   map('n', L 'rs', C 'MatchWord', 'Match using word under cursor')
   map('n', L 'rc', C 'EditConfig', 'Edit configuration')
   map('n', L 're', C 'restart', 'Restart editor')
@@ -30,18 +29,25 @@ Config.later(function()
   -- ============================================================================== #
   map('n', L ' ', C 'Pick files', 'Find files')
   map('n', L ',', C 'Pick buffers', 'Switch buffer')
-  map('n', L '.', C 'Pick resume', 'Resume (last picker)')
-  map('n', L '/', C "Pick buf_lines scope='current' preserve_order=true", 'Pick Lines (current)')
-  map('n', L '=', C 'Pick spellsuggest', 'Fix spelling (current word)')
+  map('n', L '.', C 'Pick resume', 'Resume')
+  map('n', L ':', C 'Pick commands', 'Pick command')
+  map('n', L ';', C 'Pick history scope=":"', 'Pick history /')
+  map('n', L '/', C 'Pick history scope="/"', 'Pick history :')
+  map('n', L '?', C 'Pick keymaps', 'Pick keymaps')
+  map('n', L '=', C 'Pick spellsuggest', 'Fix spelling')
 
   -- ============================================================================== #
   -- Explore:                                                                       #
   -- ============================================================================== #
-  map('n', L 'ee', C 'Explorer', 'Toggle file explorer')
+  map('n', L 'ee', C 'ExploreAtFile', 'File directory')
+  map('n', L 'er', C 'ExploreAtRoot', 'Directory')
+  map('n', L 'eq', C 'ExploreQuickfix', 'Quickfix list')
+  map('n', L 'el', C 'ExploreLocations', 'Location list')
   map('n', L 'eu', C 'Undotree', 'Toggle undotree')
   map('n', L 'ed', C 'Pick zoxide', 'Pick directory (zoxide)')
   map('n', L 'em', C 'Pick plugins', 'Pick plugin (module)')
   map('n', L 'ec', C 'Pick config', 'Pick config (nvim)')
+  map('n', L 'eh', C 'Pick home', 'Pick config (/home/user)')
   map('n', L 'ep', C 'Pick project', 'Pick project (/home/user/projects)')
 
   -- ============================================================================== #
@@ -57,6 +63,69 @@ Config.later(function()
   map('n', L 'bs', C 'ScratchBuffer', 'New scratch buffer')
   map('n', L 'bt', C 'TrailspaceTrim', 'Remove trailing whitespace')
   map('n', L 'bj', C 'JoinEmptyLines', 'Remove empty lines')
+
+  -- ============================================================================== #
+  -- Language:                                                                      #
+  -- ============================================================================== #
+  map('nx', L 'lf', C 'Format', 'Format')
+  map('nx', L 'la', C 'lua vim.lsp.buf.code_action()', 'Actions')
+  map('n', L 'ld', C 'lua vim.diagnostic.open_float()', 'Diagnostic popup')
+  map('n', L 'li', C 'lua vim.lsp.buf.implementation()', 'Implementation')
+  map('n', L 'lI', C 'LspInfo', 'LSP info')
+  map('n', L 'lh', C 'lua vim.lsp.buf.hover()', 'Hover')
+  map('n', L 'll', C 'lua vim.lsp.codelens.run()', 'Run codelens')
+  map('n', L 'lL', C 'lua vim.lsp.codelens.refresh()', 'Refresh & display codelens')
+  map('n', L 'lr', C 'lua vim.lsp.buf.rename()', 'Rename')
+  map('n', L 'lR', C 'lua vim.lsp.buf.references()', 'References')
+  map('n', L 'ls', C 'lua vim.lsp.buf.definition()', 'Source definition')
+  map('n', L 'lt', C 'lua vim.lsp.buf.type_definition()', 'Type definition')
+
+  -- ============================================================================== #
+  -- Git:                                                                           #
+  -- ============================================================================== #
+  map('n', L 'gg', C 'Lazygit', 'Open lazygit')
+  map('n', L 'gq', C 'DiffToQf', 'Quickfix diffs')
+  map('n', L 'gl', C 'MinigitLog', 'Log')
+  map('n', L 'gL', C 'MinigitLogBuf', 'Log (buf)')
+  map('n', L 'ga', C 'Git add --all', 'Added diff')
+  map('n', L 'gA', C 'Git add -- %', 'Added diff')
+  map('n', L 'gi', C 'Git diff --cached', 'Added diff')
+  map('n', L 'gI', C 'Git diff --cached -- %', 'Added diff (buf)')
+  map('n', L 'gc', C 'Git commit', 'Commit')
+  map('n', L 'gC', C 'Git commit --amend', 'Commit amend')
+  map('n', L 'gp', C 'Git push', 'Push to origin')
+  map('n', L 'gP', C 'Git pull', 'Pull from origin')
+  map('n', L 'gd', C 'Git diff', 'Diff')
+  map('n', L 'gD', C 'Git diff -- %', 'Diff (buf)')
+  map('n', L 'go', C 'lua MiniDiff.toggle_overlay()', 'Toggle overlay')
+  map('n', L 'gh', C 'lua MiniDiff.toggle_overlay()', 'Toggle overlay')
+  map('nx', L 'gb', C 'lua MiniGit.show_range_history()', 'Range history')
+  map('nx', L 'gs', C 'lua MiniGit.show_at_cursor()', 'Show at cursor')
+
+  -- ============================================================================== #
+  -- Window:                                                                        #
+  -- ============================================================================== #
+  map('n', L 'ww', C 'RotateWindows', 'Rotate window position')
+  map('n', L 'wm', C 'MoveWindowToTab', 'Move current window to tab')
+  map('n', L 'wq', C 'close', 'Close window')
+  map('n', L 'wo', C 'only', 'Close other windows')
+  map('n', L 'wv', C 'vsplit', 'Vertical split')
+  map('n', L 'ws', C 'split', 'Horizontal split')
+  map('n', L 'wk', C 'resize +10', 'Resize window height')
+  map('n', L 'wj', C 'resize -10', 'Resize window height')
+  map('n', L 'wh', C 'vertical resize +10', 'Resize window width')
+  map('n', L 'wl', C 'vertical resize -10', 'Resize window width')
+  map('n', L 'wK', C 'wincmd K', 'Move window to top')
+  map('n', L 'wJ', C 'wincmd J', 'Move window to bottom')
+  map('n', L 'wH', C 'wincmd H', 'Move window to left')
+  map('n', L 'wL', C 'wincmd L', 'Move window to right')
+  map('n', L 'wT', C 'wincmd T', 'Move window to new tab')
+  map('n', L 'wR', C 'wincmd R', 'Rotate windows (Up/Left)')
+  map('n', L 'wr', C 'wincmd r', 'Rotate windows (Down/Right)')
+  map('n', L 'w=', C 'wincmd =', 'Balance window sizes')
+  map('n', L 'w0', C 'wincmd =', 'Resize to default width')
+  map('n', L 'w|', C 'wincmd v', 'Vertical split')
+  map('n', L 'w-', C 'wincmd s', 'Horizontal split')
 
   -- ============================================================================== #
   -- Find:                                                                          #
@@ -90,69 +159,6 @@ Config.later(function()
   map('n', L 'fT', C 'Pick colorschemes', 'Search colorschemes')
   map('n', L 'fv', C "Pick visit_paths cwd=''", 'Visit paths (all)')
   map('n', L 'fV', C 'Pick visit_paths', 'Visit paths (cwd)')
-
-  -- ============================================================================== #
-  -- Git:                                                                           #
-  -- ============================================================================== #
-  map('n', L 'gg', C 'Lazygit', 'Open lazygit')
-  map('n', L 'gq', C 'DiffToQf', 'Quickfix diffs')
-  map('n', L 'gl', C 'MinigitLog', 'Log')
-  map('n', L 'gL', C 'MinigitLogBuf', 'Log (buf)')
-  map('n', L 'ga', C 'Git add --all', 'Added diff')
-  map('n', L 'gA', C 'Git add -- %', 'Added diff')
-  map('n', L 'gi', C 'Git diff --cached', 'Added diff')
-  map('n', L 'gI', C 'Git diff --cached -- %', 'Added diff (buf)')
-  map('n', L 'gc', C 'Git commit', 'Commit')
-  map('n', L 'gC', C 'Git commit --amend', 'Commit amend')
-  map('n', L 'gp', C 'Git push', 'Push to origin')
-  map('n', L 'gP', C 'Git pull', 'Pull from origin')
-  map('n', L 'gd', C 'Git diff', 'Diff')
-  map('n', L 'gD', C 'Git diff -- %', 'Diff (buf)')
-  map('n', L 'go', C 'lua MiniDiff.toggle_overlay()', 'Toggle overlay')
-  map('n', L 'gh', C 'lua MiniDiff.toggle_overlay()', 'Toggle overlay')
-  map('nx', L 'gb', C 'lua MiniGit.show_range_history()', 'Range history')
-  map('nx', L 'gs', C 'lua MiniGit.show_at_cursor()', 'Show at cursor')
-
-  -- ============================================================================== #
-  -- Language:                                                                      #
-  -- ============================================================================== #
-  map('nx', L 'lf', C 'Format', 'Format')
-  map('nx', L 'la', C 'lua vim.lsp.buf.code_action()', 'Actions')
-  map('n', L 'ld', C 'lua vim.diagnostic.open_float()', 'Diagnostic popup')
-  map('n', L 'li', C 'lua vim.lsp.buf.implementation()', 'Implementation')
-  map('n', L 'lI', C 'LspInfo', 'LSP info')
-  map('n', L 'lh', C 'lua vim.lsp.buf.hover()', 'Hover')
-  map('n', L 'll', C 'lua vim.lsp.codelens.run()', 'Run codelens')
-  map('n', L 'lL', C 'lua vim.lsp.codelens.refresh()', 'Refresh & display codelens')
-  map('n', L 'lr', C 'lua vim.lsp.buf.rename()', 'Rename')
-  map('n', L 'lR', C 'lua vim.lsp.buf.references()', 'References')
-  map('n', L 'ls', C 'lua vim.lsp.buf.definition()', 'Source definition')
-  map('n', L 'lt', C 'lua vim.lsp.buf.type_definition()', 'Type definition')
-
-  -- ============================================================================== #
-  -- Window:                                                                        #
-  -- ============================================================================== #
-  map('n', L 'ww', C 'RotateWindows', 'Rotate window position')
-  map('n', L 'wm', C 'MoveWindowToTab', 'Move current window to tab')
-  map('n', L 'wq', C 'close', 'Close window')
-  map('n', L 'wo', C 'only', 'Close other windows')
-  map('n', L 'wv', C 'vsplit', 'Vertical split')
-  map('n', L 'ws', C 'split', 'Horizontal split')
-  map('n', L 'wk', C 'resize +10', 'Resize window height')
-  map('n', L 'wj', C 'resize -10', 'Resize window height')
-  map('n', L 'wh', C 'vertical resize +10', 'Resize window width')
-  map('n', L 'wl', C 'vertical resize -10', 'Resize window width')
-  map('n', L 'wK', C 'wincmd K', 'Move window to top')
-  map('n', L 'wJ', C 'wincmd J', 'Move window to bottom')
-  map('n', L 'wH', C 'wincmd H', 'Move window to left')
-  map('n', L 'wL', C 'wincmd L', 'Move window to right')
-  map('n', L 'wT', C 'wincmd T', 'Move window to new tab')
-  map('n', L 'wR', C 'wincmd R', 'Rotate windows (Up/Left)')
-  map('n', L 'wr', C 'wincmd r', 'Rotate windows (Down/Right)')
-  map('n', L 'w=', C 'wincmd =', 'Balance window sizes')
-  map('n', L 'w0', C 'wincmd =', 'Resize to default width')
-  map('n', L 'w|', C 'wincmd v', 'Vertical split')
-  map('n', L 'w-', C 'wincmd s', 'Horizontal split')
 
   -- ============================================================================== #
   -- Other:                                                                         #
