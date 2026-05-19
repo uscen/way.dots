@@ -209,7 +209,6 @@ Config.now(function()
   vim.o.lazyredraw               = true
   vim.o.hidden                   = true
   vim.o.ttimeoutlen              = 10
-  vim.o.redrawtime               = 100
   vim.o.history                  = 100
   vim.o.updatetime               = 200
   vim.o.synmaxcol                = 200

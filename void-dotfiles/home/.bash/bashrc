@@ -116,7 +116,7 @@ export FZF_DEFAULT_OPTS="
     --color fg:#DBD2C7,bg:#172526
     --color bg+:#233935,fg+:#DBD2C7
     --color hl:#88B497,hl+:#88B497,gutter:#172526
-    --color pointer:#233935,info:#233935
+    --color pointer:#9EC59B,info:#233935
     --color prompt:#88B497,
     --color border:#233935
     --bind 'tab:accept'
