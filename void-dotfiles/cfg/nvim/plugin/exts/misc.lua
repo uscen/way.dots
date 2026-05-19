@@ -38,14 +38,12 @@ Config.later(function()
       ['allow'] = 'deny',
       ['show'] = 'hide',
       ['let'] = 'const',
-
       ['up'] = 'down',
       ['top'] = 'bottom',
       ['light'] = 'dark',
       ['right'] = 'left',
       ['width'] = 'height',
       ['relative'] = 'absolute',
-
       ['min'] = 'max',
       ['next'] = 'previous',
       ['before'] = 'after',
@@ -56,7 +54,6 @@ Config.later(function()
       ['inner'] = 'outer',
       ['encode'] = 'decode',
       ['input'] = 'output',
-
       ['and'] = 'or',
       ['=='] = '!=',
       ['>'] = '<',
@@ -83,7 +80,6 @@ Config.later(function()
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
     local line = vim.api.nvim_get_current_line()
     local ft = vim.bo.filetype
-    -- FILETYPE-SPECIFIC TWEAKS
     if ft == 'css' then
       local newLine = line
       if line:find('top:') then newLine = line:gsub('top:', 'bottom:') end
@@ -102,9 +98,7 @@ Config.later(function()
     elseif ft == 'python' then
       line = line:gsub('^(%s*)if( .*:)$', '%1elif%2')
     end
-    -- INSERT DUPLICATED LINE
     vim.api.nvim_buf_set_lines(0, row, row, false, { line })
-    -- MOVE CURSOR DOWN, AND TO VALUE/FIELD (IF THERE IS ANY)
     local _, luadocFieldPos = line:find('%-%-%-@%w+ ')
     local _, valuePos = line:find('[:=] ')
     local targetCol = luadocFieldPos or valuePos or col
@@ -124,14 +118,12 @@ Config.later(function()
     end
     local buflist = vim.fn.getbufinfo({ buflisted = 1 })
     if #buflist <= 1 then
-      -- Last buffer: Quit Neovim entirely
       vim.cmd('quit')
     elseif #normal_wins > 1 then
       local cur_buf = vim.api.nvim_get_current_buf()
       require('mini.bufremove').wipeout(cur_buf, true)
       vim.cmd('close')
     else
-      -- Only one window left, but multiple buffers
       vim.cmd('bdelete')
     end
   end
@@ -169,46 +161,6 @@ Config.later(function()
 
   vim.api.nvim_create_user_command('DeleteOtherBuffers', M.deleteOthersBuffers, {})
 
-
-  -- Surround: =====================================================================================
-  function M.SurroundOrReplaceQuotes()
-    local word = vim.fn.expand('<cword>')
-    local row, old_pos = unpack(vim.api.nvim_win_get_cursor(0))
-    vim.fn.search(word, 'bc', row)
-    local _, word_pos = unpack(vim.api.nvim_win_get_cursor(0))
-    local line_str = vim.api.nvim_get_current_line()
-    local before_word = line_str:sub(0, word_pos)
-    local pairs_count = 0
-    for _ in before_word:gmatch('["\'`]') do
-      pairs_count = pairs_count + 1
-    end
-    if pairs_count % 2 == 0 then
-      vim.cmd('normal ysiw\'')
-      vim.api.nvim_win_set_cursor(0, { row, old_pos + 1 })
-      return
-    end
-    for i = #before_word, 1, -1 do
-      local char = before_word:sub(i, i)
-      if char == "'" then
-        vim.cmd("normal cs'\"")
-        vim.api.nvim_win_set_cursor(0, { row, old_pos })
-        return
-      end
-      if char == '"' then
-        vim.cmd('normal cs\"`')
-        vim.api.nvim_win_set_cursor(0, { row, old_pos })
-        return
-      end
-      if char == '`' then
-        vim.cmd("normal cs`'")
-        vim.api.nvim_win_set_cursor(0, { row, old_pos })
-        return
-      end
-    end
-  end
-
-  vim.api.nvim_create_user_command('SurroundOrReplaceQuotes', M.SurroundOrReplaceQuotes, {})
-
   -- This is a simplified version of in-and-out.nvim: ==============================================
   -- https://github.com/ysmb-wtsg/in-and-out.nvim
   local function escape_lua_pattern(s)
@@ -229,7 +181,7 @@ Config.later(function()
     return s:gsub('.', matches)
   end
   local targets = { '"', "'", '(', ')', '{', '}', '[', ']', '`', '“', '”' }
-  function M.leap()
+  function M.in_and_out()
     local line_nr, col_nr = unpack(vim.api.nvim_win_get_cursor(0))
     local line = vim.api.nvim_get_current_line()
 
@@ -240,8 +192,6 @@ Config.later(function()
       if
           found_col_nr and (not target_col_nr or found_col_nr < target_col_nr)
       then
-        -- If char is a multibyte character, we need to take into
-        -- account the extra bytes.
         target_col_nr = found_col_nr + vim.fn.strlen(char) - 1
       end
     end
@@ -251,7 +201,7 @@ Config.later(function()
     end
   end
 
-  vim.api.nvim_create_user_command('Leap', M.leap, {})
+  vim.api.nvim_create_user_command('InAndOut', M.in_and_out, {})
 
   -- go_to_relative_file: ==========================================================================
   function M.go_to_relative_file(n, relative_to)
@@ -292,12 +242,10 @@ Config.later(function()
     if ok then return end
     local current_dir = vim.fn.expand('%:p:h')
     local new_path = vim.fn.fnamemodify(current_dir .. '/' .. path, ':p')
-    -- If file already has extension → open immediately
     if vim.fn.fnamemodify(new_path, ':e') ~= '' then
       vim.cmd('edit ' .. new_path)
       return
     end
-    -- Try suffixesadd
     local suffixes = vim.split(vim.o.suffixesadd, ',', { trimempty = true })
     for _, suf in ipairs(suffixes) do
       local candidate = new_path .. suf
@@ -306,11 +254,9 @@ Config.later(function()
         return
       end
     end
-    -- Otherwise create file with the first suffix
     if #suffixes > 0 then
       vim.cmd('edit ' .. new_path .. suffixes[1])
     else
-      -- If suffixesadd is empty, just edit the raw path
       vim.cmd('edit ' .. new_path)
     end
   end

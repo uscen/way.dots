@@ -174,14 +174,18 @@ Config.later(function()
   -- Noneleader:                                                                    #
   -- ============================================================================== #
   -- General: ====================================================================================
-  map('i', '<C-s>', '<esc>' .. C 'silent update', 'Save buffer')
-  map('n', '<C-s>', C 'silent update', 'Save buffer')
+  map('n', '<C-H>', '<C-w>h', 'Go to left window')
+  map('n', '<C-J>', '<C-w>j', 'Go to lower window')
+  map('n', '<C-K>', '<C-w>k', 'Go to upper window')
+  map('n', '<C-L>', '<C-w>l', 'Go to right window')
   map('n', '<C-n>', '*N', 'Highlight word under cursor')
-  map('n', '<Esc>', C 'silent nohl', 'Clear search highlights')
-  map('n', '<Tab>', C 'bnext', 'Next buffer')
-  map('n', '<S-Tab>', C 'bprevious', 'Previous buffer')
   map('x', '<Tab>', '>gv', 'Indent selection')
   map('x', '<S-Tab>', '<gv', 'Unindent selection')
+  map('n', '<Tab>', C 'bnext', 'Next buffer')
+  map('n', '<S-Tab>', C 'bprevious', 'Previous buffer')
+  map('n', '<Esc>', C 'silent nohl', 'Clear search highlights')
+  map('in', '<C-s>', C 'silent update', 'Save buffer')
+  map('in', '<C-CR>', C 'InAndOut', 'Jump in and out')
 
   -- Bracketed: ==================================================================================
   map('n', ']f', C 'RelativeFileNext', 'Next file in directory')
@@ -208,8 +212,9 @@ Config.later(function()
   map('n', ']<space>', C "<c-u>put =repeat(nr2char(10), v:count1)']", 'Add blank line(s) below')
 
   -- Misc: ======================================================================================
-  map('n', '-', C 'Explorer', 'Toggle file explorer')
+  map('n', '-', C 'ExploreAtFile', 'Toggle file explorer')
   map('n', 's', C 'EasyMotion', 'Start easy motion')
+  map('x', 'S', C 'VisualSurround', 'Start easy motion')
   map('n', 'sw', C 'SurroundOrReplaceQuotes', 'Surround or replace quotes')
   map('n', 'gF', C 'OpenOrCreateFile', 'Open or create file under the cursor')
   map('n', 'gy', C 'GetSelection', 'Yank last selection')
