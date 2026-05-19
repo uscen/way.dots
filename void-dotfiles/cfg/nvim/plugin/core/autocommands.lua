@@ -159,9 +159,9 @@ Config.now(function()
   -- Delete [No Name] buffers: ===================================================================
   Config.new_autocmd('BufHidden', {
     group = vim.api.nvim_create_augroup('delete_no_name_buffer', { clear = true }),
-    callback = function(event)
-      if event.file == '' and vim.bo[event.buf].buftype == '' and not vim.bo[event.buf].modified then
-        vim.schedule(function() pcall(vim.api.nvim_buf_delete, event.buf, {}) end)
+    callback = function(ctx)
+      if ctx.file == '' and vim.bo[ctx.buf].buftype == '' and not vim.bo[ctx.buf].modified then
+        vim.schedule(function() pcall(vim.api.nvim_buf_delete, ctx.buf, {}) end)
       end
     end,
   })
@@ -396,20 +396,12 @@ Config.now(function()
     end,
   })
 
-  -- Close [No nawith me] Buffer: =================================================================
-  vim.api.nvim_create_autocmd('BufEnter', {
+  -- Close [No Name] buffers: ===================================================================
+  Config.new_autocmd('BufHidden', {
     group = vim.api.nvim_create_augroup('no_name_close', { clear = true }),
-    pattern = '*',
-    callback = function()
-      local bufsize = #vim.fn.getbufinfo({ buflisted = 1 })
-      if bufsize == 2 then
-        vim.schedule(function()
-          for _, buf in pairs(vim.fn.getbufinfo({ buflisted = 1 })) do
-            if buf.name == '' then
-              vim.api.nvim_buf_delete(buf.bufnr, { force = true })
-            end
-          end
-        end)
+    callback = function(ctx)
+      if ctx.file == '' and vim.bo[ctx.buf].buftype == '' then
+        vim.schedule(function() pcall(vim.api.nvim_buf_delete, ctx.buf, { force = true }) end)
       end
     end,
   })
