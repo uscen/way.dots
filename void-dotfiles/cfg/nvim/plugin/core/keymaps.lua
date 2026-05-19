@@ -166,9 +166,9 @@ Config.later(function()
   map('n', L 'oa', C 'Mason', 'Mason')
   map('n', L 'ox', C 'OpenUrl', 'Open url')
   map('n', L 'os', C 'Dashboard', 'Open Dashboard')
+  map('n', L 'ou', C 'PackUpdate', 'Update plugins')
   map('n', L 'od', C 'ToggleDiagnosticStyle', 'Toggle diagnostic style')
   map('n', L 'ob', C 'ToggleBackground', 'Toggle background (dark/light)')
-  map('n', L 'ou', C 'lua vim.pack.update()', 'Update plugins')
 
   -- ============================================================================== #
   -- Noneleader:                                                                    #
