@@ -396,18 +396,20 @@ Config.now(function()
     end,
   })
 
-  -- Close [No nawith me] Buffer: ================================================================
+  -- Close [No nawith me] Buffer: =================================================================
   vim.api.nvim_create_autocmd('BufEnter', {
     group = vim.api.nvim_create_augroup('no_name_close', { clear = true }),
     pattern = '*',
     callback = function()
       local bufsize = #vim.fn.getbufinfo({ buflisted = 1 })
       if bufsize == 2 then
-        for _, buf in pairs(vim.fn.getbufinfo({ buflisted = 1 })) do
-          if buf.name == '' then
-            vim.api.nvim_buf_delete(buf.bufnr, { force = true })
+        vim.schedule(function()
+          for _, buf in pairs(vim.fn.getbufinfo({ buflisted = 1 })) do
+            if buf.name == '' then
+              vim.api.nvim_buf_delete(buf.bufnr, { force = true })
+            end
           end
-        end
+        end)
       end
     end,
   })
