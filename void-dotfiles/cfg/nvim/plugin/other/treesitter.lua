@@ -11,7 +11,7 @@ Config.now_if_args(function()
   })
 
   -- Ensure installed: ===========================================================================
-  local languages = { 'html', 'css', 'markdown', 'javascript', 'typescript', 'tsx', 'json', 'toml', 'yaml', 'jq', 'prisma', 'sql' }
+  local languages = { 'html', 'css', 'markdown', 'javascript', 'typescript', 'tsx', 'json', 'toml', 'yaml', 'jq', 'prisma', 'lua' }
   local isnt_installed = function(lang)
     return #vim.api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) == 0
   end

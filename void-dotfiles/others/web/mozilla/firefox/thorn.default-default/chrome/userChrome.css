@@ -12,8 +12,8 @@
   --uc-toolbar-position: 4;
 
   /* URL Bar width (min applied normally, max on focus) */
-  --uc-urlbar-min-width: 20vw;
-  --uc-urlbar-max-width: 30vw;
+  --uc-urlbar-min-width: 25vw;
+  --uc-urlbar-max-width: 25vw;
 
   /* URL Bar position (1 = tabs right, 3 = tabs left) */
   --uc-urlbar-position: 1;
