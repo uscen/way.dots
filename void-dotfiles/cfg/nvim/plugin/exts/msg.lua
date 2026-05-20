@@ -116,6 +116,17 @@ Config.later(function()
         return
       end
     end
+
     o_msg_show(kind, content, replace_last, history, append, id, trigger)
+  end
+
+  local orig_notify = vim.notify
+  vim.notify = function(msg, level, opts)
+    if type(msg) == 'string' and msg:find('%(mini%.git%)') then
+      -- route to your ui2 msg handler directly:
+      orig_notify(msg, level, vim.tbl_extend('force', opts or {}, { title = 'Git' }))
+      return
+    end
+    orig_notify(msg, level, opts)
   end
 end)
