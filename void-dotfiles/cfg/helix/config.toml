@@ -29,7 +29,7 @@ auto-signature-help = false
 [editor.cursor-shape]
 normal = "block"
 insert = "block"
-select = 'block'
+select = "block"
 
 # =============================================================================== #
 # Keymaps:                                                                        #
