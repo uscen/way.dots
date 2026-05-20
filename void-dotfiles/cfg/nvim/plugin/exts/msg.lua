@@ -43,16 +43,16 @@ Config.later(function()
   })
 
   local skip_messages = {
-    -- Write: ======================================================================================
+    -- Write: ====================================================================================
     '%d+L, %d+B',
 
-    -- Search: =====================================================================================
+    -- Search: ===================================================================================
     '; after #%d+',
     '; before #%d+',
     '^[/?].*', -- searching up/down
     'E486: Pattern not found:',
 
-    -- Edit: =======================================================================================
+    -- Edit: =====================================================================================
     '%d+ less lines',
     '%d+ fewer lines',
     '%d+ more lines',
@@ -69,16 +69,19 @@ Config.later(function()
     '%d lines yanked',
     'no lines in buffer',
 
-    -- Undo/Redo: ==================================================================================
+    -- Undo/Redo: ================================================================================
     '%d+ changes?;',
     ' changes; brefore #',
     ' changes; after #',
     ' 1 change; before #',
     ' 1 change; after #',
 
-    -- Move lines: =================================================================================
+    -- Move lines: ===============================================================================
     ' lines moved',
     ' lines indented',
+
+    -- mini.git: =================================================================================
+    '%(mini%.git%)',
   }
 
   local normalized_content = function(src)
@@ -103,6 +106,7 @@ Config.later(function()
     if kind == 'bufwrite' then
       return
     end
+
     local msg = normalized_content(content)
 
     for _, pat in ipairs(skip_messages) do
@@ -112,15 +116,5 @@ Config.later(function()
     end
 
     o_msg_show(kind, content, replace_last, history, append, id, trigger)
-  end
-
-  local orig_notify = vim.notify
-  vim.notify = function(msg, level, opts)
-    if type(msg) == 'string' and msg:find('%(mini%.git%)') then
-      -- route to your ui2 msg handler directly:
-      orig_notify(msg, level, vim.tbl_extend('force', opts or {}, { title = 'Git' }))
-      return
-    end
-    orig_notify(msg, level, opts)
   end
 end)
