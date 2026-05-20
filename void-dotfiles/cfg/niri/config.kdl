@@ -163,7 +163,7 @@ input {
     workspace-auto-back-and-forth
     focus-follows-mouse max-scroll-amount="0%"
     mod-key "Alt"
-    mod-key-nested "Super"
+    mod-key-nested "Alt"
 }
 
 // ============================================================================== #
@@ -333,7 +333,7 @@ animations {
 }
 
 // ============================================================================== #
-// Recent Windows:                                                                #
+// Recent:                                                                        #
 // ============================================================================== #
 recent-windows {
     on
@@ -384,7 +384,7 @@ gestures {
 }
 
 // ============================================================================== #
-// Window Rules:                                                                  #
+// Rules:                                                                         #
 // ============================================================================== #
 // All: ==========================================================================================
 window-rule {
@@ -528,7 +528,7 @@ window-rule {
 }
 
 // ============================================================================== #
-// Layer Rules:                                                                   #
+// Layer:                                                                         #
 // ============================================================================== #
 layer-rule {
     match namespace="^wallpaper$"
@@ -543,7 +543,23 @@ layer-rule {
 // Keybidngs:                                                                     #
 // ============================================================================== #
 binds {
-    // Application Shortcuts: ====================================================================
+    // Scratchpad terminal: ==============================================================================
+    SUPER+T                             { spawn "~/.config/niri/scripts/scratch.sh" "special-term"; }
+    SUPER+B                             { spawn "~/.config/niri/scripts/scratch.sh" "special-btop"; }
+    SUPER+N                             { spawn "~/.config/niri/scripts/scratch.sh" "special-files"; }
+    SUPER+Y                             { spawn "~/.config/niri/scripts/scratch.sh" "special-files"; }
+
+    // Scripts actions: ==========================================================================
+    MOD+SHIFT+P                         { spawn "~/.config/fuzzel/modules/powermenu"; }
+    MOD+SHIFT+U                         { spawn "~/.config/fuzzel/modules/umount"; }
+    MOD+SHIFT+M                         { spawn "~/.config/fuzzel/modules/media"; }
+    MOD+SHIFT+W                         { spawn "~/.config/fuzzel/modules/niri"; }
+    MOD+SHIFT+I                         { spawn "~/.config/fuzzel/modules/wall"; }
+    MOD+SHIFT+C                         { spawn "~/.config/fuzzel/modules/cliphist"; }
+    MOD+SHIFT+B                         { spawn "~/.config/fuzzel/modules/calc"; }
+    MOD+SHIFT+E                         { spawn "~/.config/fuzzel/modules/emoji"; }
+
+    // Application shortcuts: ====================================================================
     MOD+RETURN                          { spawn "alacritty"; }
     MOD+SHIFT+RETURN                    { spawn "foot"; }
     MOD+SHIFT+N                         { spawn "nautilus"; }
@@ -554,17 +570,6 @@ binds {
     MOD+B                               { spawn "foot" "--app-id='bluetui'" "bluetui"; }
     MOD+I                               { spawn "foot" "--app-id='impala'" "impala"; }
 	  MOD+D				                        { spawn "sh" "-c" "fuzzel --prompt='Apps Menu: ' --placeholder=\"  $(date '+%a %d-%m  󰥔 %R')\""; }
-    MOD+U                               { spawn "~/.config/niri/scripts/scratch.sh" "special-term"; }
-
-    // Scripts Actions: ==========================================================================
-    MOD+SHIFT+P                         { spawn "~/.config/fuzzel/modules/powermenu"; }
-    MOD+SHIFT+U                         { spawn "~/.config/fuzzel/modules/umount"; }
-    MOD+SHIFT+M                         { spawn "~/.config/fuzzel/modules/media"; }
-    MOD+SHIFT+W                         { spawn "~/.config/fuzzel/modules/niri"; }
-    MOD+SHIFT+I                         { spawn "~/.config/fuzzel/modules/wall"; }
-    MOD+SHIFT+C                         { spawn "~/.config/fuzzel/modules/cliphist"; }
-    MOD+SHIFT+B                         { spawn "~/.config/fuzzel/modules/calc"; }
-    MOD+SHIFT+E                         { spawn "~/.config/fuzzel/modules/emoji"; }
 
     // Media keys: ===============================================================================
     XF86AudioRaiseVolume                allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
@@ -579,7 +584,7 @@ binds {
     XF86MonBrightnessDown               allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
     XF86Calculator                      repeat=false { spawn "walker" "--provider" "calc"; }
 
-    // Window Management: ========================================================================
+    // Window management: ========================================================================
     MOD+Q                               { close-window; }
     MOD+J                               { focus-window-or-workspace-down; }
     MOD+K                               { focus-window-or-workspace-up; }
@@ -610,7 +615,7 @@ binds {
     MOD+HOME                            { focus-column-first; }
     MOD+END                             { focus-column-last; }
 
-    // Monitor Management - Move between monitors: ===============================================
+    // Monitor management - move between monitors: ===============================================
     MOD+CONTROL+J                       { focus-monitor-down; }
     MOD+CONTROL+K                       { focus-monitor-up; }
     MOD+CONTROL+H                       { focus-monitor-left; }
@@ -645,7 +650,7 @@ binds {
     MOD+CONTROL+WHEELSCROLLRIGHT        { move-column-right; }
     MOD+CONTROL+WHEELSCROLLLEFT         { move-column-left; }
 
-    // Numbered Workspaces: ======================================================================
+    // Numbered workspaces: ======================================================================
     MOD+1                               { focus-workspace 1; }
     MOD+2                               { focus-workspace 2; }
     MOD+3                               { focus-workspace 3; }
@@ -668,7 +673,7 @@ binds {
     MOD+SHIFT+9                         { move-column-to-workspace 9; }
     MOD+BACKSPACE                       { focus-workspace-previous; }
 
-    // Layout Controls: ==========================================================================
+    // Layout controls: ==========================================================================
     Mod+R                               { switch-preset-column-width; }
     Mod+SHIFT+R                         { switch-preset-window-height; }
     Mod+CONTROL+R                       { reset-window-height; }
@@ -703,12 +708,12 @@ binds {
     MOD+P                               { spawn-sh "niri msg pick-color| grep 'Hex:'| cut -d' ' -f2| wl-copy"; }
     Mod+X                               { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json focused-window | jq .id)"; }
 
-    // Shortcuts Panel: ==========================================================================
+    // Shortcuts panel: ==========================================================================
     MOD+SHIFT+ESCAPE                    { show-hotkey-overlay; }
     Mod+SHIFT+Q                         { quit skip-confirmation=true; }
     Mod+CONTROL+Q                       { power-off-monitors; }
     Mod+Escape                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
-    // Application Restarts: =====================================================================
+    // Application restarts: =====================================================================
     MOD+SUPER+W                         { spawn "sh" "-c" "pgrep -x waybar >/dev/null && killall waybar || waybar &"; }
 }

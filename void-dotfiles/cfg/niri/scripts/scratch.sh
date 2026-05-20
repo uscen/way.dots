@@ -9,36 +9,21 @@ if [ -z "$1" ]; then
 fi
 
 # Commands to run the programs: ==================================================================
-terminal="foot"
-term="$terminal --app-id special-term"
-btop="$terminal --app-id special-btop -e bash -c btop"
-files="$terminal --app-id special-files -e bash -c yazi"
-projectTerm="$terminal --app-id special-project -e zsh -ic '$HOME/scripts/project.tmux'"
-spotify="spotify"
-ticktick="ticktick"
+TERMINAL="foot"
+term="$TERMINAL --app-id special-term"
+btop="$TERMINAL --app-id special-btop -e bash -c btop"
+files="$TERMINAL --app-id special-files -e bash -c yazi"
 
 # The case statements need the app-id of the program: ============================================
 case "$1" in
 "special-term")
   cmd="$term"
   ;;
-"special-files")
-  cmd="$files"
-  ;;
 "special-btop")
   cmd="$btop"
   ;;
-"special-nvim")
-  cmd="$nvim"
-  ;;
-"special-project")
-  cmd="$projectTerm"
-  ;;
-"ticktick")
-  cmd="$ticktick"
-  ;;
-"Spotify")
-  cmd="$spotify"
+"special-files")
+  cmd="$files"
   ;;
 *)
   echo "Unhandled case provided. Exiting"
