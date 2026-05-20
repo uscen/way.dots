@@ -414,10 +414,11 @@ window-rule {
 
 // Specific: =====================================================================================
 window-rule {
-  match app-id="^scratch-term$"
+  match app-id=r#"^special*"#
   default-column-width { proportion 0.80; }
-  default-window-height { proportion 0.90; }
-	open-floating true
+  default-window-height { proportion 0.80; }
+  open-floating true
+  open-on-workspace "5"
 }
 
 // Dialogs: ======================================================================================
@@ -553,16 +554,17 @@ binds {
     MOD+B                               { spawn "foot" "--app-id='bluetui'" "bluetui"; }
     MOD+I                               { spawn "foot" "--app-id='impala'" "impala"; }
 	  MOD+D				                        { spawn "sh" "-c" "fuzzel --prompt='Apps Menu: ' --placeholder=\"  $(date '+%a %d-%m  󰥔 %R')\""; }
+    MOD+U                               { spawn "~/.config/niri/scripts/scratch.sh" "special-term"; }
 
     // Scripts Actions: ==========================================================================
-    MOD+SHIFT+P                         { spawn "/home/lli/.config/fuzzel/modules/powermenu"; }
-    MOD+SHIFT+U                         { spawn "/home/lli/.config/fuzzel/modules/umount"; }
-    MOD+SHIFT+M                         { spawn "/home/lli/.config/fuzzel/modules/media"; }
-    MOD+SHIFT+W                         { spawn "/home/lli/.config/fuzzel/modules/niri"; }
-    MOD+SHIFT+I                         { spawn "/home/lli/.config/fuzzel/modules/wall"; }
-    MOD+SHIFT+C                         { spawn "/home/lli/.config/fuzzel/modules/cliphist"; }
-    MOD+SHIFT+B                         { spawn "/home/lli/.config/fuzzel/modules/calc"; }
-    MOD+SHIFT+E                         { spawn "/home/lli/.config/fuzzel/modules/emoji"; }
+    MOD+SHIFT+P                         { spawn "~/.config/fuzzel/modules/powermenu"; }
+    MOD+SHIFT+U                         { spawn "~/.config/fuzzel/modules/umount"; }
+    MOD+SHIFT+M                         { spawn "~/.config/fuzzel/modules/media"; }
+    MOD+SHIFT+W                         { spawn "~/.config/fuzzel/modules/niri"; }
+    MOD+SHIFT+I                         { spawn "~/.config/fuzzel/modules/wall"; }
+    MOD+SHIFT+C                         { spawn "~/.config/fuzzel/modules/cliphist"; }
+    MOD+SHIFT+B                         { spawn "~/.config/fuzzel/modules/calc"; }
+    MOD+SHIFT+E                         { spawn "~/.config/fuzzel/modules/emoji"; }
 
     // Media keys: ===============================================================================
     XF86AudioRaiseVolume                allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
