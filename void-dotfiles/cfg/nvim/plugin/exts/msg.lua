@@ -103,7 +103,6 @@ Config.later(function()
     if kind == 'bufwrite' then
       return
     end
-
     local msg = normalized_content(content)
 
     -- Redirect mini.git output to notifications:
@@ -117,7 +116,6 @@ Config.later(function()
         return
       end
     end
-
     o_msg_show(kind, content, replace_last, history, append, id, trigger)
   end
 end)
