@@ -105,12 +105,6 @@ Config.later(function()
     end
     local msg = normalized_content(content)
 
-    -- Redirect mini.git output to notifications:
-    if msg:find('%(mini%.git%)') then
-      vim.notify(msg, vim.log.levels.INFO)
-      return
-    end
-
     for _, pat in ipairs(skip_messages) do
       if msg:find(pat) then
         return
