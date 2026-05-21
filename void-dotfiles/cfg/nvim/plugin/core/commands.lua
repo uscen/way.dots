@@ -104,8 +104,26 @@ Config.later(function()
     require(name).setup()
   end, { nargs = 1 })
 
-  -- Copy text to clipboard using codeblock format ```{ft}{content}```: ==========================
-  Config.new_command('CopyCodeBlock', function(opts)
+  -- Yank last into clipboard ====================================================================
+  Config.new_command('YankToClipboard', function()
+    local copy = vim.fn.getreg('"')
+    if copy == '' then
+      return
+    end
+    vim.fn.setreg('+', copy)
+    local msg = ''
+    local _, ln = string.gsub(copy, '\n', '')
+    if ln > 0 then
+      msg = string.format('%d %s yanked into "+', ln, ln > 1 and 'lines' or 'line')
+    else
+      local ch = vim.fn.strdisplaywidth(copy)
+      msg = string.format('%d %s yanked into "+', ch, ch > 1 and 'chars' or 'char')
+    end
+    vim.api.nvim_echo({ { msg } }, false, {})
+  end)
+
+  -- Yank text to clipboard using codeblock format ```{ft}{content}```: ==========================
+  Config.new_command('YankCodeBlock', function(opts)
     local lines = vim.api.nvim_buf_get_lines(0, opts.line1 - 1, opts.line2, true)
     local content = table.concat(lines, '\n')
     local result = string.format('```%s\n%s\n```', vim.bo.filetype, content)

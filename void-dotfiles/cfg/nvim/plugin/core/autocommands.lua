@@ -373,7 +373,7 @@ Config.now(function()
   -- Close some filetypes with <q>: ==============================================================
   Config.new_autocmd('FileType', {
     group = vim.api.nvim_create_augroup('q_close', { clear = true }),
-    pattern = { 'qf', 'man', 'help', 'query', 'notify', 'lspinfo', 'startuptime', 'git', 'checkhealth' },
+    pattern = { 'qf', 'man', 'help', 'query', 'notify', 'lspinfo', 'startuptime', 'git', 'checkhealth', 'nvim-undotree' },
     callback = function(event)
       vim.bo[event.buf].buflisted = false
       local close_buffer = vim.schedule_wrap(function()

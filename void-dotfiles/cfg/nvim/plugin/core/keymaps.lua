@@ -167,8 +167,8 @@ Config.later(function()
   map('n', L 'ox', C 'OpenUrl', 'Open url')
   map('n', L 'os', C 'Dashboard', 'Open Dashboard')
   map('n', L 'ou', C 'PackUpdate', 'Update plugins')
-  map('n', L 'od', C 'ToggleDiagnosticStyle', 'Toggle diagnostic style')
   map('n', L 'ob', C 'ToggleBackground', 'Toggle background (dark/light)')
+  map('n', L 'od', C 'ToggleDiagnosticStyle', 'Toggle diagnostic style')
 
   -- ============================================================================== #
   -- Noneleader:                                                                    #
@@ -217,8 +217,10 @@ Config.later(function()
   map('x', 'S', C 'VisualSurround', 'Start easy motion')
   map('n', 'sw', C 'SurroundOrReplaceQuotes', 'Surround or replace quotes')
   map('n', 'gF', C 'OpenOrCreateFile', 'Open or create file under the cursor')
-  map('n', 'gy', C 'GetSelection', 'Yank last selection')
-  map('n', 'gv', C 'GetPasteText', 'Select last pasted text')
+  map('n', 'gy', C 'YankToClipboard', 'Sync last yank to system clipboard')
+  map('x', 'gb', C 'YankCodeBlock', 'Yank selection as formatted code block')
+  map('n', 'gv', C 'GetSelection', 'Yank last visual selection')
+  map('n', 'gp', C 'GetPasteText', 'Select last pasted text')
 
   -- Pmenu: ===================================================================================
   map('ic', '<C-j>', [[pumvisible() ? "\<C-n>" : "\<C-j>"]], 'Next completion item', { expr = true })
