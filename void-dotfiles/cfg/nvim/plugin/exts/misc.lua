@@ -120,8 +120,8 @@ Config.later(function()
     if #buflist <= 1 then
       vim.cmd('quit')
     elseif #normal_wins > 1 then
-      local cur_buf = vim.api.nvim_get_current_buf()
-      require('mini.bufremove').wipeout(cur_buf, true)
+      local buf = vim.api.nvim_get_current_buf()
+      vim.cmd.bdelete({ buf, bang = true })
       vim.cmd('close')
     else
       vim.cmd('bdelete')
@@ -130,36 +130,29 @@ Config.later(function()
 
   vim.api.nvim_create_user_command('DeleteBuffer', M.delete_buffer, {})
 
-  -- Delete listed unmodified buffers that are not in a window: ==================================
-  function M.deleteInactiveBuffers()
-    local notify = false
-    local number = 0
-    for _, buf in ipairs(vim.fn.getbufinfo()) do
-      if vim.tbl_isempty(buf.windows) and buf.listed == 1 and buf.changed == 0 then
-        notify = true
-        number = number + 1
-        vim.cmd.bdelete({ buf.bufnr, bang = true })
-      end
-    end
-    if notify then
-      vim.notify('Deleted ' .. tostring(number) .. ' inactive buffer(s).', vim.log.levels.INFO)
-    else
-      vim.notify('No inactive buffers were deleted.', vim.log.levels.INFO)
-    end
-  end
-
-  vim.api.nvim_create_user_command('DeleteInactiveBuffers', M.deleteInactiveBuffers, {})
-
   -- Delete others buffers: ======================================================================
   function M.deleteOthersBuffers()
     for _, buf in ipairs(vim.api.nvim_list_bufs()) do
       if buf ~= vim.fn.bufnr() and vim.fn.buflisted(buf) == 1 then
-        require('mini.bufremove').wipeout(buf, true)
+        vim.cmd.bdelete({ buf, bang = true })
       end
     end
   end
 
   vim.api.nvim_create_user_command('DeleteOtherBuffers', M.deleteOthersBuffers, {})
+
+  -- Delete listed unmodified buffers that are not in a window: ==================================
+  function M.deleteInactiveBuffers()
+    local number = 0
+    for _, buf in ipairs(vim.fn.getbufinfo()) do
+      if vim.tbl_isempty(buf.windows) and buf.listed == 1 and buf.changed == 0 then
+        number = number + 1
+        vim.cmd.bdelete({ buf.bufnr, bang = true })
+      end
+    end
+  end
+
+  vim.api.nvim_create_user_command('DeleteInactiveBuffers', M.deleteInactiveBuffers, {})
 
   -- This is a simplified version of in-and-out.nvim: ==============================================
   -- https://github.com/ysmb-wtsg/in-and-out.nvim
