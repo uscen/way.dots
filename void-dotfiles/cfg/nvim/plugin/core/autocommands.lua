@@ -13,10 +13,7 @@ Config.now(function()
   Config.new_autocmd('TextYankPost', {
     group = vim.api.nvim_create_augroup('highlight_yank', {}),
     callback = function()
-      if vim.v.operator == 'y' then
-        vim.fn.setreg('+', vim.fn.getreg('0'))
-        vim.hl.on_yank({ on_macro = true, on_visual = true, higroup = 'IncSearch', timeout = 100 })
-      end
+      (vim.hl or vim.highlight).on_yank()
     end,
   })
 
