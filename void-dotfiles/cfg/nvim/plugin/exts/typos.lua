@@ -16,16 +16,25 @@ Config.later(function()
   vim.cmd([[
   iabbrev asycn     async
   iabbrev cosnt     const
-  iabbrev ehco      echo
-  iabbrev flase     false
-  iabbrev functoin  function
   iabbrev ocnst     const
+  iabbrev lte       let
+  iabbrev ehco      echo
+  iabbrev functoin  function
+  iabbrev lcoa      local
+  iabbrev lcoal     local
+  iabbrev locla     local
   iabbrev retunr    return
   iabbrev reutnr    return
   iabbrev reutrn    return
   iabbrev strign    string
   iabbrev treu      true
   iabbrev ture      true
+  iabbrev tue       true
+  iabbrev fasle     false
+  iabbrev flase     false
+  iabbrev fae       false
+  iabbrev pirnt     print
+  iabbrev pritn     print
   iabbrev reqire    require
   iabbrev serveral  several
   iabbrev undefiend undefined
@@ -64,6 +73,7 @@ Config.later(function()
   iabbrev Widnow      Window
   iabbrev Widnows     Windows
   iabbrev adn         and
+  iabbrev sahre       share
   iabbrev componenets components
   iabbrev execture    execute
   iabbrev exectures   executes
