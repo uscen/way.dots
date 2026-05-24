@@ -121,8 +121,8 @@ Config.later(function()
       vim.cmd('quit')
     elseif #normal_wins > 1 then
       local buf = vim.api.nvim_get_current_buf()
-      vim.cmd.bdelete({ buf, bang = true })
       vim.cmd('close')
+      vim.cmd.bdelete({ buf, bang = true })
     else
       vim.cmd('bdelete')
     end
