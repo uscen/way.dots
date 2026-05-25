@@ -4,7 +4,7 @@
 Config.later(function()
   local M = {}
   -- Open url in buffer: ===========================================================================
-  function M.openUrl()
+  function M.open_url()
     local text = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), '\n')
     local urls = {}
     for url in text:gmatch([[%l%l%l+://[^%s)%]}"'`>]+]]) do
@@ -20,10 +20,10 @@ Config.later(function()
     end)
   end
 
-  vim.api.nvim_create_user_command('OpenUrl', M.openUrl, {})
+  vim.api.nvim_create_user_command('OpenUrl', M.open_url, {})
 
   -- Toggle word: ==================================================================================
-  function M.smartWord()
+  function M.smart_word()
     local toggles = {
       ['True'] = 'False',
       ['true'] = 'false',
@@ -73,10 +73,10 @@ Config.later(function()
     end
   end
 
-  vim.api.nvim_create_user_command('SmartWord', M.smartWord, {})
+  vim.api.nvim_create_user_command('SmartWord', M.smart_word, {})
 
   -- Smart duplicate line: =========================================================================
-  function M.smartDuplicate()
+  function M.smart_duplicate()
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
     local line = vim.api.nvim_get_current_line()
     local ft = vim.bo.filetype
@@ -105,10 +105,10 @@ Config.later(function()
     vim.api.nvim_win_set_cursor(0, { row + 1, targetCol })
   end
 
-  vim.api.nvim_create_user_command('SmartDuplicate', M.smartDuplicate, {})
+  vim.api.nvim_create_user_command('SmartDuplicate', M.smart_duplicate, {})
 
   -- Delete buff: ==================================================================================
-  M.delete_buffer = function()
+  function M.delete_buffer()
     local wins = vim.api.nvim_tabpage_list_wins(0)
     local normal_wins = {}
     for _, win in ipairs(wins) do
@@ -131,7 +131,7 @@ Config.later(function()
   vim.api.nvim_create_user_command('DeleteBuffer', M.delete_buffer, {})
 
   -- Delete others buffers: ======================================================================
-  function M.deleteOthersBuffers()
+  function M.delete_others_buffers()
     for _, buf in ipairs(vim.api.nvim_list_bufs()) do
       if buf ~= vim.fn.bufnr() and vim.fn.buflisted(buf) == 1 then
         vim.cmd.bdelete({ buf, bang = true })
@@ -139,10 +139,10 @@ Config.later(function()
     end
   end
 
-  vim.api.nvim_create_user_command('DeleteOtherBuffers', M.deleteOthersBuffers, {})
+  vim.api.nvim_create_user_command('DeleteOtherBuffers', M.delete_others_buffers, {})
 
   -- Delete listed unmodified buffers that are not in a window: ==================================
-  function M.deleteInactiveBuffers()
+  function M.delete_inactive_buffers()
     local number = 0
     for _, buf in ipairs(vim.fn.getbufinfo()) do
       if vim.tbl_isempty(buf.windows) and buf.listed == 1 and buf.changed == 0 then
@@ -152,10 +152,9 @@ Config.later(function()
     end
   end
 
-  vim.api.nvim_create_user_command('DeleteInactiveBuffers', M.deleteInactiveBuffers, {})
+  vim.api.nvim_create_user_command('DeleteInactiveBuffers', M.delete_inactive_buffers, {})
 
   -- This is a simplified version of in-and-out.nvim: ==============================================
-  -- https://github.com/ysmb-wtsg/in-and-out.nvim
   local function escape_lua_pattern(s)
     local matches = {
       ['^'] = '%^',
