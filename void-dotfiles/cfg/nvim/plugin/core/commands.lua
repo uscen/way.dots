@@ -190,7 +190,7 @@ Config.later(function()
     for _, window_number in ipairs(window_numbers) do
       local buffer_number = vim.api.nvim_win_get_buf(window_number)
       local filetype = vim.bo[buffer_number].filetype
-      if not vim.tbl_contains(ignored_filetypes, filetype) then
+      if vim.fn.win_gettype(window_number) == '' and not vim.tbl_contains(ignored_filetypes, filetype) then
         table.insert(windows_to_rotate, { window_number = window_number, buffer_number = buffer_number })
       end
     end
