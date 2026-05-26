@@ -165,22 +165,50 @@ Config.later(function()
     if last_nonblank < n_lines then vim.api.nvim_buf_set_lines(0, last_nonblank, n_lines, true, {}) end
   end)
 
-  -- Join or remove empty lines: =================================================================
+  -- Join empty lines: ===========================================================================
   Config.new_command('JoinEmptyLines', function(args)
     if args.fargs[1] ~= nil then
-      -- Custom maximum number of empty lines to join
       vim.cmd('silent! g/^$/,/./-' .. args.fargs[1] .. 'j')
     elseif args.bang then
-      -- Force join: remove *all* empty lines
       vim.cmd('silent! g/^$/-j')
     else
-      -- Default behavior: join single empty lines
       vim.cmd('silent! g/^$/,/./-1j')
     end
-    -- Remove trailing empty lines at the end of file
-    vim.cmd([[%s/\_s*\%$//e]])
+    vim.cmd([[ %s/\_s*\%$//e ]])
     vim.cmd('nohlsearch')
   end, { bang = true, nargs = '?' })
+
+  -- Clear register data: ========================================================================
+  Config.new_command('ClearRegister', function(args)
+    if #args.fargs == 0 then
+      local registers = {
+        '"',
+        '-',
+        '/',
+        '*',
+        '+',
+        '=',
+        '_',
+        unpack(vim.fn.range(0, 9)), -- Registers 0-9
+        unpack(vim.fn.map(vim.fn.range(97, 122), function(_, v)
+          return string.char(v)
+        end)),
+      }
+      for _, reg in pairs(registers) do
+        vim.fn.setreg(reg, '')
+      end
+      vim.notify('All registers have been cleared')
+      return
+    end
+    for _, reg in pairs(args.fargs) do
+      if vim.fn.getreg(reg) ~= nil then
+        vim.fn.setreg(reg, '')
+        print('Cleared register: ' .. reg)
+      else
+        print('Invalid register: ' .. reg)
+      end
+    end
+  end, { desc = 'Clear register data', nargs = '*' })
 
   -- Rotate Windows: ============================================================================
   Config.new_command('RotateWindows', function()
