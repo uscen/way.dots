@@ -167,7 +167,10 @@ Config.later(function()
   map('n', L 'ox', C 'OpenUrl', 'Open url')
   map('n', L 'os', C 'Dashboard', 'Open Dashboard')
   map('n', L 'ou', C 'PackUpdate', 'Update plugins')
+  map('n', L 'oc', C 'PackClean', 'Clean plugins')
+  map('n', L 'ol', C 'PackList', 'List plugins')
   map('n', L 'ob', C 'ToggleBackground', 'Toggle background (dark/light)')
+  map('n', L 'oi', C 'ToggleInlayHints', 'Toggle inly hints')
   map('n', L 'od', C 'ToggleDiagnosticStyle', 'Toggle diagnostic style')
 
   -- ============================================================================== #
