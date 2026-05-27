@@ -109,8 +109,8 @@ Config.now_if_args(function()
     pattern = 'MiniFilesBufferCreate',
     callback = function(args)
       local buf_id = args.data.buf_id
-      map_split(buf_id, '<C-v>', 'belowright horizontal')
-      map_split(buf_id, '<C-b>', 'belowright vertical')
+      map_split(buf_id, '<leader>wb', 'belowright vertical')
+      map_split(buf_id, '<leader>wv', 'belowright horizontal')
     end,
   })
 
