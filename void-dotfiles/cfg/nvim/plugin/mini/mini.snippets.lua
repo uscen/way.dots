@@ -5,11 +5,11 @@ Config.later(function()
   local MiniSnippets    = require('mini.snippets')
   -- Languge Patterns: ===========================================================================
   local config_path     = vim.fn.stdpath('config')
-  local latex_patterns  = { 'latex/**/*.json', '**/latex.json' }
   local markdown        = { 'markdown.json' }
   local webHtmlPatterns = { 'html.json', 'ejs.json' }
-  local webJsPatterns   = { 'web/javascript.json', 'web/javascriptreact.json' }
-  local webTsPatterns   = { 'web/typescript.json', 'web/typescriptreact.json' }
+  local latex_patterns  = { 'latex.json', 'latex/**/*.json' }
+  local webJsPatterns   = { 'javascript.json', 'javascriptreact.json' }
+  local webTsPatterns   = { 'typescript.json', 'typescriptreact.json' }
   local lang_patterns   = {
     tex = latex_patterns,
     tsx = webTsPatterns,
