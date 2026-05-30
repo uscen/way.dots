@@ -413,7 +413,7 @@ Config.later(function()
     vim.notify(root .. ' copied')
   end)
 
-  -- Nvim builtin packages manager: =========================================================
+  -- Nvim builtin packages manager: ==============================================================
   Config.new_command('PackUpdate', function() vim.pack.update() end)
   Config.new_command('PackList', function()
     local packages = vim.pack.get(nil, { info = false })

@@ -13,7 +13,7 @@ Config.later(function()
       move_up            = '<C-k>',
       toggle_preview     = '<C-p>',
       choose_in_split    = '<C-v>',
-      choose_in_vsplit   = '<C-s>',
+      choose_in_vsplit   = '<C-b>',
       paste              = '<C-e>',
       another_choose     = {
         char = '<CR>',
