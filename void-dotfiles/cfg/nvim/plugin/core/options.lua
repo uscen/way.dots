@@ -208,13 +208,13 @@ Config.now(function()
   vim.o.timeout                  = true
   vim.o.lazyredraw               = true
   vim.o.hidden                   = true
-  vim.o.ttimeoutlen              = 10
-  vim.o.history                  = 100
-  vim.o.updatetime               = 200
-  vim.o.synmaxcol                = 200
+  vim.o.maxmempattern            = 10000
+  vim.o.updatetime               = 1000
   vim.o.timeoutlen               = 500
   vim.o.redrawtime               = 500
-  vim.o.maxmempattern            = 10000
+  vim.o.synmaxcol                = 200
+  vim.o.history                  = 100
+  vim.o.ttimeoutlen              = 50
 
   -- Disable builtin plugins: ====================================================================
   vim.g.loaded_gzip              = 1
