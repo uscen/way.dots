@@ -20,15 +20,16 @@ Config.later(function()
       goto_right = '}',
     },
     custom_textobjects = {
-      r = gen_ai_spec.diagnostic(),
+      x = gen_ai_spec.diagnostic(),
       i = gen_ai_spec.indent(),
       d = gen_ai_spec.number(),
+      r = gen_ai_spec.line(),
+      a = MiniAi.gen_spec.argument({ separator = ',%s*' }),
       h = MiniAi.gen_spec.treesitter({ a = '@block.outer', i = '@block.inner' }),
       u = MiniAi.gen_spec.treesitter({ a = '@function.outer', i = '@function.inner' }),
       k = MiniAi.gen_spec.treesitter({ a = '@class.outer', i = '@class.inner' }),
       l = MiniAi.gen_spec.treesitter({ a = '@loop.outer', i = '@loop.inner' }),
       c = MiniAi.gen_spec.treesitter({ a = '@conditional.outer', i = '@conditional.inner' }),
-      a = MiniAi.gen_spec.argument({ separator = ',%s*' }),
       o = MiniAi.gen_spec.treesitter({
         a = { '@block.outer', '@conditional.outer', '@loop.outer' },
         i = { '@block.inner', '@conditional.inner', '@loop.inner' },
