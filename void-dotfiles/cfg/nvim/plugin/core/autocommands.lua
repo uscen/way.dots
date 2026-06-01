@@ -137,7 +137,7 @@ Config.now(function()
 
   --  Restore cursor position: ===================================================================
   Config.new_autocmd('BufReadPost', {
-    group = vim.api.nvim_create_augroup('remember_position', { clear = true }),
+    group = vim.api.nvim_create_augroup('preserve_cursor', { clear = true }),
     callback = function(event)
       if vim.bo[event.buf].buftype ~= '' then return end
       vim.cmd([[silent! normal! g`"]])
@@ -364,6 +364,22 @@ Config.now(function()
     group = vim.api.nvim_create_augroup('clear_jumps', { clear = true }),
     callback = function()
       vim.cmd.clearjumps()
+    end,
+  })
+
+  -- Remove stale shada temp files left by crashes (avoids E138 on quit): ========================
+  Config.new_autocmd('VimEnter', {
+    group = vim.api.nvim_create_augroup('shada_cleanup', { clear = true }),
+    callback = function()
+      local dir = vim.fn.stdpath('state') .. '/shada'
+      local cutoff = os.time() - 3600
+      for name in vim.fs.dir(dir) do
+        if name:match('^main%.shada%.tmp%.%a$') then
+          local path = dir .. '/' .. name
+          local st = vim.uv.fs_stat(path)
+          if st and st.mtime.sec < cutoff then vim.fn.delete(path) end
+        end
+      end
     end,
   })
 

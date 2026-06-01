@@ -104,6 +104,16 @@ Config.later(function()
     require(name).setup()
   end, { nargs = 1 })
 
+  -- Yank diagnostic into clipboard: =============================================================
+  Config.new_command('YankDiagnostic', function()
+    local row = vim.api.nvim_win_get_cursor(0)[1] - 1
+    local diags = vim.diagnostic.get(0, { lnum = row })
+    if #diags == 0 then return end
+    local msg = table.concat(vim.tbl_map(function(d) return d.message end, diags), '\n')
+    vim.fn.setreg('+', msg)
+    vim.notify('Yanked: ' .. msg)
+  end)
+
   -- Yank last into clipboard ====================================================================
   Config.new_command('YankToClipboard', function()
     local copy = vim.fn.getreg('"')
