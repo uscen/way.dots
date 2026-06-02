@@ -45,9 +45,7 @@ Config.later(function()
 
   -- Expand Snippets Or complete by Tab ==========================================================
   vim.keymap.set('i', '<Tab>', function()
-    if #MiniSnippets.expand({ insert = false }) > 0 then
-      vim.schedule(MiniSnippets.expand); return ''
-    end
+    if #MiniSnippets.expand({ insert = false }) > 0 then return vim.schedule(MiniSnippets.expand) or '' end
     if vim.fn.complete_info()['selected'] ~= -1 then return '<C-y>' end
     if vim.fn.pumvisible() ~= 0 then return '<C-n><c-y>' end
     return '<Tab>'
