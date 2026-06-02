@@ -223,7 +223,7 @@ Config.later(function()
   map('n', 'gv', C 'GetSelection', 'Yank last visual selection')
   map('n', 'gp', C 'GetPasteText', 'Select last pasted text')
   map('n', 'g?', C 'YankDiagnostic', 'Yank diagnostic to system clipboard')
-  map('n', 'gy', C 'YankToClipboard', 'Sync last yank to system clipboard')
+  map('n', 'gy', C 'YankToClipboard', 'Yank last into system clipboard')
   map('x', 'gb', C 'YankCodeBlock', 'Yank selection as formatted code block')
 
   -- Pmenu: ===================================================================================

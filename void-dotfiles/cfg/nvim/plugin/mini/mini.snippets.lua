@@ -44,14 +44,14 @@ Config.later(function()
   })
 
   -- Expand Snippets Or complete by Tab ==========================================================
-  local expand_or_complete = function()
+  vim.keymap.set('i', '<Tab>', function()
     if #MiniSnippets.expand({ insert = false }) > 0 then
       vim.schedule(MiniSnippets.expand); return ''
     end
-    return vim.fn.pumvisible() == 1 and
-        (vim.fn.complete_info().selected == -1 and vim.keycode('<c-n><c-y>') or vim.keycode('<c-y>')) or '<Tab>'
-  end
-  vim.keymap.set('i', '<Tab>', expand_or_complete, { expr = true, replace_keycodes = true })
+    if vim.fn.complete_info()['selected'] ~= -1 then return '<C-y>' end
+    if vim.fn.pumvisible() ~= 0 then return '<C-n><c-y>' end
+    return '<Tab>'
+  end, { expr = true })
 
   -- Exit snippet sessions on entering normal mode: ==============================================
   Config.new_command('SnippetSessionStop', function()

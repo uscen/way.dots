@@ -51,7 +51,7 @@ Config.later(function()
       end
     end
 
-    -- otherwise setting extmarks and waiting for next char is on the same frame
+    -- otherwise setting extmarks and waiting for next char is on the same frame: ================
     vim.schedule(function()
       local next_char = vim.fn.nr2char(vim.fn.getchar() --[[@as number]])
       if extmarks[next_char] then
