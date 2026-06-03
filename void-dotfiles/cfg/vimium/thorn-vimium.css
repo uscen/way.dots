@@ -3,8 +3,8 @@
 /* ============================================================================== */
 :root {
   --vimium-font-family: -apple-system, Inter, system-ui;
-  --vimium-font-size: 18px;
-  --vimium-font-size-sm: 16px;
+  --vimium-font-size: 20px;
+  --vimium-font-size-sm: 18px;
 
   --vimium-clr-bg-primary: #131f20;
   --vimium-clr-bg-secondary: #172526;
@@ -22,7 +22,7 @@
 /* Hints:                                                                         */
 /* ============================================================================== */
 .vimiumHintMarker {
-  background: var(--vimium-clr-bg-secondary) !important;
+  background: var(--vimium-clr-bg-selection) !important;
   padding: 4px 5px !important;
   border: none !important;
   box-shadow: none !important;
@@ -31,6 +31,7 @@
 .vimiumHintMarker span {
   color: var(--vimium-clr-white) !important;
   font-family: var(--vimium-font-family) !important;
+  font-size: var(--vimium-font-size-sm) !important;
   text-shadow: none !important;
 }
 
