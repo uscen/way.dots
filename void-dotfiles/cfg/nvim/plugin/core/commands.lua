@@ -104,6 +104,19 @@ Config.later(function()
     require(name).setup()
   end, { nargs = 1 })
 
+  -- Print buffer info: ==========================================================================
+  Config.new_command('BufInfo', function()
+    local ft = vim.bo.filetype
+    local bt = vim.bo.buftype
+    if ft == '' then
+      ft = '[none]'
+    end
+    if bt == '' then
+      bt = '[normal]'
+    end
+    print('filetype: ' .. ft .. ' | buftype: ' .. bt)
+  end)
+
   -- Yank diagnostic into clipboard: =============================================================
   Config.new_command('YankDiagnostic', function()
     local row = vim.api.nvim_win_get_cursor(0)[1] - 1
