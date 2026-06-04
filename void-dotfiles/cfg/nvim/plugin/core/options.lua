@@ -188,7 +188,7 @@ Config.now(function()
   vim.o.formatoptions            = 'rqnl1j'
   vim.o.formatexpr               = "v:lua.require'conform'.formatexpr()"
   vim.o.sessionoptions           = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
-  vim.o.diffopt                  = 'internal,filler,closeoff,algorithm:patience,indent-heuristic,linematch:40'
+  vim.o.diffopt                  = 'internal,filler,iwhite,closeoff,algorithm:histogram,indent-heuristic,linematch:60'
   vim.o.suffixesadd              = '.html,.css,.scss,.js,.ts,.jsx,.tsx,.json,.md,.yaml,.yml,.lua'
   vim.o.keywordprg               = vim.g.is_windows and ':help' or ':Man'
 
