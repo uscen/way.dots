@@ -66,16 +66,19 @@ sudo ln -s /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
 # =============================================================================== #
 # Others:                                                                         #
 # =============================================================================== #
-# Iwd as NetworkManager Backend: =================================================================
+# Iwd as networkManager backend: =================================================================
 sudo mkdir -p /etc/NetworkManager/conf.d
 cat <<EOF | sudo tee /etc/NetworkManager/conf.d/wifi_backend.conf > /dev/null
 [device]
 wifi.backend=iwd
 EOF
-# Sudo Without Password: =========================================================================
+
+# Doas without password: =========================================================================
 echo "permit nopass $(whoami) as root" | sudo tee /etc/doas.conf
-# Fix Font Rendering: ============================================================================
+
+# Fix font rendering: ============================================================================
 sudo ln -s /usr/share/fontconfig/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/
 sudo xbps-reconfigure -f fontconfig
+
 # Reconfigure kernel: ============================================================================
 sudo xbps-reconfigure -f linux$(uname -r | cut -d. -f1,2)

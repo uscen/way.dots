@@ -36,7 +36,7 @@ Config.now(function()
   vim.o.undoreload               = 65538
   vim.o.completetimeout          = 100
   vim.o.completeopt              = 'menuone,noselect,fuzzy,nosort,nearest'
-  vim.o.completeitemalign        = 'abbr,kind,menu'
+  vim.o.completeitemalign        = 'kind,abbr,menu'
   vim.o.complete                 = '.,w,b,kspell'
   vim.o.clipboard                = 'unnamedplus'
   vim.o.wildmode                 = 'noselect:lastused,full'
@@ -99,7 +99,7 @@ Config.now(function()
   vim.o.showtabline              = 0
   vim.o.pumblend                 = 0
   vim.o.pummaxwidth              = 50
-  vim.o.pumwidth                 = 40
+  vim.o.pumwidth                 = 30
   vim.o.pumheight                = 10
   vim.o.cmdwinheight             = 10
   vim.o.titlelen                 = 127
@@ -155,8 +155,8 @@ Config.now(function()
   vim.o.secure                   = true
   vim.o.autoread                 = true
   vim.o.modifiable               = true
-  vim.o.autowrite                = true
-  vim.o.autowriteall             = true
+  vim.o.autowrite                = false
+  vim.o.autowriteall             = false
   vim.o.autocomplete             = false
   vim.o.mousemoveevent           = false
   vim.o.autochdir                = false

@@ -479,6 +479,7 @@ window-rule {
 
 // Utilities: ====================================================================================
 window-rule {
+    match app-id=r#"org.gnome.Nautilus"#
     match app-id=r#"nm-connection-editor"#
     match app-id=r#"blueman-manager"#
     match app-id=r#"pavucontrol"#

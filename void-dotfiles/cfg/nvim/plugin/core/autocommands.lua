@@ -383,50 +383,6 @@ Config.now(function()
     end,
   })
 
-  -- Open images in imv and close buffer automatically: ==========================================
-  Config.new_autocmd('BufReadPost', {
-    pattern = { '*.png', '*.jpg', '*.jpeg', '*.webp', '*.gif', '*.bmp', '*.svg' },
-    desc = 'Open images in imv and close buffer automatically',
-    callback = function(args)
-      vim.fn.jobstart({ 'imv', args.file }, { detach = true })
-      -- If ending up in empty buffer, re-open the first oldfile that exists
-      vim.schedule(function()
-        if vim.api.nvim_buf_is_valid(args.buf) then
-          vim.api.nvim_buf_delete(args.buf, { force = true })
-        end
-        if vim.api.nvim_buf_get_name(0) ~= '' then return end
-        for _, file in ipairs(vim.v.oldfiles) do
-          if vim.uv.fs_stat(file) and vim.fs.basename(file) ~= 'COMMIT_EDITMSG' then
-            vim.cmd.edit(file)
-            return
-          end
-        end
-      end)
-    end,
-  })
-
-  -- Open PDF/EPUB files in zathura and close buffer automatically: ==============================
-  Config.new_autocmd('BufReadPost', {
-    pattern = { '*.pdf', '*.epub' },
-    desc = 'Open PDF/EPUB files in Okular and close buffer automatically',
-    callback = function(args)
-      vim.fn.jobstart({ 'zathura', args.file }, { detach = true })
-      -- If ending up in empty buffer, re-open the first oldfile that exists
-      vim.schedule(function()
-        if vim.api.nvim_buf_is_valid(args.buf) then
-          vim.api.nvim_buf_delete(args.buf, { force = true })
-        end
-        if vim.api.nvim_buf_get_name(0) ~= '' then return end
-        for _, file in ipairs(vim.v.oldfiles) do
-          if vim.uv.fs_stat(file) and vim.fs.basename(file) ~= 'COMMIT_EDITMSG' then
-            vim.cmd.edit(file)
-            return
-          end
-        end
-      end)
-    end,
-  })
-
   -- Close some filetypes with <q>: ==============================================================
   Config.new_autocmd('FileType', {
     group = vim.api.nvim_create_augroup('q_close', { clear = true }),
@@ -450,6 +406,48 @@ Config.now(function()
       if event.file == '' and vim.bo[event.buf].buftype == '' then
         vim.schedule(function() pcall(vim.api.nvim_buf_delete, event.buf, { force = true }) end)
       end
+    end,
+  })
+
+  -- Open images in imv and close buffer automatically: ==========================================
+  Config.new_autocmd('BufReadPost', {
+    pattern = { '*.png', '*.jpg', '*.jpeg', '*.webp', '*.gif', '*.bmp', '*.svg' },
+    desc = 'Open images in imv and close buffer automatically',
+    callback = function(args)
+      vim.fn.jobstart({ 'imv', args.file }, { detach = true })
+      -- If ending up in empty buffer, re-open the first oldfile that exists
+      vim.schedule(function()
+        if vim.api.nvim_buf_is_valid(args.buf) then
+          vim.api.nvim_buf_delete(args.buf, { force = true })
+        end
+        for _, file in ipairs(vim.v.oldfiles) do
+          if vim.uv.fs_stat(file) and vim.fs.basename(file) ~= 'COMMIT_EDITMSG' then
+            vim.cmd.edit(file)
+            return
+          end
+        end
+      end)
+    end,
+  })
+
+  -- Open pdf/epub files in zathura and close buffer automatically: ==============================
+  Config.new_autocmd('BufReadPost', {
+    pattern = { '*.pdf', '*.epub' },
+    desc = 'Open PDF/EPUB files in Okular and close buffer automatically',
+    callback = function(args)
+      vim.fn.jobstart({ 'zathura', args.file }, { detach = true })
+      -- If ending up in empty buffer, re-open the first oldfile that exists
+      vim.schedule(function()
+        if vim.api.nvim_buf_is_valid(args.buf) then
+          vim.api.nvim_buf_delete(args.buf, { force = true })
+        end
+        for _, file in ipairs(vim.v.oldfiles) do
+          if vim.uv.fs_stat(file) and vim.fs.basename(file) ~= 'COMMIT_EDITMSG' then
+            vim.cmd.edit(file)
+            return
+          end
+        end
+      end)
     end,
   })
 
