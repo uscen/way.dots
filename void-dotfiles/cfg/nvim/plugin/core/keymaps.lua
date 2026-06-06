@@ -37,12 +37,24 @@ Config.later(function()
   map('n', L '=', C 'Pick spellsuggest', 'Fix spelling')
 
   -- ============================================================================== #
+  -- Quickfix:                                                                      #
+  -- ============================================================================== #
+  map('n', L 'cc', C 'ExploreQuickfix', 'Toggle quickfix list')
+  map('n', L 'co', C 'copen', 'Open quickfix list')
+  map('n', L 'cq', C 'cclose', 'Close quickfix list')
+  map('n', L 'cn', C 'next', 'Next quickfix item')
+  map('n', L 'cp', C 'cprev', 'Previous quickfix item')
+  map('n', L 'cs', C 'cfirst', 'First quickfix item')
+  map('n', L 'ce', C 'clast', 'Last quickfix item')
+  map('n', L 'cl', C 'clist', 'List quickfix items')
+
+  -- ============================================================================== #
   -- Explore:                                                                       #
   -- ============================================================================== #
   map('n', L 'ee', C 'ExploreAtFile', 'File directory')
   map('n', L 'er', C 'ExploreAtRoot', 'Directory')
-  map('n', L 'eq', C 'ExploreQuickfix', 'Quickfix list')
-  map('n', L 'el', C 'ExploreLocations', 'Location list')
+  map('n', L 'eq', C 'ExploreQuickfix', 'Toggle quickfix list')
+  map('n', L 'el', C 'ExploreLocations', 'Toggle location list')
   map('n', L 'eu', C 'Undotree', 'Toggle undotree')
   map('n', L 'ed', C 'Pick zoxide', 'Pick directory (zoxide)')
   map('n', L 'em', C 'Pick plugins', 'Pick plugin (module)')
