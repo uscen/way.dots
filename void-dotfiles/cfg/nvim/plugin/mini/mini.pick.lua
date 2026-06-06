@@ -115,13 +115,18 @@ Config.later(function()
   MiniPick.registry.zoxide = function()
     local zoxide_output = vim.fn.system('zoxide query -l')
     local zoxide_dirs = vim.split(zoxide_output, '\n', { trimempty = true })
-    local choose = function(item)
-      vim.schedule(function()
-        MiniPick.builtin.files(nil, { source = { name = item.text, cwd = item.path } })
-      end)
-    end
-    local opts = { source = { items = zoxide_dirs, name = 'Zoxide Picker', choose = choose } }
-    return MiniPick.start(opts)
+    return MiniPick.start({
+      source = {
+        items = zoxide_dirs,
+        name = 'Zoxide',
+        choose = function(dir)
+          vim.schedule(function()
+            vim.fn.chdir(dir)
+            MiniPick.builtin.files(nil, { source = { name = dir.text, cwd = dir.path } })
+          end)
+        end,
+      },
+    })
   end
 
   -- Pick plugin: ================================================================================
