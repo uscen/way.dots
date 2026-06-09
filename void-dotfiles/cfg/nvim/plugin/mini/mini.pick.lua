@@ -4,7 +4,6 @@
 Config.later(function()
   local MiniPick = require('mini.pick')
   local MiniExtra = require('mini.extra')
-  local MiniFiles = require('mini.files')
   local MiniBufremove = require('mini.bufremove')
   MiniPick.setup({
     mappings = {

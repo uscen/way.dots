@@ -155,8 +155,8 @@ Config.now(function()
   vim.o.secure                   = true
   vim.o.autoread                 = true
   vim.o.modifiable               = true
-  vim.o.autowrite                = false
-  vim.o.autowriteall             = false
+  vim.o.autowrite                = true
+  vim.o.autowriteall             = true
   vim.o.autocomplete             = false
   vim.o.mousemoveevent           = false
   vim.o.autochdir                = false
