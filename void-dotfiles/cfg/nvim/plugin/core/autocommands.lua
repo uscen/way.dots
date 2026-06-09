@@ -153,7 +153,7 @@ Config.now(function()
     end,
   })
 
-  -- jump to last accessed window on closing the current one: ====================================
+  -- Jump to last accessed window on closing the current one: ====================================
   Config.new_autocmd('WinClosed', {
     nested = true,
     group = vim.api.nvim_create_augroup('jump_to_last_window', { clear = true }),
