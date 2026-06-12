@@ -19,7 +19,7 @@ Config.now(function()
 
   -- Yanking registers.: =========================================================================
   Config.new_autocmd('TextYankPost', {
-    group = vim.api.nvim_create_augroup('danwlker/yankring', { clear = true }),
+    group = vim.api.nvim_create_augroup('registers_yank', { clear = true }),
     callback = function()
       if vim.v.event.operator == 'y' then
         for i = 9, 1, -1 do
