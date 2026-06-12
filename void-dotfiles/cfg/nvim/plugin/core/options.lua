@@ -36,7 +36,7 @@ Config.now(function()
   vim.o.undoreload               = 65538
   vim.o.completetimeout          = 100
   vim.o.completeopt              = 'menuone,noselect,fuzzy,nosort,nearest'
-  vim.o.completeitemalign        = 'kind,abbr,menu'
+  vim.o.completeitemalign        = 'abbr,kind,menu'
   vim.o.complete                 = '.,w,b,kspell'
   vim.o.clipboard                = 'unnamedplus'
   vim.o.wildmode                 = 'noselect:lastused,full'
