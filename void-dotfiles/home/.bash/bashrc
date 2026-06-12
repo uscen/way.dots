@@ -1,31 +1,4 @@
 # =============================================================================== #
-# OS:                                                                             #
-# =============================================================================== #
-export HISTCONTROL=ignoreboth:erasedups
-export HISTFILESIZE=5000
-export PROMPT_COMMAND='history -a'
-export LC_ALL="C.UTF-8"
-export LANG="en_US.UTF-8"
-export CC="gcc"
-
-# =============================================================================== #
-# Apps:                                                                           #
-# =============================================================================== #
-export PAGER="less"
-export EDITOR="nvim"
-export VISUAL="nvim"
-export TERMINAL="alacritty"
-export BROWSER="firefox"
-export LIBVA_DRIVER_NAME="iHD"
-
-# =============================================================================== #
-# GUI:                                                                            #
-# =============================================================================== #
-export GTK_THEME=Thorn-dark-sea
-export XCURSOR_THEME=BreezeX-Black
-export XCURSOR_SIZE=30
-
-# =============================================================================== #
 # Clean ~:                                                                        #
 # =============================================================================== #
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -60,6 +33,33 @@ export IPYTHONDIR="$HOME/.cache/ipython_config"
 export JUPYTER_CONFIG_DIR="$HOME/.cache/jupyter_config"
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/rc"
 export XDEB_PKGROOT=${HOME}/.config/xdeb
+
+# =============================================================================== #
+# Os:                                                                             #
+# =============================================================================== #
+export HISTCONTROL=ignoreboth:erasedups
+export HISTFILESIZE=5000
+export PROMPT_COMMAND='history -a'
+export LIBVA_DRIVER_NAME="iHD"
+export LANG="en_US.UTF-8"
+export LC_ALL="C.UTF-8"
+export CC="gcc"
+
+# =============================================================================== #
+# Apps:                                                                           #
+# =============================================================================== #
+export PAGER="less"
+export EDITOR="nvim"
+export VISUAL="nvim"
+export TERMINAL="alacritty"
+export BROWSER="firefox"
+
+# =============================================================================== #
+# Gui:                                                                            #
+# =============================================================================== #
+export GTK_THEME=Thorn-dark-sea
+export XCURSOR_THEME=BreezeX-Black
+export XCURSOR_SIZE=30
 
 # =============================================================================== #
 # Options:                                                                        #

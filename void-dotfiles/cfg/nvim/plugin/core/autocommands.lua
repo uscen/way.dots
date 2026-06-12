@@ -186,13 +186,11 @@ Config.now(function()
   Config.new_autocmd('ModeChanged', {
     group = mode_diagnostoc,
     pattern = { 'n:i', 'v:s' },
-    desc = 'Disable diagnostics while typing',
     callback = function(event) vim.diagnostic.enable(false, { bufnr = event.buf }) end,
   })
   Config.new_autocmd('ModeChanged', {
     group = mode_diagnostoc,
     pattern = 'i:n',
-    desc = 'Enable diagnostics when leaving insert mode',
     callback = function(event) vim.diagnostic.enable(true, { bufnr = event.buf }) end,
   })
 
@@ -208,7 +206,6 @@ Config.now(function()
   Config.new_autocmd('RecordingLeave', {
     pattern = '*',
     group = show_recordering,
-    desc = 'Fix broken macro recording notification for cmdheight 0, pt2',
     callback = function()
       local timer = vim.loop.new_timer()
       ---@diagnostic disable-next-line: need-check-nil
@@ -412,7 +409,6 @@ Config.now(function()
   -- Open images in imv and close buffer automatically: ==========================================
   Config.new_autocmd('BufReadPost', {
     pattern = { '*.png', '*.jpg', '*.jpeg', '*.webp', '*.gif', '*.bmp', '*.svg' },
-    desc = 'Open images in imv and close buffer automatically',
     callback = function(args)
       vim.fn.jobstart({ 'imv', args.file }, { detach = true })
       -- If ending up in empty buffer, re-open the first oldfile that exists
@@ -433,7 +429,6 @@ Config.now(function()
   -- Open pdf/epub files in zathura and close buffer automatically: ==============================
   Config.new_autocmd('BufReadPost', {
     pattern = { '*.pdf', '*.epub' },
-    desc = 'Open PDF/EPUB files in Okular and close buffer automatically',
     callback = function(args)
       vim.fn.jobstart({ 'zathura', args.file }, { detach = true })
       -- If ending up in empty buffer, re-open the first oldfile that exists
