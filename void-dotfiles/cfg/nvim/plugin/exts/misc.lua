@@ -195,7 +195,7 @@ Config.later(function()
 
   vim.api.nvim_create_user_command('InAndOut', M.in_and_out, {})
 
-  -- go_to_relative_file: ==========================================================================
+  -- Go to relative file: ==========================================================================
   function M.go_to_relative_file(n, relative_to)
     return function()
       local this_dir = vim.fs.dirname(vim.fs.normalize(vim.fn.expand('%:p')))
@@ -226,7 +226,7 @@ Config.later(function()
   vim.api.nvim_create_user_command('RelativeFileNext', M.go_to_relative_file(1), {})
   vim.api.nvim_create_user_command('RelativeFilePrev', M.go_to_relative_file(-1), {})
 
-  -- go_to_relative_file: ==========================================================================
+  -- Open or create file under cursor: ============================================================
   function M.open_file_or_create_new()
     local path = vim.fn.expand('<cfile>')
     if path == nil or path == '' then return end

@@ -483,6 +483,7 @@ window-rule {
     match app-id=r#"nm-connection-editor"#
     match app-id=r#"blueman-manager"#
     match app-id=r#"pavucontrol"#
+    match app-id=r#"nm-applet"#
     match app-id=r#"bluetui"#
     match app-id=r#"impala"#
     default-column-width { proportion 0.50; }

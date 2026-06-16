@@ -269,6 +269,18 @@ Config.now(function()
     end,
   })
 
+  -- Show when lines are longer than 100 chars: ==================================================
+  vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+    group = vim.api.nvim_create_augroup('color_column', { clear = true }),
+    callback = function()
+      vim.schedule(function()
+        if vim.o.buftype == '' and vim.o.filetype ~= 'dbout' then
+          vim.fn.matchadd('ColorColumn', '\\%100v', 100)
+        end
+      end)
+    end,
+  })
+
   -- Auto start insert when opening or focusing a terminal: ======================================
   Config.new_autocmd('BufEnter', {
     pattern = 'term://*',
