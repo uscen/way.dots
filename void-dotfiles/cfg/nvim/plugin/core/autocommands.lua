@@ -310,6 +310,7 @@ Config.now(function()
       end
     end,
   })
+
   -- Auto-close terminal when process exits: =====================================================
   Config.new_autocmd('TermClose', {
     group = vim.api.nvim_create_augroup('term_close', {}),
