@@ -66,12 +66,15 @@ sudo ln -s /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
 # =============================================================================== #
 # Others:                                                                         #
 # =============================================================================== #
-# Iwd as networkManager backend: =================================================================
+# Iwd as networkmanager backend: =================================================================
 sudo mkdir -p /etc/NetworkManager/conf.d
 cat <<EOF | sudo tee /etc/NetworkManager/conf.d/wifi_backend.conf > /dev/null
 [device]
 wifi.backend=iwd
 EOF
+
+# Update the binary cache to use custom themes: ==================================================
+bat cache --build
 
 # Doas without password: =========================================================================
 echo "permit nopass $(whoami) as root" | sudo tee /etc/doas.conf
