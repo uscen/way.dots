@@ -420,19 +420,23 @@ Config.now(function()
   })
 
   -- Open images in imv and close buffer automatically: ==========================================
-  Config.new_autocmd('BufReadPost', {
+  Config.new_autocmd('BufReadCmd', {
     pattern = { '*.png', '*.jpg', '*.jpeg', '*.webp', '*.gif', '*.bmp', '*.svg' },
     callback = function(args)
       vim.fn.jobstart({ 'imv', args.file }, { detach = true })
-      -- If ending up in empty buffer, re-open the first oldfile that exists
       vim.schedule(function()
+        local prev_buf = vim.fn.bufnr('#')
         if vim.api.nvim_buf_is_valid(args.buf) then
           vim.api.nvim_buf_delete(args.buf, { force = true })
         end
-        for _, file in ipairs(vim.v.oldfiles) do
-          if vim.uv.fs_stat(file) and vim.fs.basename(file) ~= 'COMMIT_EDITMSG' then
-            vim.cmd.edit(file)
-            return
+        if prev_buf > 0 and vim.api.nvim_buf_is_valid(prev_buf) and vim.api.nvim_buf_is_loaded(prev_buf) then
+          vim.cmd.buffer(prev_buf)
+        else
+          for _, file in ipairs(vim.v.oldfiles) do
+            if vim.uv.fs_stat(file) and vim.fs.basename(file) ~= 'COMMIT_EDITMSG' then
+              vim.cmd.edit(file)
+              return
+            end
           end
         end
       end)
@@ -440,19 +444,24 @@ Config.now(function()
   })
 
   -- Open pdf/epub files in zathura and close buffer automatically: ==============================
-  Config.new_autocmd('BufReadPost', {
+  Config.new_autocmd('BufReadCmd', {
     pattern = { '*.pdf', '*.epub' },
     callback = function(args)
       vim.fn.jobstart({ 'zathura', args.file }, { detach = true })
       -- If ending up in empty buffer, re-open the first oldfile that exists
       vim.schedule(function()
+        local prev_buf = vim.fn.bufnr('#')
         if vim.api.nvim_buf_is_valid(args.buf) then
           vim.api.nvim_buf_delete(args.buf, { force = true })
         end
-        for _, file in ipairs(vim.v.oldfiles) do
-          if vim.uv.fs_stat(file) and vim.fs.basename(file) ~= 'COMMIT_EDITMSG' then
-            vim.cmd.edit(file)
-            return
+        if prev_buf > 0 and vim.api.nvim_buf_is_valid(prev_buf) and vim.api.nvim_buf_is_loaded(prev_buf) then
+          vim.cmd.buffer(prev_buf)
+        else
+          for _, file in ipairs(vim.v.oldfiles) do
+            if vim.uv.fs_stat(file) and vim.fs.basename(file) ~= 'COMMIT_EDITMSG' then
+              vim.cmd.edit(file)
+              return
+            end
           end
         end
       end)
