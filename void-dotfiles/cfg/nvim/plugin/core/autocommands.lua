@@ -448,7 +448,6 @@ Config.now(function()
     pattern = { '*.pdf', '*.epub' },
     callback = function(args)
       vim.fn.jobstart({ 'zathura', args.file }, { detach = true })
-      -- If ending up in empty buffer, re-open the first oldfile that exists
       vim.schedule(function()
         local prev_buf = vim.fn.bufnr('#')
         if vim.api.nvim_buf_is_valid(args.buf) then
