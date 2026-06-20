@@ -712,8 +712,8 @@ binds {
 
     // Shortcuts panel: ==========================================================================
     MOD+SHIFT+ESCAPE                    { show-hotkey-overlay; }
+    Mod+CONTROL+P                       { power-off-monitors; }
     Mod+SHIFT+Q                         { quit skip-confirmation=true; }
-    Mod+CONTROL+Q                       { power-off-monitors; }
     Mod+Escape                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // Application restarts: =====================================================================
