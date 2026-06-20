@@ -145,7 +145,7 @@ Config.now(function()
   })
 
   -- Show cursor line only in active window: =====================================================
-  Config.new_autocmd({ 'BufWinEnter', 'WinEnter', 'WinLeave' }, {
+  Config.new_autocmd({ 'BufWinEnter', 'WinEnter', 'WinLeave', 'TabLeave' }, {
     group = vim.api.nvim_create_augroup('auto_show_cursorline', { clear = true }),
     callback = function(event)
       if vim.bo[event.buf].buftype ~= '' then return end
