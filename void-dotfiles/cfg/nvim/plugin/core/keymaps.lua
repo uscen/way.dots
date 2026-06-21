@@ -39,14 +39,17 @@ Config.later(function()
   -- ============================================================================== #
   -- Quickfix:                                                                      #
   -- ============================================================================== #
-  map('n', L 'cc', C 'ExploreQuickfix', 'Toggle quickfix list')
   map('n', L 'co', C 'copen', 'Open quickfix list')
-  map('n', L 'cq', C 'cclose', 'Close quickfix list')
-  map('n', L 'cn', C 'next', 'Next quickfix item')
+  map('n', L 'cc', C 'cclose', 'Close quickfix list')
+  map('n', L 'cn', C 'cnext', 'Next quickfix item')
   map('n', L 'cp', C 'cprev', 'Previous quickfix item')
+  map('n', L 'cN', C 'cnfile', 'Next file in quickfix')
+  map('n', L 'cP', C 'cpfile', 'Previous file in quickfix')
+  map('n', L 'cl', C 'clist', 'Just list quickfix items')
   map('n', L 'cs', C 'cfirst', 'First quickfix item')
   map('n', L 'ce', C 'clast', 'Last quickfix item')
-  map('n', L 'cl', C 'clist', 'List quickfix items')
+  map('n', L 'ca', C 'caddbuffer', 'Add buffer to quickfix list')
+  map('n', L 'ch', C 'chistory', 'Show quickfix history')
 
   -- ============================================================================== #
   -- Explore:                                                                       #

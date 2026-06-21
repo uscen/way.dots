@@ -545,7 +545,7 @@ layer-rule {
 // Keybidngs:                                                                     #
 // ============================================================================== #
 binds {
-    // Scratchpad terminal: ==============================================================================
+    // Scratchpad terminal: ======================================================================
     SUPER+T                             { spawn "~/.config/niri/scripts/scratch.sh" "special-term"; }
     SUPER+B                             { spawn "~/.config/niri/scripts/scratch.sh" "special-btop"; }
     SUPER+N                             { spawn "~/.config/niri/scripts/scratch.sh" "special-files"; }
