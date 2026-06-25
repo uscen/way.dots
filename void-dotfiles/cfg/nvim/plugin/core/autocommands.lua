@@ -311,10 +311,10 @@ Config.now(function()
     end,
   })
 
-  -- Auto-close terminal when process exits: =====================================================
+  -- Auto-close lazygit when process exits: ======================================================
   Config.new_autocmd('TermClose', {
     group = vim.api.nvim_create_augroup('term_close', {}),
-    pattern = { 'term://*', 'term:lazygit' },
+    pattern = { 'term:lazygit' },
     callback = function()
       if vim.v.event.status == 0 then
         vim.api.nvim_buf_delete(0, {})

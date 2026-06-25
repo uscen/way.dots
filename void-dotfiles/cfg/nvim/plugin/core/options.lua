@@ -158,8 +158,8 @@ Config.now(function()
   vim.o.autowrite                = true
   vim.o.autowriteall             = true
   vim.o.autocomplete             = false
-  vim.o.mousemoveevent           = false
   vim.o.autochdir                = false
+  vim.o.mousemoveevent           = false
   vim.o.tildeop                  = false
   vim.o.showmatch                = false
   vim.o.magic                    = false
