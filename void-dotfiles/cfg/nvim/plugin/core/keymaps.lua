@@ -17,23 +17,23 @@ Config.later(function()
   -- Basic:                                                                         #
   -- ============================================================================== #
   map('n', L 'rr', C 'Match', 'Search and Replace')
-  map('n', L 'rs', C 'MatchWord', 'Match using word under cursor')
+  map('n', L 'rs', C 'MatchWord', 'Search and Replace word under cursor')
   map('n', L 'rc', C 'EditConfig', 'Edit configuration')
   map('n', L 're', C 'restart', 'Restart editor')
-  map('n', L 'qq', C 'quitall', 'Quit all windows')
-  map('n', L 's', C 'SmartWord', 'Switch boolean/word')
+  map('n', L 'qq', C 'quitall', 'Quit all window')
+  map('n', L 's', C 'SmartWord', 'Switch [boolean | word]')
   map('n', L 'j', C 'SmartDuplicate', 'Smart duplicate line')
 
   -- ============================================================================== #
   -- Frequently:                                                                    #
   -- ============================================================================== #
-  map('n', L ' ', C 'Pick files', 'Find files')
+  map('n', L ' ', C 'Pick files', 'Search files')
   map('n', L ',', C 'Pick buffers', 'Switch buffer')
   map('n', L '.', C 'Pick resume', 'Resume picker')
   map('n', L ';', C 'Pick commands', 'Run command')
   map('n', L ':', C 'Pick history scope=":"', '":" history')
   map('n', L '/', C 'Pick history scope="/"', '"/" history')
-  map('n', L '?', C 'Pick keymaps', 'Pick keymaps')
+  map('n', L '?', C 'Pick keymaps', 'Find keymap')
   map('n', L '=', C 'Pick spellsuggest', 'Fix spelling')
 
   -- ============================================================================== #
@@ -59,11 +59,11 @@ Config.later(function()
   map('n', L 'eq', C 'ExploreQuickfix', 'Toggle quickfix list')
   map('n', L 'el', C 'ExploreLocations', 'Toggle location list')
   map('n', L 'eu', C 'Undotree', 'Toggle undotree history')
-  map('n', L 'ed', C 'Pick zoxide', 'Pick directory (zoxide)')
-  map('n', L 'em', C 'Pick plugins', 'Pick plugin (module)')
-  map('n', L 'ec', C 'Pick config', 'Pick config (nvim)')
-  map('n', L 'eh', C 'Pick home', 'Pick config (/home/user)')
-  map('n', L 'ep', C 'Pick project', 'Pick project (/home/user/projects)')
+  map('n', L 'ed', C 'Pick zoxide', 'Directory (zoxide)')
+  map('n', L 'em', C 'Pick plugins', 'Plugin (module)')
+  map('n', L 'ec', C 'Pick config', 'Config (nvim)')
+  map('n', L 'eh', C 'Pick home', 'Config (/home/[user])')
+  map('n', L 'ep', C 'Pick project', 'Project (/home/[user]/projects)')
 
   -- ============================================================================== #
   -- Buffer:                                                                        #
