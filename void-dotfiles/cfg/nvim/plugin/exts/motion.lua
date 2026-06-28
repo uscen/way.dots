@@ -65,7 +65,7 @@ Config.later(function()
     end)
   end
 
-  vim.api.nvim_create_user_command('EasyMotion', M.motion, {})
+  Config.new_command('EasyMotion', M.motion)
 
   return M
 end)

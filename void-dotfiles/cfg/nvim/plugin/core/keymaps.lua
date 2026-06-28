@@ -54,11 +54,11 @@ Config.later(function()
   -- ============================================================================== #
   -- Explore:                                                                       #
   -- ============================================================================== #
-  map('n', L 'ee', C 'ExploreAtFile', 'File directory')
-  map('n', L 'er', C 'ExploreAtRoot', 'Directory')
+  map('n', L 'ee', C 'ExploreAtFile', 'Toggle File directory')
+  map('n', L 'er', C 'ExploreAtRoot', 'Toggle Root directory')
   map('n', L 'eq', C 'ExploreQuickfix', 'Toggle quickfix list')
   map('n', L 'el', C 'ExploreLocations', 'Toggle location list')
-  map('n', L 'eu', C 'Undotree', 'Toggle undotree')
+  map('n', L 'eu', C 'Undotree', 'Toggle undotree history')
   map('n', L 'ed', C 'Pick zoxide', 'Pick directory (zoxide)')
   map('n', L 'em', C 'Pick plugins', 'Pick plugin (module)')
   map('n', L 'ec', C 'Pick config', 'Pick config (nvim)')

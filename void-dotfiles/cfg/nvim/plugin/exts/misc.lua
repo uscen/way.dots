@@ -3,7 +3,7 @@
 -- ============================================================================== #
 Config.later(function()
   local M = {}
-  -- Open url in buffer: ===========================================================================
+  -- Open url in buffer: =========================================================================
   function M.open_url()
     local text = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), '\n')
     local urls = {}
@@ -20,9 +20,9 @@ Config.later(function()
     end)
   end
 
-  vim.api.nvim_create_user_command('OpenUrl', M.open_url, {})
+  Config.new_command('OpenUrl', M.open_url)
 
-  -- Toggle word: ==================================================================================
+  -- Toggle word: ================================================================================
   function M.smart_word()
     local toggles = {
       ['True'] = 'False',
@@ -73,9 +73,9 @@ Config.later(function()
     end
   end
 
-  vim.api.nvim_create_user_command('SmartWord', M.smart_word, {})
+  Config.new_command('SmartWord', M.smart_word)
 
-  -- Smart duplicate line: =========================================================================
+  -- Smart duplicate line: =======================================================================
   function M.smart_duplicate()
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
     local line = vim.api.nvim_get_current_line()
@@ -105,9 +105,9 @@ Config.later(function()
     vim.api.nvim_win_set_cursor(0, { row + 1, targetCol })
   end
 
-  vim.api.nvim_create_user_command('SmartDuplicate', M.smart_duplicate, {})
+  Config.new_command('SmartDuplicate', M.smart_duplicate)
 
-  -- Delete buff: ==================================================================================
+  -- Delete buff: ================================================================================
   function M.delete_buffer()
     local wins = vim.api.nvim_tabpage_list_wins(0)
     local normal_wins = {}
@@ -128,7 +128,7 @@ Config.later(function()
     end
   end
 
-  vim.api.nvim_create_user_command('DeleteBuffer', M.delete_buffer, {})
+  Config.new_command('DeleteBuffer', M.delete_buffer)
 
   -- Delete others buffers: ======================================================================
   function M.delete_others_buffers()
@@ -139,7 +139,7 @@ Config.later(function()
     end
   end
 
-  vim.api.nvim_create_user_command('DeleteOtherBuffers', M.delete_others_buffers, {})
+  Config.new_command('DeleteOtherBuffers', M.delete_others_buffers)
 
   -- Delete listed unmodified buffers that are not in a window: ==================================
   function M.delete_inactive_buffers()
@@ -152,9 +152,9 @@ Config.later(function()
     end
   end
 
-  vim.api.nvim_create_user_command('DeleteInactiveBuffers', M.delete_inactive_buffers, {})
+  Config.new_command('DeleteInactiveBuffers', M.delete_inactive_buffers)
 
-  -- This is a simplified version of in-and-out.nvim: ==============================================
+  -- This is a simplified version of in-and-out.nvim: ============================================
   local function escape_lua_pattern(s)
     local matches = {
       ['^'] = '%^',
@@ -193,9 +193,9 @@ Config.later(function()
     end
   end
 
-  vim.api.nvim_create_user_command('InAndOut', M.in_and_out, {})
+  Config.new_command('InAndOut', M.in_and_out)
 
-  -- Go to relative file: ==========================================================================
+  -- Go to relative file: ========================================================================
   function M.go_to_relative_file(n, relative_to)
     return function()
       local this_dir = vim.fs.dirname(vim.fs.normalize(vim.fn.expand('%:p')))
@@ -223,10 +223,10 @@ Config.later(function()
     end
   end
 
-  vim.api.nvim_create_user_command('RelativeFileNext', M.go_to_relative_file(1), {})
-  vim.api.nvim_create_user_command('RelativeFilePrev', M.go_to_relative_file(-1), {})
+  Config.new_command('RelativeFileNext', M.go_to_relative_file(1))
+  Config.new_command('RelativeFilePrev', M.go_to_relative_file(-1))
 
-  -- Open or create file under cursor: ============================================================
+  -- Open or create file under cursor: ===========================================================
   function M.open_file_or_create_new()
     local path = vim.fn.expand('<cfile>')
     if path == nil or path == '' then return end
@@ -253,5 +253,5 @@ Config.later(function()
     end
   end
 
-  vim.api.nvim_create_user_command('OpenOrCreateFile', M.open_file_or_create_new, {})
+  Config.new_command('OpenOrCreateFile', M.open_file_or_create_new)
 end)

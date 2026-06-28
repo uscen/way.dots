@@ -17,7 +17,7 @@ Config.now(function()
     end,
   })
 
-  -- Yanking registers.: =========================================================================
+  -- Yanking registers: ==========================================================================
   Config.new_autocmd('TextYankPost', {
     group = vim.api.nvim_create_augroup('registers_yank', { clear = true }),
     callback = function()
