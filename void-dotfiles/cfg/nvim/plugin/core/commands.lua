@@ -50,6 +50,26 @@ Config.later(function()
     vim.o.background = (vim.o.background == 'dark' and 'light' or 'dark')
   end)
 
+  -- Toggle scrollbind with status: ==============================================================
+  Config.new_command('ToggleScrollBind', function()
+    vim.wo.scrollbind = not vim.wo.scrollbind
+  end)
+
+  -- Toggle relative numbers: ====================================================================
+  Config.new_command('ToggleRelativeNumber', function()
+    vim.opt.relativenumber = not vim.opt.relativenumber:get()
+  end)
+
+  -- Toggle paste mode: ==========================================================================
+  Config.new_command('TogglePasteMode', function()
+    vim.opt.paste = not vim.opt.paste:get()
+  end)
+
+  -- Toggle word wrap: ===========================================================================
+  Config.new_command('ToggleWordWrap', function()
+    vim.opt.wrap = not vim.opt.wrap:get()
+  end)
+
   -- Toggle between diagnostic virtual_lines and virtual_text: ===================================
   Config.new_command('ToggleDiagnosticStyle', function()
     local virtual_lines_enabled = vim.diagnostic.config().virtual_lines

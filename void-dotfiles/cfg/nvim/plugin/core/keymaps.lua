@@ -145,6 +145,7 @@ Config.later(function()
   -- ============================================================================== #
   -- Find:                                                                          #
   -- ============================================================================== #
+
   map('n', L 'f/', C "Pick history scope='/'", '"/" history')
   map('n', L 'f:', C "Pick history scope=':'", '":" history')
   map('n', L 'f.', C 'Pick resume', 'Resume')
@@ -184,7 +185,11 @@ Config.later(function()
   map('n', L 'ou', C 'PackUpdate', 'Update plugins')
   map('n', L 'oc', C 'PackClean', 'Clean plugins')
   map('n', L 'ol', C 'PackList', 'List plugins')
-  map('n', L 'ob', C 'ToggleBackground', 'Toggle background (dark/light)')
+  map('n', L 'ob', C 'ToggleBackground', 'Toggle background')
+  map('n', L 'ob', C 'ToggleScrollBind', 'Toggle scroll bind')
+  map('n', L 'or', C 'ToggleRelativeNumber', 'Toggle relative number')
+  map('n', L 'op', C 'TogglePasteMode', 'Toggle paste mode')
+  map('n', L 'ow', C 'ToggleWordWrap', 'Toggle word wrap')
   map('n', L 'oi', C 'ToggleInlayHints', 'Toggle inly hints')
   map('n', L 'od', C 'ToggleDiagnosticStyle', 'Toggle diagnostic style')
 
