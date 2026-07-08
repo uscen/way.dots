@@ -12,6 +12,8 @@ prefer-no-csd
 
 // Screenshots: ==================================================================================
 screenshot-path "~/Pictures/Screenshots/%Y-%m-%d %H-%M-%S.png"
+
+// Notification: =================================================================================
 config-notification {
     disable-failed
 }

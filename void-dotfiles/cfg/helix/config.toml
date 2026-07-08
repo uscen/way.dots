@@ -10,10 +10,9 @@ theme = "thorn"
 [editor]
 true-color = true
 auto-format = true
-auto-info = false
 cursorline = true
+auto-info = false
 scrolloff = 99
-rulers = [100]
 completion-trigger-len = 1
 default-yank-register = "+"
 line-number = "absolute"
