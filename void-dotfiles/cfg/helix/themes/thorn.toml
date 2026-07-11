@@ -56,9 +56,21 @@
 # =============================================================================== #
 # Diff:                                                                           #
 # =============================================================================== #
-"diff.plus" = "diff_add"
-"diff.delta" = "diff_change"
-"diff.minus" = "diff_delete"
+"diff.plus" = "git_add"
+"diff.delta" = "git_change"
+"diff.minus" = "git_delete"
+
+# =============================================================================== #
+# Diagnostic:                                                                     #
+# =============================================================================== #
+"diagnostic.error" = { underline = { color = "red", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "yellow", style = "curl" } }
+"diagnostic.info" = { underline = { color = "blue", style = "curl" } }
+"diagnostic.hint" = { underline = { color = "green_0", style = "curl" }}
+"warning" = "yellow"
+"error" = "orange"
+"hint" = "magenta"
+"info" = "blue"
 
 # =============================================================================== #
 # Editor:                                                                         #

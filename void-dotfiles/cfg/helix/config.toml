@@ -17,7 +17,7 @@ completion-trigger-len = 1
 default-yank-register = "+"
 line-number = "absolute"
 shell = ["bash", "-c"]
-gutters = ["diagnostics", "line-numbers", "spacer", "diff"]
+gutters = ["diagnostics", "diff", "line-numbers", "spacer"]
 
 # Lsp: ===========================================================================================
 [editor.lsp]
