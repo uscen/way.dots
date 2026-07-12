@@ -8,27 +8,13 @@ theme = "thorn"
 # =============================================================================== #
 # General: =======================================================================================
 [editor]
-true-color = true
-auto-format = true
-cursorline = true
-auto-info = false
-scrolloff = 99
-completion-trigger-len = 1
 default-yank-register = "+"
-line-number = "absolute"
-shell = ["bash", "-c"]
 gutters = ["diagnostics", "diff", "line-numbers", "spacer"]
 
 # Lsp: ===========================================================================================
 [editor.lsp]
 display-messages = true
 auto-signature-help = false
-
-# Cursor: ========================================================================================
-[editor.cursor-shape]
-normal = "block"
-insert = "block"
-select = "block"
 
 # =============================================================================== #
 # Keymaps:                                                                        #

@@ -270,7 +270,7 @@ Config.now(function()
   })
 
   -- Show when lines are longer than 100 chars: ==================================================
-  vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+  Config.new_autocmd('BufEnter', {
     group = vim.api.nvim_create_augroup('color_column', { clear = true }),
     callback = function()
       vim.schedule(function()

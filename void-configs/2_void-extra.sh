@@ -21,18 +21,12 @@ fi
 # Packages:                                                                       #
 # =============================================================================== #
 packages=(
-    # LANGUAGE SERVER PROTOCOL:                                                       #
-    # =============================================================================== #
     "@vtsls/language-server"
     "@olrtg/emmet-language-server"
     "@tailwindcss/language-server"
     "vscode-langservers-extracted"
     "prettier"
-    # Treesitter:                                                                     #
-    # =============================================================================== #
     "tree-sitter-cli"
-    # HOT-RELOAD:                                                                     #
-    # =============================================================================== #
     "browser-sync"
 )
 for package in "${packages[@]}"; do
