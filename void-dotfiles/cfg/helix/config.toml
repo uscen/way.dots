@@ -8,15 +8,46 @@ theme = "thorn"
 # =============================================================================== #
 # General: =======================================================================================
 [editor]
+mouse = true
 cursorline = true
+true-color = true
+color-modes = true
+auto-pairs = true
+auto-save = true
 auto-info = false
+scroll-lines = 1
+scrolloff = 99
+idle-timeout = 200
+completion-timeout = 100
+completion-trigger-len = 2
+preview-completion-insert = false
 default-yank-register = "+"
-gutters = ["diagnostics", "diff", "line-numbers", "spacer"]
+popup-border = "all"
+bufferline = "multiple"
+gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
+end-of-line-diagnostics = "hint"
 
 # Lsp: ===========================================================================================
 [editor.lsp]
+auto-signature-help = true
 display-messages = true
-auto-signature-help = false
+display-inlay-hints = false
+
+# Diagnostics: ===================================================================================
+[editor.inline-diagnostics]
+cursor-line = "warning"
+other-lines = "error"
+
+# Indentline: ====================================================================================
+[editor.indent-guides]
+render = false
+character = "╎"
+
+# statusline: ====================================================================================
+[editor.statusline]
+left = ["mode", "spinner", "file-name", "total-line-numbers"]
+center = ["version-control"]
+right = ["diagnostics", "spacer", "file-encoding", "position", "file-line-ending"]
 
 # =============================================================================== #
 # Keymaps:                                                                        #
@@ -34,6 +65,8 @@ x = ["select_mode", "select_line_below"]
 "%" = ["select_mode", "select_all"]
 "ret" = "goto_word"
 "C-n" = "search_selection"
+"tab" = "goto_next_buffer"
+"S-tab" = "goto_previous_buffer"
 
 [keys.normal.space.f]
 f = "file_picker"
