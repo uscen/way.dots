@@ -34,6 +34,17 @@ Config.later(function()
     vim.api.nvim_buf_delete(bufnr, { force = args.bang })
   end, { bang = true })
 
+  -- Rename file: ================================================================================
+  Config.new_command('Rename', function(_)
+    local old_name = vim.fn.expand('%')
+    local new_name = vim.fn.input('New file name: ', old_name, 'file')
+    if new_name ~= '' and new_name ~= old_name then
+      vim.api.nvim_command(' saveas ' .. new_name)
+      vim.fn.delete(old_name)
+      vim.cmd('redraw!')
+    end
+  end, { bang = true })
+
   -- Create Directory: ===========================================================================
   Config.new_command('Mkdir', function(o)
     local path = vim.fn.expand(o.args ~= '' and o.args or '%:p:h')
@@ -160,6 +171,12 @@ Config.later(function()
       return #list > 0 and list or files
     end,
   })
+
+  -- Insert current date: ========================================================================
+  Config.new_command('InsertDate', function(_)
+    local today = os.date('%a %b %d - %Y-%m-%d %H:%M:%S %Z')
+    vim.api.nvim_command('norm i' .. today)
+  end, { bang = true })
 
   -- Append char(s) to the end of each line (default: ";"): ======================================
   Config.new_command('AppendToEnd', function(args)
