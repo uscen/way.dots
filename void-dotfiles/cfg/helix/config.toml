@@ -41,7 +41,7 @@ other-lines = "error"
 # Indentline: ====================================================================================
 [editor.indent-guides]
 render = false
-character = "╎"
+character = "▏"
 
 # statusline: ====================================================================================
 [editor.statusline]
@@ -62,6 +62,7 @@ V = ["select_mode", "extend_to_line_bounds"]
 D = "kill_to_line_end"
 X = ["select_mode", "select_line_above"]
 x = ["select_mode", "select_line_below"]
+r = "replace_with_yanked"
 "%" = ["select_mode", "select_all"]
 "ret" = "goto_word"
 "C-n" = "search_selection"
