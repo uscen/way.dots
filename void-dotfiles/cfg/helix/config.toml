@@ -8,6 +8,8 @@ theme = "thorn"
 # =============================================================================== #
 # General: =======================================================================================
 [editor]
+cursorline = true
+auto-info = false
 default-yank-register = "+"
 gutters = ["diagnostics", "diff", "line-numbers", "spacer"]
 

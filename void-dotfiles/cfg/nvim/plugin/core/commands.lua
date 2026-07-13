@@ -81,6 +81,12 @@ Config.later(function()
     vim.api.nvim_win_close(win, true)
   end)
 
+  -- Insert current date and time: ===============================================================
+  Config.new_command('InsertDate', function(_)
+    local today = os.date('%a %b %d - %Y-%m-%d %H:%M:%S %Z')
+    vim.api.nvim_command('norm i' .. today)
+  end, { bang = true })
+
   -- Insert the last message from :messages ======================================================
   Config.new_command('InsertLastMessage', function()
     local messages = vim.split(vim.fn.execute('messages'), '\n')
@@ -171,12 +177,6 @@ Config.later(function()
       return #list > 0 and list or files
     end,
   })
-
-  -- Insert current date: ========================================================================
-  Config.new_command('InsertDate', function(_)
-    local today = os.date('%a %b %d - %Y-%m-%d %H:%M:%S %Z')
-    vim.api.nvim_command('norm i' .. today)
-  end, { bang = true })
 
   -- Append char(s) to the end of each line (default: ";"): ======================================
   Config.new_command('AppendToEnd', function(args)
