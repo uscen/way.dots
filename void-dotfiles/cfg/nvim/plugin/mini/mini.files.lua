@@ -5,15 +5,19 @@ Config.now_if_args(function()
   local MiniFiles = require('mini.files')
   MiniFiles.setup({
     mappings = {
-      go_in_plus  = '<Tab>',
-      go_out_plus = '<C-h>',
       synchronize = '<C-s>',
+      go_in       = '<C-l>',
+      go_out      = '<C-h>',
+      go_in_plus  = '<Tab>',
+      go_out_plus = '<S-Tab>',
+      reset       = '<BS>',
       close       = 'q',
-      reset       = 'gh',
-      mark_goto   = 'gb',
-      show_help   = '?',
-      go_in       = '',
-      go_out      = '',
+      mark_goto   = "'",
+      mark_set    = 'm',
+      reveal_cwd  = '@',
+      show_help   = 'g?',
+      trim_left   = '<',
+      trim_right  = '>',
     },
     content = {
       filter = function(fs_entry)
