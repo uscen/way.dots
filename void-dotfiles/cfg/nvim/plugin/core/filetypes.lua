@@ -53,6 +53,7 @@ Config.now(function()
 
     -- Pattern: ==================================================================================
     pattern = {
+      ['.*/.*%.component%.html'] = 'htmlangular',
       ['requirements.*.txt'] = 'requirements',
       ['.*config/git/config'] = 'gitconfig',
       ['.*/git/config.*'] = 'git_config',

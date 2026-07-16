@@ -66,14 +66,14 @@ Config.now(function()
   end })
 
   -- Auto Save: ==================================================================================
-  Config.new_autocmd({ 'BufLeave', 'FocusLost', 'VimLeavePre' }, {
+  Config.new_autocmd({ 'BufLeave', 'FocusLost' }, {
     group = vim.api.nvim_create_augroup('save_buffers', {}),
     callback = function(event)
       local buf = event.buf
       if vim.api.nvim_get_option_value('modified', { buf = buf }) then
         vim.schedule(function()
           vim.api.nvim_buf_call(buf, function()
-            vim.cmd 'silent! wa'
+            vim.cmd('silent! write')
           end)
         end)
       end

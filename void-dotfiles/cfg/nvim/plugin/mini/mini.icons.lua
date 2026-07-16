@@ -94,7 +94,7 @@ Config.now(function()
       ['class'] = { glyph = '󰠱' },
       ['interface'] = { glyph = '' },
       ['module'] = { glyph = '' },
-      ['property'] = { glyph = '' },
+      ['property'] = { glyph = '󰜢' },
       ['unit'] = { glyph = '󰪚' },
       ['value'] = { glyph = '󰔌' },
       ['enum'] = { glyph = '' },
