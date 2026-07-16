@@ -201,6 +201,7 @@ Config.later(function()
   map('n', '<S-Tab>', C 'bprevious', 'Previous buffer')
   map('n', '<Esc>', C 'silent nohl', 'Clear search highlights')
   map('in', '<C-s>', C 'silent update', 'Save buffer')
+  map('in', '<C-c>', C 'ChangeInTag', 'Change between tag')
   map('in', '<C-CR>', C 'InAndOut', 'Jump in and out')
 
   -- Bracketed: ==================================================================================

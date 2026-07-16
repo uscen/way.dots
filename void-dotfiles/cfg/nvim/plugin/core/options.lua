@@ -318,8 +318,8 @@ end)
 -- ============================================================================== #
 local diagnostic_opts = {
   severity_sort = false,
-  update_in_insert = false,
   virtual_lines = false,
+  update_in_insert = false,
   underline = { severity = { min = 'HINT', max = 'ERROR' } },
   signs = { priority = 9999, severity = { min = 'ERROR', max = 'ERROR' } },
   float = {

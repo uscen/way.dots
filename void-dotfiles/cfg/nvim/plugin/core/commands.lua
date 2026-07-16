@@ -81,6 +81,11 @@ Config.later(function()
     vim.api.nvim_win_close(win, true)
   end)
 
+  -- Change between tag: ========================================================================
+  Config.new_command('ChangeInTag', function()
+    vim.api.nvim_command('norm cit')
+  end)
+
   -- Insert current date and time: ===============================================================
   Config.new_command('InsertDate', function(_)
     local today = os.date('%a %b %d - %Y-%m-%d %H:%M:%S %Z')
