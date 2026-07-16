@@ -83,7 +83,7 @@ Config.later(function()
 
   -- Change between tag: ========================================================================
   Config.new_command('ChangeInTag', function()
-    vim.api.nvim_command('norm cit')
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('cit', true, false, true), 'n', true)
   end)
 
   -- Insert current date and time: ===============================================================
