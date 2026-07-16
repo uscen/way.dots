@@ -317,37 +317,11 @@ end)
 -- Diagnostics:                                                                   #
 -- ============================================================================== #
 local diagnostic_opts = {
-  severity_sort = false,
-  update_in_insert = false,
-  virtual_lines = false,
-  signs = false,
   underline = { severity = { min = 'HINT', max = 'ERROR' } },
-  float = {
-    prefix = '󰨓 ',
-    source = 'if_many',
-    style = 'minimal',
-    border = 'single',
-    header = '',
-    title = '󱓇 Diagnostics:',
-    title_pos = 'left',
-    max_height = 10,
-    max_width = 130,
-    focusable = false,
-    close_events = { 'CursorMoved', 'BufLeave', 'WinLeave', 'InsertEnter' },
-  },
-  virtual_text = {
-    current_line = true,
-    spacing = 2,
-    highlight = false,
-    prefix = '▎',
-    source = 'if_many',
-    virt_text_pos = 'eol_right_align',
-    severity = { min = 'ERROR', max = 'ERROR' },
-    format = function(diagnostic)
-      local icon = '→ '
-      local message = vim.split(diagnostic.message, '\n')[1]
-      return ('%s %s '):format(icon, message)
-    end,
-  },
+  signs = { priority = 9999, severity = { min = 'ERROR', max = 'ERROR' } },
+  virtual_text = { current_line = true, virt_text_pos = 'eol_right_align', severity = { min = 'ERROR', max = 'ERROR' } },
+  virtual_lines = false,
+  update_in_insert = false,
 }
+-- Use `later()` to avoid sourcing `vim.diagnostic` on startup: ==================================
 Config.later(function() vim.diagnostic.config(diagnostic_opts) end)
