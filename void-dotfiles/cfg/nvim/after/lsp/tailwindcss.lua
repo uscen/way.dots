@@ -8,14 +8,11 @@ return {
   filetypes = {
     -- html
     'astro',
-    'astro-markdown',
     'html',
     'htmlangular',
     'markdown',
-    'mdx',
     -- css
     'css',
-    'postcss',
     'sass',
     'scss',
     'stylus',

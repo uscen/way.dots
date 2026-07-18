@@ -35,7 +35,7 @@ Config.now(function()
   vim.o.undolevels               = 1024
   vim.o.undoreload               = 65538
   vim.o.completetimeout          = 100
-  vim.o.completeopt              = 'menuone,noselect,fuzzy,nosort,nearest'
+  vim.o.completeopt              = 'menuone,noselect,fuzzy'
   vim.o.completeitemalign        = 'abbr,kind,menu'
   vim.o.complete                 = '.,w,b,kspell'
   vim.o.clipboard                = 'unnamedplus'
@@ -123,7 +123,7 @@ Config.now(function()
   vim.o.backspace                = 'indent,eol,start'
   vim.o.cursorlineopt            = 'screenline,number'
   vim.o.tabclose                 = 'uselast'
-  vim.o.shortmess                = 'CFOSWascoq'
+  vim.o.shortmess                = 'CFOTSWIascoqlt'
   vim.o.signcolumn               = 'yes'
   vim.o.statuscolumn             = ''
   vim.o.showbreak                = '󰘍' .. string.rep(' ', 1)

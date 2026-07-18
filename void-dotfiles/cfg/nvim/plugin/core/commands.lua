@@ -455,6 +455,7 @@ Config.later(function()
 
   -- Builtin packages manager: ===================================================================
   Config.new_command('PackUpdate', function() vim.pack.update() end)
+  Config.new_command('PackSync', function() vim.pack.update(nil, { target = 'lockfile' }) end)
   Config.new_command('PackList', function()
     local packages = vim.pack.get(nil, { info = false })
     if vim.tbl_isempty(packages) then
