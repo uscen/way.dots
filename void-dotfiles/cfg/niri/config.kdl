@@ -140,7 +140,7 @@ input {
         dwtp
         drag true
         natural-scroll
-        accel-speed 0.4
+        accel-speed 0.3
         accel-profile "adaptive"
         scroll-method "two-finger"
         middle-emulation
@@ -150,7 +150,7 @@ input {
 
     // Mouse: ====================================================================================
     mouse {
-        accel-speed 0.4
+        accel-speed 0.3
         accel-profile "adaptive"
         middle-emulation
         scroll-factor 1.5
