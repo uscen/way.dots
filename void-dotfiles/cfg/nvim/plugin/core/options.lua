@@ -123,7 +123,7 @@ Config.now(function()
   vim.o.backspace                = 'indent,eol,start'
   vim.o.cursorlineopt            = 'screenline,number'
   vim.o.tabclose                 = 'uselast'
-  vim.o.shortmess                = 'CFOTSWIascoqlt'
+  vim.o.shortmess                = 'CFOWSsaco'
   vim.o.signcolumn               = 'yes'
   vim.o.statuscolumn             = ''
   vim.o.showbreak                = '󰘍' .. string.rep(' ', 1)
@@ -155,8 +155,8 @@ Config.now(function()
   vim.o.secure                   = true
   vim.o.autoread                 = true
   vim.o.modifiable               = true
-  vim.o.autowrite                = true
-  vim.o.autowriteall             = true
+  vim.o.autowrite                = false
+  vim.o.autowriteall             = false
   vim.o.autocomplete             = false
   vim.o.autochdir                = false
   vim.o.mousemoveevent           = false
