@@ -37,7 +37,7 @@ Config.later(function()
       },
       cmd = { height = 0.5 },
       dialog = { height = 0.5 },
-      msg = { height = 0.3, timeout = 5000 },
+      msg = { height = 0.4, timeout = 5000 },
       pager = { height = 0.5 },
     },
   })
@@ -83,9 +83,6 @@ Config.later(function()
     -- Indent lines: =============================================================================
     '%d+ lines >ed 1 time',
     '%d+ lines <ed 1 time',
-
-    -- mini.git: =================================================================================
-    -- '%(mini%.git%)',
   }
 
   local normalized_content = function(src)
