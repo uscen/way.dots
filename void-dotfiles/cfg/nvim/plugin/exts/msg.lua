@@ -7,9 +7,9 @@ Config.later(function()
     enable = true,
     msg = {
       targets = {
-        [''] = 'cmd',
-        empty = 'cmd',
-        bufwrite = 'cmd',
+        [''] = 'msg',
+        empty = 'msg',
+        bufwrite = 'msg',
         echo = 'msg',
         echomsg = 'msg',
         shell_ret = 'msg',
