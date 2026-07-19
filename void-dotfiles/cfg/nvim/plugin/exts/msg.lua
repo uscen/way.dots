@@ -85,7 +85,7 @@ Config.later(function()
     '%d+ lines <ed 1 time',
 
     -- mini.git: =================================================================================
-    '%(mini%.git%)',
+    -- '%(mini%.git%)',
   }
 
   local normalized_content = function(src)
