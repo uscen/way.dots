@@ -10,7 +10,7 @@ vim.opt_local.conceallevel  = 0
 vim.opt_local.concealcursor = 'nc'
 
 -- Autocmds: ====================================================================================
-vim.api.nvim_create_autocmd('BufWinEnter', {
+Config.new_autocmd('BufWinEnter', {
   buffer = 0,
   once = true,
   callback = function()

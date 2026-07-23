@@ -30,7 +30,7 @@ Config.now_if_args(function()
   })
 
   -- UI: =========================================================================================
-  vim.api.nvim_create_autocmd('User', {
+  Config.new_autocmd('User', {
     pattern = 'MiniFilesWindowOpen',
     callback = function(args)
       local win_id = args.data.win_id
@@ -41,7 +41,7 @@ Config.now_if_args(function()
       vim.api.nvim_win_set_config(win_id, config)
     end,
   })
-  vim.api.nvim_create_autocmd('User', {
+  Config.new_autocmd('User', {
     pattern = 'MiniFilesWindowUpdate',
     callback = function(args)
       local config = vim.api.nvim_win_get_config(args.data.win_id)
@@ -57,7 +57,7 @@ Config.now_if_args(function()
 
   -- BookMarks: ==================================================================================
   local minifiles_augroup = vim.api.nvim_create_augroup('ec-mini-files', {})
-  vim.api.nvim_create_autocmd('User', {
+  Config.new_autocmd('User', {
     group = minifiles_augroup,
     pattern = 'MiniFilesExplorerOpen',
     callback = function()
@@ -87,7 +87,7 @@ Config.now_if_args(function()
       },
     })
   end
-  vim.api.nvim_create_autocmd('User', {
+  Config.new_autocmd('User', {
     pattern = 'MiniFilesBufferCreate',
     callback = function(args) vim.keymap.set('n', '.', toggle_dotfiles, { buffer = args.data.buf_id }) end,
   })
@@ -109,7 +109,7 @@ Config.now_if_args(function()
     local desc = 'Split ' .. direction
     vim.keymap.set('n', lhs, rhs, { buffer = buf_id, desc = desc })
   end
-  vim.api.nvim_create_autocmd('User', {
+  Config.new_autocmd('User', {
     pattern = 'MiniFilesBufferCreate',
     callback = function(args)
       local buf_id = args.data.buf_id

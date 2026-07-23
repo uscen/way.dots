@@ -336,7 +336,7 @@ Config.later(function()
     vim.cmd.tabnew()
     vim.cmd.terminal('lazygit')
     local win = vim.api.nvim_get_current_win()
-    vim.api.nvim_create_autocmd('WinClosed', {
+    Config.new_autocmd('WinClosed', {
       pattern = tostring(win),
       once = true,
       callback = function(e)

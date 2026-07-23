@@ -69,7 +69,7 @@ Config.later(function()
   local group = vim.api.nvim_create_augroup('myplugins-rooter', { clear = true })
 
   -- Disable conflicting option: =================================================================
-  vim.api.nvim_create_autocmd({ 'VimEnter', 'BufEnter' }, {
+  Config.new_autocmd({ 'VimEnter', 'BufEnter' }, {
     group = group,
     desc = 'myplugins: Set current directory to project root',
     pattern = '*',
