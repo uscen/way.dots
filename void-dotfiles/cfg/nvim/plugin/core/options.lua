@@ -208,8 +208,8 @@ Config.now(function()
   vim.o.timeout                  = true
   vim.o.lazyredraw               = true
   vim.o.hidden                   = true
-  vim.o.redrawtime               = 2000
-  vim.o.maxmempattern            = 1000
+  vim.o.maxmempattern            = 20000
+  vim.o.redrawtime               = 10000
   vim.o.timeoutlen               = 500
   vim.o.ttimeoutlen              = 400
   vim.o.updatetime               = 300
@@ -317,12 +317,22 @@ end)
 -- ============================================================================== #
 -- Diagnostics:                                                                   #
 -- ============================================================================== #
+local diagnostic_signs = { Error = '\u{f057} ', Warn = '\u{f071} ', Hint = '\u{ea61}', Info = '\u{f05a}' }
 local diagnostic_opts = {
   severity_sort = false,
   virtual_lines = false,
   update_in_insert = false,
   underline = { severity = { min = 'HINT', max = 'ERROR' } },
-  signs = { priority = 9999, severity = { min = 'ERROR', max = 'ERROR' } },
+  signs = {
+    priority = 9999,
+    severity = { min = 'ERROR', max = 'ERROR' },
+    text = {
+      [vim.diagnostic.severity.ERROR] = diagnostic_signs.Error,
+      [vim.diagnostic.severity.WARN] = diagnostic_signs.Warn,
+      [vim.diagnostic.severity.INFO] = diagnostic_signs.Info,
+      [vim.diagnostic.severity.HINT] = diagnostic_signs.Hint,
+    },
+  },
   float = {
     prefix = '󰨓 ',
     source = 'if_many',
@@ -338,9 +348,9 @@ local diagnostic_opts = {
   },
   virtual_text = {
     current_line = true,
-    spacing = 2,
+    spacing = 4,
     highlight = false,
-    prefix = '▎',
+    prefix = '●',
     source = 'if_many',
     virt_text_pos = 'eol_right_align',
     severity = { min = 'ERROR', max = 'ERROR' },
