@@ -363,13 +363,13 @@ Config.later(function()
     local path = vim.fn.expand('%:h')
     if path == '' then return end
     vim.cmd('silent cd ' .. path)
-    vim.notify('cd → ' .. path)
+    vim.notify(path)
   end, {})
   Config.new_command('CdRoot', function()
     local root = vim.fn.systemlist('git -C ' .. vim.fn.expand('%:h') .. ' rev-parse --show-toplevel')[1]
     if root and root ~= '' then
       vim.cmd('silent cd ' .. root)
-      vim.notify('cd → ' .. root)
+      vim.notify(root)
     else
       vim.notify('No git repository found', vim.log.levels.WARN)
     end
@@ -431,26 +431,26 @@ Config.later(function()
   Config.new_command('CopyRelPath', function()
     local filename = vim.fn.expand '%:.'
     if filename == '' then return end
+    vim.notify(filename)
     vim.fn.setreg('+', filename)
-    vim.notify(filename .. ' copied')
   end)
   Config.new_command('CopyRelPathNoFile', function()
     local path = vim.fn.expand('%:.')
     local dir = path:match('(.*/)')
-    vim.notify(dir .. ' copied')
+    vim.notify(dir)
     vim.fn.setreg('+', dir)
   end)
   Config.new_command('CopyRelRootDir', function()
     local root = vim.fn.getcwd()
     if root == '' then return end
+    vim.notify(root)
     vim.fn.setreg('+', root)
-    vim.notify(root .. ' copied')
   end)
   Config.new_command('CopyAbsRootDir', function()
     local root = vim.fn.getcwd()
     if root == '' then return end
+    vim.notify(root)
     vim.fn.setreg('+', root)
-    vim.notify(root .. ' copied')
   end)
 
   -- Builtin packages manager: ===================================================================
