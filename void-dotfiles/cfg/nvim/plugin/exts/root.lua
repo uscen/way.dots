@@ -66,12 +66,11 @@ Config.later(function()
   end
 
   M.config = vim.tbl_deep_extend('force', M.config, {})
-  local group = vim.api.nvim_create_augroup('myplugins-rooter', { clear = true })
+  local group = vim.api.nvim_create_augroup('cd_rooter', { clear = true })
 
   -- Disable conflicting option: =================================================================
-  Config.new_autocmd({ 'VimEnter', 'BufEnter' }, {
+  Config.new_autocmd('BufEnter', {
     group = group,
-    desc = 'myplugins: Set current directory to project root',
     pattern = '*',
     nested = true,
     callback = function(args)
