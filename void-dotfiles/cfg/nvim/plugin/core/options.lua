@@ -88,6 +88,7 @@ Config.now(function()
   vim.o.sidescrolloff            = 4
   vim.o.numberwidth              = 4
   vim.o.linespace                = 3
+  vim.o.showtabline              = 0
   vim.o.laststatus               = 0
   vim.o.cmdheight                = 0
   vim.o.helpheight               = 0
@@ -96,7 +97,6 @@ Config.now(function()
   vim.o.winminwidth              = 10
   vim.o.winblend                 = 0
   vim.o.sidescroll               = 0
-  vim.o.showtabline              = 0
   vim.o.pumblend                 = 0
   vim.o.pummaxwidth              = 50
   vim.o.pumwidth                 = 30
@@ -128,7 +128,7 @@ Config.now(function()
   vim.o.statuscolumn             = ''
   vim.o.showbreak                = '󰘍' .. string.rep(' ', 1)
   vim.o.statusline               = string.rep('⎯', vim.o.columns)
-  vim.o.fillchars                = 'eob: ,fold:╌,diff:-,foldclose:▶,foldopen:▼,lastline:⋯,msgsep:─'
+  vim.o.fillchars                = 'eob: ,fold:⏤,diff:-,foldclose:▶,foldopen:▼,lastline:⋯,msgsep:─'
   vim.o.listchars                = 'tab:» ,eol:↲,trail:•,nbsp:␣,extends:→,precedes:←'
 
   -- Editing:  ===================================================================================

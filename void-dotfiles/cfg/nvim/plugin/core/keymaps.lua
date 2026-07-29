@@ -231,8 +231,7 @@ Config.later(function()
 
   -- Misc: ======================================================================================
   map('n', '-', C 'ExploreAtFile', 'Toggle file explorer')
-  map('n', 's', C 'EasyMotion', 'Start easy motion')
-  map('x', 'S', C 'VisualSurround', 'Start easy motion')
+  map('x', 'S', C 'VisualSurround', 'Surround visual selection')
   map('n', 'sw', C 'SurroundOrReplaceQuotes', 'Surround or replace quotes')
   map('n', 'gF', C 'OpenOrCreateFile', 'Open or create file under the cursor')
   map('n', 'gv', C 'GetSelection', 'Yank last visual selection')
