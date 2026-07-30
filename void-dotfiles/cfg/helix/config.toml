@@ -36,7 +36,7 @@ display-inlay-hints = false
 
 # Diagnostics: ===================================================================================
 [editor.inline-diagnostics]
-cursor-line = "warning"
+cursor-line = "error"
 other-lines = "error"
 
 # Indentline: ====================================================================================
