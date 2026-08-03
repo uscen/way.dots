@@ -248,7 +248,7 @@ Config.now(function()
 
   -- Removes trailing whitespace and trailing newlines on save : =================================
   Config.new_autocmd('BufWritePre', {
-    group = vim.api.nvim_create_augroup('remove-trailing-whitespace-on-save', { clear = true }),
+    group = vim.api.nvim_create_augroup('rm_trailing_lines_and_whitespace', { clear = true }),
     callback = function()
       local cur_search = vim.fn.getreg('/')
       local cur_view = vim.fn.winsaveview()

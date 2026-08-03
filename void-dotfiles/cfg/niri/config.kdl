@@ -106,7 +106,7 @@ environment {
 // Overview:                                                                      #
 // ============================================================================== #
 overview {
-    zoom 0.6
+    zoom 0.4
     backdrop-color "#172526"
     workspace-shadow {
         on
@@ -349,7 +349,7 @@ recent-windows {
     }
     previews {
         max-height 600
-        max-scale 0.6
+        max-scale 0.4
     }
     binds {
         Alt+Tab         { next-window; }
@@ -379,7 +379,6 @@ gestures {
         max-speed 1500
     }
     hot-corners {
-        off
         top-left
         bottom-right
     }
