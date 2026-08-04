@@ -106,14 +106,14 @@ environment {
 // Overview:                                                                      #
 // ============================================================================== #
 overview {
-    zoom 0.4
+    zoom 0.6
     backdrop-color "#172526"
     workspace-shadow {
         on
-        softness 5
-        spread 4
-        offset x=0 y=2
-        color "#56827040"
+        softness 1
+        spread 1
+        offset x=0 y=0
+        color "#56827030"
     }
 }
 
@@ -226,7 +226,7 @@ layout {
     // Ring: =====================================================================================
     focus-ring {
         off
-        width 2
+        width 1
         active-color "#233935"
         inactive-color "#1D3334"
         urgent-color "#D2696C"
@@ -245,10 +245,10 @@ layout {
     // Shadow: ===================================================================================
     shadow {
         on
-        softness 4
-        spread 2
-        offset x=0 y=2
-        color "#56827040"
+        softness 1
+        spread 1
+        offset x=0 y=0
+        color "#56827030"
     }
 
     // Width: ====================================================================================
@@ -349,7 +349,7 @@ recent-windows {
     }
     previews {
         max-height 600
-        max-scale 0.4
+        max-scale 0.6
     }
     binds {
         Alt+Tab         { next-window; }
@@ -388,29 +388,10 @@ gestures {
 // Rules:                                                                         #
 // ============================================================================== #
 // All: ==========================================================================================
-window-rule {
-    open-maximized true
-}
-window-rule {
-    draw-border-with-background false
-}
 window-rule  {
     match is-urgent=true
     open-focused true
-}
-window-rule {
-    geometry-corner-radius 0
-    clip-to-geometry true
-}
-window-rule {
-  match is-urgent=true
-  baba-is-float true
-}
-window-rule {
-  match is-floating=true
-  border {
-    off
-  }
+    baba-is-float true
 }
 
 // Specific: =====================================================================================
