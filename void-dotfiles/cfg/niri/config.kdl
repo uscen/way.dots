@@ -469,9 +469,9 @@ window-rule {
     match app-id=r#"nm-applet"#
     match app-id=r#"bluetui"#
     match app-id=r#"impala"#
-    default-column-width { proportion 0.50; }
-    default-window-height { proportion 0.50; }
-    default-floating-position x=5 y=5 relative-to="bottom-left"
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.5; }
+    default-floating-position x=1 y=1 relative-to="bottom-left"
     open-floating true
 }
 
@@ -689,7 +689,7 @@ binds {
     // Utils: ====================================================================================
     PRINT                               { screenshot; }
     MOD+PRINT                           { screenshot-screen write-to-disk=true; }
-    MOD+CONTROL+PRINT                   { screenshot-window write-to-disk=true; }
+    CONTROL+PRINT                       { screenshot-window write-to-disk=true; }
     MOD+P                               { spawn-sh "niri msg pick-color| grep 'Hex:'| cut -d' ' -f2| wl-copy"; }
     Mod+X                               { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json focused-window | jq .id)"; }
 

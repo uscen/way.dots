@@ -34,10 +34,7 @@ Config.now(function()
     pattern = '*',
     group = vim.api.nvim_create_augroup('diable_new_line_comments', { clear = true }),
     callback = function()
-      vim.opt_local.formatoptions:remove('c')
-      vim.opt_local.formatoptions:remove('r')
-      vim.opt_local.formatoptions:remove('o')
-      vim.opt_local.formatoptions:remove('t')
+      vim.opt_local.formatoptions:remove({ 'c', 'r', 'o' })
     end,
   })
 
