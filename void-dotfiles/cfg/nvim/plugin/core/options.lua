@@ -84,10 +84,10 @@ Config.now(function()
   vim.o.visualbell               = false
   vim.o.emoji                    = false
   vim.o.ruler                    = false
-  vim.o.sidescrolloff            = 4
+  vim.o.scrolloff                = 999
+  vim.o.sidescrolloff            = 999
   vim.o.numberwidth              = 4
   vim.o.linespace                = 3
-  vim.o.scrolloff                = 0
   vim.o.showtabline              = 0
   vim.o.laststatus               = 0
   vim.o.cmdheight                = 0

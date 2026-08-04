@@ -19,7 +19,7 @@
 window {
   background-image:
     linear-gradient(rgba(23, 37, 38, 0.9), rgba(23, 37, 38, 0.8)),
-    url("/home/lli/.local/share/wall.dots/wallpapers/GREEN_TREE.jpg");
+    url("/home/lli/.local/share/wall.dots/wallpapers/GREEN.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -30,12 +30,13 @@ window {
 /* ============================================================================= */
 #clock-label {
   min-width: 320px;
-  background-color: alpha(@base, 0.3);
+  background-color: alpha(@base, 0.2);
   color: @green;
   font-weight: 900;
   font-size: 200px;
   padding: 10px 30px;
   border: 1px solid @base;
+  border-radius: 4px;
 }
 
 /* ============================================================================= */
@@ -44,9 +45,10 @@ window {
 #input-field {
   min-width: 1230px;
   padding: 10px 15px;
-  border: 1px solid @base;
   caret-color: @base;
   color: @green;
+  border: 1px solid @base;
+  border-radius: 4px;
 }
 
 /* ============================================================================= */
@@ -63,6 +65,7 @@ window {
   background-color: alpha(@base, 0.3);
   color: @green;
   border: 1px solid @base;
+  border-radius: 4px;
 }
 #date-label {
   font-size: 0;

@@ -3,7 +3,7 @@
 # Wallpaper:                                                                      #
 # =============================================================================== #
 pgrep -x "awww-daemon" > /dev/null || awww-daemon &
-awww img "$HOME/.local/share/wall.dots/wallpapers/GREEN_TREE.jpg" &
+awww img "$HOME/.local/share/wall.dots/wallpapers/GREEN.jpg" &
 
 # =============================================================================== #
 # Cliphist:                                                                       #
