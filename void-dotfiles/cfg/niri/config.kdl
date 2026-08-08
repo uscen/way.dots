@@ -536,6 +536,7 @@ binds {
     SUPER+Y                             { spawn "~/.config/niri/scripts/scratch.sh" "special-files"; }
 
     // Scripts actions: ==========================================================================
+    MOD+SHIFT+S                         { spawn "~/.config/niri/scripts/idle.sh"; }
     MOD+SHIFT+P                         { spawn "~/.config/fuzzel/modules/powermenu"; }
     MOD+SHIFT+U                         { spawn "~/.config/fuzzel/modules/umount"; }
     MOD+SHIFT+M                         { spawn "~/.config/fuzzel/modules/media"; }
