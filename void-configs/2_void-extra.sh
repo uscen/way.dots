@@ -21,7 +21,7 @@ fi
 # Packages:                                                                       #
 # =============================================================================== #
 packages=(
-    "@vtsls/language-server"
+    "@typescript/native-preview"
     "@olrtg/emmet-language-server"
     "@tailwindcss/language-server"
     "vscode-langservers-extracted"
