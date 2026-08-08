@@ -252,12 +252,12 @@ layout {
     }
 
     // Width: ====================================================================================
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 1.00; }
     preset-column-widths {
         proportion 0.25
-        proportion 0.5
+        proportion 0.50
         proportion 0.75
-        proportion 1.0
+        proportion 1.00
     }
 
    // Height: ====================================================================================
