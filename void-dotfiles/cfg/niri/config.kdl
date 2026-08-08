@@ -3,6 +3,7 @@
 // ============================================================================== #
 spawn-sh-at-startup "~/.config/niri/scripts/autostart.sh"
 spawn-sh-at-startup "~/.config/niri/scripts/theme.sh"
+spawn-sh-at-startup "~/.config/niri/scripts/idle.sh"
 
 // ============================================================================== #
 // General:                                                                       #
@@ -252,12 +253,12 @@ layout {
     }
 
     // Width: ====================================================================================
-    default-column-width { proportion 1.00; }
+    default-column-width { proportion 0.5; }
     preset-column-widths {
-        proportion 0.25
-        proportion 0.50
-        proportion 0.75
-        proportion 1.00
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
     }
 
    // Height: ====================================================================================

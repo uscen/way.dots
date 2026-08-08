@@ -5,7 +5,7 @@
 sudo xbps-install -Sy void-repo-nonfree && sudo xbps-install -S \
     mesa-intel-dri intel-video-accel intel-ucode base-devel xtools elogind fwupd preload \
     alacritty foot carapace \
-    niri xwayland-satellite gtklock awww fuzzel fnott Waybar \
+    niri xwayland-satellite swayidle gtklock awww fuzzel fnott Waybar \
     xdg-user-dirs xdg-utils xdg-desktop-portal-gnome polkit-gnome psmisc man-db opendoas trash-cli btop aria2 ffmpeg ImageMagick ouch \
     yazi fastfetch yt-dlp chafa eza bat cliphist tealdeer \
     neovim helix lazygit fzf fd ripgrep zoxide pastel delta curl wget jq brightnessctl \

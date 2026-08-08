@@ -16,6 +16,7 @@ void-dotfiles/cfg/mpv/volume
 void-dotfiles/cfg/lazygit/state.yml
 void-dotfiles/cfg/bin/neovide
 void-dotfiles/home/.bash/history
+void-dotfiles/cfg/niri/scripts/.swayidle_toggle.lock
 
 # =============================================================================== #
 # Byte-compiled / optimized / DLL files:                                          #
