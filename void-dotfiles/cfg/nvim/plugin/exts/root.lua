@@ -69,7 +69,7 @@ Config.later(function()
   local group = vim.api.nvim_create_augroup('cd_rooter', { clear = true })
 
   -- Disable conflicting option: =================================================================
-  Config.new_autocmd('BufEnter', {
+  Config.new_autocmd({ 'VimEnter', 'BufEnter' }, {
     group = group,
     pattern = '*',
     nested = true,
