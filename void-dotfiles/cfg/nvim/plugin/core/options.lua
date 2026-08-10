@@ -84,10 +84,10 @@ Config.now(function()
   vim.o.visualbell               = false
   vim.o.emoji                    = false
   vim.o.ruler                    = false
-  vim.o.scrolloff                = 999
-  vim.o.sidescrolloff            = 999
   vim.o.numberwidth              = 4
   vim.o.linespace                = 3
+  vim.o.scrolloff                = 0
+  vim.o.sidescrolloff            = 0
   vim.o.showtabline              = 0
   vim.o.laststatus               = 0
   vim.o.cmdheight                = 0
@@ -155,8 +155,8 @@ Config.now(function()
   vim.o.secure                   = true
   vim.o.autoread                 = true
   vim.o.modifiable               = true
-  vim.o.autowrite                = true
-  vim.o.autowriteall             = true
+  vim.o.autowrite                = false
+  vim.o.autowriteall             = false
   vim.o.autocomplete             = false
   vim.o.autochdir                = false
   vim.o.mousemoveevent           = false
