@@ -35,9 +35,9 @@ Config.now(function()
   vim.o.undolevels               = 1024
   vim.o.undoreload               = 65538
   vim.o.completetimeout          = 100
-  vim.o.completeopt              = 'menuone,noselect,fuzzy'
+  vim.o.completeopt              = 'menuone,noselect,fuzzy,nosort'
   vim.o.completeitemalign        = 'abbr,kind,menu'
-  vim.o.complete                 = '.,w,b,kspell'
+  vim.o.complete                 = '.,w,b,u,kspell'
   vim.o.clipboard                = 'unnamedplus'
   vim.o.wildmode                 = 'noselect:lastused,full'
   vim.o.wildoptions              = 'fuzzy,pum'
@@ -84,10 +84,11 @@ Config.now(function()
   vim.o.visualbell               = false
   vim.o.emoji                    = false
   vim.o.ruler                    = false
+  vim.o.scrolloff                = 999
+  vim.o.sidescrolloff            = 4
   vim.o.numberwidth              = 4
   vim.o.linespace                = 3
-  vim.o.scrolloff                = 0
-  vim.o.sidescrolloff            = 0
+  vim.o.sidescroll               = 0
   vim.o.showtabline              = 0
   vim.o.laststatus               = 0
   vim.o.cmdheight                = 0
@@ -96,7 +97,6 @@ Config.now(function()
   vim.o.winwidth                 = 20
   vim.o.winminwidth              = 10
   vim.o.winblend                 = 0
-  vim.o.sidescroll               = 0
   vim.o.pumblend                 = 0
   vim.o.pummaxwidth              = 50
   vim.o.pumwidth                 = 30
@@ -121,7 +121,7 @@ Config.now(function()
   vim.o.mousescroll              = 'ver:3,hor:6'
   vim.o.winborder                = 'single'
   vim.o.backspace                = 'indent,eol,start'
-  vim.o.cursorlineopt            = 'screenline,number'
+  vim.o.cursorlineopt            = 'screenline'
   vim.o.tabclose                 = 'uselast'
   vim.o.shortmess                = 'CFOWSsaco'
   vim.o.signcolumn               = 'yes'

@@ -110,7 +110,7 @@ overview {
     zoom 0.6
     backdrop-color "#172526"
     workspace-shadow {
-        on
+        off
         softness 1
         spread 1
         offset x=0 y=0
@@ -245,7 +245,7 @@ layout {
 
     // Shadow: ===================================================================================
     shadow {
-        on
+        off
         softness 1
         spread 1
         offset x=0 y=0
