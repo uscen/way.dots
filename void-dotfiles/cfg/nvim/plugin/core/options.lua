@@ -317,7 +317,7 @@ end)
 -- ============================================================================== #
 -- Diagnostics:                                                                   #
 -- ============================================================================== #
-local diagnostic_signs = { Error = '\u{f057} ', Warn = '\u{f071} ', Hint = '\u{ea61}', Info = '\u{f05a}' }
+local diagnostic_signs = { Error = '\u{2503}', Warn = '\u{2503}', Hint = '\u{2503}', Info = '\u{2503}' }
 local diagnostic_opts = {
   severity_sort = false,
   virtual_lines = false,
