@@ -253,9 +253,10 @@
   // Battery:                                                                       #
   // ============================================================================== #
   "battery": {
-    "interval": 5,
+    "interval": 60,
     "states": {
-      "critical": 10,
+      "warning": 30,
+      "critical": 15,
     },
     "format": "{icon}",
     "format-icons": [
