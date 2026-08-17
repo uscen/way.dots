@@ -52,7 +52,7 @@ window#waybar {
 #battery,
 #custom-launcher {
   color: @fg;
-  padding: 10px 14px;
+  padding: 10px;
 }
 
 /* ============================================================================= */
@@ -139,7 +139,6 @@ tooltip {
 }
 tooltip * {
   color: @fg;
-  /* margin: 2px; */
   background-color: @bg;
 }
 
@@ -175,7 +174,7 @@ tooltip * {
 }
 #custom-menu {
   margin-left: 4px;
-  margin-bottom: -5px;
+  margin-bottom: -8px;
 }
 #custom-void {
   color: @green;

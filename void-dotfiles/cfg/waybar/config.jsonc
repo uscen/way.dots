@@ -62,7 +62,7 @@
   // Custom:                                                                        #
   // ============================================================================== #
   "custom/menu": {
-    "format": "<span size='18pt'>󰅃</span>",
+    "format": "<span size='14pt'>󰅃</span>",
     "tooltip": false,
   },
   "custom/void": {
