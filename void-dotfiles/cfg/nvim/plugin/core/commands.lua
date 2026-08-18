@@ -205,6 +205,11 @@ Config.later(function()
     if last_nonblank < n_lines then vim.api.nvim_buf_set_lines(0, last_nonblank, n_lines, true, {}) end
   end)
 
+  -- Delete all empty lines: =====================================================================
+  Config.new_command('DelEmptyLines', function()
+    vim.cmd([[%s/^\n//]])
+  end)
+
   -- Join empty lines: ===========================================================================
   Config.new_command('JoinEmptyLines', function(args)
     if args.fargs[1] ~= nil then
@@ -357,6 +362,11 @@ Config.later(function()
     local word = vim.fn.expand('<cword>')
     vim.api.nvim_feedkeys(':%s/\\<' .. word .. '\\>/', 'n', false)
   end)
+  Config.new_command('ReplaceAll', function(opts)
+    local search = opts.fargs[1]
+    local replace = opts.fargs[2] or ''
+    vim.cmd(string.format('%%s/%s/%s/g', vim.fn.escape(search, '/\\'), vim.fn.escape(replace, '/\\')))
+  end, { nargs = '+' })
 
   -- Change Directory: ===========================================================================
   Config.new_command('CdHere', function()
