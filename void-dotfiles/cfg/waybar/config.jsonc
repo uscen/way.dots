@@ -83,6 +83,7 @@
   "clock": {
     "format": "{:%H\n%M\n--\n%d\n%m\n%y}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "interval": 60,
     "calendar": {
       "mode": "month",
       "mode-mon-col": 4,
