@@ -40,6 +40,8 @@ y = exec echo working!
 # =============================================================================== #
 # Navigation:                                                                     #
 # =============================================================================== #
+<bracketleft>  = prev
+<bracketright> = next
 <Left> = prev
 <Right> = next
 <Shift+N> = prev
@@ -60,10 +62,16 @@ l = pan -50 0
 # Zooming:                                                                        #
 # =============================================================================== #
 <Up> = zoom 1
-<Shift+plus> = zoom 1
-i = zoom 1
 <Down> = zoom -1
+<plus> = zoom 1
+<equal> = zoom 1
 <minus> = zoom -1
+<Ctrl+plus> = zoom 1
+<Ctrl+minus> = zoom -1
+<Ctrl+equal> = zoom 1
+<Shift+plus> = zoom 1
+<Shift+minus> = zoom -1
+i = zoom 1
 o = zoom -1
 
 # =============================================================================== #
