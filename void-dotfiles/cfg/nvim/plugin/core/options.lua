@@ -6,7 +6,7 @@ Config.now(function()
   vim.cmd('filetype plugin indent on')
   if vim.fn.exists('syntax_on') ~= 1 then vim.cmd('syntax enable') end
 
-  -- Leader:  ====================================================================================
+  -- Leader: =====================================================================================
   vim.g.mapleader                = vim.keycode('<space>')
   vim.g.maplocalleader           = vim.g.mapleader
 
@@ -18,7 +18,7 @@ Config.now(function()
   vim.g.path_delimiter           = vim.g.is_windows and ';' or ':'
   vim.g.path_separator           = vim.g.is_windows and '\\' or '/'
 
-  -- grep: =======================================================================================
+  -- Grep: =======================================================================================
   vim.o.grepprg                  = 'rg --vimgrep --smart-case --no-heading --color=never --glob !.git'
   vim.o.grepformat               = '%f:%l:%c:%m,%f:%l:%m'
   vim.o.path                     = vim.o.path .. ',**'
@@ -107,8 +107,8 @@ Config.now(function()
   vim.o.scrollback               = 100000
   vim.o.winbar                   = ''
   vim.o.colorcolumn              = ''
-  vim.o.guicursor                = ''
   vim.o.guifont                  = ''
+  vim.o.guicursor                = 'n-v-c:block-Cursor,i-ci-ve:block-blinkwait300-blinkon200-blinkoff150-Cursor'
   vim.o.pumborder                = 'single'
   vim.o.background               = 'dark'
   vim.o.display                  = 'lastline,truncate,msgsep'

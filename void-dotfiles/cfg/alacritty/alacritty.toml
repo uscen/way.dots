@@ -52,10 +52,10 @@ multiplier = 3
 [cursor]
 unfocused_hollow = true
 thickness = 0.15
-vi_mode_style = { shape = "Block", blinking = "Off" }
+vi_mode_style = { shape = "Block", blinking = "On" }
 
 [cursor.style]
-blinking = "Off"
+blinking = "On"
 shape = "Block"
 
 # =============================================================================== #

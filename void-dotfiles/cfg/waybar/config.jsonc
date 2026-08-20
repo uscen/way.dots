@@ -14,8 +14,8 @@
   "margin-left": 0,
   "margin-right": 0,
   "spacing": 0,
-  "modules-left": ["custom/void", "clock"],
-  "modules-center": ["mpris", "niri/workspaces"],
+  "modules-left": ["custom/void", "clock", "mpris"],
+  "modules-center": ["niri/workspaces"],
   "modules-right": [
     "group/extras",
     "network",
