@@ -70,7 +70,7 @@ Config.now(function()
       if vim.api.nvim_get_option_value('modified', { buf = buf }) then
         vim.schedule(function()
           vim.api.nvim_buf_call(buf, function()
-            vim.cmd('silent! write')
+            vim.cmd('silent! update')
           end)
         end)
       end
