@@ -57,11 +57,6 @@ Config.now(function()
     end,
   })
 
-  -- Auto Complete: ==============================================================================
-  Config.new_autocmd('CmdlineChanged', { pattern = { ':', '/', '?' }, callback = function()
-    vim.fn.wildtrigger()
-  end })
-
   -- Auto Save: ==================================================================================
   Config.new_autocmd({ 'BufLeave', 'FocusLost' }, {
     group = vim.api.nvim_create_augroup('save_buffers', {}),

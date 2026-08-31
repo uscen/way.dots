@@ -1,6 +1,7 @@
 -- ============================================================================== #
--- statuscolumn:                                                                  #
+-- Statuscolumn:                                                                  #
 -- ============================================================================== #
 Config.now(function()
-  require('mini.statuscolumn').setup()
+  local MiniStatuscolumn = require('mini.statuscolumn')
+  MiniStatuscolumn.setup()
 end)
