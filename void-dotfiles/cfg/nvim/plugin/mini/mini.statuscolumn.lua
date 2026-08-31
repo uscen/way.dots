@@ -1,4 +1,6 @@
 -- ============================================================================== #
 -- statuscolumn:                                                                  #
 -- ============================================================================== #
-require('mini.statuscolumn').setup()
+Config.now(function()
+  require('mini.statuscolumn').setup()
+end)
