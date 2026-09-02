@@ -27,7 +27,6 @@ Config.later(function()
   -- ============================================================================== #
   -- Frequently:                                                                    #
   -- ============================================================================== #
-  map('n', L ' ', C 'Pick files', 'Search files')
   map('n', L '"', C 'Pick registers', 'Search registers')
   map('n', L ',', C 'Pick buffers', 'Switch buffer')
   map('n', L '.', C 'Pick resume', 'Resume picker')
