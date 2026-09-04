@@ -341,7 +341,7 @@ animations {
 recent-windows {
     on
     debounce-ms 750
-    open-delay-ms 150
+    open-delay-ms 50
     highlight {
         active-color "#88B497ff"
         urgent-color "#D2696Cff"
