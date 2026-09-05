@@ -9,32 +9,20 @@ Config.now(function()
     vim.api.nvim_create_autocmd(event, opts)
   end
 
-  -- Highlight Yank ==============================================================================
-  Config.new_autocmd('TextYankPost', {
-    group = vim.api.nvim_create_augroup('highlight_yank', {}),
-    callback = function()
-      (vim.hl or vim.highlight).on_yank()
-    end,
-  })
-
-  -- Yanking registers: ==========================================================================
-  Config.new_autocmd('TextYankPost', {
-    group = vim.api.nvim_create_augroup('registers_yank', { clear = true }),
-    callback = function()
-      if vim.v.event.operator == 'y' then
-        for i = 9, 1, -1 do
-          vim.fn.setreg(tostring(i), vim.fn.getreg(tostring(i - 1)))
-        end
-      end
-    end,
-  })
-
   -- Don't Comment New Line ======================================================================
   Config.new_autocmd('FileType', {
     pattern = '*',
     group = vim.api.nvim_create_augroup('diable_new_line_comments', { clear = true }),
     callback = function()
       vim.opt_local.formatoptions:remove({ 'c', 'r', 'o' })
+    end,
+  })
+
+  -- Highlight Yank ==============================================================================
+  Config.new_autocmd('TextYankPost', {
+    group = vim.api.nvim_create_augroup('highlight_yank', {}),
+    callback = function()
+      (vim.hl or vim.highlight).on_yank()
     end,
   })
 
