@@ -45,6 +45,14 @@ Config.now(function()
     end,
   })
 
+  -- Increase zoxide score when changing directory: ==============================================
+  Config.new_autocmd('DirChanged', {
+    group = vim.api.nvim_create_augroup('increase_zoxide', { clear = true }),
+    callback = function(args)
+      vim.system({ 'zoxide', 'add', '--', args.file })
+    end,
+  })
+
   -- Auto Save: ==================================================================================
   Config.new_autocmd({ 'BufLeave', 'FocusLost' }, {
     group = vim.api.nvim_create_augroup('save_buffers', {}),

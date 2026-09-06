@@ -35,7 +35,7 @@ Config.now(function()
   vim.o.undolevels               = 1024
   vim.o.undoreload               = 65538
   vim.o.completetimeout          = 100
-  vim.o.completeopt              = 'menuone,noselect,fuzzy,nosort'
+  vim.o.completeopt              = 'menuone,popup,noselect,noinsert,fuzzy'
   vim.o.completeitemalign        = 'abbr,kind,menu'
   vim.o.complete                 = '.,w,b,kspell'
   vim.o.clipboard                = 'unnamedplus'
@@ -212,7 +212,7 @@ Config.now(function()
   vim.o.redrawtime               = 10000
   vim.o.timeoutlen               = 500
   vim.o.ttimeoutlen              = 400
-  vim.o.updatetime               = 300
+  vim.o.updatetime               = 200
   vim.o.synmaxcol                = 200
   vim.o.history                  = 100
   vim.o.regexpengine             = 0
@@ -350,7 +350,7 @@ local diagnostic_opts = {
     current_line = true,
     spacing = 4,
     highlight = false,
-    prefix = '●',
+    prefix = '󰨓 ',
     source = 'if_many',
     virt_text_pos = 'eol_right_align',
     severity = { min = 'ERROR', max = 'ERROR' },
