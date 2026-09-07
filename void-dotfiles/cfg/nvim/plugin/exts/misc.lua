@@ -228,28 +228,12 @@ Config.later(function()
 
   -- Open or create file under cursor: ===========================================================
   function M.open_file_or_create_new()
-    local path = vim.fn.expand('<cfile>')
-    if path == nil or path == '' then return end
-    local ok = pcall(function() vim.cmd.normal({ args = 'gf', bang = true }) end)
-    if ok then return end
-    local current_dir = vim.fn.expand('%:p:h')
-    local new_path = vim.fn.fnamemodify(current_dir .. '/' .. path, ':p')
-    if vim.fn.fnamemodify(new_path, ':e') ~= '' then
-      vim.cmd('edit ' .. new_path)
-      return
-    end
-    local suffixes = vim.split(vim.o.suffixesadd, ',', { trimempty = true })
-    for _, suf in ipairs(suffixes) do
-      local candidate = new_path .. suf
-      if vim.fn.filereadable(candidate) == 1 then
-        vim.cmd('edit ' .. candidate)
-        return
-      end
-    end
-    if #suffixes > 0 then
-      vim.cmd('edit ' .. new_path .. suffixes[1])
+    local filepath = vim.fn.expand('<cfile>')
+    if vim.fn.filereadable(filepath) == 0 then
+      vim.cmd('edit ' .. filepath)
+      print('Created new file: ' .. filepath)
     else
-      vim.cmd('edit ' .. new_path)
+      vim.cmd('edit ' .. filepath)
     end
   end
 
