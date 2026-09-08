@@ -205,6 +205,7 @@ Config.later(function()
   map('n', '<C-c>', C 'ChangeInTag', 'Change between tag')
   map('in', '<C-s>', C 'silent update', 'Save buffer')
   map('in', '<C-Tab>', C 'InAndOut', 'Jump in and out')
+  map('t', '<Esc><Esc>', '<C-\\><C-n>', 'Exit terminal mode')
 
   -- Bracketed: ==================================================================================
   map('n', ']f', C 'RelativeFileNext', 'Next file in directory')
