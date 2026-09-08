@@ -15,7 +15,7 @@ sudo xbps-install -Sy void-repo-nonfree && sudo xbps-install -S \
     qt5-wayland qt6-wayland qt5ct qt6ct kvantum \
     pipewire wireplumber alsa-pipewire alsa-utils pavucontrol \
     bluez bluez-alsa libspa-bluetooth bluetui blueman \
-    nodejs yarn pnpm lua-language-server \
+    nodejs yarn pnpm lua-language-server tree-sitter-cli \
     noto-fonts-ttf noto-fonts-ttf-extra noto-fonts-emoji noto-fonts-cjk font-awesome dejavu-fonts-ttf \
     gtk-engine-murrine
 

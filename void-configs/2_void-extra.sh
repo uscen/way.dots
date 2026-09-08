@@ -26,7 +26,6 @@ packages=(
     "@tailwindcss/language-server"
     "vscode-langservers-extracted"
     "prettier"
-    "tree-sitter-cli"
     "browser-sync"
 )
 for package in "${packages[@]}"; do
