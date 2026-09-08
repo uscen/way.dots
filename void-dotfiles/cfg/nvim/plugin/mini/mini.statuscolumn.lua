@@ -4,7 +4,7 @@
 Config.now(function()
   local MiniStatuscolumn = require('mini.statuscolumn')
   local spec = {
-    { format = '=lfs', sep = '▏' },
+    { format = 's=l=', sep = '▏' },
     { ltype = 'virt', lnum = '•' },
     { ltype = 'wrap', lnum = '↳' },
     { win = 'inactive', sep = ' ' },

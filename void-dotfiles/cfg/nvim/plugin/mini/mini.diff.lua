@@ -3,7 +3,7 @@
 -- ============================================================================== #
 Config.later(function()
   local MiniDiff = require('mini.diff')
-  require('mini.diff').setup()
+  MiniDiff.setup({ view = { style = 'sign', signs = { add = '▎', change = '▎', delete = '▎' } } })
 
   -- Open all hunks in quickfix: =================================================================
   Config.new_command('DiffToQf', function()
