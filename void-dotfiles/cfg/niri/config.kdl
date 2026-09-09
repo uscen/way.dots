@@ -54,8 +54,18 @@ cursor {
     xcursor-theme "BreezeX-Black"
     xcursor-size 30
     hide-when-typing
-    hide-after-inactive-ms 2500
+    hide-after-inactive-ms 1000
 }
+
+// Blur: =========================================================================================
+blur {
+    off
+    passes 3
+    offset 3
+    noise 0.02
+    saturation 1.5
+}
+
 
 // ============================================================================== #
 // Env:                                                                           #
@@ -69,6 +79,7 @@ environment {
     XDG_SESSION_TYPE "wayland"
 
     // Platform: =================================================================================
+    QT_IM_MODULES "wayland;fcitx5"
     QT_QPA_PLATFORM "wayland"
     QT_QPA_PLATFORMTHEME "qt6ct"
     QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
@@ -77,6 +88,7 @@ environment {
     QT_SCALE_FACTOR "1"
 
     // GTK: ======================================================================================
+    GTK_DECORATION_LAYOUT "close:"
     GTK_IM_MODULE "simple"
     GTK_USE_PORTAL "1"
     GDK_SCALE "1"
