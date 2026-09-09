@@ -22,7 +22,7 @@
 }
 window#waybar {
   background-color: @bg;
-  border-right: 1px solid @base;
+  border-right: 2px solid @base;
 }
 
 /* ============================================================================= */
