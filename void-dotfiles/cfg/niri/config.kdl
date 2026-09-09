@@ -232,7 +232,6 @@ layout {
 
     // Hint: =====================================================================================
     insert-hint {
-        on
         color "#131F2090"
     }
 
@@ -351,18 +350,17 @@ animations {
 // Recent:                                                                        #
 // ============================================================================== #
 recent-windows {
-    on
-    debounce-ms 750
-    open-delay-ms 50
+    debounce-ms 800
+    open-delay-ms 80
     highlight {
         active-color "#88B497ff"
         urgent-color "#D2696Cff"
-        padding 12
+        padding 20
         corner-radius 0
     }
     previews {
-        max-height 600
-        max-scale 0.6
+        max-height 400
+        max-scale 0.4
     }
     binds {
         Alt+Tab         { next-window; }
