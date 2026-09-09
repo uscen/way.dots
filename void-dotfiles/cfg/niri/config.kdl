@@ -305,12 +305,12 @@ animations {
 
     // Window: ===================================================================================
     window-open {
-        duration-ms 200
-        curve "ease-out-quad"
+        duration-ms 350
+        curve "ease-out-cubic"
     }
     window-close {
-        duration-ms 200
-        curve "ease-out-cubic"
+        duration-ms 500
+        curve "ease-out-quad"
     }
     window-movement {
         spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
