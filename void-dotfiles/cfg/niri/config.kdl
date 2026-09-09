@@ -119,12 +119,11 @@ environment {
 // Overview:                                                                      #
 // ============================================================================== #
 overview {
-    zoom 0.6
+    zoom 0.4
     backdrop-color "#172526"
     workspace-shadow {
-        off
-        softness 1
-        spread 1
+        softness 10
+        spread 5
         offset x=0 y=0
         color "#56827030"
     }
@@ -256,11 +255,10 @@ layout {
 
     // Shadow: ===================================================================================
     shadow {
-        off
-        softness 1
-        spread 1
-        offset x=0 y=0
-        color "#56827030"
+        softness 10
+        spread 4
+        offset x=0 y=2
+        color "#56827010"
     }
 
     // Width: ====================================================================================
