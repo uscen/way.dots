@@ -359,7 +359,7 @@ Config.now(function()
 
   -- Clear jump list at start:====================================================================
   Config.new_autocmd('VimEnter', {
-    group = vim.api.nvim_create_augroup('clear_jumps', { clear = true }),
+    group = vim.api.nvim_create_augroup('jumps_cleanup', { clear = true }),
     callback = function()
       vim.cmd.clearjumps()
     end,

@@ -145,7 +145,6 @@ Config.later(function()
   -- ============================================================================== #
   -- Find:                                                                          #
   -- ============================================================================== #
-
   map('n', L 'f/', C "Pick history scope='/'", '"/" history')
   map('n', L 'f:', C "Pick history scope=':'", '":" history')
   map('n', L 'f;', C 'Pick commands', 'Run command')
