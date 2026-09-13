@@ -107,7 +107,7 @@ Config.now(function()
   vim.o.scrollback               = 100000
   vim.o.winbar                   = ''
   vim.o.colorcolumn              = ''
-  vim.o.guifont                  = ''
+  vim.o.guifont                  = 'JetBrainsMono Nerd Font:h12'
   vim.o.guicursor                = 'n-v-c:block-Cursor,i-ci-ve:block-blinkwait300-blinkon200-blinkoff150-Cursor'
   vim.o.pumborder                = 'single'
   vim.o.background               = 'dark'
@@ -266,45 +266,34 @@ end)
 Config.later(function()
   if vim.g.neovide then
     -- General: ==================================================================================
-    vim.o.guifont = 'JetBrainsMono Nerd Font:h12'
-    vim.g.neovide_scale_factor = 1
-    vim.g.neovide_refresh_rate = 120
-
-    -- Appearance: ===============================================================================
-    vim.g.neovide_opacity = 1
-    vim.g.neovide_underline_stroke_scale = 2.5
-    vim.g.neovide_show_border = false
+    vim.g.neovide_corner_preference = 'do_not_round'
+    vim.g.neovide_progress_bar_enabled = false
+    vim.g.neovide_cursor_antialiasing = false
+    vim.g.neovide_scale_factor = 0.90
 
     -- Padding: ==================================================================================
-    vim.g.neovide_padding_top = 0
-    vim.g.neovide_padding_bottom = 0
-    vim.g.neovide_padding_right = 0
-    vim.g.neovide_padding_left = 0
-
-    -- Floating: =================================================================================
-    vim.g.neovide_floating_shadow = false
-    vim.g.neovide_floating_blur_amount_x = 2.0
-    vim.g.neovide_floating_blur_amount_y = 2.0
+    vim.g.neovide_padding_top = 4
+    vim.g.neovide_padding_bottom = 4
+    vim.g.neovide_padding_right = 4
+    vim.g.neovide_padding_left = 4
 
     -- Behavior: =================================================================================
-    vim.g.neovide_remember_window_size = false
-    vim.g.neovide_hide_mouse_when_typing = false
-    vim.g.neovide_no_idle = false
-    vim.g.neovide_cursor_smooth_blink = false
-    vim.g.neovide_cursor_antialiasing = false
-    vim.g.neovide_cursor_animate_in_insert_mode = false
-    vim.g.neovide_cursor_animate_command_line = false
+    vim.g.neovide_remember_window_size = true
+    vim.g.neovide_hide_mouse_when_typing = true
+    vim.g.neovide_cursor_animate_in_insert_mode = true
+    vim.g.neovide_cursor_animate_command_line = true
 
-    -- Cursor: ===================================================================================
-    vim.g.neovide_position_animation_length = 0
-    vim.g.neovide_cursor_animation_length = 0.00
-    vim.g.neovide_cursor_trail_size = 0
-    vim.g.neovide_scroll_animation_far_lines = 0
-    vim.g.neovide_scroll_animation_length = 0.00
+    -- Animations: ===============================================================================
+    vim.g.neovide_cursor_smooth_blink = true
+    vim.g.neovide_cursor_short_animation_length = 0.4
+    vim.g.neovide_cursor_animation_length = 0.4
+    vim.g.neovide_scroll_animation_length = 0.6
 
-    -- Options: ==================================================================================
-    vim.o.mousescroll = 'ver:10,hor:6'
-    vim.o.linespace = 0
+    -- Vfx: ======================================================================================
+    vim.g.neovide_cursor_vfx_mode = 'pixiedust'
+    vim.g.neovide_cursor_vfx_particle_lifetime = 1.3
+    vim.g.neovide_cursor_vfx_particle_density = 0.7
+    vim.g.neovide_cursor_vfx_particle_speed = 20
 
     -- Keymap: ===================================================================================
     vim.keymap.set({ 'n', 'v' }, '<F11>', ':<C-u>let g:neovide_fullscreen = !g:neovide_fullscreen<CR>')
