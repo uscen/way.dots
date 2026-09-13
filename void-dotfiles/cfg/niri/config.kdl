@@ -482,20 +482,20 @@ window-rule {
     open-floating true
 }
 
-// Media: ========================================================================================
-window-rule {
-    match app-id="^mpv$"
-    match app-id="^imv$"
-    tiled-state false
-    open-floating true
-}
-
 // Editing: =====================================================================================
 window-rule {
     match app-id=r#"com.obsproject.Studio"#
     match app-id=r#"org.shotcut.Shotcut"#
     match app-id=r#"gimp"#
     open-maximized true
+}
+
+// Media: ========================================================================================
+window-rule {
+    match app-id="^mpv$"
+    match app-id="^imv$"
+    tiled-state false
+    open-floating true
 }
 
 // Others: =======================================================================================
