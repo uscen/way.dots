@@ -490,6 +490,14 @@ window-rule {
     open-floating true
 }
 
+// Editing: =====================================================================================
+window-rule {
+    match app-id=r#"com.obsproject.Studio"#
+    match app-id=r#"org.shotcut.Shotcut"#
+    match app-id=r#"gimp"#
+    open-maximized true
+}
+
 // Others: =======================================================================================
 window-rule {
   match title="^(file_progress)$"
