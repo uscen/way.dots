@@ -107,7 +107,7 @@ Config.now(function()
   vim.o.scrollback               = 100000
   vim.o.winbar                   = ''
   vim.o.colorcolumn              = ''
-  vim.o.guifont                  = 'JetBrainsMono Nerd Font:h12'
+  vim.o.guifont                  = 'JetBrainsMono Nerd Font:h11'
   vim.o.guicursor                = 'n-v-c:block-Cursor,i-ci-ve:block-blinkwait300-blinkon200-blinkoff150-Cursor'
   vim.o.pumborder                = 'single'
   vim.o.background               = 'dark'
@@ -272,10 +272,10 @@ Config.later(function()
     vim.g.neovide_scale_factor = 0.90
 
     -- Padding: ==================================================================================
-    vim.g.neovide_padding_top = 4
-    vim.g.neovide_padding_bottom = 4
-    vim.g.neovide_padding_right = 4
-    vim.g.neovide_padding_left = 4
+    vim.g.neovide_padding_top = 0
+    vim.g.neovide_padding_bottom = 0
+    vim.g.neovide_padding_right = 0
+    vim.g.neovide_padding_left = 0
 
     -- Behavior: =================================================================================
     vim.g.neovide_remember_window_size = true
@@ -285,7 +285,7 @@ Config.later(function()
 
     -- Animations: ===============================================================================
     vim.g.neovide_cursor_smooth_blink = true
-    vim.g.neovide_cursor_short_animation_length = 0.4
+    vim.g.neovide_cursor_short_animation_length = 0.2
     vim.g.neovide_cursor_animation_length = 0.4
     vim.g.neovide_scroll_animation_length = 0.6
 

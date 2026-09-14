@@ -4,7 +4,7 @@
 # =============================================================================== #
 THEME='Thorn-dark-sea'
 ICONS='Kora'
-FONT='JetBrainsMono Nerd Font 12'
+FONT='JetBrainsMono Nerd Font 11'
 CURSOR='BreezeX-Black'
 CURSORSIZE=30
 SCHEMA='gsettings set org.gnome.desktop.interface'

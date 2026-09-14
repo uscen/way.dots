@@ -16,7 +16,7 @@
 * {
   font-family: "JetBrainsMono Nerd Font";
   font-weight: 700;
-  font-size: 12px;
+  font-size: 11px;
   border-radius: 0;
   box-shadow: none;
 }
@@ -71,7 +71,6 @@ window#waybar {
 #clock {
   color: @green;
   font-weight: 900;
-  font-size: 14px;
 }
 
 /* ============================================================================= */
@@ -169,7 +168,7 @@ tooltip * {
 /* ============================================================================= */
 #custom-void,
 #custom-launcher {
-  font-size: 16px;
+  font-size: 14px;
   margin-left: -5px;
 }
 #custom-menu {

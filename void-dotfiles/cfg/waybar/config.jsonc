@@ -81,7 +81,7 @@
   // Clock:                                                                         #
   // ============================================================================== #
   "clock": {
-    "format": "{:%H\n%M\n--\n%d\n%m\n%y}",
+    "format": "{:%H\n--\n%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "interval": 60,
     "calendar": {
