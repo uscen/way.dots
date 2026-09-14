@@ -289,12 +289,6 @@ Config.later(function()
     vim.g.neovide_cursor_animation_length = 0.4
     vim.g.neovide_scroll_animation_length = 0.6
 
-    -- Vfx: ======================================================================================
-    vim.g.neovide_cursor_vfx_mode = 'pixiedust'
-    vim.g.neovide_cursor_vfx_particle_lifetime = 1.3
-    vim.g.neovide_cursor_vfx_particle_density = 0.7
-    vim.g.neovide_cursor_vfx_particle_speed = 20
-
     -- Keymap: ===================================================================================
     vim.keymap.set({ 'n', 'v' }, '<F11>', ':<C-u>let g:neovide_fullscreen = !g:neovide_fullscreen<CR>')
     vim.keymap.set({ 'n', 'v' }, '<C-=>', ':lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<cr>')
