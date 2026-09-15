@@ -19,9 +19,10 @@ void-dotfiles/home/.bash/history
 void-dotfiles/cfg/niri/scripts/.swayidle_toggle.lock
 
 # =============================================================================== #
-# GIMP:                                                                           #
+# Media:                                                                          #
 # =============================================================================== #
 void-dotfiles/cfg/GIMP/*.*/*
+void-dotfiles/cfg/Meltytech/Shotcut.conf
 
 # =============================================================================== #
 # Byte-compiled / optimized / DLL files:                                          #
