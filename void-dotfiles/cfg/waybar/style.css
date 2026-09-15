@@ -17,7 +17,7 @@ window#waybar {
   font-family: "JetBrainsMono Nerd Font";
   font-size: 11px;
   background-color: @bg;
-  border-right: 2px solid @base;
+  border-right: 1px solid @base;
 }
 
 /* ============================================================================= */
@@ -35,9 +35,6 @@ window#waybar {
   opacity: 0.5;
 }
 #workspaces,
-#custom-void,
-#custom-menu,
-#clock,
 #mpris,
 #network,
 #bluetooth,
@@ -45,23 +42,11 @@ window#waybar {
 #pulseaudio.microphone,
 #backlight,
 #battery,
+#custom-void,
 #custom-launcher {
   color: @fg;
   padding: 12px 0;
   font-size: 14px;
-}
-
-/* ============================================================================= */
-/* Workspaces:                                                                   */
-/* ============================================================================= */
-#workspaces {
-  padding: 0;
-}
-#workspaces button {
-  color: @fg;
-}
-#workspaces button.active {
-  color: @green;
 }
 
 /* ============================================================================= */
@@ -83,6 +68,26 @@ window#waybar {
 }
 #mpris.paused {
   color: @bright;
+}
+
+/* ============================================================================= */
+/* Workspaces:                                                                   */
+/* ============================================================================= */
+#workspaces {
+  padding: 0;
+}
+#workspaces button {
+  color: @fg;
+}
+#workspaces button.active {
+  color: @green;
+}
+
+/* ============================================================================= */
+/* Tray:                                                                         */
+/* ============================================================================= */
+#tray {
+  font-weight: 900;
 }
 
 /* ============================================================================= */
@@ -162,13 +167,22 @@ tooltip * {
 /* ============================================================================= */
 /* Custom:                                                                       */
 /* ============================================================================= */
-#custom-void,
-#custom-launcher {
-  margin-right: 4px;
+#custom-menu {
+  font-size: 16px;
+  color: @green;
 }
 #custom-void {
   color: @green;
 }
 #custom-launcher {
   color: @blue;
+}
+
+/* ============================================================================= */
+/* Align:                                                                        */
+/* ============================================================================= */
+#custom-void,
+#custom-launcher,
+#network {
+  margin-right: 5px;
 }

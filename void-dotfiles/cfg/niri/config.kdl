@@ -247,7 +247,7 @@ layout {
     // Border: ===================================================================================
     border {
         on
-        width 2
+        width 1
         active-color "#233935"
         inactive-color "#172526"
         urgent-color "#D2696C"

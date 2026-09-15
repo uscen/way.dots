@@ -14,7 +14,7 @@
   "margin-left": 0,
   "margin-right": 0,
   "spacing": 0,
-  "modules-left": ["custom/void", "mpris"],
+  "modules-left": ["custom/void", "clock", "mpris"],
   "modules-center": ["niri/workspaces"],
   "modules-right": [
     "group/extras",
@@ -75,6 +75,24 @@
     "format": "",
     "on-click": "~/.config/fuzzel/modules/powermenu",
     "tooltip": false,
+  },
+
+  // ============================================================================== #
+  // Clock:                                                                         #
+  // ============================================================================== #
+  "clock": {
+    "format": "{:%H\n%M}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "today": "<span color='#a6e3a1'><b><u>{}</u></b></span>",
+      },
+    },
   },
 
   // ============================================================================== #
