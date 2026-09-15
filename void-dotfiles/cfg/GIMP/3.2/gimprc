@@ -1,0 +1,31 @@
+# =============================================================================== #
+# GIMP:                                                                           #
+# =============================================================================== #
+(prev-language "C.UTF-8;C;C;C;C;C")
+(config-version "3.2.4")
+(import-raw-plug-in "${gimp_plug_in_dir}/plug-ins/file-raw-placeholder/file-raw-placeholder")
+(monitor-xresolution 163)
+(monitor-yresolution 160)
+(theme "System")
+(icon-theme "Legacy")
+(fill-options
+    (style fg-color)
+    (custom-style solid-color)
+    (antialias yes)
+    (feather no)
+    (feather-radius 10))
+(stroke-options
+    (style fg-color)
+    (custom-style solid-color)
+    (antialias yes)
+    (feather no)
+    (feather-radius 10)
+    (method line)
+    (width 6)
+    (unit pixels)
+    (cap-style butt)
+    (join-style miter)
+    (miter-limit 10)
+    (dash-offset 0)
+    (dash-info 0)
+    (emulate-brush-dynamics no))
