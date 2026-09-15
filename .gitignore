@@ -21,8 +21,8 @@ void-dotfiles/cfg/niri/scripts/.swayidle_toggle.lock
 # =============================================================================== #
 # Media:                                                                          #
 # =============================================================================== #
-void-dotfiles/cfg/GIMP/*.*/*
-void-dotfiles/cfg/Meltytech/Shotcut.conf
+# void-dotfiles/cfg/GIMP/*.*/*
+# void-dotfiles/cfg/Meltytech/Shotcut.conf
 
 # =============================================================================== #
 # Byte-compiled / optimized / DLL files:                                          #
