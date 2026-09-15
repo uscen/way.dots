@@ -285,9 +285,9 @@ Config.later(function()
 
     -- Animations: ===============================================================================
     vim.g.neovide_cursor_smooth_blink = true
-    vim.g.neovide_cursor_short_animation_length = 0.2
-    vim.g.neovide_cursor_animation_length = 0.4
-    vim.g.neovide_scroll_animation_length = 0.6
+    vim.g.neovide_cursor_short_animation_length = 0.1
+    vim.g.neovide_cursor_animation_length = 0.2
+    vim.g.neovide_scroll_animation_length = 0.3
 
     -- Keymap: ===================================================================================
     vim.keymap.set({ 'n', 'v' }, '<F11>', ':<C-u>let g:neovide_fullscreen = !g:neovide_fullscreen<CR>')
