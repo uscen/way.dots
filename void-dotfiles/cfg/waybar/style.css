@@ -13,14 +13,9 @@
 /* ============================================================================= */
 /* General:                                                                      */
 /* ============================================================================= */
-* {
-  font-family: "JetBrainsMono Nerd Font";
-  font-weight: 700;
-  font-size: 11px;
-  border-radius: 0;
-  box-shadow: none;
-}
 window#waybar {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 11px;
   background-color: @bg;
   border-right: 2px solid @base;
 }
@@ -39,11 +34,11 @@ window#waybar {
 #custom-launcher:hover {
   opacity: 0.5;
 }
+#workspaces,
 #custom-void,
+#custom-menu,
 #clock,
 #mpris,
-#custom-menu,
-#tray,
 #network,
 #bluetooth,
 #pulseaudio,
@@ -52,12 +47,16 @@ window#waybar {
 #battery,
 #custom-launcher {
   color: @fg;
-  padding: 10px;
+  padding: 12px 0;
+  font-size: 14px;
 }
 
 /* ============================================================================= */
 /* Workspaces:                                                                   */
 /* ============================================================================= */
+#workspaces {
+  padding: 0;
+}
 #workspaces button {
   color: @fg;
 }
@@ -107,9 +106,6 @@ window#waybar {
 }
 #bluetooth.connected {
   color: @blue;
-}
-#backlight {
-  margin-left: -5px;
 }
 
 /* ============================================================================= */
@@ -168,12 +164,7 @@ tooltip * {
 /* ============================================================================= */
 #custom-void,
 #custom-launcher {
-  font-size: 14px;
-  margin-left: -5px;
-}
-#custom-menu {
-  margin-left: 4px;
-  margin-bottom: -8px;
+  margin-right: 4px;
 }
 #custom-void {
   color: @green;

@@ -14,7 +14,7 @@
   "margin-left": 0,
   "margin-right": 0,
   "spacing": 0,
-  "modules-left": ["custom/void", "clock", "mpris"],
+  "modules-left": ["custom/void", "mpris"],
   "modules-center": ["niri/workspaces"],
   "modules-right": [
     "group/extras",
@@ -62,7 +62,7 @@
   // Custom:                                                                        #
   // ============================================================================== #
   "custom/menu": {
-    "format": "<span size='14pt'>󰅃</span>",
+    "format": "󰅃",
     "tooltip": false,
   },
   "custom/void": {
@@ -78,32 +78,10 @@
   },
 
   // ============================================================================== #
-  // Clock:                                                                         #
-  // ============================================================================== #
-  "clock": {
-    "format": "{:%H\n--\n%M}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "interval": 60,
-    "calendar": {
-      "mode": "month",
-      "mode-mon-col": 4,
-      "weeks-pos": "right",
-      "on-scroll": 1,
-      "format": {
-        "months": "<span color='#568270'><b>{}</b></span>",
-        "days": "<span color='#88B497'><b>{}</b></span>",
-        "weeks": "<span color='#91C4C0'><b>W{}</b></span>",
-        "weekdays": "<span color='#D2696C'><b>{}</b></span>",
-        "today": "<span color='#D2696C'><b><u>{}</u></b></span>",
-      },
-    },
-  },
-
-  // ============================================================================== #
   // Mparis:                                                                        #
   // ============================================================================== #
   "mpris": {
-    "format": "<span size='14pt'>󰐎</span>",
+    "format": "󰐎",
     "interval": 1,
     "on-click": "playerctl play-pause",
     "on-click-right": "playerctl next",
@@ -129,8 +107,8 @@
       "*": " ",
     },
     "format-icons": {
-      "active": "<span size='14pt'></span>",
-      "default": "<span size='14pt'></span>",
+      "active": "",
+      "default": "󰨓",
     },
   },
 
@@ -139,8 +117,8 @@
   // ============================================================================== #
   "tray": {
     "spacing": 14,
+    "icon-size": 12,
     "reverse-direction": true,
-    "icon-size": 16,
     "show-passive-items": false,
   },
 
@@ -149,16 +127,10 @@
   // ============================================================================== #
   "network": {
     "format-icons": {
-      "wifi": [
-        "<span size='12pt'>󰤯</span>",
-        "<span size='12pt'>󰤟</span>",
-        "<span size='12pt'>󰤢</span>",
-        "<span size='12pt'>󰤥</span>",
-        "<span size='12pt'>󰤨</span>",
-      ],
-      "ethernet": "<span size='12pt'>󰈀</span>",
-      "disabled": "<span size='12pt'>󰤭</span>",
-      "disconnected": "<span size='12pt'>󰤩</span>",
+      "wifi": ["󰤯 ", "󰤟", "󰤢", "󰤥", "󰤨"],
+      "ethernet": "󰈀",
+      "disabled": "󰤭",
+      "disconnected": "󰤩",
     },
     "format-wifi": "{icon}",
     "format-ethernet": "{icon}",
@@ -169,7 +141,6 @@
     "on-click": "rfkill toggle wifi",
     "on-click-right": "nm-connection-editor",
     "tooltip": true,
-    "max-length": 20,
   },
 
   // ============================================================================== #
@@ -177,11 +148,11 @@
   // ============================================================================== #
   "bluetooth": {
     "interval": 5,
-    "format-on": "<span size='14pt'>󰂯</span>",
-    "format-off": "<span size='14pt'>󰂲</span>",
-    "format-disabled": "<span size='14pt'>󰂲</span>",
-    "format-connected": "<span size='14pt'>󰂱</span>",
-    "format-no-controller": "span size='14pt'>󰂯</span>",
+    "format-on": "󰂯",
+    "format-off": "󰂲",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "format-no-controller": "󰂯",
     "tooltip": true,
     "tooltip-format": "{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_address}",
@@ -196,8 +167,8 @@
   // Microphone: =================================================================================
   "pulseaudio#microphone": {
     "format": "{format_source}",
-    "format-source": "<span size='14pt'>󰍬</span>",
-    "format-source-muted": "<span size='14pt'>󰍭</span>",
+    "format-source": "󰍬",
+    "format-source-muted": "󰍭",
     "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
     "on-click-right": "pavucontrol -t 4",
     "tooltip": false,
@@ -212,12 +183,8 @@
   "pulseaudio": {
     "interval": 1,
     "format": "{icon}",
-    "format-icons": [
-      "<span size='14pt'>󰕿</span>",
-      "<span size='14pt'>󰖀</span>",
-      "<span size='14pt'>󰕾</span>",
-    ],
-    "format-muted": "<span size='14pt'>󰝟</span>",
+    "format-icons": ["󰕿", "󰖀", "󰕾"],
+    "format-muted": "󰝟",
     "on-click-right": "pavucontrol -t 3",
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "reverse-scrolling": true,
@@ -239,13 +206,21 @@
     "device": "intel_backlight",
     "format": "{icon}",
     "format-icons": [
-      "<span size='11pt'>󰃚</span>",
-      "<span size='11pt'>󰃛</span>",
-      "<span size='11pt'>󰃜</span>",
-      "<span size='11pt'>󰃝</span>",
-      "<span size='11pt'>󰃞</span>",
-      "<span size='11pt'>󰃟</span>",
-      "<span size='11pt'>󰃠</span>",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
     ],
     "reverse-scrolling": true,
     "smooth-scrolling-threshold": 0.2,
@@ -262,21 +237,10 @@
       "critical": 15,
     },
     "format": "{icon}",
-    "format-icons": [
-      "<span size='14pt'>󰁺</span>",
-      "<span size='14pt'>󰁻</span>",
-      "<span size='14pt'>󰁼</span>",
-      "<span size='14pt'>󰁽</span>",
-      "<span size='14pt'>󰁾</span>",
-      "<span size='14pt'>󰁿</span>",
-      "<span size='14pt'>󰂀</span>",
-      "<span size='14pt'>󰂁</span>",
-      "<span size='14pt'>󰂂</span>",
-      "<span size='14pt'>󰁹</span>",
-    ],
-    "format-charging": "<span size='14pt'>󰂄</span>",
-    "format-plugged": "<span size='14pt'>󰚥</span>",
-    "format-critical": "<span size='14pt'>󰂃</span>",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-charging": "󰂄",
+    "format-plugged": "󰚥",
+    "format-critical": "󰂃",
     "tooltip": true,
     "tooltip-format": "Charge: {capacity}%",
     "tooltip-format-charging": "Charging: {capacity}%",
