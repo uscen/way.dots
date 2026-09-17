@@ -66,6 +66,21 @@ Config.later(function()
     end
   end)
 
+  -- Copy current diagnostics to the system clipboard: ===========================================
+  Config.new_command('Cpdiag', function()
+    local current_word = vim.fn.expand('<cword>')
+    local diagnostics = vim.diagnostic.get(0)
+    local diagnostic_messages = {}
+    for _, diagnostic in ipairs(diagnostics) do
+      if string.find(diagnostic.message, current_word) then
+        table.insert(diagnostic_messages, diagnostic.message)
+      end
+    end
+    local diagnostic_text = table.concat(diagnostic_messages, '\n')
+    vim.fn.setreg('+', diagnostic_text)
+    print("Diagnostics for '" .. current_word .. "' copied to clipboard")
+  end)
+
   -- Toggle inlay hints: =========================================================================
   Config.new_command('ToggleInlayHints', function()
     vim.g.inlay_hints = not vim.g.inlay_hints
