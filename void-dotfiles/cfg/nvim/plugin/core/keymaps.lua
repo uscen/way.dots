@@ -27,6 +27,7 @@ Config.later(function()
   -- ============================================================================== #
   -- Frequently:                                                                    #
   -- ============================================================================== #
+  map('n', L ' ', C 'Pick files', 'Files finder')
   map('n', L '"', C 'Pick registers', 'Search registers')
   map('n', L ',', C 'Pick buffers', 'Switch buffer')
   map('n', L '.', C 'Pick resume', 'Resume picker')
@@ -156,7 +157,7 @@ Config.later(function()
   map('n', L 'fC', C "Pick git_commits path='%'", 'Commits (buf)')
   map('n', L 'fd', C "Pick diagnostic scope='all'", 'Diagnostic (workspace)')
   map('n', L 'fD', C "Pick diagnostic scope='current'", 'Diagnostic (buf)')
-  map('n', L 'ff', C 'Pick files', 'Files')
+  map('n', L 'ff', C 'Pick files', 'Files finder')
   map('n', L 'fg', C 'Pick grep_live', 'Grep live')
   map('n', L 'fG', C "Pick grep pattern='<cword>'", 'Grep current word')
   map('n', L 'fh', C 'Pick help', 'Help tags')

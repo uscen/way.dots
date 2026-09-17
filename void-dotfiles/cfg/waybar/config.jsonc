@@ -81,6 +81,7 @@
   // Clock:                                                                         #
   // ============================================================================== #
   "clock": {
+    "interval": 60,
     "format": "{:%H\n%M}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
@@ -99,8 +100,8 @@
   // Mparis:                                                                        #
   // ============================================================================== #
   "mpris": {
-    "format": "󰐎",
     "interval": 1,
+    "format": "󰐎",
     "on-click": "playerctl play-pause",
     "on-click-right": "playerctl next",
     "on-click-middle": "playerctl previous",
@@ -144,6 +145,7 @@
   // Networks:                                                                      #
   // ============================================================================== #
   "network": {
+    "interval": 5,
     "format-icons": {
       "wifi": ["󰤯 ", "󰤟", "󰤢", "󰤥", "󰤨"],
       "ethernet": "󰈀",
@@ -154,7 +156,6 @@
     "format-ethernet": "{icon}",
     "format-disconnected": "{icon}",
     "format-disabled": "{icon}",
-    "interval": 5,
     "tooltip-format": "{essid}\t{gwaddr}",
     "on-click": "rfkill toggle wifi",
     "on-click-right": "nm-connection-editor",

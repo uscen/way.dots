@@ -171,6 +171,19 @@ Config.later(function()
     vim.notify 'Text copied to clipboard'
   end, { range = true })
 
+  -- Difftool: ===================================================================================
+  Config.new_command('DirDiff', function(opts)
+    if vim.tbl_count(opts.fargs) ~= 2 then
+      vim.notify('DirDiff requires exactly two directory arguments', vim.log.levels.ERROR)
+      return
+    end
+    vim.cmd 'tabnew'
+    vim.cmd.packadd 'nvim.difftool'
+    require('difftool').open(opts.fargs[1], opts.fargs[2], { rename = {
+      detect = false,
+    }, ignore = { '.git' } })
+  end, { complete = 'dir', nargs = '*' })
+
   -- fuzzy find oldfiles list with :Oldfiles: ====================================================
   Config.new_command('Oldfiles', function(args)
     vim.cmd('e ' .. args.args)
