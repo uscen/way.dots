@@ -220,7 +220,7 @@ Config.later(function()
   end, { nargs = '?', range = true })
 
   -- Delete extra whitespace: ====================================================================
-  Config.new_command('TrailspaceTrim', function()
+  Config.new_command('TrimWhiteSpace', function()
     local curpos = vim.api.nvim_win_get_cursor(0)
     vim.cmd([[keeppatterns %s/\s\+$//e]])
     vim.api.nvim_win_set_cursor(0, curpos)

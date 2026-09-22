@@ -124,7 +124,7 @@ Config.now(function()
   vim.o.cursorlineopt            = 'screenline'
   vim.o.tabclose                 = 'uselast'
   vim.o.shortmess                = 'CFOWSsaco'
-  vim.o.signcolumn               = 'yes'
+  vim.o.signcolumn               = 'no'
   vim.o.statuscolumn             = ''
   vim.o.showbreak                = '󰘍' .. string.rep(' ', 1)
   vim.o.statusline               = string.rep('⎯', vim.o.columns)
@@ -300,22 +300,12 @@ end)
 -- ============================================================================== #
 -- Diagnostics:                                                                   #
 -- ============================================================================== #
-local diagnostic_signs = { Error = '\u{2503}', Warn = '\u{2503}', Hint = '\u{2503}', Info = '\u{2503}' }
 local diagnostic_opts = {
+  signs = false,
   severity_sort = false,
   virtual_lines = false,
   update_in_insert = false,
   underline = { severity = { min = 'HINT', max = 'ERROR' } },
-  signs = {
-    priority = 9999,
-    severity = { min = 'ERROR', max = 'ERROR' },
-    text = {
-      [vim.diagnostic.severity.ERROR] = diagnostic_signs.Error,
-      [vim.diagnostic.severity.WARN] = diagnostic_signs.Warn,
-      [vim.diagnostic.severity.INFO] = diagnostic_signs.Info,
-      [vim.diagnostic.severity.HINT] = diagnostic_signs.Hint,
-    },
-  },
   float = {
     prefix = '󰨓 ',
     source = 'if_many',

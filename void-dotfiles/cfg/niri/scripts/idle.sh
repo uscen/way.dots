@@ -13,10 +13,8 @@ if pgrep -f "swayidle"; then
 else
     # Start swayidle: ============================================================================
     swayidle -w \
-      timeout 900 'niri msg action power-off-monitors' \
-      timeout 930 'gtklock --daemonize' \
+      timeout 900 'gtklock --daemonize' \
       timeout 999 'doas zzz' \
-      resume 'niri msg action power-on-monitors' \
       before-sleep 'gtklock --daemonize' &
     touch "$LOCKFILE"
 

@@ -77,8 +77,9 @@ Config.later(function()
   map('n', L 'bi', C 'DeleteInactiveBuffers', 'Delete inactive buffers')
   map('n', L 'bb', C 'DeleteInactiveBuffers', 'Delete inactive buffers')
   map('n', L 'bs', C 'ScratchBuffer', 'New scratch buffer')
-  map('n', L 'bt', C 'TrailspaceTrim', 'Remove trailing whitespace')
-  map('n', L 'bj', C 'JoinEmptyLines', 'Remove empty lines')
+  map('n', L 'bt', C 'TrimWhiteSpace', 'Trim trailing whitespace')
+  map('n', L 'bl', C 'TrimLastLines', 'Trim last blank lines')
+  map('n', L 'bj', C 'JoinEmptyLines', 'Trim empty lines')
 
   -- ============================================================================== #
   -- Language:                                                                      #
