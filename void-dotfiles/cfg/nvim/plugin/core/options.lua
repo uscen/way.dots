@@ -112,7 +112,7 @@ Config.now(function()
   vim.o.pumborder                = 'single'
   vim.o.background               = 'dark'
   vim.o.display                  = 'lastline,truncate,msgsep'
-  vim.o.showcmdloc               = 'statusline'
+  vim.o.showcmdloc               = 'last'
   vim.o.belloff                  = 'all'
   vim.o.titlestring              = '%{getcwd()} : %{expand(\"%:r\")} [%M] ― Neovim'
   vim.o.splitkeep                = 'screen'
