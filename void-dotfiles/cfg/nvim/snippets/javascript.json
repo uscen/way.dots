@@ -310,7 +310,7 @@
     "description": "While Statement"
   },
   "Do-While Statement": {
-    "prefix": "dowhile",
+    "prefix": "do",
     "body": ["do {", "\t$0", "} while (${1:condition});"],
     "description": "Do-While Statement"
   },
