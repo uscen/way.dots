@@ -56,8 +56,16 @@ Config.later(function()
     vim.cmd([[ for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor ]])
   end, { nargs = 0 })
 
+  -- Toggle inlay hints: =========================================================================
+  Config.new_command('ToggleInlayHints', function()
+    vim.g.inlay_hints = not vim.g.inlay_hints
+    vim.notify(string.format('%s inlay hints...', vim.g.inlay_hints and 'Enabling' or 'Disabling'), vim.log.levels.INFO)
+    local mode = vim.api.nvim_get_mode().mode
+    vim.lsp.inlay_hint.enable(vim.g.inlay_hints and (mode == 'n' or mode == 'v'))
+  end, { nargs = 0 })
+
   -- Toggle between diagnostic virtual_lines and virtual_text: ===================================
-  Config.new_command('ToggleDiagnosticStyle', function()
+  Config.new_command('ToggleDiagStyle', function()
     local virtual_lines_enabled = vim.diagnostic.config().virtual_lines
     if virtual_lines_enabled then
       vim.diagnostic.config({ jump = { float = true }, virtual_lines = false, virtual_text = { current_line = true } })
@@ -67,7 +75,7 @@ Config.later(function()
   end)
 
   -- Copy current diagnostics to the system clipboard: ===========================================
-  Config.new_command('Cpdiag', function()
+  Config.new_command('CopyDiag', function()
     local current_word = vim.fn.expand('<cword>')
     local diagnostics = vim.diagnostic.get(0)
     local diagnostic_messages = {}
@@ -80,14 +88,6 @@ Config.later(function()
     vim.fn.setreg('+', diagnostic_text)
     print("Diagnostics for '" .. current_word .. "' copied to clipboard")
   end)
-
-  -- Toggle inlay hints: =========================================================================
-  Config.new_command('ToggleInlayHints', function()
-    vim.g.inlay_hints = not vim.g.inlay_hints
-    vim.notify(string.format('%s inlay hints...', vim.g.inlay_hints and 'Enabling' or 'Disabling'), vim.log.levels.INFO)
-    local mode = vim.api.nvim_get_mode().mode
-    vim.lsp.inlay_hint.enable(vim.g.inlay_hints and (mode == 'n' or mode == 'v'))
-  end, { nargs = 0 })
 
   -- Move current window to its own tab: =========================================================
   Config.new_command('MoveWindowToTab', function()
