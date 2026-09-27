@@ -101,15 +101,15 @@
   },
   "getElementById": {
     "prefix": "gi",
-    "body": "document.getElementById('${1:id}')"
+    "body": "document.getElementById('${0:id}')"
   },
   "getElementsByClassName": {
     "prefix": "gc",
-    "body": "document.getElementsByClassName('${0:class}'))"
+    "body": "document.getElementsByClassName('${0:class}')"
   },
   "getElementsByTagName": {
     "prefix": "gt",
-    "body": "document.getElementsByTagName('${0:tag}'))"
+    "body": "document.getElementsByTagName('${0:tag}')"
   },
   "querySelector": {
     "prefix": "gqs",
