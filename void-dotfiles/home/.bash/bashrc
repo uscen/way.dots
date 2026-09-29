@@ -59,7 +59,7 @@ export BROWSER="firefox"
 # =============================================================================== #
 export GTK_THEME=Thorn-dark-sea
 export XCURSOR_THEME=BreezeX-Black
-export XCURSOR_SIZE=30
+export XCURSOR_SIZE=25
 
 # =============================================================================== #
 # Options:                                                                        #

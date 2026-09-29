@@ -6,7 +6,7 @@ THEME='Thorn-dark-sea'
 ICONS='Kora'
 FONT='JetBrainsMono Nerd Font 11'
 CURSOR='BreezeX-Black'
-CURSORSIZE=30
+CURSORSIZE=25
 SCHEMA='gsettings set org.gnome.desktop.interface'
 PERF='gsettings set org.gnome.desktop.wm.preferences'
 

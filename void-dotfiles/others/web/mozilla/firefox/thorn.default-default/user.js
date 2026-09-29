@@ -55,6 +55,7 @@ user_pref("browser.tabs.groups.smart.enabled", false);
 user_pref("browser.ml.linkPreview.enabled", false);
 
 // UI: ===========================================================================================
+user_pref("ui.key.menuAccessKeyFocuses", false);
 user_pref("extensions.getAddons.showPane", false);
 user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
 user_pref("browser.discovery.enabled", false);

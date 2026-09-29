@@ -20,7 +20,7 @@ Config.later(function()
   map('n', L 'rs', C 'MatchWord', 'Search and Replace word under cursor')
   map('n', L 'rc', C 'EditConfig', 'Edit configuration')
   map('n', L 're', C 'restart', 'Restart editor')
-  map('n', L 'qq', C 'quitall', 'Quit all window')
+  map('n', L 'qq', C 'quitall!', 'Quit all window')
   map('n', L 's', C 'SmartWord', 'Switch [boolean | word]')
   map('n', L 'j', C 'SmartDuplicate', 'Smart duplicate line')
 
