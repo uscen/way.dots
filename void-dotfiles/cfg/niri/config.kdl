@@ -152,8 +152,8 @@ input {
         dwtp
         drag true
         natural-scroll
-        accel-speed 0.2
-        accel-profile "flat"
+        accel-speed 0.3
+        accel-profile "adaptive"
         scroll-method "two-finger"
         middle-emulation
         disabled-on-external-mouse
@@ -402,10 +402,12 @@ gestures {
 // Rules:                                                                         #
 // ============================================================================== #
 // All: ==========================================================================================
+window-rule {
+    open-maximized true
+}
 window-rule  {
     match is-urgent=true
     open-focused true
-    baba-is-float true
 }
 
 // Specific: =====================================================================================

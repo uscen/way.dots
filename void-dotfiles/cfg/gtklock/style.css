@@ -18,8 +18,8 @@
 }
 window {
   background-image:
-    linear-gradient(rgba(23, 37, 38, 0.5), rgba(23, 37, 38, 0.6)),
-    url("/home/lli/.local/share/wall.dots/wallpapers/GREEN.jpg");
+    linear-gradient(rgba(23, 37, 38, 0.5), rgba(23, 37, 38, 0.8)),
+    url("/home/lli/.local/share/wall.dots/wallpapers/BLUEDARK.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

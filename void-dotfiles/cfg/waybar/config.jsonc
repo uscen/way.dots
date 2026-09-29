@@ -136,7 +136,7 @@
   // ============================================================================== #
   "tray": {
     "spacing": 14,
-    "icon-size": 12,
+    "icon-size": 14,
     "reverse-direction": true,
     "show-passive-items": false,
   },
