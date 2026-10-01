@@ -18,8 +18,8 @@
 }
 window {
   background-image:
-    linear-gradient(rgba(23, 37, 38, 0.5), rgba(23, 37, 38, 0.8)),
-    url("/home/lli/.local/share/wall.dots/wallpapers/BLUEDARK.png");
+    linear-gradient(rgba(23, 37, 38, 0.8), rgba(23, 37, 38, 0.9)),
+    url("/home/lli/.local/share/wall.dots/wallpapers/GREEN.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -36,7 +36,7 @@ window {
   font-size: 200px;
   padding: 10px 30px;
   border: 1px solid @base;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 /* ============================================================================= */
@@ -48,7 +48,7 @@ window {
   caret-color: @base;
   color: @green;
   border: 1px solid @base;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 /* ============================================================================= */
@@ -65,7 +65,7 @@ window {
   background-color: alpha(@base, 0.3);
   color: @green;
   border: 1px solid @base;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 #date-label {
   font-size: 0;

@@ -231,6 +231,7 @@ layout {
 
     // Hint: =====================================================================================
     insert-hint {
+        off
         color "#131F2090"
     }
 
@@ -246,7 +247,7 @@ layout {
 
     // Border: ===================================================================================
     border {
-        on
+        off
         width 1
         active-color "#233935"
         inactive-color "#172526"
@@ -255,6 +256,7 @@ layout {
 
     // Shadow: ===================================================================================
     shadow {
+        off
         softness 10
         spread 4
         offset x=0 y=2
@@ -402,9 +404,6 @@ gestures {
 // Rules:                                                                         #
 // ============================================================================== #
 // All: ==========================================================================================
-window-rule {
-    open-maximized true
-}
 window-rule  {
     match is-urgent=true
     open-focused true
@@ -518,6 +517,10 @@ window-rule {
   match title="^(nwg-look)$"
   match title="^(confirmreset)$"
   match title="^(Delete profile)$"
+  match title="^(File Operation Progress)$"
+  match title="^(Confirm to replace files)$"
+  match title="^(KDE Connect URL handler)$"
+  match title="^(Picture-in-Picture)$"
   match title="^(Open File)(.*)$"
   match title="^(Select a File)(.*)$"
   match title="^(Choose wallpaper)(.*)$"
@@ -525,13 +528,8 @@ window-rule {
   match title="^(Save As)(.*)$"
   match title="^(Library)(.*)$"
   match title="^(File Upload)(.*)$"
-  match title="^(hyprland-share-picker)$"
   match title="^(.*)-Google$"
   match title="^(.*)System Update$"
-  match title="^File Operation Progress$"
-  match title="^Confirm to replace files$"
-  match title="^KDE Connect URL handler$"
-  match title="^Picture-in-Picture$"
   open-floating true
 }
 
