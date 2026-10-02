@@ -65,11 +65,12 @@ open = [
 
 [open]
 rules = [
-	{ name = "*/", use = [ "edit", "open", "reveal" ] },
-	{ name = "*.html", use = [ "open", "edit" ] },
-	{ name = "*.json", use = "edit" },
-	{ name = "*.tsx", use = "edit" },
-	{ name = "*.jsx", use = "edit" },
+	{ url = "*", use = [ "edit", "open", "reveal" ] },
+	{ url = "*/", use = [ "edit", "open", "reveal" ] },
+	{ url = "*.html", use = [ "open", "edit" ] },
+	{ url = "*.json", use = "edit" },
+	{ url = "*.tsx", use = "edit" },
+	{ url = "*.jsx", use = "edit" },
 	{ mime = "text/*",  use = [ "edit", "reveal" ] },
 	{ mime = "image/*", use = [ "show", "reveal" ] },
 	{ mime = "video/*", use = [ "play", "reveal" ] },
@@ -86,7 +87,6 @@ rules = [
 	{ mime = "application/x-7z-compressed", use = [ "extract", "reveal", "archive" ] },
 	{ mime = "application/x-rar",           use = [ "extract", "reveal", "archive" ] },
 	{ mime = "application/xz",              use = [ "extract", "reveal" ] },
-	{ name = "*", use = [ "edit", "open", "reveal" ] },
 ]
 
 [plugin]
