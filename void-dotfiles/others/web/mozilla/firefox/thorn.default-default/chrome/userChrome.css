@@ -412,6 +412,11 @@ sidebar-main,
   padding: 0 !important;
 }
 
+/* Hide the sidebar button from the toolbar */
+#sidebar-button {
+  display: none !important;
+}
+
 /* square corners on all browser surfaces (Win 2000 vibe).
    --browser-area-border-radius is the official knob (FF 138+).
    Selectors below are a safety net in case Firefox bypasses the var. */
