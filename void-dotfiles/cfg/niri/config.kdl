@@ -325,7 +325,7 @@ animations {
             vec2 tex_uv = centered + 0.5;
             vec3 coords_tex = niri_geo_to_tex * vec3(tex_uv, coords_geo.z);
             vec4 oColor = texture2D(niri_tex, coords_tex.st);
-            float corner_radius = 2.0;
+            float corner_radius = 1.0;
             vec2 pixel_pos = centered * size_geo.xy;
             vec2 box_size = size_geo.xy * 0.5;
             float radius = min(corner_radius, min(box_size.x, box_size.y));
@@ -338,7 +338,7 @@ animations {
         "
     }
     window-close {
-        duration-ms 300
+        duration-ms 400
         curve "cubic-bezier" 0.05 0.9 0.1 1.0
         custom-shader r"
         vec4 close_color(vec3 coords_geo, vec3 size_geo) {
@@ -349,10 +349,10 @@ animations {
             vec2 centered = uv - 0.5;
             centered.y -= y_offset;
             centered /= scale;
-            vec3 coords_tex = niri_geo_to_tex * vec3(tex_uv, coords_geo.z);
             vec2 tex_uv = centered + 0.5;
+            vec3 coords_tex = niri_geo_to_tex * vec3(tex_uv, coords_geo.z);
             vec4 oColor = texture2D(niri_tex, coords_tex.st);
-            float corner_radius = 2.0;
+            float corner_radius = 1.0;
             vec2 pixel_pos = centered * size_geo.xy;
             vec2 box_size = size_geo.xy * 0.5;
             float radius = min(corner_radius, min(box_size.x, box_size.y));
@@ -364,7 +364,6 @@ animations {
         }
         "
     }
-
     window-resize {
         duration-ms 400
         curve "cubic-bezier" 0.05 0.9 0.1 1.0
@@ -375,6 +374,8 @@ animations {
     }
     horizontal-view-movement {
         duration-ms 400
+        curve "cubic-bezier" 0.05 0.9 0.1 1.0
+    }
     window-movement {
         duration-ms 400
         curve "cubic-bezier" 0.05 0.9 0.1 1.0
