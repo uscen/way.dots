@@ -89,6 +89,26 @@ Config.later(function()
     print("Diagnostics for '" .. current_word .. "' copied to clipboard")
   end)
 
+  -- Save Macro: =================================================================================
+  Config.new_command('SaveMacro', function(params)
+    local name = params.args
+    local dir = vim.fn.expand('~/.config/nvim/macros/')
+    local file = dir .. name .. '.macro'
+    local content = vim.fn.getreg('q')
+    vim.fn.mkdir(dir, 'p')
+    vim.fn.writefile({ content }, file, 'a')
+  end, { nargs = 1 })
+
+
+  -- Load Macro: =================================================================================
+  Config.new_command('LoadMacro', function(params)
+    local name = params.args
+    local dir = vim.fn.expand('~/.config/nvim/macros/')
+    local file = dir .. name .. '.macro'
+    local content = vim.fn.readfile(file)
+    vim.fn.setreg('q', content)
+  end, { nargs = 1 })
+
   -- Move current window to its own tab: =========================================================
   Config.new_command('MoveWindowToTab', function()
     local win = vim.api.nvim_get_current_win()
