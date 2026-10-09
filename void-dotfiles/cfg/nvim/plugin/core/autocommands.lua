@@ -70,6 +70,7 @@ Config.now(function()
 
   ---Auto Cleanup: ===============================================================================
   Config.new_autocmd('FocusLost', {
+    group = vim.api.nvim_create_augroup('auto_cleanup', { clear = true }),
     once = true,
     callback = function()
       if vim.g.is_windows then return end
@@ -80,6 +81,7 @@ Config.now(function()
 
   -- No share or backup files: ===================================================================
   Config.new_autocmd({ 'BufWritePre' }, {
+    group = vim.api.nvim_create_augroup('no_shada_backup', { clear = true }),
     pattern = vim.g.is_windows and { 'C:/users/lli/scoop/*', 'C:/users/lli/win.dots/*' } or { '/mnt/*', '/boot/*' },
     callback = function()
       vim.opt_local.undofile = false
@@ -206,8 +208,8 @@ Config.now(function()
   -- Remove hl search when move or enter insert: =================================================
   local clear_hl = vim.api.nvim_create_augroup('hl_clear', { clear = true })
   Config.new_autocmd('ModeChanged', {
-    pattern = '*',
     group = clear_hl,
+    pattern = '*',
     callback = function()
       local mode = vim.fn.mode()
       if mode:match('i') then
@@ -271,8 +273,8 @@ Config.now(function()
 
   -- Auto start insert when opening or focusing a terminal: ======================================
   Config.new_autocmd('BufEnter', {
-    pattern = 'term://*',
     group = vim.api.nvim_create_augroup('term_focus', { clear = true }),
+    pattern = 'term://*',
     callback = function()
       if vim.bo.buftype == 'terminal' then
         vim.cmd.startinsert()
