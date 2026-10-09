@@ -11,8 +11,8 @@ Config.now(function()
 
   -- Don't Comment New Line ======================================================================
   Config.new_autocmd('FileType', {
-    pattern = '*',
     group = vim.api.nvim_create_augroup('diable_new_line_comments', { clear = true }),
+    pattern = '*',
     callback = function()
       vim.opt_local.formatoptions:remove({ 'c', 'r', 'o' })
     end,
@@ -28,8 +28,8 @@ Config.now(function()
 
   -- auto detects filetype if the filetype is empty: =============================================
   Config.new_autocmd('BufWritePost', {
-    pattern = '*',
     group = vim.api.nvim_create_augroup('file_detect', { clear = true }),
+    pattern = '*',
     callback = function()
       if vim.bo.filetype == '' then vim.cmd('filetype detect') end
     end,
@@ -143,8 +143,8 @@ Config.now(function()
 
   -- Jump to last accessed window on closing the current one: ====================================
   Config.new_autocmd('WinClosed', {
-    nested = true,
     group = vim.api.nvim_create_augroup('jump_to_last_window', { clear = true }),
+    nested = true,
     callback = function()
       if vim.fn.expand('<amatch>') == vim.fn.win_getid() then vim.cmd('wincmd p') end
     end,
@@ -152,8 +152,8 @@ Config.now(function()
 
   -- Clear the last used search pattern when opening a new buffer ================================
   Config.new_autocmd('BufReadPre', {
-    pattern = '*',
     group = vim.api.nvim_create_augroup('clear_search', { clear = true }),
+    pattern = '*',
     callback = function()
       vim.fn.setreg('/', '')
       vim.cmd 'let @/ = ""'
@@ -185,15 +185,15 @@ Config.now(function()
   -- Fix broken macro recording notification for cmdheight 0: ====================================
   local show_recordering = vim.api.nvim_create_augroup('show_recordering', { clear = true })
   Config.new_autocmd('RecordingEnter', {
-    pattern = '*',
     group = show_recordering,
+    pattern = '*',
     callback = function()
       vim.opt_local.cmdheight = 1
     end,
   })
   Config.new_autocmd('RecordingLeave', {
-    pattern = '*',
     group = show_recordering,
+    pattern = '*',
     callback = function()
       local timer = vim.loop.new_timer()
       ---@diagnostic disable-next-line: need-check-nil
