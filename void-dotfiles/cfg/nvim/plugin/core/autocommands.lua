@@ -190,6 +190,8 @@ Config.now(function()
     group = show_recordering,
     pattern = '*',
     callback = function()
+      local recording_register = vim.fn.reg_recording()
+      vim.notify('Recording @' .. recording_register, vim.log.levels.INFO, { title = 'Macro' })
       vim.opt_local.cmdheight = 1
     end,
   })
@@ -197,7 +199,9 @@ Config.now(function()
     group = show_recordering,
     pattern = '*',
     callback = function()
+      local recording_register = vim.fn.reg_recording()
       local timer = vim.loop.new_timer()
+      vim.notify('Recording @' .. recording_register .. ' done!', vim.log.levels.INFO, { title = 'Macro' })
       ---@diagnostic disable-next-line: need-check-nil
       timer:start(50, 0, vim.schedule_wrap(function()
         vim.opt_local.cmdheight = 0
