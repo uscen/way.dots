@@ -652,7 +652,6 @@ binds {
     MOD+SHIFT+N                         { spawn "nautilus"; }
     MOD+E                               { spawn "thunderbird"; }
     MOD+W                               { spawn "firefox"; }
-    MOD+V                               { spawn "neovide"; }
     MOD+N                               { spawn "foot" "yazi"; }
     MOD+B                               { spawn "foot" "--app-id='bluetui'" "bluetui"; }
     MOD+I                               { spawn "foot" "--app-id='impala'" "impala"; }

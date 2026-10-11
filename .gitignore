@@ -12,6 +12,7 @@
 # =============================================================================== #
 void-dotfiles/cfg/mpv/watch_later/
 void-dotfiles/cfg/mpv/cache/
+void-dotfiles/cfg/mpv/shaders/
 void-dotfiles/cfg/mpv/volume
 void-dotfiles/cfg/lazygit/state.yml
 void-dotfiles/cfg/bin/neovide
