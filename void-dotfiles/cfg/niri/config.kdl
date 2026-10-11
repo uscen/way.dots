@@ -141,7 +141,7 @@ input {
             options "caps:escape,altwin:menu_win,grp:win_space_toggle"
         }
         track-layout "window"
-        repeat-delay 120
+        repeat-delay 125
         repeat-rate 60
         numlock
     }
@@ -635,7 +635,7 @@ binds {
     SUPER+Y                             { spawn "~/.config/niri/scripts/scratch.sh" "special-files"; }
 
     // Scripts actions: ==========================================================================
-    MOD+SHIFT+S                         { spawn "~/.config/niri/scripts/idle.sh"; }
+    MOD+SHIFT+S                         { spawn "~/.config/niri/scripts/idle.sh" "--no-quiet"; }
     MOD+SHIFT+P                         { spawn "~/.config/fuzzel/modules/powermenu"; }
     MOD+SHIFT+U                         { spawn "~/.config/fuzzel/modules/umount"; }
     MOD+SHIFT+M                         { spawn "~/.config/fuzzel/modules/media"; }

@@ -3,13 +3,15 @@
 # Idle:                                                                           #
 # =============================================================================== #
 LOCKFILE="$HOME/.config/niri/scripts/.swayidle_toggle.lock"
+notify() { [[ "$1" == "--no-quiet" ]] && notify-send "Auto Suspend" "$2"; }
+
 if pgrep -f "swayidle"; then
     # kill swayidle: ============================================================================
     pkill -f "swayidle"
     rm -f "$LOCKFILE"
 
     # Send notification: =========================================================================
-    notify-send "Auto Suspend" "Auto Suspend is now disabled"
+    notify "$1" "Auto Suspend is now disabled"
 else
     # Start swayidle: ============================================================================
     swayidle -w \
@@ -19,5 +21,5 @@ else
     touch "$LOCKFILE"
 
     # Send notification: =========================================================================
-    notify-send "Auto Suspend" "Auto Suspend is now enabled"
+    notify "$1" "Auto Suspend is now enabled"
 fi
