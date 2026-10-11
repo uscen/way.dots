@@ -349,7 +349,6 @@ animations {
         duration-ms 180
         // quick, clean exit
         curve "cubic-bezier" 0.32 0.0 0.67 0.0
-
         custom-shader r"
             vec4 close_color(vec3 coords_geo, vec3 size_geo) {
                 float p = niri_clamped_progress;
@@ -380,7 +379,6 @@ animations {
     window-resize {
         // Resizes should feel soft but controlled.
         spring damping-ratio=1.0 stiffness=720 epsilon=0.0001
-
         custom-shader r"
             vec4 resize_color(vec3 coords_curr_geo, vec3 size_curr_geo) {
                 // Show the next texture, but with a very mild softening
@@ -483,6 +481,9 @@ gestures {
 // Rules:                                                                         #
 // ============================================================================== #
 // All: ==========================================================================================
+window-rule {
+    open-maximized true
+}
 window-rule  {
     match is-urgent=true
     open-focused true
