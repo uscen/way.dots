@@ -152,13 +152,6 @@ alias bashc="nvim ~/.local/way.dots/void-dotfiles/home/.bash/bashrc"
 alias wmc="nvim ~/.local/way.dots/void-dotfiles/cfg/niri/config.kdl"
 
 # =============================================================================== #
-# Services:                                                                       #
-# =============================================================================== #
-alias svenable="doas ln -sfv /etc/sv/$1 /var/service/"
-alias svdisable="doas rm /var/service/$1"
-alias svstatus="doas sv status /var/service/*"
-
-# =============================================================================== #
 # Eza:                                                                            #
 # =============================================================================== #
 alias ls="eza --long --group --icons=auto --git --sort=name --group-directories-first"

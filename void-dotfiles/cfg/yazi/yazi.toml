@@ -4,7 +4,7 @@
 [mgr]
 show_hidden = false
 show_symlink = false
-ratio = [0, 4, 8]
+ratio = [0, 4, 3]
 sort_by = "natural"
 sort_dir_first = true
 sort_translit = true
