@@ -565,12 +565,15 @@ window-rule {
     open-floating true
 }
 
-// Editing: =====================================================================================
+// Screencast: ===================================================================================
 window-rule {
-    match app-id=r#"com.obsproject.Studio"#
-    match app-id=r#"org.shotcut.Shotcut"#
-    match app-id=r#"gimp"#
-    open-maximized true
+    match app-id="aerc"
+    match app-id="Bitwarden"
+    match app-id="Element"
+    match app-id="firefox"
+    match app-id="obsidian"
+    match app-id="passmenu"
+    block-out-from "screencast"
 }
 
 // Media: ========================================================================================
@@ -579,6 +582,14 @@ window-rule {
     match app-id="^imv$"
     tiled-state false
     open-floating true
+}
+
+// Editing: =====================================================================================
+window-rule {
+    match app-id=r#"com.obsproject.Studio"#
+    match app-id=r#"org.shotcut.Shotcut"#
+    match app-id=r#"gimp"#
+    open-maximized true
 }
 
 // Others: =======================================================================================
@@ -612,6 +623,10 @@ window-rule {
 // ============================================================================== #
 // Layer:                                                                         #
 // ============================================================================== #
+layer-rule {
+    match namespace="^notifications$"
+    block-out-from "screencast"
+}
 layer-rule {
     match namespace="^wallpaper$"
     place-within-backdrop true
