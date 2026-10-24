@@ -72,7 +72,7 @@ blur {
 // ============================================================================== #
 environment {
     // Compositor: ===============================================================================
-    DISPLAY ":1"
+    DISPLAY ":0"
     DESKTOP_SESSION "niri"
     XDG_CURRENT_DESKTOP "niri"
     XDG_SESSION_DESKTOP "Niri"
@@ -141,7 +141,7 @@ input {
             options "caps:escape,altwin:menu_win,grp:win_space_toggle"
         }
         track-layout "window"
-        repeat-delay 120
+        repeat-delay 140
         repeat-rate 60
         numlock
     }
@@ -480,9 +480,6 @@ gestures {
 // Rules:                                                                         #
 // ============================================================================== #
 // All: ==========================================================================================
-window-rule {
-    open-maximized true
-}
 window-rule  {
     match is-urgent=true
     open-focused true
@@ -643,22 +640,23 @@ layer-rule {
 // Keybidngs:                                                                     #
 // ============================================================================== #
 binds {
-    // Scratchpad terminal: ======================================================================
+    // Scratchpad scripts: =======================================================================
     SUPER+T                             { spawn "~/.config/niri/scripts/scratch.sh" "special-term"; }
     SUPER+B                             { spawn "~/.config/niri/scripts/scratch.sh" "special-btop"; }
     SUPER+N                             { spawn "~/.config/niri/scripts/scratch.sh" "special-files"; }
     SUPER+Y                             { spawn "~/.config/niri/scripts/scratch.sh" "special-files"; }
 
-    // Scripts actions: ==========================================================================
-    MOD+SHIFT+S                         { spawn "~/.config/niri/scripts/idle.sh" "--no-quiet"; }
+    // Fuzzel scripts: ===========================================================================
     MOD+SHIFT+P                         { spawn "~/.config/fuzzel/modules/powermenu"; }
     MOD+SHIFT+U                         { spawn "~/.config/fuzzel/modules/umount"; }
     MOD+SHIFT+M                         { spawn "~/.config/fuzzel/modules/media"; }
     MOD+SHIFT+W                         { spawn "~/.config/fuzzel/modules/niri"; }
-    MOD+SHIFT+I                         { spawn "~/.config/fuzzel/modules/wall"; }
     MOD+SHIFT+C                         { spawn "~/.config/fuzzel/modules/cliphist"; }
     MOD+SHIFT+B                         { spawn "~/.config/fuzzel/modules/calc"; }
     MOD+SHIFT+E                         { spawn "~/.config/fuzzel/modules/emoji"; }
+
+    // Others scripts: ===========================================================================
+    MOD+SHIFT+S                         { spawn "~/.config/niri/scripts/idle.sh" "--no-quiet"; }
 
     // Application shortcuts: ====================================================================
     MOD+RETURN                          { spawn "alacritty"; }
