@@ -2,8 +2,8 @@
 # General:                                                                        #
 # =============================================================================== #
 [options]
-background = 172526
 fullscreen = false
+background = 172526
 width = 1280
 height = 720
 initial_pan = 50 50
@@ -17,7 +17,6 @@ overlay_text_alpha = ff
 overlay_background_color = 172526
 overlay_background_alpha = c3
 overlay_position_bottom = true
-recursively = true
 scaling_mode = full
 slideshow_duration = 0
 suppress_default_binds = false
