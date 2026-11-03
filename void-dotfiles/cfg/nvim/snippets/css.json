@@ -53,11 +53,11 @@
     "prefix": "hide",
     "body": [
       ".hidden-box {",
-      "width: 0px;",
-      "height: 0px;",
-      "overflow: visible;",
-      "z-index: 1;",
-      "transition: opacity 0.3s;",
+      "\twidth: 0px;",
+      "\theight: 0px;",
+      "\toverflow: visible;",
+      "\tz-index: 1;",
+      "\ttransition: opacity 0.3s;",
       "}"
     ]
   },
