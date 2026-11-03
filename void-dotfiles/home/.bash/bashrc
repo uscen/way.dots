@@ -215,7 +215,7 @@ alias pclean="doas rm -rf /var/cache/xbps/*"
 # =============================================================================== #
 alias yt-concats="yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/playlist"
 alias yt-music="yt-dlp --ignore-config --config-locations ~/.config/yt-dlp/music"
-alias dev="browser-sync start --no-notify --server --files '**/*.html, **/*.css, **/*.js'"
+alias dev="browser-sync start --no-notify --no-open --server --watch"
 alias rm="trash-put"
 alias man="tldr"
 alias cat="bat"
