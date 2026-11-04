@@ -210,7 +210,7 @@ Config.now(function()
   vim.o.updatetime               = 200
   vim.o.synmaxcol                = 200
   vim.o.history                  = 100
-  vim.o.ttimeoutlen              = 10
+  vim.o.ttimeoutlen              = 50
   vim.o.regexpengine             = 0
 
   -- Disable builtin plugins: ====================================================================
