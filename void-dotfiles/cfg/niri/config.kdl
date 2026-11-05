@@ -806,11 +806,17 @@ binds {
     MOD+P                               { spawn-sh "niri msg pick-color| grep 'Hex:'| cut -d' ' -f2| wl-copy"; }
     Mod+X                               { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json focused-window | jq .id)"; }
 
-    // Shortcuts panel: ==========================================================================
+    // System Controls: ==========================================================================
     MOD+SHIFT+ESCAPE                    { show-hotkey-overlay; }
     Mod+CONTROL+P                       { power-off-monitors; }
     Mod+SHIFT+Q                         { quit skip-confirmation=true; }
     Mod+Escape                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // Touchpad controls: ========================================================================
+    Mod+TouchpadScrollDown             cooldown-ms=150 { focus-workspace-down; }
+    Mod+TouchpadScrollUp               cooldown-ms=150 { focus-workspace-up; }
+    Mod+TouchpadScrollRight            cooldown-ms=50 { focus-column-right; }
+    Mod+TouchpadScrollLeft             cooldown-ms=50 { focus-column-left; }
 
     // Application restarts: =====================================================================
     MOD+SUPER+W                         { spawn "sh" "-c" "pgrep -x waybar >/dev/null && killall waybar || waybar &"; }
