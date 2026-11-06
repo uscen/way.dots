@@ -141,7 +141,7 @@ input {
             options "caps:escape,altwin:menu_win,grp:win_space_toggle"
         }
         track-layout "window"
-        repeat-delay 120
+        repeat-delay 200
         repeat-rate 60
         numlock
     }
@@ -157,8 +157,8 @@ input {
         accel-profile "adaptive"
         scroll-method "two-finger"
         middle-emulation
-        disabled-on-external-mouse
         scroll-factor 1.5
+        disabled-on-external-mouse
     }
 
     // Mouse: ====================================================================================
