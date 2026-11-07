@@ -1,6 +1,7 @@
 # =============================================================================== #
 # General:                                                                        #
 # =============================================================================== #
+ascii = false
 switch = "r"
 mode = "station"
 esc_quit = true
@@ -31,6 +32,18 @@ remove = "d"
 show_all = "a"
 share = "p"
 
-# [station.new_network]
-# show_all = "a"
-# connect_hidden = ""
+[station.new_network]
+show_all = "a"
+connect_hidden = "n"
+
+# =============================================================================== #
+# Theme:                                                                          #
+# =============================================================================== #
+[theme]
+background = "dark gray"
+border = "green"
+text_color = "white"
+hidden_color = "dark gray"
+info_color = "green"
+warning_color = "yellow"
+error_color = "red"
