@@ -19,7 +19,7 @@ function loadLinks() {
   LINKS.forEach((link) => {
     const a = document.createElement("a");
     a.href = link.url;
-    a.target = "_blank";
+    a.target = "_self";
 
     const card = document.createElement("div");
     card.className = "card";
@@ -46,7 +46,7 @@ function loadLocalLinks() {
   LOCAL_PORTS.forEach((service) => {
     const a = document.createElement("a");
     a.href = `http://localhost:${service.port}`;
-    a.target = "_blank";
+    a.target = "_self";
 
     const card = document.createElement("div");
     card.className = "card local-card";
