@@ -680,7 +680,7 @@ binds {
     XF86AudioNext                       allow-when-locked=true { spawn "playerctl" "next"; }
     XF86MonBrightnessUp                 allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
     XF86MonBrightnessDown               allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
-    XF86Calculator                      repeat=false { spawn "walker" "--provider" "calc"; }
+    XF86Calculator                      repeat=false { spawn "~/.config/fuzzel/modules/calc"; }
 
     // Window management: ========================================================================
     MOD+Q                               { close-window; }
@@ -807,10 +807,11 @@ binds {
     Mod+X                               { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json focused-window | jq .id)"; }
 
     // System Controls: ==========================================================================
-    MOD+SHIFT+ESCAPE                    { show-hotkey-overlay; }
-    Mod+CONTROL+P                       { power-off-monitors; }
+    CONTROL+SHIFT+Space                 repeat=false { switch-layout "next"; }
+    Mod+SHIFT+Escape                    allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    MOD+ESCAPE                          { show-hotkey-overlay; }
     Mod+SHIFT+Q                         { quit skip-confirmation=true; }
-    Mod+Escape                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    Mod+CONTROL+P                       { power-off-monitors; }
 
     // Touchpad controls: ========================================================================
     Mod+TouchpadScrollDown             cooldown-ms=150 { focus-workspace-down; }
