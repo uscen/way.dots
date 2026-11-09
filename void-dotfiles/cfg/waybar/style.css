@@ -54,7 +54,7 @@ window#waybar {
 /* Workspaces:                                                                   */
 /* ============================================================================= */
 #workspaces button {
-  padding-left: 10px;
+  padding-left: 16px;
   padding-right: 10px;
   color: @fg;
 }
@@ -93,6 +93,9 @@ window#waybar {
 /* ============================================================================= */
 /* Networks:                                                                     */
 /* ============================================================================= */
+#network {
+  margin-right: 4px;
+}
 #network.disabled {
   color: @bright;
 }
@@ -168,7 +171,7 @@ tooltip * {
 /* Custom:                                                                       */
 /* ============================================================================= */
 #custom-menu {
-  font-size: 16px;
+  font-size: 24px;
   color: @green;
 }
 #custom-void {
@@ -181,8 +184,9 @@ tooltip * {
 /* ============================================================================= */
 /* Align:                                                                        */
 /* ============================================================================= */
+#custom-menu,
 #custom-void,
-#custom-launcher,
-#network {
-  margin-right: 5px;
+#custom-launcher {
+  padding-left: 16px;
+  padding-right: 16px;
 }

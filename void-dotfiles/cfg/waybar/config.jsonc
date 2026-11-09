@@ -69,7 +69,7 @@
     "format": "",
     "tooltip": false,
     "on-click": "alacritty",
-    "on-click-right": "kitty",
+    "on-click-right": "foot",
   },
   "custom/launcher": {
     "format": "",
