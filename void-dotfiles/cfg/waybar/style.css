@@ -13,9 +13,15 @@
 /* ============================================================================= */
 /* General:                                                                      */
 /* ============================================================================= */
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  min-height: 0;
+}
 window#waybar {
-  font-family: "JetBrainsMono Nerd Font";
-  font-size: 11px;
   background-color: @bg;
   border-right: 1px solid @base;
 }
@@ -23,7 +29,6 @@ window#waybar {
 /* ============================================================================= */
 /* Groups:                                                                       */
 /* ============================================================================= */
-#custom-void:hover,
 #network:hover,
 #bluetooth:hover,
 #pulseaudio:hover,
@@ -31,6 +36,7 @@ window#waybar {
 #battery:hover,
 #pulseaudio.microphone:hover,
 #pulseaudio.sink-muted:hover,
+#custom-void:hover,
 #custom-launcher:hover {
   opacity: 0.5;
 }
@@ -44,8 +50,7 @@ window#waybar {
 #battery,
 #custom-void,
 #custom-launcher {
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding: 12px 0px;
   font-size: 16px;
   color: @fg;
 }
@@ -54,12 +59,13 @@ window#waybar {
 /* Workspaces:                                                                   */
 /* ============================================================================= */
 #workspaces button {
-  padding-left: 16px;
-  padding-right: 10px;
   color: @fg;
 }
 #workspaces button.active {
   color: @green;
+}
+#workspaces button label {
+  font-size: 16px;
 }
 
 /* ============================================================================= */
@@ -67,7 +73,6 @@ window#waybar {
 /* ============================================================================= */
 #clock {
   color: @green;
-  font-weight: 900;
 }
 
 /* ============================================================================= */
@@ -94,7 +99,7 @@ window#waybar {
 /* Networks:                                                                     */
 /* ============================================================================= */
 #network {
-  margin-right: 4px;
+  margin-right: 5px;
 }
 #network.disabled {
   color: @bright;

@@ -64,10 +64,12 @@
   "custom/menu": {
     "format": "󰅃",
     "tooltip": false,
+    "justify": "center",
   },
   "custom/void": {
     "format": "",
     "tooltip": false,
+    "justify": "center",
     "on-click": "alacritty",
     "on-click-right": "foot",
   },
@@ -75,6 +77,7 @@
     "format": "",
     "on-click": "~/.config/fuzzel/modules/powermenu",
     "tooltip": false,
+    "justify": "center",
   },
 
   // ============================================================================== #
@@ -87,12 +90,19 @@
     "calendar": {
       "mode": "month",
       "mode-mon-col": 3,
-      "weeks-pos": "right",
       "on-scroll": 1,
+      "weeks-pos": "right",
       "on-click-right": "mode",
       "format": {
         "today": "<span color='#a6e3a1'><b><u>{}</u></b></span>",
       },
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
     },
   },
 
@@ -126,9 +136,12 @@
       "*": " ",
     },
     "format-icons": {
-      "active": "",
-      "default": "󰨓",
+      "active": " ",
+      "default": " 󰨓",
     },
+    "on-scroll-up": "niri msg action focus-workspace-up",
+    "on-scroll-down": "niri msg action focus-workspace-down",
+    "on-click-right": "niri msg action toggle-overview",
   },
 
   // ============================================================================== #
@@ -147,7 +160,7 @@
   "network": {
     "interval": 5,
     "format-icons": {
-      "wifi": ["󰤯 ", "󰤟", "󰤢", "󰤥", "󰤨"],
+      "wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
       "ethernet": "󰈀",
       "disabled": "󰤭",
       "disconnected": "󰤩",
@@ -254,6 +267,11 @@
     "states": {
       "warning": 30,
       "critical": 15,
+    },
+    "events": {
+      "on-discharging-warning": "notify-send -a 'Battery' 'Low Battery...' 'Please plug in your device.' -i battery-caution-symbolic",
+      "on-discharging-critical": "notify-send -a 'Battery'  -u critical 'Critical Battery...' 'Please charge your device immediately' -i battery-level-0-symbolic",
+      "on-charging-100": "notify-send -e -a 'Battery' 'Battery full...' 'Battery capacity at maximum level.' -i battery-level-100-charged-symbolic",
     },
     "format": "{icon}",
     "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
