@@ -71,13 +71,13 @@
     "tooltip": false,
     "justify": "center",
     "on-click": "alacritty",
-    "on-click-right": "foot",
   },
   "custom/launcher": {
     "format": "",
-    "on-click": "~/.config/fuzzel/modules/powermenu",
     "tooltip": false,
     "justify": "center",
+    "on-click": "~/.config/fuzzel/modules/powermenu",
+    "on-click-right": "~/.config/fuzzel/modules/powermenu",
   },
 
   // ============================================================================== #
