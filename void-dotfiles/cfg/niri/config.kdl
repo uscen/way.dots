@@ -233,9 +233,9 @@ layout {
    // Tabs: ======================================================================================
     tab-indicator {
         off
+        gap 0
         hide-when-single-tab
         place-within-column
-        gap 0
         width 10
         length total-proportion=1.0
         position "top"
