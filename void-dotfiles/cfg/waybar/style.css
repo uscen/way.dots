@@ -3,6 +3,7 @@
 /* ============================================================================= */
 @define-color fg     #88B497;
 @define-color bg     #172526;
+@define-color black  #131F20;
 @define-color bright #568270;
 @define-color base   #233935;
 @define-color white  #A1A790;
@@ -14,6 +15,8 @@
 /* General:                                                                      */
 /* ============================================================================= */
 * {
+  text-shadow: none;
+  box-shadow: none;
   border: none;
   border-radius: 0;
   font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
@@ -21,9 +24,65 @@
   font-weight: 900;
   min-height: 0;
 }
+/* ============================================================================= */
+/* bar:                                                                          */
+/* ============================================================================= */
 window#waybar {
   background-color: @bg;
-  border-right: 1px solid @base;
+  color: @fg;
+}
+window#waybar.main-bar #pill .module {
+  background: transparent;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+/* ============================================================================= */
+/* Border:                                                                       */
+/* ============================================================================= */
+window#waybar.border-left,
+window#waybar.border-right,
+window#waybar.border-top,
+window#waybar.border-bottom {
+  background-color: @base;
+}
+
+/* ============================================================================= */
+/* Widget:                                                                       */
+/* ============================================================================= */
+window#waybar.time-widget,
+window#waybar.date-widget {
+  background: transparent;
+}
+window#waybar.time-widget .module,
+window#waybar.date-widget .module {
+  font-family: "JetBrainsMono Nerd Font";
+}
+window#waybar #clock.widget-time {
+  background: @black;
+  color: @bright;
+  font-size: 72px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  min-width: 250px;
+  padding: 12px 8px;
+  margin: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 3px 0px @bg;
+}
+
+window#waybar #clock.widget-date {
+  background: @bg;
+  color: @green;
+  font-size: 24px;
+  font-weight: 400;
+  min-width: 90px;
+  padding: 4px 12px;
+  margin: 135px 230px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 3px 0px @bg;
 }
 
 /* ============================================================================= */
@@ -50,7 +109,8 @@ window#waybar {
 #battery,
 #custom-void,
 #custom-launcher {
-  padding: 12px 0px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   font-size: 16px;
   color: @fg;
 }

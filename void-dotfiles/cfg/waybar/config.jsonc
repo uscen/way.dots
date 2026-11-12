@@ -1,285 +1,370 @@
 // ============================================================================== #
 // Config:                                                                        #
 // ============================================================================== #
-{
-  // ============================================================================== #
-  // General:                                                                       #
-  // ============================================================================== #
-  "reload_style_on_change": true,
-  "toggle": true,
-  "layer": "top",
-  "position": "left",
-  "margin-top": 0,
-  "margin-bottom": 0,
-  "margin-left": 0,
-  "margin-right": 0,
-  "spacing": 0,
-  "modules-left": ["custom/void", "clock", "mpris"],
-  "modules-center": ["niri/workspaces"],
-  "modules-right": [
-    "group/extras",
-    "network",
-    "bluetooth",
-    "pulseaudio#microphone",
-    "group/audio",
-    "group/brightness",
-    "battery",
-    "custom/launcher",
-  ],
+[
+  {
+    // ============================================================================== #
+    // General:                                                                       #
+    // ============================================================================== #
+    "name": "main-bar",
+    "reload_style_on_change": true,
+    "exclusive": true,
+    "passthrough": false,
+    "toggle": true,
+    "layer": "top",
+    "position": "left",
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "spacing": 4,
+    "width": 30,
+    "modules-left": ["custom/void", "clock", "mpris"],
+    "modules-center": ["niri/workspaces"],
+    "modules-right": [
+      "group/extras",
+      "network",
+      "bluetooth",
+      "pulseaudio#microphone",
+      "group/audio",
+      "group/brightness",
+      "battery",
+      "custom/launcher",
+    ],
 
-  // ============================================================================== #
-  // Group:                                                                         #
-  // ============================================================================== #
-  "group/extras": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 400,
-      "children-class": "extras",
-      "transition-left-to-right": false,
+    // ============================================================================== #
+    // Group:                                                                         #
+    // ============================================================================== #
+    "group/extras": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 400,
+        "children-class": "extras",
+        "transition-left-to-right": false,
+      },
+      "modules": ["custom/menu", "tray"],
     },
-    "modules": ["custom/menu", "tray"],
-  },
-  "group/brightness": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 400,
-      "children-class": "brightness",
-      "transition-left-to-right": false,
+    "group/brightness": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 400,
+        "children-class": "brightness",
+        "transition-left-to-right": false,
+      },
+      "modules": ["backlight", "backlight/slider"],
     },
-    "modules": ["backlight", "backlight/slider"],
-  },
-  "group/audio": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 400,
-      "children-class": "audio",
-      "transition-left-to-right": false,
+    "group/audio": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 400,
+        "children-class": "audio",
+        "transition-left-to-right": false,
+      },
+      "modules": ["pulseaudio", "pulseaudio/slider"],
     },
-    "modules": ["pulseaudio", "pulseaudio/slider"],
-  },
 
-  // ============================================================================== #
-  // Custom:                                                                        #
-  // ============================================================================== #
-  "custom/menu": {
-    "format": "󰅃",
-    "tooltip": false,
-    "justify": "center",
-  },
-  "custom/void": {
-    "format": "",
-    "tooltip": false,
-    "justify": "center",
-    "on-click": "alacritty",
-  },
-  "custom/launcher": {
-    "format": "",
-    "tooltip": false,
-    "justify": "center",
-    "on-click": "~/.config/fuzzel/modules/powermenu",
-    "on-click-right": "~/.config/fuzzel/modules/powermenu",
-  },
+    // ============================================================================== #
+    // Custom:                                                                        #
+    // ============================================================================== #
+    "custom/menu": {
+      "format": "󰅃",
+      "tooltip": false,
+      "justify": "center",
+    },
+    "custom/void": {
+      "format": "",
+      "tooltip": false,
+      "justify": "center",
+      "on-click": "alacritty",
+      "on-click-right": "foot",
+    },
+    "custom/launcher": {
+      "format": "",
+      "tooltip": false,
+      "justify": "center",
+      "on-click": "~/.config/fuzzel/modules/powermenu",
+      "on-click-right": "~/.config/fuzzel/modules/powermenu",
+    },
 
-  // ============================================================================== #
-  // Clock:                                                                         #
-  // ============================================================================== #
-  "clock": {
-    "interval": 60,
-    "format": "{:%H\n%M}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
-    "calendar": {
-      "mode": "month",
-      "mode-mon-col": 3,
-      "on-scroll": 1,
-      "weeks-pos": "right",
-      "on-click-right": "mode",
-      "format": {
-        "today": "<span color='#a6e3a1'><b><u>{}</u></b></span>",
+    // ============================================================================== #
+    // Clock:                                                                         #
+    // ============================================================================== #
+    "clock": {
+      "interval": 60,
+      "format": "{:%H\n%M}",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "calendar": {
+        "mode": "month",
+        "mode-mon-col": 3,
+        "on-scroll": 1,
+        "weeks-pos": "right",
+        "on-click-right": "mode",
+        "format": {
+          "today": "<span color='#a6e3a1'><b><u>{}</u></b></span>",
+        },
+      },
+      "actions": {
+        "on-click-right": "mode",
+        "on-click-forward": "tz_up",
+        "on-click-backward": "tz_down",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down",
       },
     },
-    "actions": {
-      "on-click-right": "mode",
-      "on-click-forward": "tz_up",
-      "on-click-backward": "tz_down",
-      "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down",
+
+    // ============================================================================== #
+    // Mparis:                                                                        #
+    // ============================================================================== #
+    "mpris": {
+      "interval": 1,
+      "format": "󰐎",
+      "on-click": "playerctl play-pause",
+      "on-click-right": "playerctl next",
+      "on-click-middle": "playerctl previous",
+      "tooltip": true,
+      "tooltip-format": "{title}",
+    },
+
+    // ============================================================================== #
+    // Niri:                                                                          #
+    // ============================================================================== #
+    "niri/workspaces": {
+      "rotate": 270,
+      "active-only": true,
+      "all-outputs": false,
+      "format": "{icon}",
+      "show-special": false,
+      "persistent-workspaces": {
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": [],
+        "*": " ",
+      },
+      "format-icons": {
+        "active": " ",
+        "default": " 󰨓",
+      },
+      "on-scroll-up": "niri msg action focus-workspace-up",
+      "on-scroll-down": "niri msg action focus-workspace-down",
+      "on-click-right": "niri msg action toggle-overview",
+    },
+
+    // ============================================================================== #
+    // Tray:                                                                          #
+    // ============================================================================== #
+    "tray": {
+      "spacing": 10,
+      "icon-size": 18,
+      "reverse-direction": true,
+      "show-passive-items": false,
+    },
+
+    // ============================================================================== #
+    // Networks:                                                                      #
+    // ============================================================================== #
+    "network": {
+      "interval": 5,
+      "format-icons": {
+        "wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+        "ethernet": "󰈀",
+        "disabled": "󰤭",
+        "disconnected": "󰤩",
+      },
+      "format-wifi": "{icon}",
+      "format-ethernet": "{icon}",
+      "format-disconnected": "{icon}",
+      "format-disabled": "{icon}",
+      "tooltip-format": "{essid}\t{gwaddr}",
+      "on-click": "rfkill toggle wifi",
+      "on-click-right": "nm-connection-editor",
+      "tooltip": true,
+    },
+
+    // ============================================================================== #
+    // Bluetooth:                                                                     #
+    // ============================================================================== #
+    "bluetooth": {
+      "interval": 5,
+      "format-on": "󰂯",
+      "format-off": "󰂲",
+      "format-disabled": "󰂲",
+      "format-connected": "󰂱",
+      "format-no-controller": "󰂯",
+      "tooltip": true,
+      "tooltip-format": "{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_address}",
+      "tooltip-format-enumerate-connected-battery": "{device_address} | Battery: {device_battery_percentage}%",
+      "on-click": "rfkill toggle bluetooth",
+      "on-click-right": "blueman-manager",
+    },
+
+    // ============================================================================== #
+    // Audio:                                                                         #
+    // ============================================================================== #
+    // Microphone: =================================================================================
+    "pulseaudio#microphone": {
+      "format": "{format_source}",
+      "format-source": "󰍬",
+      "format-source-muted": "󰍭",
+      "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+      "on-click-right": "pavucontrol -t 4",
+      "tooltip": false,
+    },
+
+    // Audio: ======================================================================================
+    "pulseaudio/slider": {
+      "min": 0,
+      "max": 100,
+      "orientation": "vertical",
+    },
+    "pulseaudio": {
+      "interval": 1,
+      "format": "{icon}",
+      "format-icons": ["󰕿", "󰖀", "󰕾"],
+      "format-muted": "󰝟",
+      "on-click-right": "pavucontrol -t 3",
+      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+      "reverse-scrolling": true,
+      "tooltip": true,
+      "tooltip-format": "Volume: {volume}%\n{desc}",
+      "ignored-sinks": ["Easy Effects Sink"],
+    },
+
+    // ============================================================================== #
+    // Backlight:                                                                     #
+    // ============================================================================== #
+    "backlight/slider": {
+      "min": 0,
+      "max": 100,
+      "orientation": "vertical",
+      "device": "intel_backlight",
+    },
+    "backlight": {
+      "device": "intel_backlight",
+      "format": "{icon}",
+      "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+      "reverse-scrolling": true,
+      "smooth-scrolling-threshold": 0.2,
+      "tooltip": false,
+    },
+
+    // ============================================================================== #
+    // Battery:                                                                       #
+    // ============================================================================== #
+    "battery": {
+      "interval": 60,
+      "states": {
+        "warning": 30,
+        "critical": 15,
+      },
+      "events": {
+        "on-discharging-warning": "notify-send -a 'Battery' 'Low Battery...' 'Please plug in your device.' -i battery-caution-symbolic",
+        "on-discharging-critical": "notify-send -a 'Battery'  -u critical 'Critical Battery...' 'Please charge your device immediately' -i battery-level-0-symbolic",
+        "on-charging-100": "notify-send -e -a 'Battery' 'Battery full...' 'Battery capacity at maximum level.' -i battery-level-100-charged-symbolic",
+      },
+      "format": "{icon}",
+      "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+      "format-charging": "󰂄",
+      "format-plugged": "󰚥",
+      "format-critical": "󰂃",
+      "tooltip": true,
+      "tooltip-format": "Charge: {capacity}%",
+      "tooltip-format-charging": "Charging: {capacity}%",
     },
   },
 
   // ============================================================================== #
-  // Mparis:                                                                        #
+  // frame:                                                                       #
   // ============================================================================== #
-  "mpris": {
-    "interval": 1,
-    "format": "󰐎",
-    "on-click": "playerctl play-pause",
-    "on-click-right": "playerctl next",
-    "on-click-middle": "playerctl previous",
-    "tooltip": true,
-    "tooltip-format": "{title}",
+  {
+    "name": "frame-right",
+    "layer": "top",
+    "position": "right",
+    "width": 8,
+  },
+  {
+    "name": "frame-top",
+    "layer": "top",
+    "position": "top",
+    "height": 8,
+  },
+  {
+    "name": "frame-bottom",
+    "layer": "top",
+    "position": "bottom",
+    "height": 8,
   },
 
   // ============================================================================== #
-  // Niri:                                                                          #
+  // Border:                                                                        #
   // ============================================================================== #
-  "niri/workspaces": {
-    "rotate": 270,
-    "active-only": true,
-    "all-outputs": false,
-    "format": "{icon}",
-    "show-special": false,
-    "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "*": " ",
+  {
+    "name": "border-left",
+    "layer": "top",
+    "position": "left",
+    "width": 2,
+  },
+  {
+    "name": "border-right",
+    "layer": "top",
+    "position": "right",
+    "width": 2,
+  },
+  {
+    "name": "border-top",
+    "layer": "top",
+    "position": "top",
+    "height": 2,
+  },
+  {
+    "name": "border-bottom",
+    "layer": "top",
+    "position": "bottom",
+    "height": 2,
+  },
+
+  // ============================================================================== #
+  // widgets:                                                                       #
+  // ============================================================================== #
+  {
+    "name": "time-widget",
+    "layer": "bottom",
+    "position": "bottom",
+    "exclusive": false,
+    "modules-right": ["clock#widget-time"],
+    "clock#widget-time": {
+      "format": "{:%H:%M}",
+      "tooltip": false,
+      "justify": "center",
     },
-    "format-icons": {
-      "active": " ",
-      "default": " 󰨓",
+  },
+  {
+    "name": "date-widget",
+    "layer": "bottom",
+    "position": "bottom",
+    "exclusive": false,
+    "modules-right": ["clock#widget-date"],
+    "clock#widget-date": {
+      "format": "{:%b %d}",
+      "tooltip": false,
+      "justify": "center",
     },
-    "on-scroll-up": "niri msg action focus-workspace-up",
-    "on-scroll-down": "niri msg action focus-workspace-down",
-    "on-click-right": "niri msg action toggle-overview",
   },
-
-  // ============================================================================== #
-  // Tray:                                                                          #
-  // ============================================================================== #
-  "tray": {
-    "spacing": 10,
-    "icon-size": 18,
-    "reverse-direction": true,
-    "show-passive-items": false,
-  },
-
-  // ============================================================================== #
-  // Networks:                                                                      #
-  // ============================================================================== #
-  "network": {
-    "interval": 5,
-    "format-icons": {
-      "wifi": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-      "ethernet": "󰈀",
-      "disabled": "󰤭",
-      "disconnected": "󰤩",
-    },
-    "format-wifi": "{icon}",
-    "format-ethernet": "{icon}",
-    "format-disconnected": "{icon}",
-    "format-disabled": "{icon}",
-    "tooltip-format": "{essid}\t{gwaddr}",
-    "on-click": "rfkill toggle wifi",
-    "on-click-right": "nm-connection-editor",
-    "tooltip": true,
-  },
-
-  // ============================================================================== #
-  // Bluetooth:                                                                     #
-  // ============================================================================== #
-  "bluetooth": {
-    "interval": 5,
-    "format-on": "󰂯",
-    "format-off": "󰂲",
-    "format-disabled": "󰂲",
-    "format-connected": "󰂱",
-    "format-no-controller": "󰂯",
-    "tooltip": true,
-    "tooltip-format": "{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_address} | Battery: {device_battery_percentage}%",
-    "on-click": "rfkill toggle bluetooth",
-    "on-click-right": "blueman-manager",
-  },
-
-  // ============================================================================== #
-  // Audio:                                                                         #
-  // ============================================================================== #
-  // Microphone: =================================================================================
-  "pulseaudio#microphone": {
-    "format": "{format_source}",
-    "format-source": "󰍬",
-    "format-source-muted": "󰍭",
-    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-    "on-click-right": "pavucontrol -t 4",
-    "tooltip": false,
-  },
-
-  // Audio: ======================================================================================
-  "pulseaudio/slider": {
-    "min": 0,
-    "max": 100,
-    "orientation": "vertical",
-  },
-  "pulseaudio": {
-    "interval": 1,
-    "format": "{icon}",
-    "format-icons": ["󰕿", "󰖀", "󰕾"],
-    "format-muted": "󰝟",
-    "on-click-right": "pavucontrol -t 3",
-    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "reverse-scrolling": true,
-    "tooltip": true,
-    "tooltip-format": "Volume: {volume}%\n{desc}",
-    "ignored-sinks": ["Easy Effects Sink"],
-  },
-
-  // ============================================================================== #
-  // Backlight:                                                                     #
-  // ============================================================================== #
-  "backlight/slider": {
-    "min": 0,
-    "max": 100,
-    "orientation": "vertical",
-    "device": "intel_backlight",
-  },
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{icon}",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-    ],
-    "reverse-scrolling": true,
-    "smooth-scrolling-threshold": 0.2,
-    "tooltip": false,
-  },
-
-  // ============================================================================== #
-  // Battery:                                                                       #
-  // ============================================================================== #
-  "battery": {
-    "interval": 60,
-    "states": {
-      "warning": 30,
-      "critical": 15,
-    },
-    "events": {
-      "on-discharging-warning": "notify-send -a 'Battery' 'Low Battery...' 'Please plug in your device.' -i battery-caution-symbolic",
-      "on-discharging-critical": "notify-send -a 'Battery'  -u critical 'Critical Battery...' 'Please charge your device immediately' -i battery-level-0-symbolic",
-      "on-charging-100": "notify-send -e -a 'Battery' 'Battery full...' 'Battery capacity at maximum level.' -i battery-level-100-charged-symbolic",
-    },
-    "format": "{icon}",
-    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    "format-charging": "󰂄",
-    "format-plugged": "󰚥",
-    "format-critical": "󰂃",
-    "tooltip": true,
-    "tooltip-format": "Charge: {capacity}%",
-    "tooltip-format-charging": "Charging: {capacity}%",
-  },
-}
+]
