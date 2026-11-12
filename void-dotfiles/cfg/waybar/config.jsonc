@@ -18,7 +18,7 @@
     "margin-left": 0,
     "margin-right": 0,
     "spacing": 4,
-    "width": 44,
+    "width": 42,
     "modules-left": ["custom/void", "clock", "mpris"],
     "modules-center": ["niri/workspaces"],
     "modules-right": [
@@ -235,7 +235,7 @@
         "portable-muted": "",
         "car": "",
         "car-muted": "",
-        "default": ["", "", ""],
+        "default": ["󰕿", "󰖀", "󰕾"],
       },
       "format-muted": "󰝟",
       "on-click-right": "pavucontrol -t 3",
