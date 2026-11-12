@@ -485,13 +485,15 @@ window-rule  {
     open-focused true
 }
 
-// Specific: =====================================================================================
+// Special: =====================================================================================
 window-rule {
   match app-id=r#"^special*"#
   default-column-width { proportion 0.80; }
   default-window-height { proportion 0.80; }
   open-floating true
-  open-on-workspace "5"
+  border {
+    on
+  }
 }
 
 // Dialogs: ======================================================================================
@@ -641,10 +643,9 @@ layer-rule {
 // ============================================================================== #
 binds {
     // Scratchpad scripts: =======================================================================
-    SUPER+T                             { spawn "~/.config/niri/scripts/scratch.sh" "special-term"; }
-    SUPER+B                             { spawn "~/.config/niri/scripts/scratch.sh" "special-btop"; }
-    SUPER+N                             { spawn "~/.config/niri/scripts/scratch.sh" "special-files"; }
-    SUPER+Y                             { spawn "~/.config/niri/scripts/scratch.sh" "special-files"; }
+    SUPER+T                             { spawn "~/.config/niri/scripts/scpad.sh" "-Rc" "foot --app-id special-term" "special-term"; }
+    SUPER+B                             { spawn "~/.config/niri/scripts/scpad.sh" "-Rc" "foot --app-id special-btop -e bash -c btop" "special-btop"; }
+    SUPER+N                             { spawn "~/.config/niri/scripts/scpad.sh" "-Rc" "foot --app-id special-files -e bash -c yazi" "special-btop"; }
 
     // Fuzzel scripts: ===========================================================================
     MOD+SHIFT+P                         { spawn "~/.config/fuzzel/modules/powermenu"; }
