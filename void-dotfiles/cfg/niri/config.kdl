@@ -485,7 +485,7 @@ window-rule  {
     open-focused true
 }
 
-// Special: =====================================================================================
+// Special: ======================================================================================
 window-rule {
   match app-id=r#"^special*"#
   default-column-width { proportion 0.80; }
@@ -645,7 +645,7 @@ binds {
     // Scratchpad scripts: =======================================================================
     SUPER+T                             { spawn "~/.config/niri/scripts/scpad.sh" "-Rc" "foot --app-id special-term" "special-term"; }
     SUPER+B                             { spawn "~/.config/niri/scripts/scpad.sh" "-Rc" "foot --app-id special-btop -e bash -c btop" "special-btop"; }
-    SUPER+N                             { spawn "~/.config/niri/scripts/scpad.sh" "-Rc" "foot --app-id special-files -e bash -c yazi" "special-btop"; }
+    SUPER+N                             { spawn "~/.config/niri/scripts/scpad.sh" "-Rc" "foot --app-id special-files -e bash -c yazi" "special-files"; }
 
     // Fuzzel scripts: ===========================================================================
     MOD+SHIFT+P                         { spawn "~/.config/fuzzel/modules/powermenu"; }
@@ -808,7 +808,6 @@ binds {
     Mod+X                               { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json focused-window | jq .id)"; }
 
     // System Controls: ==========================================================================
-    CONTROL+SHIFT+Space                 repeat=false { switch-layout "next"; }
     Mod+SHIFT+Escape                    allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     MOD+ESCAPE                          { show-hotkey-overlay; }
     Mod+SHIFT+Q                         { quit skip-confirmation=true; }
