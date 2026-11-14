@@ -50,8 +50,8 @@ window#waybar.main-bar .module {
 }
 #workspaces button label {
   color: @bright;
-  font-size: 20px;
-  padding-left: 6px;
+  font-size: 18px;
+  padding-left: 7px;
 }
 #workspaces button.active label {
   color: @green;
