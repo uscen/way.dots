@@ -130,3 +130,17 @@ tooltip * {
 #backlight-slider highlight {
   background-color: @white;
 }
+
+/* ============================================================================= */
+/* Custom:                                                                       */
+/* ============================================================================= */
+#waybar #custom-yinyang {
+  color: @green;
+  font-size: 22px;
+}
+#custom-void {
+  color: @green;
+}
+#custom-launcher {
+  color: @blue;
+}
