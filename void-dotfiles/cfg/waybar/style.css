@@ -3,13 +3,12 @@
 /* ============================================================================= */
 @define-color fg     #88B497;
 @define-color bg     #172526;
-@define-color black  #131F20;
-@define-color bright #568270;
+@define-color red    #D2696C;
+@define-color blue   #91C4C0;
 @define-color base   #233935;
 @define-color white  #A1A790;
 @define-color green  #88B497;
-@define-color red    #D2696C;
-@define-color blue   #91C4C0;
+@define-color bright #568270;
 
 /* ============================================================================= */
 /* General:                                                                      */
