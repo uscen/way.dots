@@ -74,13 +74,13 @@
     // Custom:                                                                        #
     // ============================================================================== #
     "custom/menu-up": {
-      "format": "",
+      "format": " ",
       "rotate": 270,
       "tooltip": false,
       "justify": "center",
     },
     "custom/menu-down": {
-      "format": "",
+      "format": " ",
       "rotate": 270,
       "tooltip": false,
       "justify": "center",
@@ -102,7 +102,7 @@
       "on-click-right": "~/.config/fuzzel/modules/powermenu",
     },
     "custom/yinyang": {
-      "format": "󰚀 ",
+      "format": "󰚀  ",
       "rotate": 90,
       "tooltip": false,
       "justify": "center",
