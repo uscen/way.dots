@@ -20,62 +20,25 @@
   border-radius: 0;
   font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 700;
   min-height: 0;
 }
+
 /* ============================================================================= */
 /* bar:                                                                          */
 /* ============================================================================= */
 window#waybar {
   background-color: @bg;
+}
+window#waybar.main-bar .module {
+  font-size: 18px;
   color: @fg;
 }
-window#waybar.main-bar #pill .module {
-  background: transparent;
-  padding-left: 0px;
-  padding-right: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-}
-
-/* ============================================================================= */
-/* Border:                                                                       */
-/* ============================================================================= */
 window#waybar.border-left,
 window#waybar.border-right,
 window#waybar.border-top,
 window#waybar.border-bottom {
   background-color: @base;
-}
-
-/* ============================================================================= */
-/* Groups:                                                                       */
-/* ============================================================================= */
-#network:hover,
-#bluetooth:hover,
-#pulseaudio:hover,
-#backlight:hover,
-#battery:hover,
-#pulseaudio.microphone:hover,
-#pulseaudio.sink-muted:hover,
-#custom-void:hover,
-#custom-launcher:hover {
-  opacity: 0.5;
-}
-#workspaces,
-#mpris,
-#network,
-#bluetooth,
-#pulseaudio,
-#pulseaudio.microphone,
-#backlight,
-#battery,
-#custom-void,
-#custom-launcher {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  font-size: 16px;
-  color: @fg;
 }
 
 /* ============================================================================= */
@@ -89,13 +52,6 @@ window#waybar.border-bottom {
 }
 #workspaces button label {
   font-size: 16px;
-}
-
-/* ============================================================================= */
-/* Clock:                                                                        */
-/* ============================================================================= */
-#clock {
-  color: @green;
 }
 
 /* ============================================================================= */
@@ -121,9 +77,6 @@ window#waybar.border-bottom {
 /* ============================================================================= */
 /* Networks:                                                                     */
 /* ============================================================================= */
-#network {
-  margin-right: 5px;
-}
 #network.disabled {
   color: @bright;
 }
@@ -199,8 +152,6 @@ tooltip * {
 /* Custom:                                                                       */
 /* ============================================================================= */
 #custom-menu {
-  margin-right: -40px;
-  font-size: 20px;
   color: @green;
 }
 #custom-void {
@@ -208,12 +159,4 @@ tooltip * {
 }
 #custom-launcher {
   color: @blue;
-}
-
-/* ============================================================================= */
-/* Align:                                                                        */
-/* ============================================================================= */
-#custom-void,
-#custom-launcher {
-  margin-right: -35px;
 }

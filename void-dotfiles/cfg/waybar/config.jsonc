@@ -8,18 +8,15 @@
     // ============================================================================== #
     "name": "main-bar",
     "reload_style_on_change": true,
-    "exclusive": true,
-    "passthrough": false,
-    "toggle": true,
     "layer": "top",
     "position": "left",
     "margin-top": 0,
     "margin-bottom": 0,
     "margin-left": 0,
     "margin-right": 0,
-    "spacing": 4,
+    "spacing": 24,
     "width": 42,
-    "modules-left": ["custom/void", "clock", "mpris"],
+    "modules-left": ["custom/void", "mpris"],
     "modules-center": ["niri/workspaces"],
     "modules-right": [
       "group/extras",
@@ -67,19 +64,22 @@
     // Custom:                                                                        #
     // ============================================================================== #
     "custom/menu": {
-      "format": "󰅃",
+      "format": "",
+      "rotate": 270,
       "tooltip": false,
       "justify": "center",
     },
     "custom/void": {
-      "format": "",
+      "format": "  ",
+      "rotate": 90,
       "tooltip": false,
       "justify": "center",
       "on-click": "alacritty",
       "on-click-right": "foot",
     },
     "custom/launcher": {
-      "format": "",
+      "format": "  ",
+      "rotate": 270,
       "tooltip": false,
       "justify": "center",
       "on-click": "~/.config/fuzzel/modules/powermenu",
@@ -87,36 +87,10 @@
     },
 
     // ============================================================================== #
-    // Clock:                                                                         #
-    // ============================================================================== #
-    "clock": {
-      "interval": 60,
-      "format": "{:%H\n%M}",
-      "tooltip-format": "<tt><small>{calendar}</small></tt>",
-      "calendar": {
-        "mode": "month",
-        "mode-mon-col": 3,
-        "on-scroll": 1,
-        "weeks-pos": "right",
-        "on-click-right": "mode",
-        "format": {
-          "today": "<span color='#a6e3a1'><b><u>{}</u></b></span>",
-        },
-      },
-      "actions": {
-        "on-click-right": "mode",
-        "on-click-forward": "tz_up",
-        "on-click-backward": "tz_down",
-        "on-scroll-up": "shift_up",
-        "on-scroll-down": "shift_down",
-      },
-    },
-
-    // ============================================================================== #
     // Mparis:                                                                        #
     // ============================================================================== #
     "mpris": {
-      "interval": 1,
+      "interval": 5,
       "format": "󰐎",
       "on-click": "playerctl play-pause",
       "on-click-right": "playerctl next",
@@ -155,7 +129,7 @@
     // ============================================================================== #
     "tray": {
       "spacing": 10,
-      "icon-size": 18,
+      "icon-size": 21,
       "reverse-direction": true,
       "show-passive-items": false,
     },
@@ -171,7 +145,7 @@
         "disabled": "󰤭",
         "disconnected": "󰤩",
       },
-
+      "align": 0.45,
       "format-wifi": "{icon}",
       "format-ethernet": "{icon}",
       "format-disconnected": "{icon}",
@@ -203,22 +177,7 @@
     // ============================================================================== #
     // Audio:                                                                         #
     // ============================================================================== #
-    // Microphone: =================================================================================
-    "pulseaudio#microphone": {
-      "format": "{format_source}",
-      "format-source": "󰍬",
-      "format-source-muted": "󰍭",
-      "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-      "on-click-right": "pavucontrol -t 4",
-      "tooltip": false,
-    },
-
-    // Audio: ======================================================================================
-    "pulseaudio/slider": {
-      "min": 0,
-      "max": 100,
-      "orientation": "vertical",
-    },
+    // Volume: ===================================================================================
     "pulseaudio": {
       "interval": 5,
       "format": "{icon}",
@@ -245,16 +204,25 @@
       "tooltip-format": "Volume: {volume}%\n{desc}",
       "ignored-sinks": ["Easy Effects Sink"],
     },
+    "pulseaudio/slider": {
+      "min": 0,
+      "max": 100,
+      "orientation": "vertical",
+    },
+
+    // Microphone: ===============================================================================
+    "pulseaudio#microphone": {
+      "format": "{format_source}",
+      "format-source": "󰍬",
+      "format-source-muted": "󰍭",
+      "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+      "on-click-right": "pavucontrol -t 4",
+      "tooltip": false,
+    },
 
     // ============================================================================== #
     // Backlight:                                                                     #
     // ============================================================================== #
-    "backlight/slider": {
-      "min": 0,
-      "max": 100,
-      "orientation": "vertical",
-      "device": "intel_backlight",
-    },
     "backlight": {
       "device": "intel_backlight",
       "format": "{icon}",
@@ -278,6 +246,12 @@
       "reverse-scrolling": true,
       "smooth-scrolling-threshold": 0.2,
       "tooltip": false,
+    },
+    "backlight/slider": {
+      "min": 0,
+      "max": 100,
+      "orientation": "vertical",
+      "device": "intel_backlight",
     },
 
     // ============================================================================== #
@@ -306,7 +280,7 @@
   },
 
   // ============================================================================== #
-  // frame:                                                                       #
+  // frame:                                                                         #
   // ============================================================================== #
   {
     "name": "frame-right",
