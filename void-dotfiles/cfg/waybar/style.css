@@ -31,7 +31,7 @@ window#waybar {
   background-color: @bg;
 }
 window#waybar.main-bar .module {
-  font-size: 18px;
+  font-size: 16px;
   color: @fg;
 }
 window#waybar.border-left,
