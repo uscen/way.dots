@@ -3,9 +3,10 @@
 /* ============================================================================= */
 @define-color fg     #88B497;
 @define-color bg     #172526;
+@define-color sep    #233935;
 @define-color red    #D2696C;
 @define-color blue   #91C4C0;
-@define-color base   #233935;
+@define-color base   #1D3334;
 @define-color white  #A1A790;
 @define-color green  #88B497;
 @define-color bright #568270;
@@ -25,13 +26,10 @@
 }
 
 /* ============================================================================= */
-/* bar:                                                                          */
+/* Bar:                                                                          */
 /* ============================================================================= */
 window#waybar {
   background-color: @bg;
-}
-window#waybar.main-bar .module {
-  font-size: 16px;
   color: @fg;
 }
 window#waybar.border-left,
@@ -40,6 +38,9 @@ window#waybar.border-top,
 window#waybar.border-bottom {
   background-color: @base;
 }
+window#waybar.main-bar .module {
+  font-size: 18px;
+}
 
 /* ============================================================================= */
 /* Workspaces:                                                                   */
@@ -47,31 +48,13 @@ window#waybar.border-bottom {
 #workspaces button {
   color: @fg;
 }
-#workspaces button.active {
-  color: @green;
-}
 #workspaces button label {
-  font-size: 16px;
-}
-
-/* ============================================================================= */
-/* Mpris:                                                                        */
-/* ============================================================================= */
-#mpris {
-  color: @white;
-}
-#mpris.playing {
-  color: @green;
-}
-#mpris.paused {
   color: @bright;
+  font-size: 20px;
+  padding-left: 6px;
 }
-
-/* ============================================================================= */
-/* Tray:                                                                         */
-/* ============================================================================= */
-#tray {
-  font-weight: 900;
+#workspaces button.active label {
+  color: @green;
 }
 
 /* ============================================================================= */
@@ -146,17 +129,4 @@ tooltip * {
 }
 #backlight-slider highlight {
   background-color: @white;
-}
-
-/* ============================================================================= */
-/* Custom:                                                                       */
-/* ============================================================================= */
-#custom-menu {
-  color: @green;
-}
-#custom-void {
-  color: @green;
-}
-#custom-launcher {
-  color: @blue;
 }

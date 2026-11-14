@@ -215,6 +215,9 @@ workspace "4" {
 workspace "5" {
     open-on-output "eDP-1"
 }
+workspace "6" {
+    open-on-output "eDP-1"
+}
 
 // ============================================================================== #
 // Layout:                                                                        #
