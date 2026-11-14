@@ -354,32 +354,4 @@
     "position": "bottom",
     "height": 2,
   },
-
-  // ============================================================================== #
-  // widgets:                                                                       #
-  // ============================================================================== #
-  {
-    "name": "time-widget",
-    "layer": "bottom",
-    "position": "bottom",
-    "exclusive": false,
-    "modules-right": ["clock#widget-time"],
-    "clock#widget-time": {
-      "format": "{:%H:%M}",
-      "tooltip": false,
-      "justify": "center",
-    },
-  },
-  {
-    "name": "date-widget",
-    "layer": "bottom",
-    "position": "bottom",
-    "exclusive": false,
-    "modules-right": ["clock#widget-date"],
-    "clock#widget-date": {
-      "format": "{:%b %d}",
-      "tooltip": false,
-      "justify": "center",
-    },
-  },
 ]
