@@ -261,7 +261,7 @@ layout {
     // Border: ===================================================================================
     border {
         off
-        width 1
+        width 2
         active-color "#233935"
         inactive-color "#172526"
         urgent-color "#D2696C"
@@ -487,15 +487,20 @@ window-rule  {
     open-focused true
 }
 
+// Floating: ====================================================================================
+window-rule {
+  match is-floating=true
+  border {
+    on
+  }
+}
+
 // Special: ======================================================================================
 window-rule {
   match app-id=r#"^special*"#
   default-column-width { proportion 0.80; }
   default-window-height { proportion 0.80; }
   open-floating true
-  border {
-    on
-  }
 }
 
 // Dialogs: ======================================================================================
@@ -667,9 +672,9 @@ binds {
     MOD+SHIFT+N                         { spawn "nautilus"; }
     MOD+E                               { spawn "thunderbird"; }
     MOD+W                               { spawn "firefox"; }
-    MOD+N                               { spawn "foot" "yazi"; }
-    MOD+B                               { spawn "foot" "--app-id='bluetui'" "bluetui"; }
+    MOD+N                               { spawn "foot" "--app-id='yazi'" "yazi"; }
     MOD+I                               { spawn "foot" "--app-id='impala'" "impala"; }
+    MOD+B                               { spawn "foot" "--app-id='bluetui'" "bluetui"; }
 	  MOD+D				                        { spawn "sh" "-c" "fuzzel --prompt='Apps Menu: ' --placeholder=\"  $(date '+%a %d-%m  󰥔 %R')\""; }
 
     // Media keys: ===============================================================================
