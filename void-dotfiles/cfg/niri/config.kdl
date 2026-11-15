@@ -568,6 +568,7 @@ window-rule {
     match app-id=r#"nm-applet"#
     match app-id=r#"bluetui"#
     match app-id=r#"impala"#
+    match app-id=r#"nnn"#
     default-column-width { proportion 0.5; }
     default-window-height { proportion 0.5; }
     default-floating-position x=1 y=1 relative-to="bottom-left"
@@ -672,9 +673,9 @@ binds {
     MOD+SHIFT+N                         { spawn "nautilus"; }
     MOD+E                               { spawn "thunderbird"; }
     MOD+W                               { spawn "firefox"; }
-    MOD+N                               { spawn "foot" "--app-id='yazi'" "yazi"; }
     MOD+I                               { spawn "foot" "--app-id='impala'" "impala"; }
     MOD+B                               { spawn "foot" "--app-id='bluetui'" "bluetui"; }
+    MOD+N                               { spawn "foot" "--app-id='nnn'" "bash" "-ic" "nnn"; }
 	  MOD+D				                        { spawn "sh" "-c" "fuzzel --prompt='Apps Menu: ' --placeholder=\"  $(date '+%a %d-%m  󰥔 %R')\""; }
 
     // Media keys: ===============================================================================
