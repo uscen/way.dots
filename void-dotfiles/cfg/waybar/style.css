@@ -39,7 +39,14 @@ window#waybar.border-bottom {
   background-color: @base;
 }
 window#waybar.main-bar .module {
-  font-size: 18px;
+  font-size: 16px;
+}
+
+/* ============================================================================= */
+/* Custom:                                                                       */
+/* ============================================================================= */
+window#waybar #custom-yinyang {
+  font-size: 20px;
 }
 
 /* ============================================================================= */
@@ -50,8 +57,8 @@ window#waybar.main-bar .module {
 }
 #workspaces button label {
   color: @bright;
-  font-size: 18px;
-  padding-left: 7px;
+  font-size: 16px;
+  padding-left: 8px;
 }
 #workspaces button.active label {
   color: @green;
@@ -129,18 +136,4 @@ tooltip * {
 }
 #backlight-slider highlight {
   background-color: @white;
-}
-
-/* ============================================================================= */
-/* Custom:                                                                       */
-/* ============================================================================= */
-#waybar #custom-yinyang {
-  color: @green;
-  font-size: 22px;
-}
-#custom-void {
-  color: @green;
-}
-#custom-launcher {
-  color: @blue;
 }
