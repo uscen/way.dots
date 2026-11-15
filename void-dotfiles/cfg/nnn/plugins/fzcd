@@ -37,9 +37,9 @@ fi
 if [ -n "$1" ] && [ "$(file -b --mime-type "$1")" = 'text/plain' ] && [ -e "$(head -1 "$1")" ]; then
     LIST="$1"
 elif ! [ -s "$LIST" ]; then
-    # sel=$(fzf)
-    # Show only the file and parent dir
     sel=$(fd -t d -E .git -E node_modules | fzf)
+    # Show only the file and parent dir
+    # sel=$(fzf --delimiter / --with-nth=-2,-1 --tiebreak=begin --info=hidden)
 
     LIST=''
 fi

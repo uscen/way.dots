@@ -653,7 +653,7 @@ binds {
     // Scratchpad scripts: =======================================================================
     SUPER+T                             { spawn "~/.config/niri/scripts/scpad.sh" "-Rc" "foot --app-id special-term" "special-term"; }
     SUPER+B                             { spawn "~/.config/niri/scripts/scpad.sh" "-Rc" "foot --app-id special-btop -e bash -c btop" "special-btop"; }
-    SUPER+N                             { spawn "~/.config/niri/scripts/scpad.sh" "-Rc" "foot --app-id special-files -e bash -c yazi" "special-files"; }
+    SUPER+N                             { spawn "~/.config/niri/scripts/scpad.sh" "-Rc" "foot --app-id special-files -e bash -c nnn" "special-files"; }
 
     // Fuzzel scripts: ===========================================================================
     MOD+SHIFT+P                         { spawn "~/.config/fuzzel/modules/powermenu"; }
