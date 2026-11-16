@@ -110,7 +110,7 @@ export NNN_OPTS='adeR'
 export NNN_PLUG='z:autojump;'
 export NNN_COLORS='2431567'
 export NNN_FCOLORS='c1e204020005060203d6ab01'
-export NNN_BMS="h:$HOME;p:$HOME/Projects;v:$HOME/Videos/PROGRAMMING;d:$HOME/Downloads;w:$HOME/.local/way.dots;i:$HOME/.local/share/wall.dots"
+export NNN_BMS="h:$HOME;p:$HOME/Projects;v:$HOME/Videos;d:$HOME/Downloads;w:$HOME/.local/way.dots;i:$HOME/.local/share/wall.dots"
 
 # =============================================================================== #
 # Fzf:                                                                            #
