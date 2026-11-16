@@ -673,7 +673,7 @@ binds {
     MOD+SHIFT+N                         { spawn "nautilus"; }
     MOD+E                               { spawn "thunderbird"; }
     MOD+W                               { spawn "firefox"; }
-    MOD+N                               { spawn "foot" "nnn"; }
+    MOD+N                               { spawn "foot" "--app-id='nnn'" "nnn"; }
     MOD+I                               { spawn "foot" "--app-id='impala'" "impala"; }
     MOD+B                               { spawn "foot" "--app-id='bluetui'" "bluetui"; }
 	  MOD+D				                        { spawn "sh" "-c" "fuzzel --prompt='Apps Menu: ' --placeholder=\"  $(date '+%a %d-%m  󰥔 %R')\""; }
