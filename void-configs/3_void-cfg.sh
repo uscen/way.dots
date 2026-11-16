@@ -39,12 +39,12 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 # Services:                                                                       #
 # =============================================================================== #
 # Enabled: =======================================================================================
-sudo ln -s /etc/sv/dbus /var/service/
-sudo ln -s /etc/sv/elogind /var/service/
-sudo ln -s /etc/sv/preload /var/service/
-sudo ln -s /etc/sv/bluetoothd /var/service/
-sudo ln -s /etc/sv/NetworkManager /var/service/
-sudo ln -s /etc/sv/iwd /var/service/
+sudo ln -sf /etc/sv/dbus /var/service/
+sudo ln -sf /etc/sv/elogind /var/service/
+sudo ln -sf /etc/sv/preload /var/service/
+sudo ln -sf /etc/sv/bluetoothd /var/service/
+sudo ln -sf /etc/sv/NetworkManager /var/service/
+sudo ln -sf /etc/sv/iwd /var/service/
 # Disabled: =======================================================================================
 sudo unlink /var/service/wpa_supplicant
 
@@ -53,15 +53,15 @@ sudo unlink /var/service/wpa_supplicant
 # =============================================================================== #
 # Wireplumper: ===================================================================================
 sudo mkdir -p /etc/pipewire/pipewire.conf.d
-sudo ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
+sudo ln -sf /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
 
 # Pulse: =========================================================================================
-sudo ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
+sudo ln -sf /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
 
 # Alsa: ==========================================================================================
 sudo mkdir -p /etc/alsa/conf.d
-sudo ln -s /usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d
-sudo ln -s /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
+sudo ln -sf /usr/share/alsa/alsa.conf.d/50-pipewire.conf /etc/alsa/conf.d
+sudo ln -sf /usr/share/alsa/alsa.conf.d/99-pipewire-default.conf /etc/alsa/conf.d
 
 # =============================================================================== #
 # Others:                                                                         #
@@ -73,14 +73,20 @@ cat <<EOF | sudo tee /etc/NetworkManager/conf.d/wifi_backend.conf > /dev/null
 wifi.backend=iwd
 EOF
 
+# Update database to locate files in all packages: ===============================================
+xlocate -S
+
 # Update the binary cache to use custom themes: ==================================================
 bat cache --build
+
+# Autologin no need to keep typing my password: ==================================================
+sudo sed -i 's/GETTY_ARGS="--noclear"/GETTY_ARGS="--noclear --autologin lli"/' /etc/sv/agetty-tty1/conf
 
 # Doas without password: =========================================================================
 echo "permit nopass $(whoami) as root" | sudo tee /etc/doas.conf
 
 # Fix font rendering: ============================================================================
-sudo ln -s /usr/share/fontconfig/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/
+sudo ln -sf /usr/share/fontconfig/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/
 sudo xbps-reconfigure -f fontconfig
 
 # Reconfigure kernel: ============================================================================
