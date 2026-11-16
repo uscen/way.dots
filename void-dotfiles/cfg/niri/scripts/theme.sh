@@ -4,20 +4,25 @@
 # =============================================================================== #
 THEME='Thorn-dark-sea'
 ICONS='Kora'
-FONT='JetBrainsMono Nerd Font 11'
 CURSOR='BreezeX-Black'
+FONT='JetBrainsMono Nerd Font 11'
+COLOR='prefer-dark'
 CURSORSIZE=25
 SCHEMA='gsettings set org.gnome.desktop.interface'
-PERF='gsettings set org.gnome.desktop.wm.preferences'
+PREFERENCES='gsettings set org.gnome.desktop.wm.preferences'
+CONOTIFY='gsettings set org.gnome.nm-applet'
+DISNOTIFY='gsettings set org.gnome.nm-applet'
 
 apply_themes() {
-  ${PERF} theme "$THEME"
   ${SCHEMA} gtk-theme "$THEME"
   ${SCHEMA} icon-theme "$ICONS"
   ${SCHEMA} cursor-theme "$CURSOR"
   ${SCHEMA} cursor-size "$CURSORSIZE"
   ${SCHEMA} font-name "$FONT"
-  ${SCHEMA} color-scheme "prefer-dark"
+  ${SCHEMA} color-scheme "$COLOR"
+  ${PREFERENCES} theme "$THEME"
+  ${CONOTIFY} disable-connected-notifications "true"
+  ${DISNOTIFY} disable-disconnected-notifications "true"
 }
 
 apply_themes
