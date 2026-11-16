@@ -40,7 +40,6 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 # =============================================================================== #
 # Enabled: =======================================================================================
 sudo ln -sf /etc/sv/dbus /var/service/
-sudo ln -sf /etc/sv/elogind /var/service/
 sudo ln -sf /etc/sv/preload /var/service/
 sudo ln -sf /etc/sv/bluetoothd /var/service/
 sudo ln -sf /etc/sv/NetworkManager /var/service/
@@ -72,9 +71,6 @@ cat <<EOF | sudo tee /etc/NetworkManager/conf.d/wifi_backend.conf > /dev/null
 [device]
 wifi.backend=iwd
 EOF
-
-# Update database to locate files in all packages: ===============================================
-xlocate -S
 
 # Update the binary cache to use custom themes: ==================================================
 bat cache --build

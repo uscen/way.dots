@@ -3,7 +3,7 @@
 # Wallpaper:                                                                      #
 # =============================================================================== #
 awww-daemon &
-awww img "$HOME/.local/share/wall.dots/wallpapers/GREEN_PRIMARY.png" &
+sleep 2 && awww img "$HOME/.local/share/wall.dots/wallpapers/GREEN_PRIMARY.png" &
 
 # =============================================================================== #
 # Cliphist:                                                                       #
