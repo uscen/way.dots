@@ -38,15 +38,19 @@ window#waybar.border-top,
 window#waybar.border-bottom {
   background-color: @base;
 }
-window#waybar.main-bar .module {
+window#waybar.main-bar .module,
+window#waybar.main-bar .module label {
   font-size: 16px;
 }
 
 /* ============================================================================= */
-/* Custom:                                                                       */
+/* idle:                                                                         */
 /* ============================================================================= */
-window#waybar #custom-yinyang {
-  font-size: 20px;
+#idle_inhibitor.activated {
+  color: @green;
+}
+#idle_inhibitor.deactivated {
+  color: @bright;
 }
 
 /* ============================================================================= */
@@ -57,7 +61,6 @@ window#waybar #custom-yinyang {
 }
 #workspaces button label {
   color: @bright;
-  font-size: 16px;
   padding-left: 8px;
 }
 #workspaces button.active label {

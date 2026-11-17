@@ -3,7 +3,6 @@
 // ============================================================================== #
 spawn-sh-at-startup "~/.config/niri/scripts/autostart.sh"
 spawn-sh-at-startup "~/.config/niri/scripts/theme.sh"
-spawn-sh-at-startup "~/.config/niri/scripts/idle.sh"
 
 // ============================================================================== #
 // General:                                                                       #
@@ -664,9 +663,6 @@ binds {
     MOD+SHIFT+B                         { spawn "~/.config/fuzzel/modules/calc"; }
     MOD+SHIFT+E                         { spawn "~/.config/fuzzel/modules/emoji"; }
 
-    // Others scripts: ===========================================================================
-    MOD+SHIFT+S                         { spawn "~/.config/niri/scripts/idle.sh" "--no-quiet"; }
-
     // Application shortcuts: ====================================================================
     MOD+RETURN                          { spawn "alacritty"; }
     MOD+SHIFT+RETURN                    { spawn "foot"; }
@@ -827,6 +823,7 @@ binds {
     Mod+TouchpadScrollRight            cooldown-ms=50 { focus-column-right; }
     Mod+TouchpadScrollLeft             cooldown-ms=50 { focus-column-left; }
 
-    // Application restarts: =====================================================================
-    MOD+SUPER+W                         { spawn "sh" "-c" "pgrep -x waybar >/dev/null && killall waybar || waybar &"; }
+    // Application restart: ======================================================================
+    MOD+SHIFT+S                         { spawn "sh" "-c" "pkill -SIGRTMIN+8 waybar && notify-send -a 'Idle Inhibitor...' 'Idle inhibitor toggled'"; }
+    MOD+SHIFT+X                         { spawn "sh" "-c" "pgrep -x waybar >/dev/null && killall waybar || waybar &"; }
 }
