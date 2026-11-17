@@ -7,19 +7,18 @@ swayidle -w timeout 900 'gtklock --daemonize' timeout 999 'doas zzz' before-slee
 # =============================================================================== #
 # Wallpaper:                                                                      #
 # =============================================================================== #
-awww-daemon &
-sleep 2 && awww img "$HOME/.local/share/wall.dots/wallpapers/GREEN_PRIMARY.png" &
+wbg --stretch "$HOME/.local/share/wall.dots/wallpapers/GREEN_PRIMARY.png" &
+
+# =============================================================================== #
+# Polkit:                                                                         #
+# =============================================================================== #
+/usr/libexec/polkit-gnome-authentication-agent-1 &
 
 # =============================================================================== #
 # Cliphist:                                                                       #
 # =============================================================================== #
 wl-paste --type image --watch cliphist store &
 wl-paste --type text --watch cliphist store &
-
-# =============================================================================== #
-# Polkit:                                                                         #
-# =============================================================================== #
-/usr/libexec/polkit-gnome-authentication-agent-1 &
 
 # =============================================================================== #
 # Applet:                                                                         #
