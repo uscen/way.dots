@@ -140,12 +140,15 @@
     // ============================================================================== #
     "idle_inhibitor": {
       "format": "{icon}",
-      "start-activated": false,
       "format-icons": {
         "activated": "󰚀",
         "deactivated": "󰚀",
       },
+      "timeout": 240.0,
+      "start-activated": true,
+      "wait-for-activity": true,
       "signal": 8,
+      "tooltip": "{status} {timeleft}/{timeout}",
     },
 
     // ============================================================================== #
