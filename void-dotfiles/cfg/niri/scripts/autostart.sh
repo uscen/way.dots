@@ -2,10 +2,7 @@
 # =============================================================================== #
 # Idle:                                                                           #
 # =============================================================================== #
-swayidle -w \
-   timeout 900 'gtklock --daemonize' \
-   timeout 999 'doas zzz' \
-   before-sleep 'gtklock --daemonize' &
+swayidle -w timeout 900 'gtklock --daemonize' timeout 999 'doas zzz' before-sleep 'gtklock --daemonize' &
 
 # =============================================================================== #
 # Wallpaper:                                                                      #
