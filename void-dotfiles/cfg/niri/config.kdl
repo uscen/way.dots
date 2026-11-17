@@ -824,6 +824,6 @@ binds {
     Mod+TouchpadScrollLeft             cooldown-ms=50 { focus-column-left; }
 
     // Application restart: ======================================================================
-    MOD+SHIFT+S                         { spawn "sh" "-c" "pkill -SIGRTMIN+8 waybar && notify-send -a 'Idle Inhibitor...' 'Idle inhibitor toggled'"; }
+    MOD+SHIFT+S                         { spawn "sh" "-c" "pkill -SIGRTMIN+8 waybar && notify-send -a system-suspend 'Idle Inhibitor...' 'Idle inhibitor toggled'"; }
     MOD+SHIFT+X                         { spawn "sh" "-c" "pgrep -x waybar >/dev/null && killall waybar || waybar &"; }
 }
