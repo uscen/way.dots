@@ -66,11 +66,11 @@ Config.later(function()
     '1 more line',
     '1 line less',
     '^Hunk %d+ of %d+$',
-    'Already at newest change',
-    'Already at oldest change',
-
     '%d lines yanked',
     'no lines in buffer',
+    'Formatter failed',
+    'Already at newest change',
+    'Already at oldest change',
 
     -- Undo/Redo: ================================================================================
     '%d+ changes?;',

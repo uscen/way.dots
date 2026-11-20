@@ -31,17 +31,6 @@ Config.now_if_args(function()
 
   -- UI: =========================================================================================
   Config.new_autocmd('User', {
-    pattern = 'MiniFilesWindowOpen',
-    callback = function(args)
-      local win_id = args.data.win_id
-      -- Customize window-local settings
-      vim.wo[win_id].winblend = 5
-      local config = vim.api.nvim_win_get_config(win_id)
-      config.border, config.title_pos = 'single', 'left'
-      vim.api.nvim_win_set_config(win_id, config)
-    end,
-  })
-  Config.new_autocmd('User', {
     pattern = 'MiniFilesWindowUpdate',
     callback = function(args)
       local config = vim.api.nvim_win_get_config(args.data.win_id)

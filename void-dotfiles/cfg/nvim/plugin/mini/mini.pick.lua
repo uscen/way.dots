@@ -78,15 +78,6 @@ Config.later(function()
   })
   vim.ui.select = MiniPick.ui_select
 
-  -- UI: =========================================================================================
-  Config.new_autocmd('User', {
-    pattern = 'MiniPickStart',
-    callback = function()
-      local win_id = vim.api.nvim_get_current_win()
-      vim.wo[win_id].winblend = 5
-    end,
-  })
-
   -- Pick file from config: ======================================================================
   MiniPick.registry.config = function()
     return MiniPick.builtin.files(nil, { source = { name = 'Config Files', cwd = vim.fn.stdpath('config') } })
