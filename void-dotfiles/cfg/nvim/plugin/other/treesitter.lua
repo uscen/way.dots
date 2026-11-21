@@ -26,4 +26,10 @@ Config.now_if_args(function()
     end
   end
   Config.new_autocmd('FileType', { pattern = filetypes, callback = function(ev) vim.treesitter.start(ev.buf) end })
+
+  -- Indentation enabled: ========================================================================
+  Config.new_autocmd('FileType', {
+    pattern = { 'javascriptreact', 'typescriptreact' },
+    callback = function() vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()" end,
+  })
 end)
