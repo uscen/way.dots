@@ -3,7 +3,7 @@
 # Packages:                                                                       #
 # =============================================================================== #
 sudo xbps-install -Sy void-repo-nonfree && sudo xbps-install -S \
-    mesa-intel-dri intel-video-accel intel-ucode base-devel xtools elogind fwupd preload \
+    mesa-intel-dri intel-video-accel intel-ucode base-devel xtools elogind fwupd \
     alacritty foot carapace \
     niri xwayland-satellite swayidle gtklock wbg fuzzel fnott Waybar \
     xdg-user-dirs xdg-utils xdg-desktop-portal-gnome polkit-gnome psmisc man-db opendoas trash-cli btop aria2 ffmpeg ImageMagick ouch \
