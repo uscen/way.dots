@@ -61,10 +61,12 @@ window#waybar.main-bar .module label {
 }
 #workspaces button label {
   color: @bright;
-  padding-left: 7px;
+  opacity: 0.4;
+  padding-left: 8px;
 }
 #workspaces button.active label {
   color: @green;
+  opacity: 1;
 }
 
 /* ============================================================================= */
