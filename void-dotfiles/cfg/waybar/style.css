@@ -61,7 +61,7 @@ window#waybar.main-bar .module label {
 }
 #workspaces button label {
   color: @bright;
-  padding-left: 8px;
+  padding-left: 7px;
 }
 #workspaces button.active label {
   color: @green;
