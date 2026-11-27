@@ -137,7 +137,7 @@
         "deactivated": "󰝤",
       },
       "signal": 8,
-      "timeout": 240.0,
+      "timeout": 240,
       "start-activated": true,
       "wait-for-activity": true,
       "tooltip": "{status} {timeleft}/{timeout}",

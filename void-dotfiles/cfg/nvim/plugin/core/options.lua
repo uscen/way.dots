@@ -103,7 +103,7 @@ Config.now(function()
   vim.o.scrollback               = 100000
   vim.o.winbar                   = ''
   vim.o.colorcolumn              = ''
-  vim.o.guifont                  = 'JetBrainsMono Nerd Font:h10'
+  vim.o.guifont                  = 'JetBrainsMono Nerd Font:h10.5'
   vim.o.guicursor                = 'n-v-c:block-Cursor,i-ci-ve:block-blinkwait300-blinkon200-blinkoff150-Cursor'
   vim.o.pumborder                = 'single'
   vim.o.background               = 'dark'

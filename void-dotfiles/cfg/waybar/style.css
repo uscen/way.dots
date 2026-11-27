@@ -20,7 +20,7 @@
   border: none;
   border-radius: 0;
   font-family: "JetBrainsMono Nerd Font", "sans-serif";
-  font-size: 12px;
+  font-size: 10.5pt;
   font-weight: 700;
   min-height: 0;
 }
@@ -37,9 +37,6 @@ window#waybar.border-right,
 window#waybar.border-top,
 window#waybar.border-bottom {
   background-color: @base;
-}
-window#waybar.main-bar .module {
-  font-size: 14px;
 }
 
 /* ============================================================================= */

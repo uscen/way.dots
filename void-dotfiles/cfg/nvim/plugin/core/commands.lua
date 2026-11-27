@@ -8,10 +8,18 @@ Config.later(function()
     vim.api.nvim_create_user_command(name, command, opts)
   end
 
+  -- Clear all ShaDa files: =====================================================================
+  Config.new_command('RemoveShadaAll', function()
+    for _, f in ipairs(vim.fn.globpath(vim.fn.stdpath('state') .. '/shada', '*', false, true)) do
+      vim.fn.delete(f)
+    end
+    vim.o.shadafile = 'NONE'
+  end)
+
   -- "E138: main.shada.tmp.X files exist, cannot write ShaDa" on close: ==========================
   Config.new_command('RemoveShadaTemp', function()
     for _, f in ipairs(vim.fn.globpath(vim.fn.stdpath('data') .. '/shada', '*tmp*', false, true)) do
-      vim.fn.system({ 'rm', f })
+      vim.fn.delete(f)
     end
   end)
 

@@ -7,7 +7,7 @@ swayidle -w timeout 900 'gtklock --daemonize' timeout 999 'doas zzz' before-slee
 # =============================================================================== #
 # Wallpaper:                                                                      #
 # =============================================================================== #
-wbg "$HOME/.local/share/wall.dots/wallpapers/GREEN_PRIMARY.png" &
+wbg "$HOME/.local/share/wall.dots/wallpapers/COLD.png" &
 
 # =============================================================================== #
 # Polkit:                                                                         #

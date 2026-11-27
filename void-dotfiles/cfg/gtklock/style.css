@@ -3,12 +3,13 @@
 /* ============================================================================= */
 @define-color fg     #88B497;
 @define-color bg     #172526;
-@define-color bright #568270;
-@define-color base   #233935;
-@define-color white  #A1A790;
-@define-color green  #88B497;
+@define-color sep    #233935;
 @define-color red    #D2696C;
 @define-color blue   #91C4C0;
+@define-color base   #1D3334;
+@define-color white  #A1A790;
+@define-color green  #88B497;
+@define-color bright #568270;
 
 /* ============================================================================= */
 /* General:                                                                      */
@@ -19,7 +20,7 @@
 window {
   background-image:
     linear-gradient(rgba(23, 37, 38, 0.8), rgba(23, 37, 38, 0.9)),
-    url("/home/lli/.local/share/wall.dots/wallpapers/GREEN_PRIMARY.png");
+    url("/home/lli/.local/share/wall.dots/wallpapers/COLD.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
