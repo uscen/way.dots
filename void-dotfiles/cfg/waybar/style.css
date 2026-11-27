@@ -38,9 +38,8 @@ window#waybar.border-top,
 window#waybar.border-bottom {
   background-color: @base;
 }
-window#waybar.main-bar .module,
-window#waybar.main-bar .module label {
-  font-size: 16px;
+window#waybar.main-bar .module {
+  font-size: 14px;
 }
 
 /* ============================================================================= */
@@ -48,9 +47,11 @@ window#waybar.main-bar .module label {
 /* ============================================================================= */
 #idle_inhibitor.activated {
   color: @green;
+  opacity: 1;
 }
 #idle_inhibitor.deactivated {
   color: @bright;
+  opacity: 0.4;
 }
 
 /* ============================================================================= */
@@ -62,7 +63,7 @@ window#waybar.main-bar .module label {
 #workspaces button label {
   color: @bright;
   opacity: 0.4;
-  padding-left: 8px;
+  padding-left: 6px;
 }
 #workspaces button.active label {
   color: @green;
